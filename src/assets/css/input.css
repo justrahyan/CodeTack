@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  /* Font families */
+  --font-family-space-grotesk: "Space Grotesk", sans-serif;
+  --font-family-outfit: "Outfit", sans-serif;
+
+  /* Custom colors */
+  --color-primary: #0f172a;
+  --color-secondary: #38bdf8;
+  --color-paragraph: #2a2a2a;
+}
