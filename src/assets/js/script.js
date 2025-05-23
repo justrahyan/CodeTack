@@ -69,13 +69,11 @@ function salinKode(button) {
 }
 
 // Tab Demo Interaktif
-const tabHtml = document.getElementById("tab-html");
-const tabPreview = document.getElementById("tab-preview");
 const editorPanel = document.getElementById("editor-panel");
 const previewPanel = document.getElementById("preview");
 const textarea = document.getElementById("htmlCode");
 
-// Load awal preview
+// Set srcdoc awal preview
 previewPanel.srcdoc = textarea.value;
 
 // Update preview saat input
@@ -83,45 +81,11 @@ textarea.addEventListener("input", () => {
   previewPanel.srcdoc = textarea.value;
 });
 
-// Tab switch (mobile only)
-if (tabHtml && tabPreview) {
-  tabHtml.onclick = () => {
-    // Show/hide panels
-    editorPanel.classList.remove("hidden");
-    previewPanel.classList.add("hidden");
-
-    // Style active tab (HTML)
-    tabHtml.classList.add("border-primary", "text-primary");
-    tabHtml.classList.remove("text-gray-500", "border-transparent");
-
-    // Style inactive tab (Preview)
-    tabPreview.classList.remove("border-primary", "text-primary");
-    tabPreview.classList.add("text-gray-500", "border-transparent");
-  };
-
-  tabPreview.onclick = () => {
-    // Show/hide panels
-    editorPanel.classList.add("hidden");
-    previewPanel.classList.remove("hidden");
-    previewPanel.srcdoc = textarea.value;
-
-    // Style active tab (Preview)
-    tabPreview.classList.add("border-primary", "text-primary");
-    tabPreview.classList.remove("text-gray-500", "border-transparent");
-
-    // Style inactive tab (HTML)
-    tabHtml.classList.remove("border-primary", "text-primary");
-    tabHtml.classList.add("text-gray-500", "border-transparent");
-  };
-}
-
-// Reset ke dua panel saat layar besar
-const handleResize = () => {
-  if (window.innerWidth >= 768) {
-    editorPanel.classList.remove("hidden");
-    previewPanel.classList.remove("hidden");
-  }
+// Optional: Reset height saat resize supaya tetap responsive
+const container = document.querySelector(".editor-container");
+const adjustHeight = () => {
+  // Kita set container fixed height 500px (bisa diubah)
+  container.style.height = "500px";
 };
-
-window.addEventListener("resize", handleResize);
-handleResize();
+window.addEventListener("resize", adjustHeight);
+adjustHeight();

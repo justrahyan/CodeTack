@@ -420,7 +420,7 @@
             <span class="text-gray-700">index.html</span>
             <button
               onclick="salinKode(this)"
-              class="text-blue-600 hover:underline focus:outline-none"
+              class="text-sm md:text-base text-blue-600 hover:underline focus:outline-none"
             >
               Salin Kode
             </button>
@@ -440,31 +440,21 @@
         </div>
 
         <h1 class="text-xl lg:text-2xl font-bold mb-4">⚙️ Demo Interaktif:</h1>
-        <!-- Tabs mobile -->
-        <div class="flex mb-2 border-b border-gray-300 md:hidden">
-          <button
-            id="tab-html"
-            class="tab-button px-4 py-2 font-semibold text-primary border-b-2 border-primary"
-          >
-            index.html
-          </button>
-          <button
-            id="tab-preview"
-            class="tab-button px-4 py-2 text-gray-500 hover:text-primary border-b-2 border-transparent"
-          >
-            preview
-          </button>
-        </div>
-
-        <!-- Container -->
-        <div class="editor-container mb-4 flex flex-col md:flex-row w-full">
+        <div
+          class="editor-container flex flex-col md:flex-row w-full gap-4 mb-4"
+          style="height: 500px"
+        >
           <!-- Editor -->
-          <div id="editor-panel" class="w-full md:w-1/2 block">
+          <div
+            id="editor-panel"
+            class="w-full md:w-1/2 border rounded overflow-auto"
+            style="max-height: 100%"
+          >
             <textarea
               id="htmlCode"
-              class="w-full h-64 md:h-[500px] max-h-screen overflow-y-auto p-3 border rounded resize-none text-sm font-mono"
+              class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
             >
-<!DOCTYPE html>
+<DOCTYPE html>
 <html>
 <head>
   <title>Halo Dunia</title>
@@ -474,24 +464,25 @@
   <p>Ini adalah paragraf pertama saya dalam HTML.</p>
 </body>
 </html>
-  </textarea
+</textarea
             >
           </div>
 
           <!-- Preview -->
           <iframe
             id="preview"
-            class="w-full md:w-1/2 h-64 md:h-[500px] max-h-screen overflow-y-auto border rounded"
+            class="w-full md:w-1/2 border rounded"
             title="Pratinjau HTML"
+            style="height: 100%"
           ></iframe>
         </div>
 
         <!-- Tips -->
         <div class="tips flex items-center gap-3 mb-8 lg:mb-10">
           <div class="w-2 h-9 bg-amber-300"></div>
-          <p>
-            <span class="text-2xl">💡</span> Tips: Jangan lupa tutup semua tag
-            HTML dengan benar agar halaman tampil sempurna.
+          <p class="text-left text-sm md:text-base">
+            <span class="text-xl md:text-2xl">💡</span> Tips: Jangan lupa tutup
+            semua tag HTML dengan benar agar halaman tampil sempurna.
           </p>
         </div>
       </div>
@@ -598,7 +589,9 @@
                 class="h-12 w-auto"
               />
             </div>
-            <p class="text-sm leading-relaxed text-justify text-blue-100">
+            <p
+              class="text-sm md:text-base leading-relaxed text-justify text-blue-100"
+            >
               CodeTack adalah project website yang dibuat untuk lomba ICONFEST
               yang diselenggarakan oleh HIMAFOR UNIMUS. Kami dari team AE 106
               mempersembahkan website ini sebagai hasil karya orisinal.
@@ -614,21 +607,21 @@
               <li>
                 <a
                   href="#"
-                  class="text-blue-100 hover:text-white transition-colors duration-200"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
                   >HTML</a
                 >
               </li>
               <li>
                 <a
                   href="#"
-                  class="text-blue-100 hover:text-white transition-colors duration-200"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
                   >CSS</a
                 >
               </li>
               <li>
                 <a
                   href="#"
-                  class="text-blue-100 hover:text-white transition-colors duration-200"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
                   >JavaScript</a
                 >
               </li>
@@ -644,21 +637,21 @@
               <li>
                 <a
                   href="#"
-                  class="text-blue-100 hover:text-white transition-colors duration-200"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
                   >HTML</a
                 >
               </li>
               <li>
                 <a
                   href="#"
-                  class="text-blue-100 hover:text-white transition-colors duration-200"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
                   >CSS</a
                 >
               </li>
               <li>
                 <a
                   href="#"
-                  class="text-blue-100 hover:text-white transition-colors duration-200"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
                   >JavaScript</a
                 >
               </li>
@@ -674,21 +667,21 @@
               <li>
                 <a
                   href="#"
-                  class="text-blue-100 hover:text-white transition-colors duration-200"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
                   >Instagram</a
                 >
               </li>
               <li>
                 <a
                   href="#"
-                  class="text-blue-100 hover:text-white transition-colors duration-200"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
                   >Tiktok</a
                 >
               </li>
               <li>
                 <a
                   href="#"
-                  class="text-blue-100 hover:text-white transition-colors duration-200"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
                   >Twitter</a
                 >
               </li>
