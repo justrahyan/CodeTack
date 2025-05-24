@@ -23,6 +23,34 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldgutter.min.css"
     />
+    <!-- Favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../../assets/img/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../../assets/img/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../../../assets/img/favicon_io/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="../../../assets/img/favicon_io/site.webmanifest"
+    />
+
+    <!-- Prism CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+    />
 
     <style>
       .CodeMirror {
@@ -52,6 +80,165 @@
     </style>
   </head>
   <body class="font-family-outfit">
+    <!-- Navbar -->
+    <nav
+      class="container mx-auto px-4 flex justify-between items-center lg:py-10 lg:px-36 h-16"
+    >
+      <a href="../../../../index.html" class="flex items-center">
+        <img
+          src="../../../assets/img/logo.png"
+          alt="CodeTack"
+          class="h-10 lg:h-12 w-auto mr-2"
+        />
+      </a>
+
+      <div class="hidden lg:flex gap-7 text-primary font-medium items-center">
+        <ul class="flex gap-7 items-center">
+          <li>
+            <a
+              href="../../../../index.html"
+              class="text-primary hover:text-secondary font-family-outfit transition-colors"
+            >
+              Beranda
+            </a>
+          </li>
+          <li class="relative">
+            <button
+              id="materiToggle"
+              class="font-semibold flex items-center cursor-pointer hover:text-secondary font-family-outfit transition-colors"
+            >
+              Materi Belajar
+              <svg
+                id="materiIcon"
+                class="size-3 ml-1 transition-transform duration-300 group-hover:rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                />
+              </svg>
+            </button>
+            <div
+              id="materiMenu"
+              class="hidden absolute left-0 mt-1 w-44 bg-white border border-gray-300 rounded shadow-lg p-2 z-50"
+            >
+              <div class="flex">
+                <div class="flex flex-col w-full">
+                  <a
+                    href="../materi-html.html"
+                    class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                  >
+                    HTML
+                  </a>
+                  <a
+                    href="../materi-css.html"
+                    class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                  >
+                    CSS
+                  </a>
+                  <a
+                    href="../materi-javascript.html"
+                    class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                  >
+                    JavaScript
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="relative">
+            <button
+              id="tantanganToggle"
+              class="flex items-center cursor-pointer hover:text-secondary font-family-outfit transition-colors"
+            >
+              Tantangan
+              <svg
+                id="tantanganIcon"
+                class="size-3 ml-1 transition-transform duration-300 group-hover:rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                />
+              </svg>
+            </button>
+            <div
+              id="tantanganMenu"
+              class="hidden absolute left-0 mt-1 w-44 bg-white border border-gray-300 rounded shadow-lg p-2 z-50"
+            >
+              <div class="flex">
+                <div class="flex flex-col w-full">
+                  <a
+                    href="../../tantangan/tantangan-html.html"
+                    class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                  >
+                    HTML
+                  </a>
+                  <a
+                    href="../../tantangan/tantangan-css.html"
+                    class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                  >
+                    CSS
+                  </a>
+                  <a
+                    href="../../tantangan/tantangan-javascript.html"
+                    class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                  >
+                    JavaScript
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a
+              href="../../tentang.html"
+              class="hover:text-secondary font-family-outfit transition-colors"
+            >
+              Tentang
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <button
+        id="hamburgerButton"
+        class="lg:hidden flex items-center text-primary"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6 transition-transform duration-300 ease-in-out"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 5.25h16.5m-16.5 6h16.5m-16.5 6h16.5"
+            class="hamburger-icon origin-center transition-opacity duration-300 ease-in-out"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+            class="close-icon origin-center transition-opacity duration-300 ease-in-out opacity-0"
+          />
+        </svg>
+      </button>
+    </nav>
+
     <!-- Hero -->
     <section
       class="relative bg-cover bg-center bg-no-repeat py-14 md:py-20"
@@ -77,10 +264,13 @@
           📐 Layout dengan Flexbox
         </h1>
         <p class="mb-8 text-sm lg:text-base text-justify">
-          Flexbox adalah metode modern di CSS untuk membuat layout yang
-          fleksibel dan responsif. Dengan Flexbox, kita bisa menyusun elemen
-          secara horizontal maupun vertikal dengan mudah, tanpa menggunakan
-          float atau positioning manual.
+          Flexbox adalah salah satu cara dalam CSS (bahasa untuk mendesain
+          tampilan website) yang digunakan untuk menyusun tata letak halaman
+          agar terlihat rapi dan mudah diatur. Dengan Flexbox, kita bisa membuat
+          elemen-elemen seperti kotak, gambar, atau teks di dalam halaman
+          tersusun secara otomatis baik secara mendatar (horizontal) maupun
+          menurun (vertikal), tanpa perlu repot mengatur posisi satu per satu
+          secara manual.
         </p>
 
         <h2 class="text-xl lg:text-2xl font-semibold mb-4">
@@ -91,25 +281,29 @@
             <code class="bg-pink-100 px-1 text-pink-600 rounded"
               >display: flex</code
             >
-            – Mengaktifkan flex container
+            – Digunakan untuk mengaktifkan Flexbox. Ini seperti "menyalakan"
+            mode pengaturan otomatis layout.
           </li>
           <li>
             <code class="bg-pink-100 px-1 text-pink-600 rounded"
               >flex-direction</code
             >
-            – Menentukan arah (row, column)
+            – Menentukan arah susunan elemen, apakah ingin disusun ke samping
+            (sejajar) atau ke bawah (menurun).
           </li>
           <li>
             <code class="bg-pink-100 px-1 text-pink-600 rounded"
               >justify-content</code
             >
-            – Mengatur posisi horizontal
+            – Mengatur posisi elemen secara mendatar, misalnya diratakan ke
+            kiri, tengah, atau diberi jarak sama rata.
           </li>
           <li>
             <code class="bg-pink-100 px-1 text-pink-600 rounded"
               >align-items</code
             >
-            – Mengatur posisi vertikal
+            – Mengatur posisi elemen secara vertikal, seperti apakah elemen
+            ingin diratakan di atas, tengah, atau bawah.
           </li>
         </ul>
 
@@ -205,6 +399,195 @@
         </div>
       </div>
     </section>
+
+    <!-- Pagination -->
+    <section id="pagination">
+      <div
+        class="container mx-auto px-4 py-4 lg:py-10 lg:px-36 font-family-outfit mb-6 lg:mb-0"
+      >
+        <div class="grid grid-cols-3 items-center gap-4">
+          <div class="flex justify-start">
+            <a
+              href="./box-model-dan-border.html"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 md:w-5 h-6 md:h-5"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                >
+                  <path d="m13 9l-3 3l3 3" />
+                  <circle cx="12" cy="12" r="9" />
+                </g>
+              </svg>
+              <span class="hidden sm:inline">Box Model & Border</span>
+            </a>
+          </div>
+
+          <!-- Title -->
+          <div class="flex justify-center">
+            <p
+              class="text-center text-primary font-semibold lg:text-lg text-sm whitespace-nowrap"
+            >
+              Layout Sederhana Dengan Flexbox
+            </p>
+          </div>
+
+          <!-- Next -->
+          <div class="flex invisible">
+            <a
+              href="./layout-sederhana-dengan-flexbox.html"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
+            >
+              <span class="hidden sm:inline"
+                >Layout Sederhana Dengan Flexbox</span
+              >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 md:w-5 h-6 md:h-5"
+                viewBox="0 0 24 24"
+                class="inline-block"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="m11 9l3 3l-3 3" />
+                </g>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white font-family-outfit py-16 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div class="lg:col-span-1">
+            <div class="mb-6">
+              <img
+                src="../../../assets/img/logo-white.png"
+                alt="CodeTack Logo"
+                class="h-12 w-auto"
+              />
+            </div>
+            <p
+              class="text-sm md:text-base leading-relaxed text-justify text-blue-100"
+            >
+              CodeTack adalah project website yang dibuat untuk lomba ICONFEST
+              yang diselenggarakan oleh HIMAFOR UNIMUS. Kami dari team AE 106
+              mempersembahkan website ini sebagai hasil karya orisinal.
+            </p>
+          </div>
+
+          <div class="lg:col-span-1">
+            <h3 class="font-family-space-grotesk text-lg font-semibold mb-6">
+              Materi Belajar
+            </h3>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="../materi-html.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../materi-css.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >CSS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../materi-javascript.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >JavaScript</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="lg:col-span-1">
+            <h3 class="font-family-space-grotesk text-lg font-semibold mb-6">
+              Tantangan
+            </h3>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="../../tantangan/tantangan-html.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../../tantangan/tantangan-css.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >CSS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../../tantangan/tantangan-javascript.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >JavaScript</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="lg:col-span-1">
+            <h3 class="font-family-space-grotesk text-lg font-semibold mb-6">
+              Media Sosial
+            </h3>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="#"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >Instagram</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >Tiktok</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >Twitter</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-blue-400 pt-8">
+          <p class="text-center text-blue-100 text-sm">
+            © 2025 CodeTack. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
