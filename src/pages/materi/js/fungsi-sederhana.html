@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeTack - Fungsi Sederhana</title>
+    <link rel="stylesheet" href="../../../assets/css/output.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../../assets/img/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../../assets/img/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../../../assets/img/favicon_io/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="../../../assets/img/favicon_io/site.webmanifest"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material.min.css"
+    />
+    <style>
+      .CodeMirror {
+        height: 100%;
+        font-size: 14px;
+        font-family: "Courier New", monospace;
+      }
+
+      .editor-container {
+        height: 500px;
+        display: flex;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        overflow: hidden;
+      }
+
+      .editor-panel {
+        width: 50%;
+        height: 100%;
+      }
+
+      .preview-panel {
+        width: 50%;
+        height: 100%;
+        border-left: 1px solid #d1d5db;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bg-white shadow-sm">
+      <nav
+        class="container mx-auto px-4 flex justify-between items-center lg:py-10 lg:px-36 h-16"
+      >
+        <a href="../../../../index.html" class="flex items-center">
+          <img
+            src="../../../assets/img/logo.png"
+            alt="CodeTack"
+            class="h-10 lg:h-12 w-auto mr-2"
+          />
+        </a>
+
+        <div class="hidden lg:flex gap-7 text-primary font-medium items-center">
+          <ul class="flex gap-7 items-center">
+            <li>
+              <a
+                href="../../../../index.html"
+                class="text-primary hover:text-secondary font-family-outfit transition-colors"
+              >
+                Beranda
+              </a>
+            </li>
+            <li class="relative">
+              <button
+                id="materiToggle"
+                class="font-semibold flex items-center cursor-pointer hover:text-secondary font-family-outfit transition-colors"
+              >
+                Materi Belajar
+                <svg
+                  id="materiIcon"
+                  class="size-3 ml-1 transition-transform duration-300 group-hover:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </button>
+              <div
+                id="materiMenu"
+                class="hidden absolute left-0 mt-1 w-44 bg-white border border-gray-300 rounded shadow-lg p-2 z-50"
+              >
+                <div class="flex">
+                  <div class="flex flex-col w-full">
+                    <a
+                      href="../materi-html.html"
+                      class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                    >
+                      HTML
+                    </a>
+                    <a
+                      href="../materi-css.html"
+                      class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                    >
+                      CSS
+                    </a>
+                    <a
+                      href="../materi-javascript.html"
+                      class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                    >
+                      JavaScript
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="relative">
+              <button
+                id="tantanganToggle"
+                class="flex items-center cursor-pointer hover:text-secondary font-family-outfit transition-colors"
+              >
+                Tantangan
+                <svg
+                  id="tantanganIcon"
+                  class="size-3 ml-1 transition-transform duration-300 group-hover:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </button>
+              <div
+                id="tantanganMenu"
+                class="hidden absolute left-0 mt-1 w-44 bg-white border border-gray-300 rounded shadow-lg p-2 z-50"
+              >
+                <div class="flex">
+                  <div class="flex flex-col w-full">
+                    <a
+                      href="../../tantangan/tantangan-html.html"
+                      class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                    >
+                      HTML
+                    </a>
+                    <a
+                      href="../../tantangan/tantangan-css.html"
+                      class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                    >
+                      CSS
+                    </a>
+                    <a
+                      href="../../tantangan/tantangan-javascript.html"
+                      class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                    >
+                      JavaScript
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a
+                href="../../tentang.html"
+                class="hover:text-secondary font-family-outfit transition-colors"
+              >
+                Tentang
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <button
+          id="hamburgerButton"
+          class="lg:hidden flex items-center text-primary"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6 transition-transform duration-300 ease-in-out"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 5.25h16.5m-16.5 6h16.5m-16.5 6h16.5"
+              class="hamburger-icon origin-center transition-opacity duration-300 ease-in-out"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+              class="close-icon origin-center transition-opacity duration-300 ease-in-out opacity-0"
+            />
+          </svg>
+        </button>
+      </nav>
+      <div
+        id="mobileMenu"
+        class="hidden fixed lg:hidden bg-white z-50 w-full h-full transition-all duration-300 ease-in-out"
+      >
+        <ul class="flex flex-col gap-4 p-4 font-family-outfit text-primary">
+          <li>
+            <a
+              href="../../../../index.html"
+              class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+              >Beranda</a
+            >
+          </li>
+          <li>
+            <p class="text-sm p-2 font-semibold">Materi Belajar</p>
+            <ul class="pl-4 mt-2 space-y-2">
+              <li>
+                <a
+                  href="../materi-html.html"
+                  class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+                  >HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../materi-css.html"
+                  class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+                  >CSS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../materi-javascript.html"
+                  class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+                  >JavaScript</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p class="text-sm p-2">Tantangan</p>
+            <ul class="pl-4 mt-2 space-y-2">
+              <li>
+                <a
+                  href="../../tantangan/tantangan-html.html"
+                  class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+                  >HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../../tantangan/tantangan-css.html"
+                  class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+                  >CSS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../../tantangan/tantangan-javascript.html"
+                  class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+                  >JavaScript</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a
+              href="../../tentang.html"
+              class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+              >Tentang</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <section
+      id="hero"
+      class="relative bg-cover bg-center bg-no-repeat py-14 md:py-20 font-family-outfit"
+      style="background-image: url('../../../assets/img/hero-bg.png')"
+    >
+      <div class="absolute inset-0 bg-black/60"></div>
+
+      <div class="relative container mx-auto px-4 text-center">
+        <h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          Fungsi Sederhana
+        </h1>
+        <p class="text-white text-sm md:text-base">
+          Materi Belajar /
+          <a href="../materi-javascript.html" class="hover:underline"
+            >JavaScript</a
+          >
+          /
+          <span class="font-semibold">Fungsi Sederhana</span>
+        </p>
+      </div>
+    </section>
+
+    <section id="materi">
+      <div
+        class="container mx-auto px-4 py-4 lg:py-10 lg:px-36 font-family-outfit"
+      >
+        <h1 class="text-2xl lg:text-3xl font-bold mb-4">🚀 Fungsi Sederhana</h1>
+        <p class="text-justify text-sm lg:text-base mb-8">
+          Jika variabel adalah wadah, maka
+          <strong>fungsi (function)</strong> adalah mesin pengolahnya. Fungsi
+          adalah sebuah blok kode yang dirancang untuk melakukan tugas tertentu.
+          Keindahan fungsi adalah kita bisa mendefinisikannya sekali, lalu
+          memanggil atau menggunakannya berkali-kali di banyak tempat. Ini
+          membuat kode kita lebih terorganisir, efisien, dan mudah dikelola
+          (prinsip <i>Don't Repeat Yourself</i> atau DRY).
+        </p>
+
+        <h1 class="text-xl lg:text-2xl font-bold mb-4">
+          🧱 Struktur Umum Fungsi
+        </h1>
+        <pre><code class="language-javascript">// 1. Mendefinisikan fungsi dengan satu parameter 'nama'
+function sapaPengguna(nama) {
+  // Blok kode di dalam ini akan dijalankan saat fungsi dipanggil
+  let pesan = "Halo, " + nama + "! Selamat datang di CodeTack.";
+  return pesan;
+}
+
+// 2. Memanggil fungsi dengan memberikan nilai 'argumen'
+let namaSaya = "Budi";
+let hasilSapaan = sapaPengguna(namaSaya);
+
+// 3. Menampilkan hasil yang dikembalikan oleh fungsi
+console.log(hasilSapaan); // Output: "Halo, Budi! Selamat datang di CodeTack."</code></pre>
+
+        <p class="mt-8">Penjelasan dari konsep di atas sebagai berikut:</p>
+        <ul class="list-disc pl-6 mb-8">
+          <li>
+            <strong>Deklarasi Fungsi</strong>: Dimulai dengan keyword
+            <code>function</code>, diikuti dengan nama fungsi
+            (<code>sapaPengguna</code>), lalu tanda kurung <code>()</code> yang
+            berisi daftar <strong>parameter</strong>.
+          </li>
+          <li>
+            <strong>Parameter</strong>: Variabel lokal (seperti
+            <code>nama</code>) yang bertindak sebagai placeholder untuk nilai
+            yang akan diterima oleh fungsi saat dipanggil.
+          </li>
+          <li>
+            <strong>Badan Fungsi</strong>: Kode yang berada di dalam kurung
+            kurawal <code>{...}</code>. Ini adalah instruksi yang akan
+            dieksekusi oleh fungsi.
+          </li>
+          <li>
+            <strong>`return`</strong>: Keyword ini digunakan untuk mengakhiri
+            eksekusi fungsi dan mengirim sebuah nilai kembali ke kode yang
+            memanggilnya. Fungsi tanpa `return` akan mengembalikan `undefined`.
+          </li>
+          <li>
+            <strong>Memanggil Fungsi</strong>: Untuk menjalankan fungsi, kita
+            cukup menuliskan namanya diikuti tanda kurung <code>()</code>. Nilai
+            yang kita masukkan saat memanggil (seperti <code>namaSaya</code>)
+            disebut <strong>argumen</strong>.
+          </li>
+        </ul>
+
+        <h1 class="text-xl lg:text-2xl font-bold mb-4">💻 Contoh Kode:</h1>
+        <div class="relative border rounded-md overflow-hidden mb-8">
+          <div
+            class="flex justify-between items-center bg-white px-4 py-2 border-b text-sm font-semibold"
+          >
+            <span class="text-gray-700">index.html</span>
+            <button
+              onclick="salinKode(this)"
+              class="text-sm md:text-base text-blue-600 hover:underline focus:outline-none"
+            >
+              Salin Kode
+            </button>
+          </div>
+          <pre
+            style="margin: 0"
+          ><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Kalkulator Luas&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Cek Konsol Browser untuk Melihat Hasil&lt;/h1&gt;
+
+    &lt;script&gt;
+      // Mendefinisikan fungsi untuk menghitung luas persegi panjang
+      function hitungLuasPersegiPanjang(panjang, lebar) {
+        // Operasi di dalam fungsi
+        const luas = panjang * lebar;
+        // Mengembalikan hasil perhitungan
+        return luas;
+      }
+
+      // Memanggil fungsi dengan argumen 10 dan 5
+      let panjangRuangan = 10;
+      let lebarRuangan = 5;
+      let luasRuangan = hitungLuasPersegiPanjang(panjangRuangan, lebarRuangan);
+      console.log("Luas ruangan adalah:", luasRuangan, "meter persegi."); // Hasil: 50
+
+      // Memanggil fungsi yang sama dengan argumen berbeda
+      let luasMeja = hitungLuasPersegiPanjang(2, 1);
+      console.log("Luas meja adalah:", luasMeja, "meter persegi."); // Hasil: 2
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <h1 class="text-xl lg:text-2xl font-bold mb-4">⚙️ Demo Interaktif:</h1>
+        <div
+          class="editor-container flex flex-col md:flex-row w-full mb-4"
+          style="height: 500px"
+        >
+          <div
+            id="editor-panel"
+            class="w-full md:w-1/2 border rounded overflow-auto"
+            style="max-height: 100%"
+          >
+            <textarea
+              id="htmlCode"
+              class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
+            >
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Demo Fungsi</title>
+</head>
+<body>
+  <h1>Generator Kalimat Sapaan</h1>
+  <p id="hasil"></p>
+
+  <script>
+    // 1. DEFINISIKAN FUNGSI DI SINI
+    // Fungsi ini menerima nama dan usia, lalu mengembalikan kalimat perkenalan.
+    function buatPerkenalan(nama, usia) {
+      const kalimat = "Perkenalkan, nama saya " + nama + " dan saya berusia " + usia + " tahun.";
+      return kalimat;
+    }
+
+    // 2. PANGGIL FUNGSI DENGAN ARGUMEN BERBEDA
+    // Coba ganti nilai variabel di bawah ini!
+    const namaPengguna = "Siti";
+    const usiaPengguna = 22;
+    
+    const hasilPerkenalan = buatPerkenalan(namaPengguna, usiaPengguna);
+
+    // 3. TAMPILKAN HASILNYA KE HALAMAN
+    document.getElementById("hasil").innerText = hasilPerkenalan;
+  </script>
+</body>
+</html>
+</textarea
+            >
+          </div>
+
+          <iframe
+            id="preview"
+            class="w-full md:w-1/2 border rounded"
+            title="Pratinjau HTML"
+            style="height: 100%"
+          ></iframe>
+        </div>
+
+        <div class="tips flex items-center gap-3 mb-4 lg:mb-10">
+          <div class="w-2 h-9 bg-amber-300"></div>
+          <p class="text-left text-sm md:text-base">
+            <span class="text-xl md:text-2xl">💡</span> Tips: Beri nama fungsi
+            Anda sesuai dengan apa yang dilakukannya. Contoh:
+            <code>hitungLuas</code>, <code>kirimData</code>, atau
+            <code>validasiInput</code>. Nama yang deskriptif membuat kode lebih
+            mudah dibaca dan dipahami.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div
+        class="container mx-auto text-center px-4 py-4 lg:py-10 lg:px-36 font-family-outfit mb-6 lg:mb-0"
+      >
+        <a
+          class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full lg:w-96 h-10 rounded-md mx-auto"
+          href="../../tantangan/tantangan-javascript.html"
+          >Coba Sekarang</a
+        >
+      </div>
+    </section>
+
+    <section id="pagination">
+      <div
+        class="container mx-auto px-4 py-4 lg:py-10 lg:px-36 font-family-outfit mb-6 lg:mb-0"
+      >
+        <div class="grid grid-cols-3 items-center gap-4">
+          <div class="flex justify-start">
+            <a
+              href="./operasi-dasar-dan-kondisi.html"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 md:w-5 h-6 md:h-5"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                >
+                  <path d="m13 9l-3 3l3 3" />
+                  <circle cx="12" cy="12" r="9" />
+                </g>
+              </svg>
+              <span class="hidden sm:inline">Operasi Dasar dan Kondisi</span>
+            </a>
+          </div>
+
+          <div class="flex justify-center">
+            <p
+              class="text-center text-primary font-semibold lg:text-lg text-sm whitespace-nowrap"
+            >
+              Fungsi Sederhana
+            </p>
+          </div>
+
+          <div class="flex justify-end">
+            <a
+              href="./dom-dasar.html"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
+            >
+              <span class="hidden sm:inline">DOM Dasar</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 md:w-5 h-6 md:h-5"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="m11 9l3 3l-3 3" />
+                </g>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-primary text-white font-family-outfit py-16 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div class="lg:col-span-1">
+            <div class="mb-6">
+              <img
+                src="../../../assets/img/logo-white.png"
+                alt="CodeTack Logo"
+                class="h-12 w-auto"
+              />
+            </div>
+            <p
+              class="text-sm md:text-base leading-relaxed text-justify text-blue-100"
+            >
+              CodeTack adalah project website yang dibuat untuk lomba ICONFEST
+              yang diselenggarakan oleh HIMAFOR UNIMUS. Kami dari team AE 106
+              mempersembahkan website ini sebagai hasil karya orisinal.
+            </p>
+          </div>
+
+          <div class="lg:col-span-1">
+            <h3 class="font-family-space-grotesk text-lg font-semibold mb-6">
+              Materi Belajar
+            </h3>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="../materi-html.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../materi-css.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >CSS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../materi-javascript.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >JavaScript</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="lg:col-span-1">
+            <h3 class="font-family-space-grotesk text-lg font-semibold mb-6">
+              Tantangan
+            </h3>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="../../tantangan/tantangan-html.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../../tantangan/tantangan-css.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >CSS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../../tantangan/tantangan-javascript.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >JavaScript</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="lg:col-span-1">
+            <h3 class="font-family-space-grotesk text-lg font-semibold mb-6">
+              Media Sosial
+            </h3>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="#"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >Instagram</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >Tiktok</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >Twitter</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-blue-400 pt-8">
+          <p class="text-center text-blue-100 text-sm">
+            © 2025 CodeTack. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <script src="../../../assets/js/script.js"></script>
+    <script>
+      // Inisialisasi CodeMirror
+      document.addEventListener("DOMContentLoaded", function () {
+        // Highlight syntax dengan Prism
+        Prism.highlightAll();
+
+        // Setup CodeMirror editor
+        const textarea = document.getElementById("htmlCode");
+        const preview = document.getElementById("preview");
+
+        const editor = CodeMirror.fromTextArea(textarea, {
+          lineNumbers: true,
+          mode: "htmlmixed",
+          theme: "material",
+          indentUnit: 2,
+          smartIndent: true,
+          tabSize: 2,
+          indentWithTabs: false,
+          lineWrapping: true,
+          foldGutter: true,
+          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+          autoCloseBrackets: true,
+          autoCloseTags: true,
+          matchBrackets: true,
+          matchTags: true,
+        });
+
+        // Update preview ketika code berubah
+        function updatePreview() {
+          const code = editor.getValue();
+          const doc = preview.contentDocument || preview.contentWindow.document;
+          doc.open();
+          doc.write(code);
+          doc.close();
+        }
+
+        // Event listener untuk perubahan code
+        editor.on("change", function () {
+          clearTimeout(window.updateTimeout);
+          window.updateTimeout = setTimeout(updatePreview, 300);
+        });
+
+        // Update preview awal
+        updatePreview();
+
+        // Auto-refresh preview setiap 1 detik untuk memastikan sinkronisasi
+        setInterval(() => {
+          if (editor.getValue()) {
+            updatePreview();
+          }
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
