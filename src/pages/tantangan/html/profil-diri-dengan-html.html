@@ -476,8 +476,11 @@
                 <textarea
                   id="htmlCode"
                   class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
-                  placeholder="Masukkan HTML kamu di sini"
-                ></textarea>
+                >
+<!-- Masukkan kode anda dibawah ini -->
+<h1>Nama Saya</h1>
+<p>Ini deskripsi singkat.</p>
+                </textarea>
               </div>
 
               <!-- Preview -->
@@ -847,19 +850,18 @@
 
           try {
             const parser = new DOMParser();
-            const doc = parser.parseFromString(html, "text/html");
+            const doc = parser.parseFromString(
+              `<body>${html}</body>`,
+              "text/html"
+            );
 
             const body = doc.querySelector("body");
             const hasH1 = body && body.querySelector("h1");
             const hasP = body && body.querySelector("p");
+
             console.log("Body:", body);
             console.log("h1:", hasH1);
             console.log("p:", hasP);
-
-            if (!body) {
-              alert("Tag <body> tidak ditemukan.");
-              return;
-            }
 
             if (!hasH1) {
               alert("Tag <h1> tidak ditemukan di dalam <body>.");
@@ -871,7 +873,6 @@
               return;
             }
 
-            // Semua validasi lolos
             overlay.classList.remove("hidden");
           } catch (e) {
             alert("Terjadi kesalahan saat memeriksa HTML.");
