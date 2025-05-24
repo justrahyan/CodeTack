@@ -476,7 +476,10 @@
                 <textarea
                   id="htmlCode"
                   class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
-                ></textarea>
+                >
+<h1>Nama Saya</h1>
+<p>Ini deskripsi singkat.</p></textarea
+                >
               </div>
 
               <!-- Preview -->
@@ -517,24 +520,6 @@
                     </g>
                   </svg>
                   Reset
-                </button>
-                <button
-                  id="helpBtn"
-                  class="px-3 py-1 flex items-center gap-2 text-sm md:text-base text-white hover:bg-[#3C4144] rounded font-medium"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill="currentColor"
-                      fill-rule="evenodd"
-                      d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10m0-2a8 8 0 1 0 0-16a8 8 0 0 0 0 16m-1-4h2v2h-2zm0-1.992s2-.008 2 0C13 13.006 16 12 16 10c0-2.21-1.773-4-3.991-4A4 4 0 0 0 8 10h2c0-1.1.9-2 2-2s2 .9 2 2c0 .9-3 2.367-3 4.008"
-                    />
-                  </svg>
-                  Bantuan
                 </button>
               </div>
               <button
@@ -690,26 +675,55 @@
 
         // Fungsi update preview
         function updatePreview() {
-          const html = editor.getValue();
-          const fullHtml = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <meta charset="UTF-8">
-          <title>Pratinjau</title>
-          <style>
-            body { font-family: Arial, sans-serif; padding: 20px; }
-            h1 { color: #333; }
-            p { color: #666; line-height: 1.6; }
-          </style>
-        </head>
-        <body>
-          ${html}
-        </body>
-        </html>
-      `;
+          const fullHtml = editor.getValue();
           preview.srcdoc = fullHtml;
         }
+
+        function setEditorWithTemplate(
+          bodyContent = `<h1>Nama Saya</h1>\n<p>Ini deskripsi singkat.</p>`
+        ) {
+          const fullHtml = `<!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <title>Preview</title>
+        </head>
+        <body>
+      ${bodyContent}
+        </body>
+      </html>`;
+
+          editor.setValue(fullHtml);
+          setTimeout(() => {
+            const lines = editor.lineCount();
+            const startBodyLine = [...Array(lines)].findIndex((_, i) =>
+              editor.getLine(i).includes("<body>")
+            );
+            const endBodyLine = [...Array(lines)]
+              .reverse()
+              .findIndex((_, i) =>
+                editor.getLine(lines - 1 - i).includes("</body>")
+              );
+            const realEndBodyLine = lines - 1 - endBodyLine;
+
+            // Tandai bagian readonly
+            editor.markText(
+              { line: 0, ch: 0 },
+              { line: startBodyLine + 1, ch: 0 },
+              { readOnly: true, inclusiveRight: false }
+            );
+            editor.markText(
+              {
+                line: realEndBodyLine,
+                ch: editor.getLine(realEndBodyLine).length,
+              },
+              { line: lines },
+              { readOnly: true }
+            );
+          }, 100);
+        }
+
+        setEditorWithTemplate();
 
         // Update preview saat ada perubahan
         editor.on("change", function () {
@@ -727,48 +741,34 @@
 
         // Submit button
         submitBtn.addEventListener("click", () => {
-          const html = editor.getValue().trim();
+          const fullHtml = editor.getValue();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(fullHtml, "text/html");
 
-          if (!html || !userHasTyped) {
-            alert("Silakan isi kode HTML terlebih dahulu.");
+          const hasH1 = doc.querySelector("h1");
+          const hasP = doc.querySelector("p");
+
+          if (!hasH1 || !hasH1.textContent.trim()) {
+            alert("Tag <h1> tidak ditemukan atau kosong.");
             return;
           }
 
-          try {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, "text/html");
-
-            const hasH1 = doc.querySelector("h1");
-            const hasP = doc.querySelector("p");
-
-            if (!hasH1 || !hasH1.textContent.trim()) {
-              alert("Tag <h1> tidak ditemukan atau kosong.");
-              return;
-            }
-
-            if (!hasP || !hasP.textContent.trim()) {
-              alert("Tag <p> tidak ditemukan atau kosong.");
-              return;
-            }
-
-            overlay.classList.remove("hidden");
-          } catch (error) {
-            alert(
-              "Terjadi kesalahan saat memeriksa HTML. Pastikan kode valid."
-            );
-            console.error(error);
+          if (!hasP || !hasP.textContent.trim()) {
+            alert("Tag <p> tidak ditemukan atau kosong.");
+            return;
           }
+
+          overlay.classList.remove("hidden");
         });
 
-        // Reset button
+        // Reset
         resetBtn.addEventListener("click", () => {
-          const defaultCode = `<h1>Nama Saya</h1>\n<p>Ini deskripsi singkat.</p>`;
-          editor.setValue(defaultCode);
+          setEditorWithTemplate();
           userHasTyped = false;
           updatePreview();
         });
 
-        // Close overlay
+        // Overlay close
         closeBtn.addEventListener("click", () => {
           overlay.classList.add("hidden");
         });
@@ -779,7 +779,6 @@
           }
         });
 
-        // Preview awal
         updatePreview();
       });
     </script>
