@@ -477,9 +477,8 @@
                   id="htmlCode"
                   class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
                 >
-<h1>Nama Saya</h1>
-<p>Ini deskripsi singkat.</p></textarea
-                >
+                <!-- Masukkan kode anda disini -->
+                </textarea>
               </div>
 
               <!-- Preview -->
@@ -680,7 +679,7 @@
         }
 
         function setEditorWithTemplate(
-          bodyContent = `<h1>Nama Saya</h1>\n<p>Ini deskripsi singkat.</p>`
+          bodyContent = `<!-- Masukkan kode anda disini -->`
         ) {
           const fullHtml = `<!DOCTYPE html>
       <html>
@@ -748,17 +747,42 @@
           const hasH1 = doc.querySelector("h1");
           const hasP = doc.querySelector("p");
 
-          if (!hasH1 || !hasH1.textContent.trim()) {
-            alert("Tag <h1> tidak ditemukan atau kosong.");
-            return;
+          const overlayIcon = document.getElementById("overlayIcon");
+          const overlayTitle = document.getElementById("overlayTitle");
+          const overlayMessage = document.getElementById("overlayMessage");
+          const overlayBox = document.getElementById("successOverlay");
+
+          if (!hasH1 && !hasP) {
+            // Keduanya tidak ada
+            overlayIcon.textContent = "✗";
+            overlayIcon.className = "text-red-600 text-6xl mb-4";
+            overlayTitle.textContent = "Jawaban Salah!";
+            overlayTitle.className = "text-xl font-bold text-red-600 mb-2";
+            overlayMessage.textContent = "Tag <h1> dan <p> tidak ditemukan.";
+          } else if (
+            !hasH1 ||
+            !hasP ||
+            !hasH1.textContent.trim() ||
+            !hasP.textContent.trim()
+          ) {
+            // Salah satu kosong atau tidak ada
+            overlayIcon.textContent = "!";
+            overlayIcon.className = "text-yellow-500 text-6xl mb-4";
+            overlayTitle.textContent = "Perlu Perbaikan";
+            overlayTitle.className = "text-xl font-bold text-yellow-500 mb-2";
+            overlayMessage.textContent =
+              "Pastikan <h1> dan <p> ada dan tidak kosong.";
+          } else {
+            // Keduanya ada dan tidak kosong
+            overlayIcon.textContent = "✓";
+            overlayIcon.className = "text-green-600 text-6xl mb-4";
+            overlayTitle.textContent = "Jawaban Benar!";
+            overlayTitle.className = "text-xl font-bold text-green-600 mb-2";
+            overlayMessage.textContent =
+              "Struktur HTML kamu sudah sesuai dengan yang diminta.";
           }
 
-          if (!hasP || !hasP.textContent.trim()) {
-            alert("Tag <p> tidak ditemukan atau kosong.");
-            return;
-          }
-
-          overlay.classList.remove("hidden");
+          overlayBox.classList.remove("hidden");
         });
 
         // Reset
