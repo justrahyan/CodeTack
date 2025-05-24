@@ -656,15 +656,19 @@
     <script src="../../../assets/js/script.js"></script>
     <!-- Code Mirror -->
     <script>
-      // Inisialisasi CodeMirror
       document.addEventListener("DOMContentLoaded", function () {
-        // Highlight syntax dengan Prism
+        // Highlight syntax Prism
         Prism.highlightAll();
 
-        // Setup CodeMirror editor
+        // Deklarasi elemen
         const textarea = document.getElementById("htmlCode");
         const preview = document.getElementById("preview");
+        const submitBtn = document.getElementById("submitBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        const overlay = document.getElementById("successOverlay");
+        const closeBtn = document.getElementById("closeOverlay");
 
+        // Inisialisasi CodeMirror
         const editor = CodeMirror.fromTextArea(textarea, {
           lineNumbers: true,
           mode: "htmlmixed",
@@ -682,30 +686,101 @@
           matchTags: true,
         });
 
-        // Update preview ketika code berubah
+        let userHasTyped = false;
+
+        // Fungsi update preview
         function updatePreview() {
-          const code = editor.getValue();
-          const doc = preview.contentDocument || preview.contentWindow.document;
-          doc.open();
-          doc.write(code);
-          doc.close();
+          const html = editor.getValue();
+          const fullHtml = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="UTF-8">
+          <title>Pratinjau</title>
+          <style>
+            body { font-family: Arial, sans-serif; padding: 20px; }
+            h1 { color: #333; }
+            p { color: #666; line-height: 1.6; }
+          </style>
+        </head>
+        <body>
+          ${html}
+        </body>
+        </html>
+      `;
+          preview.srcdoc = fullHtml;
         }
 
-        // Event listener untuk perubahan code
+        // Update preview saat ada perubahan
         editor.on("change", function () {
+          userHasTyped = true;
           clearTimeout(window.updateTimeout);
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
-        // Update preview awal
-        updatePreview();
-
-        // Auto-refresh preview setiap 1 detik untuk memastikan sinkronisasi
+        // Auto-refresh preview setiap 1 detik
         setInterval(() => {
           if (editor.getValue()) {
             updatePreview();
           }
         }, 1000);
+
+        // Submit button
+        submitBtn.addEventListener("click", () => {
+          const html = editor.getValue().trim();
+
+          if (!html || !userHasTyped) {
+            alert("Silakan isi kode HTML terlebih dahulu.");
+            return;
+          }
+
+          try {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+
+            const hasH1 = doc.querySelector("h1");
+            const hasP = doc.querySelector("p");
+
+            if (!hasH1 || !hasH1.textContent.trim()) {
+              alert("Tag <h1> tidak ditemukan atau kosong.");
+              return;
+            }
+
+            if (!hasP || !hasP.textContent.trim()) {
+              alert("Tag <p> tidak ditemukan atau kosong.");
+              return;
+            }
+
+            overlay.classList.remove("hidden");
+          } catch (error) {
+            alert(
+              "Terjadi kesalahan saat memeriksa HTML. Pastikan kode valid."
+            );
+            console.error(error);
+          }
+        });
+
+        // Reset button
+        resetBtn.addEventListener("click", () => {
+          const defaultCode = `<h1>Nama Saya</h1>\n<p>Ini deskripsi singkat.</p>`;
+          editor.setValue(defaultCode);
+          userHasTyped = false;
+          updatePreview();
+        });
+
+        // Close overlay
+        closeBtn.addEventListener("click", () => {
+          overlay.classList.add("hidden");
+        });
+
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) {
+            overlay.classList.add("hidden");
+          }
+        });
+
+        // Preview awal
+        updatePreview();
       });
     </script>
 
@@ -833,148 +908,6 @@
             isVisible = false; // update status supaya sync
           });
         }
-      });
-    </script>
-
-    <!-- Periksa Jawaban -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Deklarasikan semua variabel di scope yang sama
-        const submitBtn = document.getElementById("submitBtn");
-        const resetBtn = document.getElementById("resetBtn");
-        const textarea = document.getElementById("htmlCode");
-        const overlay = document.getElementById("successOverlay");
-        const closeBtn = document.getElementById("closeOverlay");
-        const preview = document.getElementById("preview");
-
-        // Track apakah user sudah mengetik
-        let userHasTyped = false;
-
-        // Track perubahan pada textarea
-        editor.addEventListener("input", function () {
-          userHasTyped = true;
-          updatePreview();
-        });
-
-        // Function untuk update preview
-        function updatePreview() {
-          const html = editor.value;
-          const fullHtml = `
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <meta charset="UTF-8">
-                    <title>Pratinjau</title>
-                    <style>
-                        body { font-family: Arial, sans-serif; padding: 20px; }
-                        h1 { color: #333; }
-                        p { color: #666; line-height: 1.6; }
-                    </style>
-                </head>
-                <body>
-                    ${html}
-                </body>
-                </html>
-                `;
-          preview.srcdoc = fullHtml;
-        }
-
-        // Event listener untuk tombol submit
-        submitBtn.addEventListener("click", () => {
-          const html = editor.getValue().trim();
-
-          console.log("=== DEBUG INFO ===");
-          console.log("User has typed:", userHasTyped);
-          console.log("Nilai textarea:", html);
-          console.log("Panjang teks:", html.length);
-
-          // Periksa apakah textarea kosong atau user belum mengetik
-          if (!html || !userHasTyped) {
-            console.log("Status: Textarea kosong atau user belum mengetik");
-            alert("Silakan isi kode HTML terlebih dahulu.");
-            return;
-          }
-
-          console.log("Status: User sudah mengetik");
-
-          try {
-            // Parse HTML
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, "text/html");
-
-            // Periksa elemen yang diperlukan langsung dari parsed HTML
-            const hasH1 = doc.querySelector("h1");
-            const hasP = doc.querySelector("p");
-
-            console.log("H1 ditemukan:", hasH1 ? "Ya" : "Tidak");
-            if (hasH1) {
-              console.log("Isi H1:", hasH1.textContent.trim());
-            }
-
-            console.log("P ditemukan:", hasP ? "Ya" : "Tidak");
-            if (hasP) {
-              console.log("Isi P:", hasP.textContent.trim());
-            }
-
-            // Validasi struktur
-            if (!hasH1) {
-              alert(
-                "Tag <h1> tidak ditemukan. Pastikan Anda menggunakan tag <h1> untuk judul."
-              );
-              return;
-            }
-
-            if (!hasP) {
-              alert(
-                "Tag <p> tidak ditemukan. Pastikan Anda menggunakan minimal satu tag <p> untuk paragraf."
-              );
-              return;
-            }
-
-            // Periksa apakah h1 dan p memiliki konten
-            if (!hasH1.textContent.trim()) {
-              alert("Tag <h1> harus memiliki teks di dalamnya.");
-              return;
-            }
-
-            if (!hasP.textContent.trim()) {
-              alert("Tag <p> harus memiliki teks di dalamnya.");
-              return;
-            }
-
-            // Jika semua validasi berhasil, tampilkan overlay sukses
-            overlay.classList.remove("hidden");
-          } catch (error) {
-            console.log("Error:", error.message);
-            console.error("Error parsing HTML:", error);
-            alert(
-              "Terjadi kesalahan saat memeriksa HTML. Pastikan kode HTML Anda valid."
-            );
-          }
-        });
-
-        // Event listener untuk tombol reset
-        resetBtn.addEventListener("click", () => {
-          editor.value = `<h1>Nama Saya</h1>
-<p>Ini deskripsi singkat.</p>`;
-          userHasTyped = false; // Reset flag
-          updatePreview();
-        });
-
-        // Event listener untuk tombol close overlay
-        closeBtn.addEventListener("click", () => {
-          overlay.classList.add("hidden");
-        });
-
-        // Event listener untuk menutup overlay dengan klik di luar area
-        overlay.addEventListener("click", (e) => {
-          if (e.target === overlay) {
-            overlay.classList.add("hidden");
-          }
-        });
-
-        // Initial preview update
-        updatePreview();
       });
     </script>
   </body>
