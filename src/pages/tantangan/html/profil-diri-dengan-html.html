@@ -1,36 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CodeTack - Tantangan Profil Diri</title>
-    <link rel="stylesheet" href="../../../assets/css/output.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap"
       rel="stylesheet"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="../../../assets/img/favicon_io/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="../../../assets/img/favicon_io/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="../../../assets/img/favicon_io/favicon-16x16.png"
-    />
-    <link
-      rel="manifest"
-      href="../../../assets/img/favicon_io/site.webmanifest"
     />
     <link
       rel="stylesheet"
@@ -41,45 +23,48 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material.min.css"
     />
     <style>
+      /* Style tambahan untuk CodeMirror dan layout */
+      body {
+        font-family: "Outfit", sans-serif;
+      }
       .CodeMirror {
         height: 100%;
         font-size: 14px;
-        font-family: "Courier New", monospace;
+        font-family: "Space Grotesk", monospace;
       }
       .editor-container {
-        height: 500px;
-        display: flex;
-        border: 1px solid #d1d5db;
-        border-radius: 0.375rem;
-        overflow: hidden;
+        height: calc(100vh - 210px); /* Ketinggian dinamis */
+        min-height: 400px;
+      }
+      .font-family-outfit {
+        font-family: "Outfit", sans-serif;
       }
     </style>
   </head>
-  <body class="h-screen flex flex-col">
-    <header id="header" class="flex-shrink-0">
+  <body class="h-screen flex flex-col bg-gray-50">
+    <header id="header" class="flex-shrink-0 shadow-md">
       <div
-        class="container mx-auto px-4 py-4 lg:py-6 border bg-white lg:px-36 font-family-outfit"
+        class="container mx-auto px-4 py-4 lg:py-6 bg-white lg:px-12 font-family-outfit"
       >
         <div class="grid grid-cols-3 items-center gap-4">
           <div class="flex justify-start">
             <a
-              href="./struktur-dasar.html"
-              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
+              href="#"
+              class="inline-flex items-center gap-2 text-gray-500 hover:text-blue-600 text-sm lg:text-base"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
-                class="inline-block"
               >
                 <path
                   fill="none"
                   stroke="currentColor"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+                  stroke-width="2"
+                  d="M15 18l-6-6l6-6"
                 />
               </svg>
               <span class="hidden sm:inline">Kembali</span>
@@ -87,169 +72,209 @@
           </div>
           <div class="flex justify-center">
             <p
-              class="text-center text-primary font-semibold lg:text-lg text-sm whitespace-nowrap"
+              class="text-center text-gray-800 font-semibold lg:text-lg text-sm whitespace-nowrap"
             >
-              Tantangan: Profil Diri dengan HTML
+              Tantangan: Profil Diri
             </p>
           </div>
           <div class="flex justify-end">
             <p
-              class="inline-flex items-center gap-2 bg-green-100 text-green-700 px-2 py-1 rounded text-sm lg:text-base"
+              class="inline-flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                class="inline-block fill-green-700"
-              >
-                <path
-                  d="M20 7h-4V4c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H4c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V9c0-1.103-.897-2-2-2M4 11h4v8H4zm6-1V4h4v15h-4zm10 9h-4V9h4z"
-                />
-              </svg>
-              <span class="hidden sm:inline">Rendah</span>
+              <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+              Rendah
             </p>
           </div>
         </div>
       </div>
     </header>
 
-    <section id="content" class="flex-1 overflow-hidden">
-      <div class="container mx-auto font-family-outfit h-full">
-        <div class="grid grid-cols-1 lg:grid-cols-4 h-full">
+    <main id="content" class="flex-1 overflow-hidden">
+      <div class="container mx-auto h-full lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-4 h-full gap-6 py-5">
           <div
-            class="lg:col-span-1 bg-white p-3 hidden lg:block lg:overflow-y-auto"
+            class="lg:col-span-1 bg-white p-4 rounded-lg shadow-md hidden lg:block lg:overflow-y-auto"
           >
             <div class="flex items-center gap-2 mb-4">
-              <h2 class="font-bold text-lg">💡 Instruksi Tugas</h2>
+              <h2 class="font-bold text-xl text-gray-800">
+                💡 Instruksi Tugas
+              </h2>
             </div>
-            <div class="space-y-4 text-sm md:text-base">
-              <p class="font-medium">Saatnya memperkenalkan diri!</p>
+            <div class="space-y-4 text-sm md:text-base text-gray-700">
+              <p class="font-medium">Saatnya memperkenalkan diri Anda!</p>
               <div class="space-y-2">
                 <p>
-                  Tampilkan namamu menggunakan tag
-                  <code class="bg-pink-100 px-1 rounded text-pink-600"
+                  Gunakan HTML untuk membuat halaman perkenalan sederhana.
+                  Tampilkan nama Anda menggunakan tag
+                  <code
+                    class="bg-pink-100 px-1.5 py-0.5 rounded text-pink-600 font-semibold"
                     >&lt;h1&gt;</code
-                  >
-                  dan tambahkan deskripsi singkat seperti asal sekolah atau hobi
-                  dengan tag
-                  <code class="bg-pink-100 px-1 rounded text-pink-600"
+                  >.
+                </p>
+                <p>
+                  Tambahkan juga deskripsi singkat tentang diri Anda (misal:
+                  hobi, asal sekolah) menggunakan tag
+                  <code
+                    class="bg-pink-100 px-1.5 py-0.5 rounded text-pink-600 font-semibold"
                     >&lt;p&gt;</code
                   >.
                 </p>
               </div>
-              <div class="bg-green-50 p-3 rounded">
-                <p class="font-medium text-green-800 mb-2">
-                  ✅ Yang harus kamu capai:
+              <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                <p class="font-bold text-green-800 mb-2">
+                  ✅ Kriteria Kelulusan:
                 </p>
-                <ul class="space-y-1 text-green-700 text-xs md:text-sm">
+                <ul
+                  class="space-y-1 text-green-700 text-sm list-disc list-inside"
+                >
                   <li>
-                    • Menggunakan tag
+                    Wajib menggunakan tag
                     <code class="bg-green-100 px-1 rounded">&lt;h1&gt;</code>
                     untuk nama.
                   </li>
                   <li>
-                    • Setidaknya satu tag
+                    Wajib menggunakan setidaknya satu tag
                     <code class="bg-green-100 px-1 rounded">&lt;p&gt;</code>
-                    berisi deskripsi.
+                    untuk deskripsi.
                   </li>
+                  <li>Kedua tag harus berisi teks.</li>
                 </ul>
               </div>
-              <div class="bg-gray-100 p-3 rounded relative">
+              <div class="bg-gray-100 p-4 rounded-lg">
                 <p class="font-medium text-gray-800 mb-2">
-                  ✨ Hasil yang Diharapkan:
+                  ✨ Contoh Hasil Akhir:
                 </p>
-                <div class="bg-white rounded border text-xs md:text-sm">
-                  <img
-                    src="../../../assets/img/preview-profil-diri.png"
-                    alt="Preview Profil Diri"
-                    class="w-full rounded"
-                  />
+                <div class="bg-white rounded-md border p-4 text-sm">
+                  <h1 class="text-2xl font-bold">Budi Sanjaya</h1>
+                  <p class="mt-2 text-gray-600">
+                    Saya adalah seorang siswa yang suka belajar coding dan
+                    bermain gitar.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="lg:col-span-3 bg-white overflow-hidden flex flex-col">
-            <div class="bg-gray-800 text-white px-4 py-2 font-medium text-sm">
-              HTML Editor & Preview
-            </div>
-            <div class="flex text-sm font-medium border-b md:hidden">
-              <button
-                id="tabEditor"
-                class="tab-btn px-4 py-2 border-b-2 border-green-600 text-green-600 focus:outline-none"
-              >
-                index.html
-              </button>
-              <button
-                id="tabPreview"
-                class="tab-btn px-4 py-2 text-gray-500 hover:text-green-600"
-              >
-                Preview
-              </button>
-            </div>
+          <div
+            class="lg:col-span-3 bg-white rounded-lg shadow-md overflow-hidden flex flex-col"
+          >
             <div
-              class="editor-container flex-col md:flex-row w-full"
-              style="height: calc(100vh - 200px)"
+              class="bg-gray-800 text-white px-4 py-2 font-semibold text-sm flex justify-between items-center"
             >
-              <div
-                id="editor-panel"
-                class="w-full md:w-1/2 border overflow-auto block"
-              >
-                <textarea id="htmlCode">
-<h1>Nama Saya</h1>
-<p>Ini deskripsi singkat.</p>
-                </textarea>
+              <span>HTML Editor & Preview</span>
+              <div class="flex text-sm font-medium md:hidden">
+                <button
+                  id="tabEditor"
+                  class="tab-btn px-3 py-1 bg-gray-700 rounded-l-md focus:outline-none"
+                >
+                  Editor
+                </button>
+                <button
+                  id="tabPreview"
+                  class="tab-btn px-3 py-1 bg-gray-900 rounded-r-md focus:outline-none"
+                >
+                  Preview
+                </button>
               </div>
-              <iframe
-                id="preview"
-                class="w-full md:w-1/2 border hidden md:block"
-                title="Pratinjau HTML"
-              ></iframe>
             </div>
 
             <div
-              class="border-t bg-[#2F3436] px-4 py-3 flex flex-wrap gap-2 justify-between"
+              class="editor-container flex flex-col md:flex-row w-full flex-grow"
             >
-              <div class="flex gap-2">
-                <button
-                  id="resetBtn"
-                  class="px-3 py-1 flex items-center gap-2 text-sm text-white hover:bg-[#3C4144] rounded font-medium"
-                >
-                  Reset
-                </button>
+              <div
+                id="editor-panel"
+                class="w-full md:w-1/2 h-1/2 md:h-full overflow-auto"
+              >
+                <textarea id="htmlCode"></textarea>
               </div>
+              <div class="w-px bg-gray-300 hidden md:block"></div>
+              <div
+                id="preview-container"
+                class="w-full md:w-1/2 h-1/2 md:h-full"
+              >
+                <iframe
+                  id="preview"
+                  class="w-full h-full border-t-2 md:border-t-0 md:border-l-2 border-gray-200"
+                  title="Pratinjau HTML"
+                ></iframe>
+              </div>
+            </div>
+
+            <div
+              class="border-t bg-gray-100 px-4 py-3 flex flex-wrap gap-2 justify-between items-center"
+            >
+              <button
+                id="resetBtn"
+                class="px-4 py-2 flex items-center gap-2 text-sm text-gray-700 bg-gray-200 hover:bg-gray-300 rounded-md font-medium"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4m-4 4a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"
+                  />
+                </svg>
+                Reset
+              </button>
               <button
                 id="submitBtn"
-                class="px-6 py-1 text-sm bg-green-600 hover:bg-green-700 text-white font-medium"
+                class="px-8 py-2 text-sm bg-green-600 hover:bg-green-700 text-white font-bold rounded-md"
               >
-                Kirim
+                Kirim Jawaban
               </button>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </main>
 
     <div
       id="successOverlay"
-      class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
+      class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden p-4"
     >
-      <div class="bg-white p-6 rounded-lg shadow-xl text-center max-w-md mx-4">
-        <div class="text-green-600 text-6xl mb-4">✓</div>
-        <h2 class="text-xl font-bold text-green-600 mb-2">Jawaban Benar!</h2>
-        <p class="text-gray-700 mb-4">
-          Kerja bagus! Kode HTML kamu sudah sesuai dengan instruksi.
+      <div
+        class="bg-white p-8 rounded-lg shadow-2xl text-center max-w-md mx-auto transform transition-all scale-95"
+      >
+        <div
+          class="text-green-500 mx-auto mb-4 w-16 h-16 flex items-center justify-center rounded-full bg-green-100"
+        >
+          <svg
+            class="w-10 h-10"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            ></path>
+          </svg>
+        </div>
+        <h2 class="text-2xl font-bold text-gray-800 mb-2">Jawaban Benar!</h2>
+        <p class="text-gray-600 mb-6">
+          Kerja bagus! Kode HTML Anda sudah memenuhi semua kriteria yang
+          diminta.
         </p>
         <button
           id="closeOverlay"
-          class="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+          class="w-full px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
         >
-          Tutup
+          Lanjutkan
         </button>
       </div>
     </div>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
@@ -257,9 +282,10 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // --- Elemen DOM ---
+        // --- Referensi Elemen DOM ---
         const editorPanel = document.getElementById("editor-panel");
-        const previewPanel = document.getElementById("preview");
+        const previewContainer = document.getElementById("preview-container");
+        const previewIframe = document.getElementById("preview");
         const htmlTextarea = document.getElementById("htmlCode");
         const submitBtn = document.getElementById("submitBtn");
         const resetBtn = document.getElementById("resetBtn");
@@ -268,117 +294,140 @@
         const tabEditor = document.getElementById("tabEditor");
         const tabPreview = document.getElementById("tabPreview");
 
-        const initialCode = `<h1>Nama Saya</h1>\n<p>Ini deskripsi singkat.</p>`;
-        let userHasTyped = false;
+        const initialCode = `<!DOCTYPE html>
+<html>
+<head>
+  <title>Profil Saya</title>
+</head>
+<body>
+  
+  <h1>Ganti dengan Nama Anda</h1>
+  <p>Tulis deskripsi singkat tentang diri Anda di sini.</p>
+  
+</body>
+</html>`;
 
-        // --- Inisialisasi CodeMirror ---
+        // --- Inisialisasi Editor CodeMirror ---
         const editor = CodeMirror.fromTextArea(htmlTextarea, {
           lineNumbers: true,
           mode: "htmlmixed",
           theme: "material",
           autoCloseTags: true,
           lineWrapping: true,
+          value: initialCode,
         });
         editor.setValue(initialCode);
 
         // --- Fungsi Pembaruan Pratinjau (dengan Debouncing) ---
         let debounceTimeout;
         function updatePreview() {
-            clearTimeout(debounceTimeout);
-            debounceTimeout = setTimeout(() => {
-                const code = editor.getValue();
-                const fullHtml = `
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                        <style>
-                            body { font-family: sans-serif; padding: 15px; }
-                            h1 { color: #333; }
-                            p { color: #666; line-height: 1.6; }
-                        </style>
-                    </head>
-                    <body>
-                        ${code}
-                    </body>
-                    </html>
-                `;
-                previewPanel.srcdoc = fullHtml;
-            }, 300); // Tunda 300ms setelah pengguna berhenti mengetik
+          clearTimeout(debounceTimeout);
+          debounceTimeout = setTimeout(() => {
+            const code = editor.getValue();
+            // Menggunakan srcdoc lebih aman dan efisien
+            previewIframe.srcdoc = code;
+          }, 300); // Tunda 300ms agar tidak update terus-menerus
         }
-        
+
         // --- Event Listeners ---
-        editor.on("change", () => {
-            userHasTyped = true;
-            updatePreview();
-        });
+        editor.on("change", updatePreview);
 
         submitBtn.addEventListener("click", () => {
-          if (!userHasTyped && editor.getValue().trim() === initialCode.trim()) {
-            alert("Silakan ubah kode terlebih dahulu sesuai instruksi.");
+          // Selalu ambil nilai terbaru dari editor
+          const code = editor.getValue();
+
+          if (!code.trim()) {
+            alert(
+              "Editor masih kosong. Silakan isi kode HTML terlebih dahulu."
+            );
             return;
           }
 
-          const code = editor.getValue();
           const parser = new DOMParser();
           const doc = parser.parseFromString(code, "text/html");
 
-          const h1 = doc.querySelector("h1");
-          const p = doc.querySelector("p");
+          // Cari elemen di dalam body
+          const body = doc.body;
+          const h1 = body.querySelector("h1");
+          const p = body.querySelector("p");
 
-          if (!h1 || !h1.textContent.trim()) {
-            alert("Tugas belum selesai. Pastikan ada tag <h1> berisi nama Anda.");
+          if (!h1) {
+            alert("Tugas belum selesai. Tag <h1> untuk nama tidak ditemukan.");
+            return;
+          }
+          if (
+            !h1.textContent.trim() ||
+            h1.textContent.includes("Ganti dengan Nama Anda")
+          ) {
+            alert("Silakan isi nama Anda di dalam tag <h1>.");
             return;
           }
 
-          if (!p || !p.textContent.trim()) {
-            alert("Tugas belum selesai. Pastikan ada tag <p> berisi deskripsi.");
+          if (!p) {
+            alert(
+              "Tugas belum selesai. Setidaknya satu tag <p> untuk deskripsi tidak ditemukan."
+            );
+            return;
+          }
+          if (
+            !p.textContent.trim() ||
+            p.textContent.includes("Tulis deskripsi singkat")
+          ) {
+            alert("Silakan isi deskripsi Anda di dalam tag <p>.");
             return;
           }
 
-          // Jika semua validasi lolos
+          // Jika semua validasi lolos, tampilkan modal sukses
           successOverlay.classList.remove("hidden");
+          successOverlay.querySelector("div").classList.add("scale-100");
         });
 
         resetBtn.addEventListener("click", () => {
-            editor.setValue(initialCode);
-            userHasTyped = false;
-            updatePreview();
+          editor.setValue(initialCode);
+          updatePreview();
         });
 
-        closeOverlayBtn.addEventListener("click", () => {
+        const closeModal = () => {
+          const modalContent = successOverlay.querySelector("div");
+          modalContent.classList.remove("scale-100");
+          setTimeout(() => {
             successOverlay.classList.add("hidden");
-        });
+          }, 200);
+        };
 
+        closeOverlayBtn.addEventListener("click", closeModal);
         successOverlay.addEventListener("click", (e) => {
-            if (e.target === successOverlay) {
-                successOverlay.classList.add("hidden");
-            }
+          if (e.target === successOverlay) {
+            closeModal();
+          }
         });
-        
-        // --- Logika Tab untuk Mobile ---
-        function switchTab(tab) {
-            if (window.innerWidth >= 768) return; // Hanya aktif di mobile
 
-            const isEditor = tab === 'editor';
-            editorPanel.style.display = isEditor ? 'block' : 'none';
-            previewPanel.style.display = isEditor ? 'none' : 'block';
+        // --- Logika Tab untuk Tampilan Mobile ---
+        function switchTab(activeTab) {
+          if (window.innerWidth >= 768) return;
 
-            tabEditor.classList.toggle('border-green-600', isEditor);
-            tabEditor.classList.toggle('text-green-600', isEditor);
-            tabPreview.classList.toggle('border-green-600', !isEditor);
-            tabPreview.classList.toggle('text-green-600', !isEditor);
+          const isEditorActive = activeTab === "editor";
+
+          editorPanel.style.display = isEditorActive ? "block" : "none";
+          previewContainer.style.display = isEditorActive ? "none" : "block";
+
+          tabEditor.classList.toggle("bg-gray-700", isEditorActive);
+          tabEditor.classList.toggle("bg-gray-900", !isEditorActive);
+          tabPreview.classList.toggle("bg-gray-700", !isEditorActive);
+          tabPreview.classList.toggle("bg-gray-900", isEditorActive);
+
+          if (!isEditorActive) {
+            updatePreview();
+          }
         }
 
-        tabEditor.addEventListener("click", () => switchTab('editor'));
-        tabPreview.addEventListener("click", () => switchTab('preview'));
-        
-        // --- Inisialisasi Awal ---
-        updatePreview(); // Tampilkan pratinjau saat halaman dimuat
+        tabEditor.addEventListener("click", () => switchTab("editor"));
+        tabPreview.addEventListener("click", () => switchTab("preview"));
+
+        // --- Inisialisasi Tampilan Awal ---
+        updatePreview();
         if (window.innerWidth < 768) {
-            switchTab('editor'); // Default ke tab editor di mobile
-        } else {
-            editorPanel.style.display = 'block';
-            previewPanel.style.display = 'block';
+          switchTab("editor");
         }
       });
     </script>
