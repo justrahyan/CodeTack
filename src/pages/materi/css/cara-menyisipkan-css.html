@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeTack - Menyisipkan CSS</title>
+
+    <!-- Output CSS utama -->
+    <link rel="stylesheet" href="../../../assets/css/output.css" />
+
+    <!-- Prism -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+    />
+
+    <!-- CodeMirror -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldgutter.min.css"
+    />
+
+    <style>
+      .CodeMirror {
+        height: 100%;
+        font-size: 14px;
+        font-family: "Courier New", monospace;
+      }
+
+      .editor-container {
+        height: 500px;
+        display: flex;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        overflow: hidden;
+      }
+
+      .editor-panel {
+        width: 50%;
+        height: 100%;
+      }
+
+      .preview-panel {
+        width: 50%;
+        height: 100%;
+        border-left: 1px solid #d1d5db;
+      }
+    </style>
+  </head>
+  <body class="font-family-outfit">
+    <!-- Hero Section -->
+    <section
+      class="relative bg-cover bg-center bg-no-repeat py-14 md:py-20"
+      style="background-image: url('../../../assets/img/hero-bg.png')"
+    >
+      <div class="absolute inset-0 bg-black/60"></div>
+      <div class="relative container mx-auto px-4 text-center">
+        <h1 class="text-white text-4xl font-bold mb-4">Cara Menyisipkan CSS</h1>
+        <p class="text-white text-base">
+          Materi Belajar /
+          <a href="../materi-css.html" class="hover:underline">CSS</a> /
+          <span class="font-semibold">Menyisipkan CSS</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- Materi Section -->
+    <section id="materi">
+      <div class="container mx-auto px-4 py-10 lg:px-36">
+        <h1 class="text-2xl lg:text-3xl font-bold mb-6">
+          🎨 Cara Menyisipkan CSS
+        </h1>
+
+        <!-- Penjelasan Apa itu CSS -->
+        <p class="text-sm lg:text-base text-justify mb-4">
+          <strong>CSS</strong> adalah singkatan dari
+          <em>Cascading Style Sheets</em>. CSS digunakan untuk mengatur tampilan
+          dan gaya elemen-elemen HTML di halaman web. Dengan CSS, kita bisa
+          menentukan warna teks, jenis huruf, ukuran elemen, tata letak,
+          animasi, dan banyak lagi.
+        </p>
+        <p class="text-sm lg:text-base text-justify mb-8">
+          Tanpa CSS, halaman web hanya akan terlihat sebagai dokumen teks polos.
+          CSS memisahkan konten dari desain, sehingga memungkinkan kita untuk
+          mengatur tampilan secara konsisten dan efisien di seluruh halaman.
+        </p>
+
+        <p class="mb-8 text-sm lg:text-base text-justify">
+          CSS dapat disisipkan ke dalam dokumen HTML dengan tiga cara berbeda:
+          <strong>inline</strong>, <strong>internal</strong>, dan
+          <strong>external</strong>. Masing-masing memiliki fungsi tersendiri
+          tergantung konteks dan skala proyek.
+        </p>
+
+        <!-- Inline CSS -->
+        <h2 class="text-xl lg:text-2xl font-semibold mb-4">1️⃣ Inline CSS</h2>
+        <p class="text-sm lg:text-base mb-2">
+          CSS langsung ditulis pada atribut
+          <code class="bg-pink-100 px-1 text-pink-600 rounded">style</code> di
+          elemen HTML.
+        </p>
+        <pre><code class="language-html">&lt;p style="color: red;"&gt;Teks ini berwarna merah&lt;/p&gt;</code></pre>
+
+        <!-- Internal CSS -->
+        <h2 class="text-xl lg:text-2xl font-semibold mt-8 mb-4">
+          2️⃣ Internal CSS
+        </h2>
+        <p class="text-sm lg:text-base mb-2">
+          CSS ditulis di dalam tag
+          <code class="bg-pink-100 px-1 text-pink-600 rounded"
+            >&lt;style&gt;</code
+          >
+          pada bagian
+          <code class="bg-pink-100 px-1 text-pink-600 rounded"
+            >&lt;head&gt;</code
+          >.
+        </p>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    p {
+      color: blue;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Teks ini berwarna biru&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <!-- External CSS -->
+        <h2 class="text-xl lg:text-2xl font-semibold mt-8 mb-4">
+          3️⃣ External CSS
+        </h2>
+        <p class="text-sm lg:text-base mb-2">
+          CSS ditulis pada file terpisah (misalnya
+          <code class="bg-pink-100 px-1 text-pink-600 rounded">style.css</code>)
+          dan dihubungkan dengan tag
+          <code class="bg-pink-100 px-1 text-pink-600 rounded"
+            >&lt;link&gt;</code
+          >.
+        </p>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Teks ini akan mengikuti file style.css&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <div class="tips flex items-center gap-3 my-10">
+          <div class="w-2 h-9 bg-amber-300"></div>
+          <p class="text-left text-sm md:text-base">
+            <span class="text-xl md:text-2xl">💡</span> Tips: Untuk proyek
+            besar, gunakan external CSS agar lebih terorganisir dan mudah
+            dipelihara.
+          </p>
+        </div>
+
+        <!-- Editor -->
+        <h2 class="text-xl lg:text-2xl font-bold mb-4">⚙️ Coba Sendiri:</h2>
+        <div class="editor-container w-full mb-4">
+          <div class="editor-panel">
+            <textarea
+              id="htmlCode"
+              class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
+            >
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    p {
+      color: green;
+      font-size: 20px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Contoh teks menggunakan internal CSS&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+          </textarea
+            >
+          </div>
+          <iframe
+            id="preview"
+            class="preview-panel"
+            title="Pratinjau HTML"
+          ></iframe>
+        </div>
+
+        <div class="text-center mt-10">
+          <a
+            href="../../tantangan/tantangan-css.html"
+            class="bg-primary text-white px-6 py-2 rounded-md hover:bg-secondary transition"
+          >
+            Coba Tantangan CSS
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldgutter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/xml-fold.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        Prism.highlightAll();
+        const textarea = document.getElementById("htmlCode");
+        const preview = document.getElementById("preview");
+
+        const editor = CodeMirror.fromTextArea(textarea, {
+          lineNumbers: true,
+          mode: "htmlmixed",
+          theme: "material",
+          indentUnit: 2,
+          smartIndent: true,
+          tabSize: 2,
+          indentWithTabs: false,
+          lineWrapping: true,
+          foldGutter: true,
+          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+          autoCloseBrackets: true,
+          autoCloseTags: true,
+          matchBrackets: true,
+          matchTags: true,
+        });
+
+        function updatePreview() {
+          const code = editor.getValue();
+          const doc = preview.contentDocument || preview.contentWindow.document;
+          doc.open();
+          doc.write(code);
+          doc.close();
+        }
+
+        editor.on("change", function () {
+          clearTimeout(window.updateTimeout);
+          window.updateTimeout = setTimeout(updatePreview, 300);
+        });
+
+        updatePreview();
+      });
+    </script>
+  </body>
+</html>
