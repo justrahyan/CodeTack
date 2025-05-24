@@ -476,10 +476,7 @@
                 <textarea
                   id="htmlCode"
                   class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
-                >
-<h1>Nama Saya</h1>
-<p>Ini deskripsi singkat.</p>
-                </textarea>
+                ></textarea>
               </div>
 
               <!-- Preview -->
@@ -854,14 +851,14 @@
         let userHasTyped = false;
 
         // Track perubahan pada textarea
-        textarea.addEventListener("input", function () {
+        editor.addEventListener("input", function () {
           userHasTyped = true;
           updatePreview();
         });
 
         // Function untuk update preview
         function updatePreview() {
-          const html = textarea.value;
+          const html = editor.value;
           const fullHtml = `
                 <!DOCTYPE html>
                 <html>
@@ -884,7 +881,7 @@
 
         // Event listener untuk tombol submit
         submitBtn.addEventListener("click", () => {
-          const html = textarea.value.trim();
+          const html = editor.getValue().trim();
 
           console.log("=== DEBUG INFO ===");
           console.log("User has typed:", userHasTyped);
@@ -958,7 +955,7 @@
 
         // Event listener untuk tombol reset
         resetBtn.addEventListener("click", () => {
-          textarea.value = `<h1>Nama Saya</h1>
+          editor.value = `<h1>Nama Saya</h1>
 <p>Ini deskripsi singkat.</p>`;
           userHasTyped = false; // Reset flag
           updatePreview();
