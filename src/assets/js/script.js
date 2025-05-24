@@ -73,18 +73,14 @@ const editorPanel = document.getElementById("editor-panel");
 const previewPanel = document.getElementById("preview");
 const textarea = document.getElementById("htmlCode");
 
-// Set srcdoc awal preview
 previewPanel.srcdoc = textarea.value;
 
-// Update preview saat input
 textarea.addEventListener("input", () => {
   previewPanel.srcdoc = textarea.value;
 });
 
-// Optional: Reset height saat resize supaya tetap responsive
 const container = document.querySelector(".editor-container");
 const adjustHeight = () => {
-  // Kita set container fixed height 500px (bisa diubah)
   container.style.height = "500px";
 };
 window.addEventListener("resize", adjustHeight);
