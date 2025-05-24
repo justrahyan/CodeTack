@@ -859,9 +859,12 @@
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, "text/html");
 
-            const body = doc.querySelector("<body>");
-            const hasH1 = body && body.querySelector("<h1>");
-            const hasP = body && body.querySelector("<p>");
+            const body = doc.querySelector("body");
+            const hasH1 = body && body.querySelector("h1");
+            const hasP = body && body.querySelector("p");
+            console.log("Body:", body);
+            console.log("h1:", hasH1);
+            console.log("p:", hasP);
 
             if (!body) {
               alert("Tag <body> tidak ditemukan.");
