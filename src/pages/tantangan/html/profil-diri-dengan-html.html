@@ -476,8 +476,10 @@
                 <textarea
                   id="htmlCode"
                   class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
-                  placeholder="Tulis kode HTML Anda di sini..."
-                ></textarea>
+                >
+<h1>Nama Saya</h1>
+<p>Ini deskripsi singkat.</p>
+                </textarea>
               </div>
 
               <!-- Preview -->
@@ -846,26 +848,57 @@
         const textarea = document.getElementById("htmlCode");
         const overlay = document.getElementById("successOverlay");
         const closeBtn = document.getElementById("closeOverlay");
-        const debugInfo = document.getElementById("debugInfo");
-        const debugContent = document.getElementById("debugContent");
+        const preview = document.getElementById("preview");
+
+        // Track apakah user sudah mengetik
+        let userHasTyped = false;
+
+        // Track perubahan pada textarea
+        textarea.addEventListener("input", function () {
+          userHasTyped = true;
+          updatePreview();
+        });
+
+        // Function untuk update preview
+        function updatePreview() {
+          const html = textarea.value;
+          const fullHtml = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Pratinjau</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 20px; }
+                        h1 { color: #333; }
+                        p { color: #666; line-height: 1.6; }
+                    </style>
+                </head>
+                <body>
+                    ${html}
+                </body>
+                </html>
+                `;
+          preview.srcdoc = fullHtml;
+        }
 
         // Event listener untuk tombol submit
         submitBtn.addEventListener("click", () => {
           const html = textarea.value.trim();
 
-          // Debug menggunakan console dan alert
           console.log("=== DEBUG INFO ===");
+          console.log("User has typed:", userHasTyped);
           console.log("Nilai textarea:", html);
           console.log("Panjang teks:", html.length);
 
-          // Periksa apakah textarea kosong
-          if (!html) {
-            console.log("Status: Textarea kosong");
+          // Periksa apakah textarea kosong atau user belum mengetik
+          if (!html || !userHasTyped) {
+            console.log("Status: Textarea kosong atau user belum mengetik");
             alert("Silakan isi kode HTML terlebih dahulu.");
             return;
           }
 
-          console.log("Status: Textarea terisi");
+          console.log("Status: User sudah mengetik");
 
           try {
             // Parse HTML
@@ -915,8 +948,7 @@
             // Jika semua validasi berhasil, tampilkan overlay sukses
             overlay.classList.remove("hidden");
           } catch (error) {
-            debugMsg += `<strong>Error:</strong> ${error.message}<br>`;
-            showDebug(debugMsg);
+            console.log("Error:", error.message);
             console.error("Error parsing HTML:", error);
             alert(
               "Terjadi kesalahan saat memeriksa HTML. Pastikan kode HTML Anda valid."
@@ -928,7 +960,8 @@
         resetBtn.addEventListener("click", () => {
           textarea.value = `<h1>Nama Saya</h1>
 <p>Ini deskripsi singkat.</p>`;
-          debugInfo.classList.add("hidden");
+          userHasTyped = false; // Reset flag
+          updatePreview();
         });
 
         // Event listener untuk tombol close overlay
@@ -942,6 +975,9 @@
             overlay.classList.add("hidden");
           }
         });
+
+        // Initial preview update
+        updatePreview();
       });
     </script>
   </body>
