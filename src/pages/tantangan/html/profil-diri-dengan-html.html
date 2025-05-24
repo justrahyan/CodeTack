@@ -556,13 +556,13 @@
     <!-- Jawaban Benar -->
     <div
       id="successOverlay"
-      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden"
+      class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
     >
       <div class="bg-white p-6 rounded shadow-lg text-center">
         <h2 class="text-xl font-bold text-green-600 mb-2">Jawaban Benar!</h2>
         <p class="text-gray-700">Struktur HTML kamu sudah sesuai.</p>
         <button
-          onclick="closeOverlay()"
+          id="closeOverlay"
           class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
         >
           Tutup
@@ -848,6 +848,11 @@
         submitBtn.addEventListener("click", () => {
           const html = textarea.value.trim();
 
+          if (!html) {
+            alert("Silakan isi kode HTML terlebih dahulu.");
+            return;
+          }
+
           try {
             const parser = new DOMParser();
             const doc = parser.parseFromString(
@@ -891,10 +896,10 @@
 </body>
 </html>`;
         });
-
-        function closeOverlay() {
-          overlay.classList.add("hidden");
-        }
+      });
+      const closeBtn = document.getElementById("closeOverlay");
+      closeBtn.addEventListener("click", () => {
+        overlay.classList.add("hidden");
       });
     </script>
   </body>
