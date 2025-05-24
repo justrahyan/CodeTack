@@ -849,29 +849,23 @@
         const debugInfo = document.getElementById("debugInfo");
         const debugContent = document.getElementById("debugContent");
 
-        // Function untuk menampilkan debug info
-        function showDebug(info) {
-          debugContent.innerHTML = info;
-          debugInfo.classList.remove("hidden");
-        }
-
         // Event listener untuk tombol submit
         submitBtn.addEventListener("click", () => {
           const html = textarea.value.trim();
 
-          // Debug: tampilkan nilai textarea
-          let debugMsg = `<strong>Nilai textarea:</strong><br>"${html}"<br><br>`;
-          debugMsg += `<strong>Panjang teks:</strong> ${html.length} karakter<br><br>`;
+          // Debug menggunakan console dan alert
+          console.log("=== DEBUG INFO ===");
+          console.log("Nilai textarea:", html);
+          console.log("Panjang teks:", html.length);
 
           // Periksa apakah textarea kosong
           if (!html) {
-            debugMsg += `<strong>Status:</strong> Textarea kosong<br>`;
-            showDebug(debugMsg);
+            console.log("Status: Textarea kosong");
             alert("Silakan isi kode HTML terlebih dahulu.");
             return;
           }
 
-          debugMsg += `<strong>Status:</strong> Textarea terisi<br><br>`;
+          console.log("Status: Textarea terisi");
 
           try {
             // Parse HTML
@@ -882,21 +876,15 @@
             const hasH1 = doc.querySelector("h1");
             const hasP = doc.querySelector("p");
 
-            debugMsg += `<strong>H1 ditemukan:</strong> ${
-              hasH1 ? "Ya" : "Tidak"
-            }<br>`;
+            console.log("H1 ditemukan:", hasH1 ? "Ya" : "Tidak");
             if (hasH1) {
-              debugMsg += `<strong>Isi H1:</strong> "${hasH1.textContent.trim()}"<br>`;
+              console.log("Isi H1:", hasH1.textContent.trim());
             }
 
-            debugMsg += `<strong>P ditemukan:</strong> ${
-              hasP ? "Ya" : "Tidak"
-            }<br>`;
+            console.log("P ditemukan:", hasP ? "Ya" : "Tidak");
             if (hasP) {
-              debugMsg += `<strong>Isi P:</strong> "${hasP.textContent.trim()}"<br>`;
+              console.log("Isi P:", hasP.textContent.trim());
             }
-
-            showDebug(debugMsg);
 
             // Validasi struktur
             if (!hasH1) {
