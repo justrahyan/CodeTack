@@ -476,18 +476,8 @@
                 <textarea
                   id="htmlCode"
                   class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
-                >
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Profil Diri dengan HTML</title>
-</head>
-<body>
-  <!-- Masukkan kode anda dibawah ini -->
-  
-</body>
-</html></textarea
-                >
+                  placeholder="Masukkan HTML kamu di sini"
+                ></textarea>
               </div>
 
               <!-- Preview -->
@@ -853,7 +843,7 @@
         const overlay = document.getElementById("successOverlay");
 
         submitBtn.addEventListener("click", () => {
-          const html = textarea.value;
+          const html = textarea.value.trim();
 
           try {
             const parser = new DOMParser();
