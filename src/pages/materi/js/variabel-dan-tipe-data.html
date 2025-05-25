@@ -467,20 +467,17 @@ let dataKosong = null; // Null (sengaja dikosongkan)</code></pre>
 
   <script>
     // Ubah nilai variabel di bawah ini!
-    window.onload = function () {
-      // Ubah nilai variabel di bawah ini!
-      const produk = "Buku HTML & CSS";
-      let harga = 150000;
-      let tersedia = true;
+    const produk = "Buku HTML & CSS";
+    let harga = 150000;
+    let tersedia = true;
 
-      // Kode ini akan menampilkan variabel ke halaman
-      document.getElementById("judul").innerText = produk;
+    // Kode ini akan menampilkan variabel ke halaman
+    document.getElementById("judul").innerText = produk;
+    
+    let infoHarga = "Harga: Rp " + harga;
+    let status = "Ketersediaan: " + (tersedia ? "Ada" : "Habis");
 
-      let infoHarga = "Harga: Rp " + harga;
-      let status = "Ketersediaan: " + (tersedia ? "Ada" : "Habis");
-
-      document.getElementById("deskripsi").innerText = infoHarga + " | " + status;
-    };
+    document.getElementById("deskripsi").innerText = infoHarga + " | " + status;
   </script>
 </body>
 </html>
@@ -743,7 +740,14 @@ let dataKosong = null; // Null (sengaja dikosongkan)</code></pre>
 
         // Update preview ketika code berubah
         function updatePreview() {
-          const code = editor.getValue();
+          let code = editor.getValue();
+
+          // Tambahkan window.onload secara otomatis jika ditemukan <script>
+          code = code.replace(
+            /<script>([\s\S]*?)<\/script>/,
+            `<script>window.onload = function() { $1 }<\/script>`
+          );
+
           const doc = preview.contentDocument || preview.contentWindow.document;
           doc.open();
           doc.write(code);
