@@ -297,7 +297,7 @@
             </svg>
           </button>
           <div
-            class="instruksi-side p-3 fixed top-20 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300 z-40"
+            class="instruksi-side p-3 fixed top-20 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300 z-[51]"
           >
             <div class="flex justify-between items-center mb-4">
               <div class="flex items-center gap-2">
@@ -422,7 +422,7 @@
               <!-- Modal Overlay -->
               <div
                 id="image-modal-responsive"
-                class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden mb-0"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center z-[52] hidden mb-0"
               >
                 <img
                   id="zoomed-image-responsive"
@@ -820,6 +820,7 @@ ${bodyContent}
         }
       });
     </script>
+
     <!-- Hasil yang diharapkan responsive -->
     <script>
       const zoomResponsive = document.getElementById("zoom-button-responsive");
@@ -833,7 +834,7 @@ ${bodyContent}
       });
 
       modalResponsive.addEventListener("click", (e) => {
-        if (e.target === modal || e.target === zoomImageResponsive) {
+        if (e.target === modalResponsive && e.target !== zoomImageResponsive) {
           modalResponsive.classList.add("hidden");
         }
       });
@@ -945,6 +946,19 @@ ${bodyContent}
             instruksi.classList.remove("right-0");
             isVisible = false; // update status supaya sync
           });
+        }
+      });
+
+      document.addEventListener("click", function (e) {
+        if (
+          isVisible &&
+          instruksi &&
+          !instruksi.contains(e.target) &&
+          !openBtn.contains(e.target)
+        ) {
+          instruksi.classList.add("right-[-300px]");
+          instruksi.classList.remove("right-0");
+          isVisible = false;
         }
       });
     </script>
