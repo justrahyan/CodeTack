@@ -276,7 +276,8 @@
           <!-- Side Instruksi -->
           <button
             id="open-instruksi"
-            class="fixed right-0 top-20 bg-white border rounded-l-2xl p-4 lg:hidden z-50"
+            class="fixed right-0 top-20 bg-white border rounded-l-2xl p-4 lg:hidden"
+            style="z-index: 60"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -297,7 +298,8 @@
             </svg>
           </button>
           <div
-            class="instruksi-side p-3 fixed top-20 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300 z-[51]"
+            class="instruksi-side p-3 fixed top-20 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300"
+            style="z-index: 70"
           >
             <div class="flex justify-between items-center mb-4">
               <div class="flex items-center gap-2">
@@ -422,7 +424,8 @@
               <!-- Modal Overlay -->
               <div
                 id="image-modal-responsive"
-                class="fixed inset-0 bg-black/70 flex items-center justify-center z-[52] hidden mb-0"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center hidden mb-0"
+                style="z-index: 75"
               >
                 <img
                   id="zoomed-image-responsive"
