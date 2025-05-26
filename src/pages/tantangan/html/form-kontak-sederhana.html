@@ -168,8 +168,8 @@
 
               <div class="space-y-2">
                 <p>
-                  Buat halaman formulir yang memungkinkan pengguna mengisi
-                  nama, email, dan pesan. Gunakan
+                  Buat halaman formulir yang memungkinkan pengguna mengisi nama,
+                  email, dan pesan. Gunakan
                   <code class="bg-pink-100 px-1 rounded text-pink-600"
                     >&lt;form&gt;</code
                   >,
@@ -239,8 +239,7 @@
           <div
             class="instruksi-side p-3 fixed top-20 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300"
             style="z-index: 70"
-          >
-            </div>
+          ></div>
 
           <div class="lg:col-span-3 bg-white overflow-hidden flex flex-col">
             <div class="flex text-sm font-medium border-b md:hidden">
@@ -271,20 +270,7 @@
                   id="htmlCode"
                   class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
                 >
-<form>
-  <h3>Hubungi Kami</h3>
-
-  <label for="nama">Nama:</label><br>
-  <input type="text" id="nama" name="nama" required><br><br>
-
-  <label for="email">Email:</label><br>
-  <input type="email" id="email" name="email" required><br><br>
-
-  <label for="pesan">Pesan:</label><br>
-  <textarea id="pesan" name="pesan" rows="5" cols="30" required></textarea><br><br>
-
-  <button type="submit">Kirim</button>
-</form>
+<!-- Masukkan kode anda disini -->
                   </textarea
                 >
               </div>
@@ -343,9 +329,7 @@
       id="successOverlay"
       class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
     >
-      <div
-        class="bg-white p-6 rounded-lg shadow-xl text-center max-w-md mx-4"
-      >
+      <div class="bg-white p-6 rounded-lg shadow-xl text-center max-w-md mx-4">
         <div id="overlayIcon" class="text-green-600 text-6xl mb-4">✓</div>
         <h2 id="overlayTitle" class="text-xl font-bold text-green-600 mb-2">
           Jawaban Benar!
@@ -363,46 +347,46 @@
     </div>
 
     <section id="pagination" class="flex-shrink-0">
-        <div
-          class="container border bg-white mx-auto px-4 py-4 lg:py-6 lg:px-36 font-family-outfit"
-        >
-          <div class="grid grid-cols-3 items-center gap-4">
-            <div class="flex justify-start">
-              <a
-                href="./daftar-makanan-favorit.html"
-                class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
+      <div
+        class="container border bg-white mx-auto px-4 py-4 lg:py-6 lg:px-36 font-family-outfit"
+      >
+        <div class="grid grid-cols-3 items-center gap-4">
+          <div class="flex justify-start">
+            <a
+              href="./daftar-makanan-favorit.html"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 md:w-5 h-6 md:h-5"
+                viewBox="0 0 24 24"
+                class="inline-block"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-6 md:w-5 h-6 md:h-5"
-                  viewBox="0 0 24 24"
-                  class="inline-block"
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
                 >
-                  <g
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                  >
-                    <path d="m13 9l-3 3l3 3" />
-                    <circle cx="12" cy="12" r="9" />
-                  </g>
-                </svg>
-                <span class="hidden sm:inline">Daftar Makanan Favorit</span>
-              </a>
-            </div>
-  
-            <div class="flex justify-center">
-              <p
-                class="text-center text-primary font-semibold lg:text-lg text-sm whitespace-nowrap"
-              >
-                Form Kontak Sederhana
-              </p>
-            </div>
+                  <path d="m13 9l-3 3l3 3" />
+                  <circle cx="12" cy="12" r="9" />
+                </g>
+              </svg>
+              <span class="hidden sm:inline">Daftar Makanan Favorit</span>
+            </a>
+          </div>
+
+          <div class="flex justify-center">
+            <p
+              class="text-center text-primary font-semibold lg:text-lg text-sm whitespace-nowrap"
+            >
+              Form Kontak Sederhana
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
@@ -523,49 +507,49 @@ ${bodyContent}
         updatePreview();
       });
     </script>
-     <!-- Instruksi Responsive -->
-     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const openBtn = document.getElementById("open-instruksi");
-          const instruksi = document.querySelector(".instruksi-side");
-          const closeBtn = document.getElementById("close-instruksi");
-  
-          let isVisible = false;
-  
-          if (openBtn) {
-            openBtn.addEventListener("click", () => {
-              if (isVisible) {
-                instruksi.classList.remove("right-0");
-                instruksi.classList.add("right-[-300px]");
-              } else {
-                instruksi.classList.remove("right-[-300px]");
-                instruksi.classList.add("right-0");
-              }
-              isVisible = !isVisible;
-            });
-          }
-  
-          if (closeBtn) {
-            closeBtn.addEventListener("click", () => {
-              instruksi.classList.add("right-[-300px]");
+    <!-- Instruksi Responsive -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const openBtn = document.getElementById("open-instruksi");
+        const instruksi = document.querySelector(".instruksi-side");
+        const closeBtn = document.getElementById("close-instruksi");
+
+        let isVisible = false;
+
+        if (openBtn) {
+          openBtn.addEventListener("click", () => {
+            if (isVisible) {
               instruksi.classList.remove("right-0");
-              isVisible = false; // update status supaya sync
-            });
-          }
-        });
-  
-        document.addEventListener("click", function (e) {
-          if (
-            isVisible &&
-            instruksi &&
-            !instruksi.contains(e.target) &&
-            !openBtn.contains(e.target)
-          ) {
+              instruksi.classList.add("right-[-300px]");
+            } else {
+              instruksi.classList.remove("right-[-300px]");
+              instruksi.classList.add("right-0");
+            }
+            isVisible = !isVisible;
+          });
+        }
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", () => {
             instruksi.classList.add("right-[-300px]");
             instruksi.classList.remove("right-0");
-            isVisible = false;
-          }
-        });
-      </script>
+            isVisible = false; // update status supaya sync
+          });
+        }
+      });
+
+      document.addEventListener("click", function (e) {
+        if (
+          isVisible &&
+          instruksi &&
+          !instruksi.contains(e.target) &&
+          !openBtn.contains(e.target)
+        ) {
+          instruksi.classList.add("right-[-300px]");
+          instruksi.classList.remove("right-0");
+          isVisible = false;
+        }
+      });
+    </script>
   </body>
 </html>
