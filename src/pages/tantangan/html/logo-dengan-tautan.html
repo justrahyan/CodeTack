@@ -79,7 +79,7 @@
         <div class="grid grid-cols-3 items-center gap-4">
           <div class="flex justify-start">
             <a
-              href="./struktur-dasar.html"
+              href="javascript:history.back()"
               class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
             >
               <svg
@@ -182,6 +182,14 @@
                 <p>
                   Contohnya, jika diklik, kamu bisa arahkan ke
                   https://google.com.
+                </p>
+                <p>
+                  Untuk gambar silahkan
+                  <button id="salinGambar" class="text-blue-600">Salin</button>
+                  gambar ini:
+                  <span id="gambarUrl"
+                    >https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png</span
+                  >
                 </p>
               </div>
 
@@ -701,6 +709,23 @@ ${bodyContent}
 
         updatePreview();
       });
+
+      // Salin Link Gambar
+      document
+        .getElementById("salinGambar")
+        .addEventListener("click", function () {
+          const textToCopy = document.getElementById("gambarURL").textContent;
+
+          // Salin ke clipboard
+          navigator.clipboard
+            .writeText(textToCopy)
+            .then(() => {
+              alert("URL gambar berhasil disalin!");
+            })
+            .catch((err) => {
+              console.error("Gagal menyalin:", err);
+            });
+        });
     </script>
   </body>
 </html>
