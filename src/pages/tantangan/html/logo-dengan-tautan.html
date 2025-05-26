@@ -187,7 +187,7 @@
                   Untuk gambar silahkan
                   <button id="salinGambar" class="text-blue-600">Salin</button>
                   gambar ini:
-                  <span id="gambarUrl"
+                  <span id="gambarURLl"
                     >https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png</span
                   >
                 </p>
@@ -711,21 +711,28 @@ ${bodyContent}
       });
 
       // Salin Link Gambar
-      document
-        .getElementById("salinGambar")
-        .addEventListener("click", function () {
-          const textToCopy = document.getElementById("gambarURL").textContent;
+      const salinBtn = document.getElementById("salinGambar");
+      const gambarURL = document.getElementById("gambarURL").textContent;
 
-          // Salin ke clipboard
-          navigator.clipboard
-            .writeText(textToCopy)
-            .then(() => {
-              alert("URL gambar berhasil disalin!");
-            })
-            .catch((err) => {
-              console.error("Gagal menyalin:", err);
-            });
-        });
+      salinBtn.addEventListener("click", function () {
+        navigator.clipboard
+          .writeText(gambarURL)
+          .then(() => {
+            salinBtn.textContent = "Disalin!";
+            salinBtn.classList.remove("text-blue-500");
+            salinBtn.classList.add("text-green-600");
+
+            // Kembalikan ke "Salin" setelah 2 detik
+            setTimeout(() => {
+              salinBtn.textContent = "Salin";
+              salinBtn.classList.remove("text-green-600");
+              salinBtn.classList.add("text-blue-500");
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error("Gagal menyalin:", err);
+          });
+      });
     </script>
   </body>
 </html>
