@@ -3,14 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CodeTack - Tantangan Kalkulator</title>
+    <title>CodeTack - Teman Belajar Koding Web dari Dasar</title>
     <link rel="stylesheet" href="../../../assets/css/output.css" />
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap"
       rel="stylesheet"
     />
+    <!-- Favicon -->
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -32,10 +34,12 @@
       rel="manifest"
       href="../../../assets/img/favicon_io/site.webmanifest"
     />
+    <!-- Prism.css -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
       rel="stylesheet"
     />
+    <!-- CodeMirror -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"
@@ -72,11 +76,13 @@
     </style>
   </head>
   <body class="h-screen flex flex-col">
+    <!-- Header -->
     <header id="header" class="flex-shrink-0">
       <div
         class="container mx-auto px-4 py-4 lg:py-6 border bg-white lg:px-36 font-family-outfit"
       >
         <div class="grid grid-cols-3 items-center gap-4">
+          <!-- Back -->
           <div class="flex justify-start">
             <a
               href="javascript:history.back()"
@@ -102,6 +108,7 @@
             </a>
           </div>
 
+          <!-- Title -->
           <div class="flex justify-center">
             <p
               class="text-center text-primary font-semibold lg:text-lg text-sm whitespace-nowrap"
@@ -110,6 +117,7 @@
             </p>
           </div>
 
+          <!-- Level -->
           <div class="flex justify-end">
             <p
               class="inline-flex items-center gap-2 bg-red-100 text-red-700 px-2 py-1 rounded text-sm lg:text-base"
@@ -132,9 +140,11 @@
       </div>
     </header>
 
+    <!-- Content Section -->
     <section id="content" class="flex-1 overflow-hidden">
       <div class="container mx-auto font-family-outfit h-full">
         <div class="grid grid-cols-1 lg:grid-cols-4 h-full">
+          <!-- Instruksi Panel  -->
           <div
             class="lg:col-span-1 bg-white p-3 hidden lg:block lg:overflow-y-auto"
           >
@@ -160,21 +170,21 @@
                   </svg>
                 </span>
               </div>
-              <h2 class="font-bold text-lg">Instruksi Tantangan</h2>
+              <h2 class="font-bold text-lg">Instruksi Tugas</h2>
             </div>
 
             <div class="space-y-4 text-sm md:text-base">
-              <p class="font-medium">
-                Desain kalkulator sudah tersedia. Kamu hanya perlu menambahkan
-                logika agar operasi seperti penjumlahan dan pengurangan bisa
-                dijalankan saat tombol ditekan.
-              </p>
+              <p class="font-medium">Saatnya memperkenalkan diri!</p>
 
               <div class="space-y-2">
                 <p>
-                  Ambil nilai dari dua input dan tampilkan hasilnya di area
-                  output yang telah disediakan.
-                </p>
+                    Struktur HTML dan CSS untuk kalkulator sudah kami sediakan di
+                    belakang layar. Kamu tidak perlu menulis kode HTML atau CSS.
+                  </p>
+                  <p>
+                    Tugasmu adalah <strong>mengisi bagian &lt;script&gt;</strong> 
+                    dengan logika JavaScript agar kalkulator berfungsi.
+                  </p>
               </div>
 
               <div class="bg-green-50 p-3 rounded">
@@ -182,12 +192,57 @@
                   ✅ Yang harus kamu capai:
                 </p>
                 <ul class="space-y-1 text-green-700 text-xs md:text-sm">
-                  <li>• Ambil nilai dari dua input.</li>
-                  <li>• Gunakan fungsi seperti add(), subtract(), dsb.</li>
-                  <li>• Tampilkan hasil ke user.</li>
+                  <li>
+                    • Ambil nilai dari dua input
+                    
+                  </li>
+                  <li>
+                    • Gunakan  fungsi add(), substract(), multiply(), divide().
+                  </li>
+                  <li>
+                    • Tampilkan hasil ke pengguna
+                  </li>
                 </ul>
               </div>
 
+              <div class="bg-gray-100 p-3 rounded relative">
+                <p class="font-medium text-gray-800 mb-2">
+                  💡 Hasil yang Diharapkan:
+                </p>
+                <div
+                  class="bg-white rounded border text-xs md:text-sm relative"
+                >
+                  <img
+                    id="preview-image"
+                    src="../../../assets/img/preview-profil-diri.png"
+                    alt="Preview Profil Diri"
+                    class="w-full rounded"
+                  />
+                  <!-- Tombol Zoom -->
+                  <button
+                    id="zoom-button"
+                    class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Modal Overlay -->
               <div class="bg-gray-100 p-3 rounded relative">
                 <p class="font-medium text-gray-800 mb-2">
                   🖥️ Preview yang Diharapkan:
@@ -204,11 +259,7 @@
                         id="prev_num1"
                         value="10"
                         readonly
-                        style="
-                          border: 1px solid #ccc;
-                          padding: 5px;
-                          border-radius: 4px;
-                        "
+                        style="border: 1px solid #ccc; padding: 5px; border-radius: 4px;"
                       />
                     </div>
                     <div style="margin-bottom: 1rem">
@@ -218,32 +269,17 @@
                         id="prev_num2"
                         value="5"
                         readonly
-                        style="
-                          border: 1px solid #ccc;
-                          padding: 5px;
-                          border-radius: 4px;
-                        "
+                        style="border: 1px solid #ccc; padding: 5px; border-radius: 4px;"
                       />
                     </div>
                     <div>
                       <button
-                        style="
-                          padding: 5px 10px;
-                          margin-right: 5px;
-                          background-color: #eee;
-                          border: 1px solid #ccc;
-                          border-radius: 4px;
-                        "
+                        style="padding: 5px 10px; margin-right: 5px; background-color: #eee; border: 1px solid #ccc; border-radius: 4px;"
                       >
                         +
                       </button>
                       <button
-                        style="
-                          padding: 5px 10px;
-                          background-color: #eee;
-                          border: 1px solid #ccc;
-                          border-radius: 4px;
-                        "
+                        style="padding: 5px 10px; background-color: #eee; border: 1px solid #ccc; border-radius: 4px;"
                       >
                         -
                       </button>
@@ -260,7 +296,207 @@
             </div>
           </div>
 
+          <!-- Side Instruksi -->
+          <button
+            id="open-instruksi"
+            class="fixed right-0 top-20 bg-white border rounded-l-2xl p-4 lg:hidden"
+            style="z-index: 60"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+            >
+              <g
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4m0-4h.01" />
+              </g>
+            </svg>
+          </button>
+          <div
+            class="instruksi-side p-3 fixed top-20 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300"
+            style="z-index: 70"
+          >
+            <div class="flex justify-between items-center mb-4">
+              <div class="flex items-center gap-2">
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <span class="text-paragraph text-xs">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                    >
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 16v-4m0-4h.01" />
+                      </g>
+                    </svg>
+                  </span>
+                </div>
+                <h2 class="font-bold text-lg">Instruksi Tugas</h2>
+              </div>
+              <span id="close-instruksi" class="text-paragraph cursor-pointer">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M8.4 17L7 15.6l3.6-3.6L7 8.425l1.4-1.4l3.6 3.6l3.575-3.6l1.4 1.4l-3.6 3.575l3.6 3.6l-1.4 1.4L12 13.4z"
+                  />
+                </svg>
+              </span>
+            </div>
+
+            <div class="space-y-4 text-sm md:text-base">
+              <p class="font-medium">Saatnya memperkenalkan diri!</p>
+
+              <div class="space-y-2">
+                <p>
+                  Tampilkan namamu menggunakan tag
+                  <code class="bg-pink-100 px-1 rounded text-pink-600"
+                    >&lt;h1&gt;</code
+                  >
+                  dan tambahkan deskripsi singkat seperti asal sekolah, hobi,
+                  atau cita-cita dengan tag
+                  <code class="bg-pink-100 px-1 rounded text-pink-600"
+                    >&lt;p&gt;</code
+                  >.
+                </p>
+                <p>
+                  Gunakan struktur HTML lengkap seperti yang sudah kamu pelajari
+                  sebelumnya.
+                </p>
+              </div>
+
+              <div class="bg-green-50 p-3 rounded">
+                <p class="font-medium text-green-800 mb-2">
+                  ✅ Yang harus kamu capai:
+                </p>
+                <ul class="space-y-1 text-green-700 text-xs md:text-sm">
+                  <li>
+                    • Ambil nilai dari dua input
+                    
+                  </li>
+                  <li>
+                    • Gunakan fungsi add(), substract(), multiply(), divide().
+                  </li>
+                  <li>
+                    • Tampilkan hasil ke pengguna
+                  </li>
+                  
+                </ul>
+              </div>
+
+              <div class="bg-gray-100 p-3 rounded relative">
+                <p class="font-medium text-gray-800 mb-2">
+                  💡 Hasil yang Diharapkan:
+                </p>
+                <div
+                  class="bg-white rounded border text-xs md:text-sm relative"
+                >
+                  <img
+                    id="preview-image"
+                    src="../../../assets/img/preview-profil-diri.png"
+                    alt="Preview Profil Diri"
+                    class="w-full rounded"
+                  />
+                  <!-- Tombol Zoom -->
+                  <button
+                    id="zoom-button-responsive"
+                    class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Modal Overlay -->
+              <div class="bg-gray-100 p-3 rounded relative">
+                <p class="font-medium text-gray-800 mb-2">
+                  🖥️ Preview yang Diharapkan:
+                </p>
+                <div
+                  class="bg-white rounded border text-xs md:text-sm relative p-4"
+                >
+                  <div style="font-family: sans-serif">
+                    <h1 style="margin-bottom: 1rem">Kalkulator Sederhana</h1>
+                    <div style="margin-bottom: 0.5rem">
+                      <label for="prev_num1">Angka 1: </label>
+                      <input
+                        type="number"
+                        id="prev_num1"
+                        value="10"
+                        readonly
+                        style="border: 1px solid #ccc; padding: 5px; border-radius: 4px;"
+                      />
+                    </div>
+                    <div style="margin-bottom: 1rem">
+                      <label for="prev_num2">Angka 2: </label>
+                      <input
+                        type="number"
+                        id="prev_num2"
+                        value="5"
+                        readonly
+                        style="border: 1px solid #ccc; padding: 5px; border-radius: 4px;"
+                      />
+                    </div>
+                    <div>
+                      <button
+                        style="padding: 5px 10px; margin-right: 5px; background-color: #eee; border: 1px solid #ccc; border-radius: 4px;"
+                      >
+                        +
+                      </button>
+                      <button
+                        style="padding: 5px 10px; background-color: #eee; border: 1px solid #ccc; border-radius: 4px;"
+                      >
+                        -
+                      </button>
+                    </div>
+                    <h2 style="margin-top: 1rem">
+                      Hasil: <span style="font-weight: bold">15</span>
+                    </h2>
+                    <p class="text-xs text-gray-500 mt-2">
+                      (Contoh setelah menekan tombol tambah)
+                    </p>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <!-- Editor & Preview Panel -->
           <div class="lg:col-span-3 bg-white overflow-hidden flex flex-col">
+            <!-- Tab -->
             <div class="flex text-sm font-medium border-b md:hidden">
               <button
                 id="tabEditor"
@@ -276,15 +512,21 @@
               </button>
             </div>
 
+            <!-- Editor Container -->
             <div
               class="editor-container flex flex-col md:flex-row w-full"
               style="height: 100vh"
             >
+              <!-- Editor -->
               <div
                 id="editor-panel"
                 class="w-full md:w-1/2 border overflow-auto block md:block"
                 style="min-height: 100vh"
               >
+                <textarea
+                  id="htmlCode"
+                  class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
+                >
                 <textarea
                   id="htmlCode"
                   class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
@@ -356,8 +598,10 @@
 
 </textarea
                 >
+                </textarea>
               </div>
 
+              <!-- Preview -->
               <iframe
                 id="preview"
                 class="w-full md:w-1/2 border hidden md:block"
@@ -366,6 +610,7 @@
               ></iframe>
             </div>
 
+            <!-- Bottom Action Bar -->
             <div
               class="border-t bg-[#2F3436] px-4 py-3 flex flex-wrap gap-2 justify-between"
             >
@@ -408,6 +653,7 @@
       </div>
     </section>
 
+    <!-- Jawaban Benar -->
     <div
       id="successOverlay"
       class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
@@ -438,7 +684,7 @@
           <!-- Prev -->
           <div class="invisible flex justify-start">
             <a
-              href="./kalkulator-sederhana.html"
+              href="./struktur-dasar.html"
               class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
             >
               <svg
@@ -458,7 +704,7 @@
                   <circle cx="12" cy="12" r="9" />
                 </g>
               </svg>
-              <span class="hidden sm:inline">Kalkulator Sederhana</span>
+              <span class="hidden sm:inline">Struktur Dasar HTML</span>
             </a>
           </div>
 
@@ -500,17 +746,65 @@
         </div>
       </div>
     </section>
+    <!-- Instruksi Responsive -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const openBtn = document.getElementById("open-instruksi");
+        const instruksi = document.querySelector(".instruksi-side");
+        const closeBtn = document.getElementById("close-instruksi");
 
+        let isVisible = false;
+
+        if (openBtn) {
+          openBtn.addEventListener("click", () => {
+            if (isVisible) {
+              instruksi.classList.remove("right-0");
+              instruksi.classList.add("right-[-300px]");
+            } else {
+              instruksi.classList.remove("right-[-300px]");
+              instruksi.classList.add("right-0");
+            }
+            isVisible = !isVisible;
+          });
+        }
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", () => {
+            instruksi.classList.add("right-[-300px]");
+            instruksi.classList.remove("right-0");
+            isVisible = false; // update status supaya sync
+          });
+        }
+      });
+
+      document.addEventListener("click", function (e) {
+        if (
+          isVisible &&
+          instruksi &&
+          !instruksi.contains(e.target) &&
+          !openBtn.contains(e.target)
+        ) {
+          instruksi.classList.add("right-[-300px]");
+          instruksi.classList.remove("right-0");
+          isVisible = false;
+        }
+      });
+    </script>
+
+    <!-- Prism.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
 
+    <!-- CodeMirror -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
 
+    <script src="../../../assets/js/script.js"></script>
+    <!-- Code Mirror -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         // Highlight syntax Prism
@@ -524,9 +818,6 @@
         const overlay = document.getElementById("successOverlay");
         const closeBtn = document.getElementById("closeOverlay");
 
-        // Simpan kode awal dari textarea
-        const initialCode = textarea.value;
-
         // Inisialisasi CodeMirror
         const editor = CodeMirror.fromTextArea(textarea, {
           lineNumbers: true,
@@ -537,11 +828,15 @@
           tabSize: 2,
           indentWithTabs: false,
           lineWrapping: true,
+          foldGutter: true,
+          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
           autoCloseBrackets: true,
           autoCloseTags: true,
           matchBrackets: true,
           matchTags: true,
         });
+
+        let userHasTyped = false;
 
         // Fungsi update preview
         function updatePreview() {
@@ -549,45 +844,117 @@
           preview.srcdoc = fullHtml;
         }
 
+        function setEditorWithTemplate(
+          bodyContent = `<!-- Masukkan kode anda disini -->`
+        ) {
+          const fullHtml = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Preview</title>
+  </head>
+  <body>
+${bodyContent}
+  </body>
+</html>`;
+
+          editor.setValue(fullHtml);
+          setTimeout(() => {
+            const lines = editor.lineCount();
+            const startBodyLine = [...Array(lines)].findIndex((_, i) =>
+              editor.getLine(i).includes("<body>")
+            );
+            const endBodyLine = [...Array(lines)]
+              .reverse()
+              .findIndex((_, i) =>
+                editor.getLine(lines - 1 - i).includes("</body>")
+              );
+            const realEndBodyLine = lines - 1 - endBodyLine;
+
+            // Tandai bagian readonly
+            editor.markText(
+              { line: 0, ch: 0 },
+              { line: startBodyLine + 1, ch: 0 },
+              { readOnly: true, inclusiveRight: false }
+            );
+            editor.markText(
+              {
+                line: realEndBodyLine,
+                ch: editor.getLine(realEndBodyLine).length,
+              },
+              { line: lines },
+              { readOnly: true }
+            );
+          }, 100);
+        }
+
+        setEditorWithTemplate();
+
         // Update preview saat ada perubahan
         editor.on("change", function () {
+          userHasTyped = true;
           clearTimeout(window.updateTimeout);
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
-        // Submit button (logika validasi bisa disesuaikan di sini)
+        // Auto-refresh preview setiap 1 detik
+        setInterval(() => {
+          if (editor.getValue()) {
+            updatePreview();
+          }
+        }, 1000);
+
+        // Submit button
         submitBtn.addEventListener("click", () => {
+          const fullHtml = editor.getValue();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(fullHtml, "text/html");
+
+          const hasH1 = doc.querySelector("h1");
+          const hasP = doc.querySelector("p");
+
           const overlayIcon = document.getElementById("overlayIcon");
           const overlayTitle = document.getElementById("overlayTitle");
           const overlayMessage = document.getElementById("overlayMessage");
+          const overlayBox = document.getElementById("successOverlay");
 
-          // Validasi sederhana: Cek apakah ada fungsi add dan elemen result
-          const userCode = editor.getValue();
-          const hasAddFunction = userCode.includes("function add()");
-          const hasResultElement = userCode.includes('id="result"');
-
-          if (hasAddFunction && hasResultElement) {
-            overlayIcon.textContent = "✓";
-            overlayIcon.className = "text-green-600 text-6xl mb-4";
-            overlayTitle.textContent = "Tugas Selesai!";
-            overlayTitle.className = "text-xl font-bold text-green-600 mb-2";
-            overlayMessage.textContent =
-              "Kode kalkulator kamu berhasil dijalankan. Hebat!";
-          } else {
+          if (!hasH1 && !hasP) {
+            // Keduanya tidak ada
+            overlayIcon.textContent = "✗";
+            overlayIcon.className = "text-red-600 text-6xl mb-4";
+            overlayTitle.textContent = "Jawaban Salah!";
+            overlayTitle.className = "text-xl font-bold text-red-600 mb-2";
+            overlayMessage.textContent = "Tag <h1> dan <p> tidak ditemukan.";
+          } else if (
+            !hasH1 ||
+            !hasP ||
+            !hasH1.textContent.trim() ||
+            !hasP.textContent.trim()
+          ) {
+            // Salah satu kosong atau tidak ada
             overlayIcon.textContent = "!";
             overlayIcon.className = "text-yellow-500 text-6xl mb-4";
             overlayTitle.textContent = "Perlu Perbaikan";
             overlayTitle.className = "text-xl font-bold text-yellow-500 mb-2";
             overlayMessage.textContent =
-              "Pastikan kamu membuat fungsi-fungsi yang diperlukan dan ada elemen untuk menampilkan hasil.";
+              "Pastikan <h1> dan <p> ada dan tidak kosong.";
+          } else {
+            // Keduanya ada dan tidak kosong
+            overlayIcon.textContent = "✓";
+            overlayIcon.className = "text-green-600 text-6xl mb-4";
+            overlayTitle.textContent = "Jawaban Benar!";
+            overlayTitle.className = "text-xl font-bold text-green-600 mb-2";
+            overlayMessage.textContent =
+              "Struktur HTML kamu sudah sesuai dengan yang diminta.";
           }
 
-          overlay.classList.remove("hidden");
+          overlayBox.classList.remove("hidden");
         });
 
         // Reset
         resetBtn.addEventListener("click", () => {
-          editor.setValue(initialCode);
+          setEditorWithTemplate();
+          userHasTyped = false;
           updatePreview();
         });
 
@@ -602,24 +969,110 @@
           }
         });
 
-        // Inisialisasi preview saat pertama kali load
         updatePreview();
       });
+    </script>
 
-      // Script untuk Tabs (Editor/Preview) di mobile
+    <!-- Hasil yang diharapkan -->
+    <script>
+      const zoomBtn = document.getElementById("zoom-button");
+      const modal = document.getElementById("image-modal");
+      const zoomedImage = document.getElementById("zoomed-image");
+
+      zoomBtn.addEventListener("click", () => {
+        modal.classList.remove("hidden");
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal || e.target === zoomedImage) {
+          modal.classList.add("hidden");
+        }
+      });
+    </script>
+
+    <!-- Hasil yang diharapkan responsive -->
+    <script>
+      const zoomResponsive = document.getElementById("zoom-button-responsive");
+      const modalResponsive = document.getElementById("image-modal-responsive");
+      const zoomImageResponsive = document.getElementById(
+        "zoomed-image-responsive"
+      );
+
+      zoomResponsive.addEventListener("click", () => {
+        modalResponsive.classList.remove("hidden");
+      });
+
+      modalResponsive.addEventListener("click", (e) => {
+        if (e.target === modalResponsive && e.target !== zoomImageResponsive) {
+          modalResponsive.classList.add("hidden");
+        }
+      });
+    </script>
+
+    <!-- Code Editor dan Preview -->
+    <script>
+      // Editor dan Preview Tantangan
       const tabEditor = document.getElementById("tabEditor");
       const tabPreview = document.getElementById("tabPreview");
       const editorPanels = document.getElementById("editor-panel");
       const previewPanels = document.getElementById("preview");
+      const htmlCode = document.getElementById("htmlCode");
+
+      function updatePreview() {
+        const code = htmlCode.value;
+        const blob = new Blob([code], { type: "text/html" });
+        const url = URL.createObjectURL(blob);
+        previewPanels.src = url;
+      }
 
       function activateEditor() {
-        // ... (fungsi tab tidak diubah)
+        // Show editor, hide preview
+        editorPanels.classList.remove("hidden");
+        editorPanels.classList.add("block");
+        previewPanels.classList.remove("block");
+        previewPanels.classList.add("hidden");
+
+        tabEditor.classList.add(
+          "border-b-2",
+          "border-green-600",
+          "text-green-600"
+        );
+        tabEditor.classList.remove("text-gray-500");
+
+        tabPreview.classList.remove(
+          "border-b-2",
+          "border-green-600",
+          "text-green-600"
+        );
+        tabPreview.classList.add("text-gray-500");
       }
 
       function activatePreview() {
-        // ... (fungsi tab tidak diubah)
+        // Update preview content
+        updatePreview();
+
+        // Show preview, hide editor
+        previewPanels.classList.remove("hidden");
+        previewPanels.classList.add("block");
+        editorPanels.classList.remove("block");
+        editorPanels.classList.add("hidden");
+
+        tabPreview.classList.add(
+          "border-b-2",
+          "border-green-600",
+          "text-green-600"
+        );
+        tabPreview.classList.remove("text-gray-500");
+
+        tabEditor.classList.remove(
+          "border-b-2",
+          "border-green-600",
+          "text-green-600"
+        );
+        tabEditor.classList.add("text-gray-500");
       }
 
+      // Only enable tab switch on mobile
       tabEditor.addEventListener("click", () => {
         if (window.innerWidth < 768) activateEditor();
       });
@@ -628,9 +1081,55 @@
         if (window.innerWidth < 768) activatePreview();
       });
 
+      // Default to editor tab on mobile
       if (window.innerWidth < 768) {
         activateEditor();
       }
+    </script>
+
+    <!-- Instruksi Responsive -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const openBtn = document.getElementById("open-instruksi");
+        const instruksi = document.querySelector(".instruksi-side");
+        const closeBtn = document.getElementById("close-instruksi");
+
+        let isVisible = false;
+
+        if (openBtn) {
+          openBtn.addEventListener("click", () => {
+            if (isVisible) {
+              instruksi.classList.remove("right-0");
+              instruksi.classList.add("right-[-300px]");
+            } else {
+              instruksi.classList.remove("right-[-300px]");
+              instruksi.classList.add("right-0");
+            }
+            isVisible = !isVisible;
+          });
+        }
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", () => {
+            instruksi.classList.add("right-[-300px]");
+            instruksi.classList.remove("right-0");
+            isVisible = false; // update status supaya sync
+          });
+        }
+      });
+
+      document.addEventListener("click", function (e) {
+        if (
+          isVisible &&
+          instruksi &&
+          !instruksi.contains(e.target) &&
+          !openBtn.contains(e.target)
+        ) {
+          instruksi.classList.add("right-[-300px]");
+          instruksi.classList.remove("right-0");
+          isVisible = false;
+        }
+      });
     </script>
   </body>
 </html>
