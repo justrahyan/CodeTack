@@ -186,10 +186,7 @@
                 <p>
                   Untuk gambar silahkan
                   <button id="salinGambar" class="text-blue-600">Salin</button>
-                  gambar ini:
-                  <span id="gambarURLl"
-                    >https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png</span
-                  >
+                  disini.
                 </p>
               </div>
 
@@ -711,27 +708,23 @@ ${bodyContent}
       });
 
       // Salin Link Gambar
-      const salinBtn = document.getElementById("salinGambar");
-      const gambarURL = document.getElementById("gambarURL").textContent;
+      const btnGambar = document.getElementById("salinGambar");
 
-      salinBtn.addEventListener("click", function () {
-        navigator.clipboard
-          .writeText(gambarURL)
-          .then(() => {
-            salinBtn.textContent = "Disalin!";
-            salinBtn.classList.remove("text-blue-500");
-            salinBtn.classList.add("text-green-600");
+      btnGambar.addEventListener("click", function () {
+        const url =
+          "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
 
-            // Kembalikan ke "Salin" setelah 2 detik
-            setTimeout(() => {
-              salinBtn.textContent = "Salin";
-              salinBtn.classList.remove("text-green-600");
-              salinBtn.classList.add("text-blue-500");
-            }, 2000);
-          })
-          .catch((err) => {
-            console.error("Gagal menyalin:", err);
-          });
+        navigator.clipboard.writeText(url).then(() => {
+          btnGambar.textContent = "Disalin!";
+          btnGambar.classList.remove("text-blue-500");
+          btnGambar.classList.add("text-green-600");
+
+          setTimeout(() => {
+            btnGambar.textContent = "Salin";
+            btnGambar.classList.remove("text-green-600");
+            btnGambar.classList.add("text-blue-500");
+          }, 2000);
+        });
       });
     </script>
   </body>
