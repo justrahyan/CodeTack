@@ -31,9 +31,101 @@
       href="src/assets/img/favicon_io/favicon-16x16.png"
     />
     <link rel="manifest" href="src/assets/img/favicon_io/site.webmanifest" />
+    <style>
+      .timeline-line {
+        transition: all 0.3s ease;
+      }
+
+      .timeline-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+        transition: height 0.3s ease;
+        border-radius: inherit;
+      }
+
+      .timeline-pointer {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+        border-radius: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all 0.3s ease;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        z-index: 10;
+      }
+
+      .timeline-step {
+        transition: all 0.5s ease;
+        opacity: 0.4;
+      }
+
+      .timeline-step.active {
+        opacity: 1;
+      }
+
+      .timeline-step.active h3 {
+        color: #3b82f6;
+      }
+
+      .timeline-step.active p {
+        color: #374151;
+      }
+
+      .timeline-step.active img {
+        transform: scale(1.02);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .timeline-step img {
+        transition: all 0.3s ease;
+      }
+
+      /* Default inactive state */
+      .timeline-step h3 {
+        color: #9ca3af;
+        transition: color 0.3s ease;
+      }
+
+      .timeline-step p {
+        color: #d1d5db;
+        transition: color 0.3s ease;
+      }
+
+      /* Mobile timeline fix */
+      @media (max-width: 767px) {
+        .timeline-line {
+          left: 1rem !important;
+          position: absolute !important;
+          height: 100% !important;
+        }
+
+        .timeline {
+          padding-left: 3rem;
+        }
+
+        .timeline-step {
+          position: relative;
+        }
+      }
+
+      /* Desktop timeline */
+      @media (min-width: 768px) {
+        .timeline-line {
+          left: 50% !important;
+          transform: translateX(-50%);
+          position: absolute !important;
+          height: 100% !important;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header class="sticky top-0 bg-white shadow-sm">
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
       <nav
         class="container mx-auto px-4 flex justify-between items-center lg:py-10 lg:px-36 h-16"
       >
@@ -86,19 +178,19 @@
                 <div class="flex">
                   <div class="flex flex-col w-full">
                     <a
-                      href="./src/pages/materi/"
+                      href="./src/pages/materi/materi-html.html"
                       class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
                     >
                       HTML
                     </a>
                     <a
-                      href="./src/pages/materi/"
+                      href="./src/pages/materi/materi-css.html"
                       class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
                     >
                       CSS
                     </a>
                     <a
-                      href="./src/pages/materi/"
+                      href="./src/pages/materi/materi-javascript.html"
                       class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
                     >
                       JavaScript
@@ -135,19 +227,19 @@
                 <div class="flex">
                   <div class="flex flex-col w-full">
                     <a
-                      href="./src/pages/tantangan/"
+                      href="./src/pages/tantangan/tantangan-html.html"
                       class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
                     >
                       HTML
                     </a>
                     <a
-                      href="./src/pages/tantangan/"
+                      href="./src/pages/tantangan/tantangan-css.html"
                       class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
                     >
                       CSS
                     </a>
                     <a
-                      href="./src/pages/tantangan/"
+                      href="./src/pages/tantangan/tantangan-javascript.html"
                       class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
                     >
                       JavaScript
@@ -209,17 +301,53 @@
           <li>
             <p>Materi Belajar</p>
             <ul class="pl-4 mt-2 space-y-2">
-              <li><a href="#" class="hover:text-secondary">HTML</a></li>
-              <li><a href="#" class="hover:text-secondary">CSS</a></li>
-              <li><a href="#" class="hover:text-secondary">JavaScript</a></li>
+              <li>
+                <a
+                  href="./src/pages/materi/materi-html.html"
+                  class="hover:text-secondary"
+                  >HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./src/pages/materi/materi-css.html"
+                  class="hover:text-secondary"
+                  >CSS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./src/pages/materi/materi-javascript.html"
+                  class="hover:text-secondary"
+                  >JavaScript</a
+                >
+              </li>
             </ul>
           </li>
           <li>
             <p>Tantangan</p>
             <ul class="pl-4 mt-2 space-y-2">
-              <li><a href="#" class="hover:text-secondary">HTML</a></li>
-              <li><a href="#" class="hover:text-secondary">CSS</a></li>
-              <li><a href="#" class="hover:text-secondary">JavaScript</a></li>
+              <li>
+                <a
+                  href="./src/pages/tantangan/tantangan-html.html"
+                  class="hover:text-secondary"
+                  >HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./src/pages/tantangan/tantangan-css.html"
+                  class="hover:text-secondary"
+                  >CSS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./src/pages/tantangan/tantangan-javascript.html"
+                  class="hover:text-secondary"
+                  >JavaScript</a
+                >
+              </li>
             </ul>
           </li>
           <li>
@@ -229,8 +357,1531 @@
       </div>
     </header>
 
-    <h1 class="text-2xl font-bold text-secondary font-family-outfit">Halo</h1>
+    <section id="hero">
+      <div
+        class="container mx-auto px-4 py-4 lg:py-16 lg:px-36 font-family-outfit"
+      >
+        <div
+          class="flex flex-col gap-8 md:flex-row justify-between items-center"
+        >
+          <div class="text w-full md:w-1/2">
+            <h1
+              class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+            >
+              Belajar Koding Web dari Dasar Bersama
+              <span
+                class="font-family-space-grotesk underline decoration-wavy decoration-[4px] decoration-secondary"
+                >CodeTack</span
+              >
+            </h1>
+            <p class="text-justify text-sm md:text-base mb-6">
+              Platform interaktif untuk belajar HTML, CSS, dan JavaScript secara
+              gratis. <br />
+              Mulai dari materi dasar hingga tantangan seru untuk menguji
+              kemampuanmu.
+            </p>
+            <div class="button-group flex flex-col md:flex-row gap-4">
+              <a
+                class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full md:w-auto h-10 px-6 rounded hover:bg-primary/85"
+                href="./src/pages/materi/materi-html.html"
+              >
+                Mulai Belajar
+              </a>
+              <a
+                class="bg-white hover:bg-gray-100 border border-primary gap-2 flex items-center justify-center text-sm md:text-base text-primary w-full md:w-auto h-10 px-6 rounded"
+                href="./src/pages/tantangan/tantangan-html.html"
+              >
+                Ikuti Tantangan
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M5 17.59L15.59 7H9V5h10v10h-2V8.41L6.41 19z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <img
+            src="./src/assets/img/hero-img.png"
+            alt="CodeTack"
+            class="hidden lg:block"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Fitur -->
+    <section id="fitur">
+      <div
+        class="container mx-auto px-4 py-4 lg:py-10 lg:px-36 font-family-outfit"
+      >
+        <div class="flex items-center justify-center mb-8">
+          <div class="w-full h-[0.35px] bg-gray-300 mr-5"></div>
+          <span
+            class="bg-white gap-1 items-center text-paragraph px-4 py-1 rounded-full font-medium text-sm md:text-base rotate-[-10deg] shadow flex"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="m6 14l7-12v8h5l-7 12v-8z"
+              />
+            </svg>
+            Fitur
+          </span>
+          <div class="w-full h-[0.35px] bg-gray-300 ml-5"></div>
+        </div>
+        <header class="mb-6">
+          <h1
+            class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center"
+          >
+            Kenapa Memilih
+            <span class="font-family-space-grotesk">CodeTack</span>?
+          </h1>
+        </header>
+        <div
+          class="card-container grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          <div class="card p-3 rounded border border-gray-300">
+            <div class="image-card relative w-full h-52 rounded">
+              <div class="bg-gray-300 w-full h-full"></div>
+            </div>
+            <div class="content text-left pt-2">
+              <h1 class="text-xl font-bold mb-2 text-center">Interaktif</h1>
+              <p class="mb-4">
+                Belajar sambil langsung praktek di editor online yang responsif
+                dan mudah digunakan.
+              </p>
+            </div>
+          </div>
+          <div class="card p-3 rounded border border-gray-300">
+            <div class="image-card relative w-full h-52 rounded">
+              <div class="bg-gray-300 w-full h-full"></div>
+            </div>
+            <div class="content text-left pt-2">
+              <h1 class="text-xl font-bold mb-2 text-center">
+                Tantangan Menyenangkan
+              </h1>
+              <p class="mb-4">
+                Uji pemahamanmu melalui tantangan yang didesain menarik dan
+                bertahap.
+              </p>
+            </div>
+          </div>
+          <div class="card p-3 rounded border border-gray-300">
+            <div class="image-card relative w-full h-52 rounded">
+              <div class="bg-gray-300 w-full h-full"></div>
+            </div>
+            <div class="content text-left pt-2">
+              <h1 class="text-xl font-bold mb-2 text-center">100% Gratis</h1>
+              <p class="mb-4">
+                Semua materi dan fitur bisa kamu akses tanpa biaya—belajar jadi
+                lebih merdeka.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Materi -->
+    <section id="materi">
+      <div
+        class="container mx-auto px-4 py-4 lg:py-10 lg:px-36 font-family-outfit mb-8"
+      >
+        <div class="flex items-center justify-center mb-8">
+          <div class="w-full h-[0.35px] bg-gray-300 mr-5"></div>
+          <span
+            class="bg-white gap-1 items-center text-paragraph px-4 py-1 rounded-full font-medium text-sm md:text-base rotate-[-10deg] shadow flex"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M2.75 16.401a1.15 1.15 0 0 0 1.16 1.15a16.7 16.7 0 0 1 3.535.333c1.64.204 3.204.81 4.555 1.761V6.442A10.24 10.24 0 0 0 7.445 4.68a16.6 16.6 0 0 0-3.6-.322a1.15 1.15 0 0 0-1.074 1.15zm18.5 0a1.15 1.15 0 0 1-1.16 1.15a16.7 16.7 0 0 0-3.535.333c-1.64.204-3.204.81-4.555 1.761V6.442a10.24 10.24 0 0 1 4.555-1.762a16.6 16.6 0 0 1 3.6-.322a1.15 1.15 0 0 1 1.073 1.15z"
+              />
+            </svg>
+            Materi
+          </span>
+          <div class="w-full h-[0.35px] bg-gray-300 ml-5"></div>
+        </div>
+        <header class="mb-6 text-center">
+          <h1
+            class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+          >
+            Mulai Dari Dasar
+          </h1>
+          <p>
+            Tiga materi utama yang akan membentuk pondasi kamu sebagai web
+            developer pemula.
+          </p>
+        </header>
+        <div
+          class="card-container grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          <div class="rounded overflow-hidden border border-gray-300 bg-white">
+            <div class="p-4">
+              <h2
+                class="text-xl font-bold text-gray-800 mb-2 flex items-center gap-2"
+              >
+                <div class="rounded-full p-2 border border-gray-300">
+                  <img
+                    src="./src/assets/img/logo-html.png"
+                    alt="HTML"
+                    class="w-8 h-8"
+                  />
+                </div>
+                HTML Dasar
+              </h2>
+              <p class="text-gray-600">
+                Pelajari cara membuat struktur halaman web dengan tag-tag HTML.
+              </p>
+            </div>
+            <div class="w-full flex items-end pl-4">
+              <img
+                src="./src/assets/img/html-course.png"
+                alt="Kode HTML"
+                class="h-full object-contain"
+              />
+            </div>
+          </div>
+          <div class="rounded overflow-hidden border border-gray-300 bg-white">
+            <div class="p-4">
+              <h2
+                class="text-xl font-bold text-gray-800 mb-2 flex items-center gap-2"
+              >
+                <div class="rounded-full p-2 border border-gray-300">
+                  <img
+                    src="./src/assets/img/logo-css.png"
+                    alt="CSS"
+                    class="w-8 h-8"
+                  />
+                </div>
+                CSS Dasar
+              </h2>
+              <p class="text-gray-600">
+                Hias tampilan web dengan warna, layout, dan elemen visual
+                menarik.
+              </p>
+            </div>
+            <div class="w-full flex items-end pl-4">
+              <img
+                src="./src/assets/img/css-course.png"
+                alt="Kode HTML"
+                class="h-full object-contain"
+              />
+            </div>
+          </div>
+          <div class="rounded overflow-hidden border border-gray-300 bg-white">
+            <div class="p-4">
+              <h2
+                class="text-xl font-bold text-gray-800 mb-2 flex items-center gap-2"
+              >
+                <div class="rounded-full p-2 border border-gray-300">
+                  <img
+                    src="./src/assets/img/logo-js.png"
+                    alt="JavaScript"
+                    class="w-8 h-8"
+                  />
+                </div>
+                JavaScript Dasar
+              </h2>
+              <p class="text-gray-600">
+                Berikan interaksi dan logika pada web dengan kode yang dinamis.
+              </p>
+            </div>
+            <div class="w-full flex items-end pl-4">
+              <img
+                src="./src/assets/img/js-course.png"
+                alt="Kode HTML"
+                class="h-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cara Belajar -->
+    <section id="cara-belajar">
+      <div
+        class="container mx-auto px-4 py-4 lg:py-10 lg:px-36 font-family-outfit mb-8"
+      >
+        <div class="flex items-center justify-center mb-8">
+          <div class="w-full h-[0.35px] bg-gray-300 mr-5"></div>
+          <span
+            class="bg-white gap-1 items-center text-paragraph px-4 py-1 rounded-full font-medium text-sm md:text-base rotate-[-10deg] shadow flex"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M2.75 16.401a1.15 1.15 0 0 0 1.16 1.15a16.7 16.7 0 0 1 3.535.333c1.64.204 3.204.81 4.555 1.761V6.442A10.24 10.24 0 0 0 7.445 4.68a16.6 16.6 0 0 0-3.6-.322a1.15 1.15 0 0 0-1.074 1.15zm18.5 0a1.15 1.15 0 0 1-1.16 1.15a16.7 16.7 0 0 0-3.535.333c-1.64.204-3.204.81-4.555 1.761V6.442a10.24 10.24 0 0 1 4.555-1.762a16.6 16.6 0 0 1 3.6-.322a1.15 1.15 0 0 1 1.073 1.15z"
+              />
+            </svg>
+            Materi
+          </span>
+          <div class="w-full h-[0.35px] bg-gray-300 ml-5"></div>
+        </div>
+        <header class="mb-6 text-center">
+          <h1
+            class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+          >
+            Bagaimana Cara Belajar di Sini?
+          </h1>
+          <p>
+            Ikuti langkah-langkah sederhana ini dan mulai petualangan belajarmu.
+          </p>
+        </header>
+        <div class="timeline relative">
+          <!-- Timeline -->
+          <div
+            class="relative w-1 bg-gray-300 md:mx-auto md:absolute md:left-1/2 timeline-line top-0 bottom-0"
+            style="height: 100%"
+          >
+            <div class="timeline-progress" style="height: 0%"></div>
+            <div class="timeline-pointer" style="top: 0%"></div>
+          </div>
+
+          <div class="space-y-16">
+            <!-- Langkah 1 -->
+            <div
+              class="md:grid md:grid-cols-2 md:items-center md:gap-12 relative timeline-step"
+              data-step="1"
+            >
+              <div
+                class="md:col-span-1 md:order-1 text-left md:pr-12 mb-6 md:mb-0"
+              >
+                <h3 class="text-xl font-bold">Pilih Materi</h3>
+                <p>
+                  Telusuri berbagai topik dan pilih materi yang sesuai dengan
+                  minatmu.
+                </p>
+              </div>
+              <div class="md:col-span-1 md:order-2">
+                <img
+                  src="./src/assets/img/js-course.png"
+                  alt="Pilih Materi"
+                  class="rounded-lg w-full h-auto"
+                />
+              </div>
+            </div>
+
+            <!-- Langkah 2 -->
+            <div
+              class="md:grid md:grid-cols-2 md:items-center md:gap-12 relative timeline-step"
+              data-step="2"
+            >
+              <div class="md:col-span-1 md:order-2 text-left md:pl-12">
+                <h3 class="text-xl font-bold">Baca & Pelajari</h3>
+                <p>
+                  Pahami penjelasan materi dengan gaya bahasa yang ringan dan
+                  jelas.
+                </p>
+              </div>
+              <div class="md:col-span-1 md:order-1">
+                <img
+                  src="./src/assets/img/js-course.png"
+                  alt="Baca Materi"
+                  class="rounded-lg w-full h-auto"
+                />
+              </div>
+            </div>
+
+            <!-- Langkah 3 -->
+            <div
+              class="md:grid md:grid-cols-2 md:items-center md:gap-12 relative timeline-step"
+              data-step="3"
+            >
+              <div
+                class="md:col-span-1 md:order-1 text-left md:pr-12 mb-6 md:mb-0"
+              >
+                <h3 class="text-xl font-bold">Lihat Contoh Kode</h3>
+                <p>
+                  Perhatikan contoh kode yang disediakan agar lebih mudah
+                  dipahami.
+                </p>
+              </div>
+              <div class="md:col-span-1 md:order-2">
+                <img
+                  src="./src/assets/img/js-course.png"
+                  alt="Contoh Kode"
+                  class="rounded-lg w-full h-auto"
+                />
+              </div>
+            </div>
+
+            <!-- Langkah 4 -->
+            <div
+              class="md:grid md:grid-cols-2 md:items-center md:gap-12 relative timeline-step"
+              data-step="4"
+            >
+              <div class="md:col-span-1 md:order-2 text-left md:pl-12">
+                <h3 class="text-xl font-bold">Coba Sendiri di Editor</h3>
+                <p>
+                  Langsung praktik dengan editor interaktif bawaan platform.
+                </p>
+              </div>
+              <div class="md:col-span-1 md:order-1">
+                <img
+                  src="./src/assets/img/js-course.png"
+                  alt="Editor Online"
+                  class="rounded-lg w-full h-auto"
+                />
+              </div>
+            </div>
+
+            <!-- Langkah 5 -->
+            <div
+              class="md:grid md:grid-cols-2 md:items-center md:gap-12 relative timeline-step"
+              data-step="5"
+            >
+              <div
+                class="md:col-span-1 md:order-1 text-left md:pr-12 mb-6 md:mb-0"
+              >
+                <h3 class="text-xl font-bold">Ikuti Tantangan</h3>
+                <p>Uji pemahamanmu dengan tantangan coding seru.</p>
+              </div>
+              <div class="md:col-span-1 md:order-2">
+                <img
+                  src="./src/assets/img/js-course.png"
+                  alt="Tantangan Coding"
+                  class="rounded-lg w-full h-auto"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section id="testimoni">
+      <div
+        class="container mx-auto px-4 py-4 lg:py-10 lg:px-36 font-family-outfit mb-8"
+      >
+        <div class="flex items-center justify-center mb-8">
+          <div class="w-full h-[0.35px] bg-gray-300 mr-5"></div>
+          <span
+            class="bg-white gap-1 items-center text-paragraph px-4 py-1 rounded-full font-medium text-sm md:text-base rotate-[-10deg] shadow flex"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M2.75 16.401a1.15 1.15 0 0 0 1.16 1.15a16.7 16.7 0 0 1 3.535.333c1.64.204 3.204.81 4.555 1.761V6.442A10.24 10.24 0 0 0 7.445 4.68a16.6 16.6 0 0 0-3.6-.322a1.15 1.15 0 0 0-1.074 1.15zm18.5 0a1.15 1.15 0 0 1-1.16 1.15a16.7 16.7 0 0 0-3.535.333c-1.64.204-3.204.81-4.555 1.761V6.442a10.24 10.24 0 0 1 4.555-1.762a16.6 16.6 0 0 1 3.6-.322a1.15 1.15 0 0 1 1.073 1.15z"
+              />
+            </svg>
+            Materi
+          </span>
+          <div class="w-full h-[0.35px] bg-gray-300 ml-5"></div>
+        </div>
+        <header class="mb-6 text-center">
+          <h1
+            class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4"
+          >
+            Kata Mereka Tentang
+            <span class="font-family-space-grotesk">CodeTack</span>
+          </h1>
+          <p>Apa kata pengguna yang sudah mencoba platform ini?</p>
+        </header>
+        <!-- Testimonial Slider -->
+        <div class="testimonial-slide relative overflow-hidden">
+          <div
+            class="w-full inline-flex flex-nowrap overflow-hidden custom-mask group"
+          >
+            <ul
+              class="flex items-center justify-center md:justify-start animate-infinite-scroll"
+            >
+              <!-- Card 1 -->
+              <li
+                class="mx-4 w-64 h-auto md:h-full p-4 rounded-lg flex flex-col justify-start border border-gray-300 flex-shrink-0"
+              >
+                <div class="stars-rate flex gap-1 mb-5 text-yellow-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="text-rate text-xs md:text-sm w-full text-grey-second mb-8"
+                >
+                  Pengalaman saya luar biasa! Website ini memudahkan saya
+                  menemukan tempat-tempat indah di Makassar. Desainnya menarik
+                  dan informatif. Terima kasih!
+                </div>
+                <div class="profile-rate flex flex-row items-center">
+                  <div class="profile-img">
+                    <img
+                      src="./src/assets/img/profile/Profile-1.svg"
+                      alt="Dina Sari"
+                      class="w-[75%] md:w-[85%]"
+                    />
+                  </div>
+                  <div
+                    class="profile-bio ml-1 md:ml-2 flex flex-col text-sm md:text-base"
+                  >
+                    <h2 class="font-semibold">Dina Sari</h2>
+                    <p class="font-normal text-grey-second">Wisatawan</p>
+                  </div>
+                </div>
+              </li>
+              <!-- Card 2 -->
+              <li
+                class="mx-4 w-64 h-auto md:h-full p-4 rounded-lg flex flex-col justify-start border border-gray-300 flex-shrink-0"
+              >
+                <div class="stars-rate flex gap-1 mb-5 text-yellow-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="text-rate text-xs md:text-sm w-full text-grey-second mb-8"
+                >
+                  Saya sangat terkesan dengan kemudahan navigasi dan informasi
+                  yang jelas tentang penginapan dan tempat belanja. Website ini
+                  sangat membantu rencana perjalanan saya.
+                </div>
+                <div class="profile-rate flex flex-row items-center">
+                  <div class="profile-img">
+                    <img
+                      src="./src/assets/img/profile/Profile-2.svg"
+                      alt="Budi Arifin"
+                      class="w-[75%] md:w-[85%]"
+                    />
+                  </div>
+                  <div
+                    class="profile-bio ml-1 md:ml-2 flex flex-col text-sm md:text-base"
+                  >
+                    <h2 class="font-semibold">Budi Arifin</h2>
+                    <p class="font-normal text-grey-second">Wisatawan</p>
+                  </div>
+                </div>
+              </li>
+              <!-- Card 3 -->
+              <li
+                class="mx-4 w-64 h-auto md:h-full p-4 rounded-lg flex flex-col justify-start border border-gray-300 flex-shrink-0"
+              >
+                <div class="stars-rate flex gap-1 mb-5 text-yellow-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="text-rate text-xs md:text-sm w-full text-grey-second mb-8"
+                >
+                  Pengalaman saya luar biasa! Website ini memudahkan saya
+                  menemukan tempat-tempat indah di Makassar. Desainnya menarik
+                  dan informatif. Terima kasih!
+                </div>
+                <div class="profile-rate flex flex-row items-center">
+                  <div class="profile-img">
+                    <img
+                      src="./src/assets/img/profile/Profile-3.svg"
+                      alt="Sarah Rizky"
+                      class="w-[75%] md:w-[85%]"
+                    />
+                  </div>
+                  <div
+                    class="profile-bio ml-1 md:ml-2 flex flex-col text-sm md:text-base"
+                  >
+                    <h2 class="font-semibold">Sarah Rizky</h2>
+                    <p class="font-normal text-grey-second">Wisatawan</p>
+                  </div>
+                </div>
+              </li>
+              <!-- Card 4 -->
+              <li
+                class="mx-4 w-64 h-auto md:h-full p-4 rounded-lg flex flex-col justify-start border border-gray-300 flex-shrink-0"
+              >
+                <div class="stars-rate flex gap-1 mb-5 text-yellow-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="text-rate text-xs md:text-sm w-full text-grey-second mb-8"
+                >
+                  Desain yang bersih dan fungsional membuat website ini sangat
+                  mudah digunakan. Saya menemukan tempat belanja yang saya cari
+                  dan informasi tentang penginapan sangat membantu.
+                </div>
+                <div class="profile-rate flex flex-row items-center">
+                  <div class="profile-img">
+                    <img
+                      src="./src/assets/img/profile/Profile-4.svg"
+                      alt="Andi Putra"
+                      class="w-[75%] md:w-[85%]"
+                    />
+                  </div>
+                  <div
+                    class="profile-bio ml-1 md:ml-2 flex flex-col text-sm md:text-base"
+                  >
+                    <h2 class="font-semibold">Andi Putra</h2>
+                    <p class="font-normal text-grey-second">Wisatawan</p>
+                  </div>
+                </div>
+              </li>
+              <!-- Card 5 -->
+              <li
+                class="mx-4 w-64 h-auto md:h-full p-4 rounded-lg flex flex-col justify-start border border-gray-300 flex-shrink-0"
+              >
+                <div class="stars-rate flex gap-1 mb-5 text-yellow-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="text-rate text-xs md:text-sm w-full text-grey-second mb-8"
+                >
+                  Saya bisa dengan mudah menemukan informasi tentang destinasi
+                  wisata dan penginapan. Website ini benar-benar meningkatkan
+                  pengalaman perjalanan saya.
+                </div>
+                <div class="profile-rate flex flex-row items-center">
+                  <div class="profile-img">
+                    <img
+                      src="./src/assets/img/profile/Profile-5.svg"
+                      alt="Lina Wulandari"
+                      class="w-[75%] md:w-[85%]"
+                    />
+                  </div>
+                  <div
+                    class="profile-bio ml-1 md:ml-2 flex flex-col text-sm md:text-base"
+                  >
+                    <h2 class="font-semibold">Lina Wulandari</h2>
+                    <p class="font-normal text-grey-second">Wisatawan</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <!-- Duplikat Card untuk Scrolling -->
+            <ul
+              class="flex items-center justify-center md:justify-start animate-infinite-scroll"
+            >
+              <!-- Card 1 -->
+              <li
+                class="mx-4 w-64 h-auto md:h-full p-4 rounded-lg flex flex-col justify-start border border-gray-300 flex-shrink-0"
+              >
+                <div class="stars-rate flex gap-1 mb-5 text-yellow-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="text-rate text-xs md:text-sm w-full text-grey-second mb-8"
+                >
+                  Pengalaman saya luar biasa! Website ini memudahkan saya
+                  menemukan tempat-tempat indah di Makassar. Desainnya menarik
+                  dan informatif. Terima kasih!
+                </div>
+                <div class="profile-rate flex flex-row items-center">
+                  <div class="profile-img">
+                    <img
+                      src="./src/assets/img/profile/Profile-1.svg"
+                      alt="Dina Sari"
+                      class="w-[75%] md:w-[85%]"
+                    />
+                  </div>
+                  <div
+                    class="profile-bio ml-1 md:ml-2 flex flex-col text-sm md:text-base"
+                  >
+                    <h2 class="font-semibold">Dina Sari</h2>
+                    <p class="font-normal text-grey-second">Wisatawan</p>
+                  </div>
+                </div>
+              </li>
+              <!-- Card 2 -->
+              <li
+                class="mx-4 w-64 h-auto md:h-full p-4 rounded-lg flex flex-col justify-start border border-gray-300 flex-shrink-0"
+              >
+                <div class="stars-rate flex gap-1 mb-5 text-yellow-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="text-rate text-xs md:text-sm w-full text-grey-second mb-8"
+                >
+                  Saya sangat terkesan dengan kemudahan navigasi dan informasi
+                  yang jelas tentang penginapan dan tempat belanja. Website ini
+                  sangat membantu rencana perjalanan saya.
+                </div>
+                <div class="profile-rate flex flex-row items-center">
+                  <div class="profile-img">
+                    <img
+                      src="./src/assets/img/profile/Profile-2.svg"
+                      alt="Budi Arifin"
+                      class="w-[75%] md:w-[85%]"
+                    />
+                  </div>
+                  <div
+                    class="profile-bio ml-1 md:ml-2 flex flex-col text-sm md:text-base"
+                  >
+                    <h2 class="font-semibold">Budi Arifin</h2>
+                    <p class="font-normal text-grey-second">Wisatawan</p>
+                  </div>
+                </div>
+              </li>
+              <!-- Card 3 -->
+              <li
+                class="mx-4 w-64 h-auto md:h-full p-4 rounded-lg flex flex-col justify-start border border-gray-300 flex-shrink-0"
+              >
+                <div class="stars-rate flex gap-1 mb-5 text-yellow-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="text-rate text-xs md:text-sm w-full text-grey-second mb-8"
+                >
+                  Pengalaman saya luar biasa! Website ini memudahkan saya
+                  menemukan tempat-tempat indah di Makassar. Desainnya menarik
+                  dan informatif. Terima kasih!
+                </div>
+                <div class="profile-rate flex flex-row items-center">
+                  <div class="profile-img">
+                    <img
+                      src="./src/assets/img/profile/Profile-3.svg"
+                      alt="Sarah Rizky"
+                      class="w-[75%] md:w-[85%]"
+                    />
+                  </div>
+                  <div
+                    class="profile-bio ml-1 md:ml-2 flex flex-col text-sm md:text-base"
+                  >
+                    <h2 class="font-semibold">Sarah Rizky</h2>
+                    <p class="font-normal text-grey-second">Wisatawan</p>
+                  </div>
+                </div>
+              </li>
+              <!-- Card 4 -->
+              <li
+                class="mx-4 w-64 h-auto md:h-full p-4 rounded-lg flex flex-col justify-start border border-gray-300 flex-shrink-0"
+              >
+                <div class="stars-rate flex gap-1 mb-5 text-yellow-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="text-rate text-xs md:text-sm w-full text-grey-second mb-8"
+                >
+                  Desain yang bersih dan fungsional membuat website ini sangat
+                  mudah digunakan. Saya menemukan tempat belanja yang saya cari
+                  dan informasi tentang penginapan sangat membantu.
+                </div>
+                <div class="profile-rate flex flex-row items-center">
+                  <div class="profile-img">
+                    <img
+                      src="./src/assets/img/profile/Profile-4.svg"
+                      alt="Andi Putra"
+                      class="w-[75%] md:w-[85%]"
+                    />
+                  </div>
+                  <div
+                    class="profile-bio ml-1 md:ml-2 flex flex-col text-sm md:text-base"
+                  >
+                    <h2 class="font-semibold">Andi Putra</h2>
+                    <p class="font-normal text-grey-second">Wisatawan</p>
+                  </div>
+                </div>
+              </li>
+              <!-- Card 5 -->
+              <li
+                class="mx-4 w-64 h-auto md:h-full p-4 rounded-lg flex flex-col justify-start border border-gray-300 flex-shrink-0"
+              >
+                <div class="stars-rate flex gap-1 mb-5 text-yellow-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m9.362 9.158l-5.268.584c-.19.023-.358.15-.421.343s0 .394.14.521c1.566 1.429 3.919 3.569 3.919 3.569c-.002 0-.646 3.113-1.074 5.19a.496.496 0 0 0 .734.534c1.844-1.048 4.606-2.624 4.606-2.624l4.604 2.625c.168.092.378.09.541-.029a.5.5 0 0 0 .195-.505l-1.071-5.191l3.919-3.566a.499.499 0 0 0-.28-.865c-2.108-.236-5.269-.586-5.269-.586l-2.183-4.83a.499.499 0 0 0-.909 0z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="text-rate text-xs md:text-sm w-full text-grey-second mb-8"
+                >
+                  Saya bisa dengan mudah menemukan informasi tentang destinasi
+                  wisata dan penginapan. Website ini benar-benar meningkatkan
+                  pengalaman perjalanan saya.
+                </div>
+                <div class="profile-rate flex flex-row items-center">
+                  <div class="profile-img">
+                    <img
+                      src="./src/assets/img/profile/Profile-5.svg"
+                      alt="Lina Wulandari"
+                      class="w-[75%] md:w-[85%]"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div
+                    class="profile-bio ml-1 md:ml-2 flex flex-col text-sm md:text-base"
+                  >
+                    <h2 class="font-semibold">Lina Wulandari</h2>
+                    <p class="font-normal text-grey-second">Wisatawan</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white font-family-outfit py-16 px-6">
+      <div class="max-w-6xl mx-auto">
+        <!-- Footer Content Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div class="lg:col-span-1">
+            <div class="mb-6">
+              <img
+                src="./src/assets/img/logo-white.png"
+                alt="CodeTack Logo"
+                class="h-12 w-auto"
+              />
+            </div>
+            <p
+              class="text-sm md:text-base leading-relaxed text-justify text-blue-100"
+            >
+              CodeTack adalah project website yang dibuat untuk lomba ICONFEST
+              yang diselenggarakan oleh HIMAFOR UNIMUS. Kami dari team AE 106
+              mempersembahkan website ini sebagai hasil karya orisinal.
+            </p>
+          </div>
+
+          <div class="lg:col-span-1">
+            <h3 class="font-family-space-grotesk text-lg font-semibold mb-6">
+              Materi Belajar
+            </h3>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="./src/pages/materi/materi-html.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./src/pages/materi/materi-css.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >CSS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./src/pages/materi/materi-javascript.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >JavaScript</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="lg:col-span-1">
+            <h3 class="font-family-space-grotesk text-lg font-semibold mb-6">
+              Tantangan
+            </h3>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="./src/pages/tantangan/tantangan-html.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./src/pages/tantangan/tantangan-css.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >CSS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./src/pages/tantangan/tantangan-javascript.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >JavaScript</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="lg:col-span-1">
+            <h3 class="font-family-space-grotesk text-lg font-semibold mb-6">
+              Media Sosial
+            </h3>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="#"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >Instagram</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >Tiktok</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >Twitter</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="border-t border-blue-400 pt-8">
+          <p class="text-center text-blue-100 text-sm">
+            © 2025 CodeTack. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
 
     <script src="src/assets/js/script.js"></script>
+    <script>
+      class TimelineAnimator {
+        constructor() {
+          this.timeline = document.querySelector(".timeline");
+          this.timelineProgress = document.querySelector(".timeline-progress");
+          this.timelinePointer = document.querySelector(".timeline-pointer");
+          this.steps = document.querySelectorAll(".timeline-step");
+          this.currentActiveStep = 0;
+
+          this.init();
+        }
+
+        init() {
+          this.updateTimeline();
+          window.addEventListener("scroll", () => this.updateTimeline());
+          window.addEventListener("resize", () => this.updateTimeline());
+        }
+
+        updateTimeline() {
+          const timelineRect = this.timeline.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const scrollProgress = this.calculateScrollProgress(
+            timelineRect,
+            windowHeight
+          );
+
+          this.updateProgress(scrollProgress);
+          this.updateActiveSteps();
+        }
+
+        calculateScrollProgress(timelineRect, windowHeight) {
+          const startOffset = windowHeight * 0.6;
+          const endOffset = windowHeight * 0.2;
+
+          if (timelineRect.top > startOffset) {
+            return 0;
+          }
+
+          if (timelineRect.bottom < endOffset) {
+            return 1;
+          }
+
+          const visibleHeight = Math.min(
+            timelineRect.height,
+            startOffset - timelineRect.top
+          );
+
+          return Math.max(0, Math.min(1, visibleHeight / timelineRect.height));
+        }
+
+        updateProgress(progress) {
+          const percentage = progress * 100;
+          this.timelineProgress.style.height = `${percentage}%`;
+          this.timelinePointer.style.top = `${percentage}%`;
+        }
+
+        updateActiveSteps() {
+          const windowHeight = window.innerHeight;
+          const centerLine = windowHeight / 2;
+
+          this.steps.forEach((step, index) => {
+            const stepRect = step.getBoundingClientRect();
+            const stepCenter = stepRect.top + stepRect.height / 2;
+
+            // Step aktif ketika center dari step berada di sekitar center viewport
+            const isActive =
+              stepCenter <= centerLine + 100 && stepCenter >= centerLine - 200;
+
+            if (isActive) {
+              step.classList.add("active");
+            } else {
+              step.classList.remove("active");
+            }
+          });
+        }
+      }
+
+      // Initialize when DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        new TimelineAnimator();
+      });
+    </script>
   </body>
 </html>
