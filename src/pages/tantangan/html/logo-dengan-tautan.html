@@ -727,5 +727,50 @@ ${bodyContent}
         });
       });
     </script>
+
+    <!-- Instruksi Responsive -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const openBtn = document.getElementById("open-instruksi");
+        const instruksi = document.querySelector(".instruksi-side");
+        const closeBtn = document.getElementById("close-instruksi");
+
+        let isVisible = false;
+
+        if (openBtn) {
+          openBtn.addEventListener("click", () => {
+            if (isVisible) {
+              instruksi.classList.remove("right-0");
+              instruksi.classList.add("right-[-300px]");
+            } else {
+              instruksi.classList.remove("right-[-300px]");
+              instruksi.classList.add("right-0");
+            }
+            isVisible = !isVisible;
+          });
+        }
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", () => {
+            instruksi.classList.add("right-[-300px]");
+            instruksi.classList.remove("right-0");
+            isVisible = false; // update status supaya sync
+          });
+        }
+      });
+
+      document.addEventListener("click", function (e) {
+        if (
+          isVisible &&
+          instruksi &&
+          !instruksi.contains(e.target) &&
+          !openBtn.contains(e.target)
+        ) {
+          instruksi.classList.add("right-[-300px]");
+          instruksi.classList.remove("right-0");
+          isVisible = false;
+        }
+      });
+    </script>
   </body>
 </html>
