@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeTack - Tantangan HTML</title>
+    <link rel="stylesheet" href="../../assets/css/output.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../assets/img/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../assets/img/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../../assets/img/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../../assets/img/favicon_io/site.webmanifest" />
+    <!-- Prism.css -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <!-- CodeMirror -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material.min.css"
+    />
+  </head>
+  <body>
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+      <nav
+        class="container mx-auto px-4 flex justify-between items-center lg:py-10 lg:px-36 h-16"
+      >
+        <!-- Logo -->
+        <a href="../../../index.html" class="flex items-center">
+          <img
+            src="../../assets/img/logo.png"
+            alt="CodeTack"
+            class="h-10 lg:h-12 w-auto mr-2"
+          />
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex gap-7 text-primary font-medium items-center">
+          <ul class="flex gap-7 items-center">
+            <li>
+              <a
+                href="../../../index.html"
+                class="text-primary hover:text-secondary font-family-outfit transition-colors"
+              >
+                Beranda
+              </a>
+            </li>
+            <li class="relative">
+              <button
+                id="materiToggle"
+                class="flex items-center cursor-pointer hover:text-secondary font-family-outfit transition-colors"
+              >
+                Materi Belajar
+                <svg
+                  id="materiIcon"
+                  class="size-3 ml-1 transition-transform duration-300 group-hover:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </button>
+              <!-- Materi Belajar Dropdown -->
+              <div
+                id="materiMenu"
+                class="hidden absolute left-0 mt-1 w-44 bg-white border border-gray-300 rounded shadow-lg p-2 z-50"
+              >
+                <div class="flex">
+                  <div class="flex flex-col w-full">
+                    <a
+                      href="../materi/materi-html.html"
+                      class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                    >
+                      HTML
+                    </a>
+                    <a
+                      href="../materi/materi-css.html"
+                      class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                    >
+                      CSS
+                    </a>
+                    <a
+                      href="../materi/materi-javascript.html"
+                      class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                    >
+                      JavaScript
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="relative">
+              <button
+                id="tantanganToggle"
+                class="font-semibold flex items-center cursor-pointer hover:text-secondary font-family-outfit transition-colors"
+              >
+                Tantangan
+                <svg
+                  id="tantanganIcon"
+                  class="size-3 ml-1 transition-transform duration-300 group-hover:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </button>
+              <div
+                id="tantanganMenu"
+                class="hidden absolute left-0 mt-1 w-44 bg-white border border-gray-300 rounded shadow-lg p-2 z-50"
+              >
+                <div class="flex">
+                  <div class="flex flex-col w-full">
+                    <a
+                      href="./tantangan-html.html"
+                      class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                    >
+                      HTML
+                    </a>
+                    <a
+                      href="./tantangan-css.html"
+                      class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                    >
+                      CSS
+                    </a>
+                    <a
+                      href="./tantangan-javascript.html"
+                      class="block px-4 py-2 text-primary font-family-outfit hover:bg-gray-100 rounded"
+                    >
+                      JavaScript
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a
+                href="../tentang.html"
+                class="hover:text-secondary font-family-outfit transition-colors"
+              >
+                Tentang
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button
+          id="hamburgerButton"
+          class="lg:hidden flex items-center text-primary"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6 transition-transform duration-300 ease-in-out"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 5.25h16.5m-16.5 6h16.5m-16.5 6h16.5"
+              class="hamburger-icon origin-center transition-opacity duration-300 ease-in-out"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+              class="close-icon origin-center transition-opacity duration-300 ease-in-out opacity-0"
+            />
+          </svg>
+        </button>
+      </nav>
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden fixed lg:hidden bg-white z-50 w-full h-full transition-all duration-300 ease-in-out"
+      >
+        <ul class="flex flex-col gap-4 p-4 font-family-outfit text-primary">
+          <li>
+            <a
+              href="../../../index.html"
+              class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+              >Beranda</a
+            >
+          </li>
+          <li>
+            <p class="text-sm p-2 font-semibold">Materi Belajar</p>
+            <ul class="pl-4 mt-2 space-y-2">
+              <li>
+                <a
+                  href="../materi/materi-html.html"
+                  class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+                  >HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../materi/materi-css.html"
+                  class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+                  >CSS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../materi/materi-javascript.html"
+                  class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+                  >JavaScript</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p class="text-sm p-2">Tantangan</p>
+            <ul class="pl-4 mt-2 space-y-2">
+              <li>
+                <a
+                  href="./tantangan-html.html"
+                  class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+                  >HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./tantangan-css.html"
+                  class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+                  >CSS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="./tantangan-javascript.html"
+                  class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+                  >JavaScript</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a
+              href="../tentang.html"
+              class="hover:text-secondary text-sm p-2 block rounded hover:bg-gray-100"
+              >Tentang</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      id="hero"
+      class="relative bg-cover bg-center bg-no-repeat py-14 md:py-20 font-family-outfit"
+      style="background-image: url('../../assets/img/hero-bg.png')"
+    >
+      <!-- Overlay -->
+      <div class="absolute inset-0 bg-black/60"></div>
+
+      <!-- Text -->
+      <div class="relative container mx-auto px-4 text-center">
+        <h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          Uji Pengetahuan HTML
+        </h1>
+        <p class="text-white text-sm md:text-base">
+          Uji pemahamanmu tentang elemen dasar HTML seperti judul, paragraf,
+          gambar, dan formulir.
+        </p>
+      </div>
+    </section>
+
+    <!-- Materi Section -->
+    <section id="materi">
+      <div
+        class="container mx-auto px-4 py-4 lg:py-10 lg:px-36 font-family-outfit"
+      >
+        <h1 class="text-2xl lg:text-3xl font-bold mb-4">
+          Pengantar Tantangan HTML
+        </h1>
+        <p class="text-justify text-sm md:text-base mb-6">
+          Tantangan HTML dirancang agar kamu bisa menguasai dasar-dasar struktur
+          halaman web. Di sini kamu akan diminta membuat elemen-elemen dasar
+          seperti judul halaman, paragraf, gambar, daftar, hingga formulir
+          sederhana. <br />
+          Kamu akan terbiasa menyusun konten web secara semantik dan
+          terstruktur, yang menjadi pondasi utama sebelum masuk ke desain (CSS)
+          atau logika (JavaScript).
+        </p>
+        <div
+          class="card-container grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          <div class="card p-3 rounded border">
+            <div class="image-card relative w-full h-52 rounded">
+              <!-- Level -->
+              <div class="flex justify-end absolute right-2 top-2">
+                <p
+                  class="inline-flex items-center gap-2 bg-green-100 text-green-700 px-2 py-1 rounded text-sm lg:text-base"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    class="inline-block fill-green-700"
+                  >
+                    <path
+                      d="M20 7h-4V4c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H4c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V9c0-1.103-.897-2-2-2M4 11h4v8H4zm6-1V4h4v15h-4zm10 9h-4V9h4z"
+                    />
+                  </svg>
+                  <span class="hidden sm:inline text-xs md:text-sm"
+                    >Rendah</span
+                  >
+                </p>
+              </div>
+              <div class="bg-gray-300 w-full h-full"></div>
+            </div>
+            <div class="content text-left pt-2">
+              <h1 class="text-xl font-bold mb-2">Profil Diri dengan HTML</h1>
+              <p class="mb-4">
+                Tulis deskripsi singkat tentang dirimu menggunakan heading dan
+                paragraf.
+              </p>
+              <a
+                class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full h-10 rounded-md mx-auto"
+                href="./html/profil-diri-dengan-html.html"
+                >Coba Sekarang</a
+              >
+            </div>
+          </div>
+          <div class="card p-3 rounded border">
+            <div class="image-card relative w-full h-52 rounded">
+              <!-- Level -->
+              <div class="flex justify-end absolute right-2 top-2">
+                <p
+                  class="inline-flex items-center gap-2 bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-sm lg:text-base"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    class="inline-block fill-yellow-700"
+                  >
+                    <path
+                      d="M20 7h-4V4c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H4c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V9c0-1.103-.897-2-2-2M4 11h4v8H4zm6-1V4h4v15h-4zm10 9h-4V9h4z"
+                    />
+                  </svg>
+                  <span class="hidden sm:inline text-xs md:text-sm"
+                    >Sedang</span
+                  >
+                </p>
+              </div>
+              <div class="bg-gray-300 w-full h-full"></div>
+            </div>
+            <div class="content text-left pt-2">
+              <h1 class="text-xl font-bold mb-2">Logo dengan Tautan</h1>
+              <p class="mb-4">
+                Tambahkan gambar logo yang bisa diklik untuk menuju halaman
+                tertentu.
+              </p>
+              <a
+                class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full h-10 rounded-md mx-auto"
+                href="./html/logo-dengan-tautan.html"
+                >Coba Sekarang</a
+              >
+            </div>
+          </div>
+          <div class="card p-3 rounded border">
+            <div class="image-card relative w-full h-52 rounded">
+              <!-- Level -->
+              <div class="flex justify-end absolute right-2 top-2">
+                <p
+                  class="inline-flex items-center gap-2 bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-sm lg:text-base"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    class="inline-block fill-yellow-700"
+                  >
+                    <path
+                      d="M20 7h-4V4c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H4c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V9c0-1.103-.897-2-2-2M4 11h4v8H4zm6-1V4h4v15h-4zm10 9h-4V9h4z"
+                    />
+                  </svg>
+                  <span class="hidden sm:inline text-xs md:text-sm"
+                    >Sedang</span
+                  >
+                </p>
+              </div>
+              <div class="bg-gray-300 w-full h-full"></div>
+            </div>
+            <div class="content text-left pt-2">
+              <h1 class="text-xl font-bold mb-2">Daftar Makanan Favorit</h1>
+              <p class="mb-4">
+                Buat daftar makanan favorit menggunakan list berurutan dan tidak
+                berurutan.
+              </p>
+              <a
+                class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full h-10 rounded-md mx-auto"
+                href="./html/daftar-makanan-favorit.html"
+                >Coba Sekarang</a
+              >
+            </div>
+          </div>
+          <div class="card p-3 rounded border">
+            <div class="image-card relative w-full h-52 rounded">
+              <!-- Level -->
+              <div class="flex justify-end absolute right-2 top-2">
+                <p
+                  class="inline-flex items-center gap-2 bg-red-100 text-red-700 px-2 py-1 rounded text-sm lg:text-base"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    class="inline-block fill-red-700"
+                  >
+                    <path
+                      d="M20 7h-4V4c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H4c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V9c0-1.103-.897-2-2-2M4 11h4v8H4zm6-1V4h4v15h-4zm10 9h-4V9h4z"
+                    />
+                  </svg>
+                  <span class="hidden sm:inline text-xs md:text-sm"
+                    >Tinggi</span
+                  >
+                </p>
+              </div>
+              <div class="bg-gray-300 w-full h-full"></div>
+            </div>
+            <div class="content text-left pt-2">
+              <h1 class="text-xl font-bold mb-2">Form Kontak Sederhana</h1>
+              <p class="mb-4">
+                Bangun formulir HTML sederhana berisi nama, email, dan pesan.
+              </p>
+              <a
+                class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full h-10 rounded-md mx-auto"
+                href="./html/form-kontak-sederhana.html"
+                >Coba Sekarang</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white font-family-outfit py-16 px-6">
+      <div class="max-w-6xl mx-auto">
+        <!-- Footer Content Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div class="lg:col-span-1">
+            <div class="mb-6">
+              <img
+                src="../../assets/img/logo-white.png"
+                alt="CodeTack Logo"
+                class="h-12 w-auto"
+              />
+            </div>
+            <p
+              class="text-sm md:text-base leading-relaxed text-justify text-blue-100"
+            >
+              CodeTack adalah project website yang dibuat untuk lomba ICONFEST
+              yang diselenggarakan oleh HIMAFOR UNIMUS. Kami dari team AE 106
+              mempersembahkan website ini sebagai hasil karya orisinal.
+            </p>
+          </div>
+
+          <div class="lg:col-span-1">
+            <h3 class="font-family-space-grotesk text-lg font-semibold mb-6">
+              Materi Belajar
+            </h3>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="materi-html.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="materi-css.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >CSS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="materi-javascript.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >JavaScript</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="lg:col-span-1">
+            <h3 class="font-family-space-grotesk text-lg font-semibold mb-6">
+              Tantangan
+            </h3>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="../tantangan/tantangan-html.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../tantangan/tantangan-css.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >CSS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../tantangan/tantangan-javascript.html"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >JavaScript</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="lg:col-span-1">
+            <h3 class="font-family-space-grotesk text-lg font-semibold mb-6">
+              Media Sosial
+            </h3>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="#"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >Instagram</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >Tiktok</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm md:text-base text-blue-100 hover:text-white transition-colors duration-200"
+                  >Twitter</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="border-t border-blue-400 pt-8">
+          <p class="text-center text-blue-100 text-sm">
+            © 2025 CodeTack. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+
+    <!-- CodeMirror -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <script src="../../assets/js/script.js"></script>
+  </body>
+</html>
