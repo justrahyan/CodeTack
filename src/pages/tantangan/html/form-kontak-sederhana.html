@@ -239,7 +239,81 @@
           <div
             class="instruksi-side p-3 fixed top-20 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300"
             style="z-index: 70"
-          ></div>
+          >
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-4 h-4 flex items-center justify-center">
+                <span class="text-paragraph text-xs">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                  >
+                    <g
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 16v-4m0-4h.01" />
+                    </g>
+                  </svg>
+                </span>
+              </div>
+              <h2 class="font-bold text-lg">Instruksi Tugas</h2>
+            </div>
+
+            <div class="space-y-4 text-sm md:text-base">
+              <p class="font-medium">🧠 Instruksi Tantangan:</p>
+
+              <div class="space-y-2">
+                <p>
+                  Buat halaman formulir yang memungkinkan pengguna mengisi nama,
+                  email, dan pesan. Gunakan
+                  <code class="bg-pink-100 px-1 rounded text-pink-600"
+                    >&lt;form&gt;</code
+                  >,
+                  <code class="bg-pink-100 px-1 rounded text-pink-600"
+                    >&lt;input&gt;</code
+                  >,
+                  <code class="bg-pink-100 px-1 rounded text-pink-600"
+                    >&lt;textarea&gt;</code
+                  >, dan
+                  <code class="bg-pink-100 px-1 rounded text-pink-600"
+                    >&lt;button&gt;</code
+                  >.
+                </p>
+              </div>
+
+              <div class="bg-green-50 p-3 rounded">
+                <p class="font-medium text-green-800 mb-2">
+                  ✅ Yang harus kamu capai:
+                </p>
+                <ul class="space-y-1 text-green-700 text-xs md:text-sm">
+                  <li>• Ada input untuk nama (type="text")</li>
+                  <li>• Input untuk email (type="email")</li>
+                  <li>• Textarea untuk pesan</li>
+                  <li>• Tombol kirim</li>
+                </ul>
+              </div>
+
+              <div class="bg-gray-100 p-3 rounded relative">
+                <p class="font-medium text-gray-800 mb-2">
+                  🖥️ Preview yang Diharapkan:
+                </p>
+                <div
+                  class="bg-white rounded border text-xs md:text-sm relative p-4"
+                >
+                  <p>
+                    Form sederhana dengan tiga kolom isian dan satu tombol
+                    submit.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div class="lg:col-span-3 bg-white overflow-hidden flex flex-col">
             <div class="flex text-sm font-medium border-b md:hidden">
@@ -505,6 +579,62 @@ ${bodyContent}
         });
 
         updatePreview();
+        // Responsive Editor
+        const tabEditor = document.getElementById("tabEditor");
+        const tabPreview = document.getElementById("tabPreview");
+        const editorPanels = document.getElementById("editor-panel");
+        const previewPanels = document.getElementById("preview");
+
+        function activateEditor() {
+          editorPanels.classList.remove("hidden");
+          editorPanels.classList.add("block");
+          previewPanels.classList.remove("block");
+          previewPanels.classList.add("hidden");
+
+          tabEditor.classList.add(
+            "border-b-2",
+            "border-green-600",
+            "text-green-600"
+          );
+          tabEditor.classList.remove("text-gray-500");
+
+          tabPreview.classList.remove(
+            "border-b-2",
+            "border-green-600",
+            "text-green-600"
+          );
+          tabPreview.classList.add("text-gray-500");
+        }
+
+        function activatePreview() {
+          updatePreview();
+
+          previewPanels.classList.remove("hidden");
+          previewPanels.classList.add("block");
+          editorPanels.classList.remove("block");
+          editorPanels.classList.add("hidden");
+
+          tabPreview.classList.add(
+            "border-b-2",
+            "border-green-600",
+            "text-green-600"
+          );
+          tabPreview.classList.remove("text-gray-500");
+
+          tabEditor.classList.remove(
+            "border-b-2",
+            "border-green-600",
+            "text-green-600"
+          );
+          tabEditor.classList.add("text-gray-500");
+        }
+
+        // Tambahkan event listener hanya jika lebar layar < 768px (mobile)
+        if (window.innerWidth < 768) {
+          tabEditor?.addEventListener("click", activateEditor);
+          tabPreview?.addEventListener("click", activatePreview);
+          activateEditor();
+        }
       });
     </script>
     <!-- Instruksi Responsive -->

@@ -323,6 +323,20 @@
                   <li>• Semua daftar berada di dalam &lt;body&gt;</li>
                 </ul>
               </div>
+
+              <div class="bg-gray-100 p-3 rounded relative">
+                <p class="font-medium text-gray-800 mb-2">
+                  🖥️ Preview yang Diharapkan:
+                </p>
+                <div
+                  class="bg-white rounded border text-xs md:text-sm relative p-4"
+                >
+                  <p>
+                    Dua daftar tampil: satu dengan angka (1, 2, 3), satu dengan
+                    poin (•) atau buletan.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -550,15 +564,15 @@
 
         function setEditorWithTemplate(bodyContent = ``) {
           const fullHtml = `<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Preview</title>
-  </head>
-  <body>
-${bodyContent}
-  </body>
-</html>`;
+      <html>
+        <head>
+          <meta charset="UTF-8">
+          <title>Preview</title>
+        </head>
+        <body>
+      ${bodyContent}
+        </body>
+      </html>`;
 
           editor.setValue(fullHtml);
           setTimeout(() => {
@@ -676,6 +690,62 @@ ${bodyContent}
         });
 
         updatePreview();
+        // Responsive Editor
+        const tabEditor = document.getElementById("tabEditor");
+        const tabPreview = document.getElementById("tabPreview");
+        const editorPanels = document.getElementById("editor-panel");
+        const previewPanels = document.getElementById("preview");
+
+        function activateEditor() {
+          editorPanels.classList.remove("hidden");
+          editorPanels.classList.add("block");
+          previewPanels.classList.remove("block");
+          previewPanels.classList.add("hidden");
+
+          tabEditor.classList.add(
+            "border-b-2",
+            "border-green-600",
+            "text-green-600"
+          );
+          tabEditor.classList.remove("text-gray-500");
+
+          tabPreview.classList.remove(
+            "border-b-2",
+            "border-green-600",
+            "text-green-600"
+          );
+          tabPreview.classList.add("text-gray-500");
+        }
+
+        function activatePreview() {
+          updatePreview();
+
+          previewPanels.classList.remove("hidden");
+          previewPanels.classList.add("block");
+          editorPanels.classList.remove("block");
+          editorPanels.classList.add("hidden");
+
+          tabPreview.classList.add(
+            "border-b-2",
+            "border-green-600",
+            "text-green-600"
+          );
+          tabPreview.classList.remove("text-gray-500");
+
+          tabEditor.classList.remove(
+            "border-b-2",
+            "border-green-600",
+            "text-green-600"
+          );
+          tabEditor.classList.add("text-gray-500");
+        }
+
+        // Tambahkan event listener hanya jika lebar layar < 768px (mobile)
+        if (window.innerWidth < 768) {
+          tabEditor?.addEventListener("click", activateEditor);
+          tabPreview?.addEventListener("click", activatePreview);
+          activateEditor();
+        }
       });
     </script>
     <!-- Instruksi Responsive -->
