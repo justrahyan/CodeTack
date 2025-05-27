@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CodeTack - Tantangan Menyisipkan CSS</title>
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,7 +11,6 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap"
       rel="stylesheet"
     />
-
     <!-- CodeMirror -->
     <link
       rel="stylesheet"
@@ -22,23 +20,459 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material.min.css"
     />
-
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
       body {
         font-family: "Outfit", sans-serif;
-        background-color: #f8fafc;
+        margin: 0;
+        padding: 0;
+      }
+
+      .font-family-outfit {
+        font-family: "Outfit", sans-serif;
+      }
+
+      .text-primary {
+        color: #059669;
+      }
+
+      .text-paragraph {
+        color: #6b7280;
+      }
+
+      .bg-green-100 {
+        background-color: #dcfce7;
+      }
+
+      .text-green-700 {
+        color: #15803d;
+      }
+
+      .bg-green-50 {
+        background-color: #f0fdf4;
+      }
+
+      .text-green-800 {
+        color: #166534;
+      }
+
+      .bg-green-100 {
+        background-color: #dcfce7;
+      }
+
+      .bg-pink-100 {
+        background-color: #fce7f3;
+      }
+
+      .text-pink-600 {
+        color: #db2777;
+      }
+
+      .bg-gray-100 {
+        background-color: #f3f4f6;
+      }
+
+      .text-gray-800 {
+        color: #1f2937;
+      }
+
+      .text-gray-600 {
+        color: #4b5563;
+      }
+
+      .text-gray-700 {
+        color: #374151;
+      }
+
+      .bg-white {
+        background-color: white;
+      }
+
+      .border {
+        border: 1px solid #e5e7eb;
+      }
+
+      .rounded {
+        border-radius: 0.25rem;
+      }
+
+      .px-1 {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+      }
+
+      .px-2 {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+
+      .py-1 {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+      }
+
+      .p-3 {
+        padding: 0.75rem;
+      }
+
+      .px-4 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .py-4 {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+
+      .px-6 {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .py-2 {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+
+      .py-3 {
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+      }
+
+      .mb-2 {
+        margin-bottom: 0.5rem;
+      }
+
+      .mb-4 {
+        margin-bottom: 1rem;
+      }
+
+      .gap-2 {
+        gap: 0.5rem;
+      }
+
+      .gap-4 {
+        gap: 1rem;
+      }
+
+      .text-sm {
+        font-size: 0.875rem;
+      }
+
+      .text-xs {
+        font-size: 0.75rem;
+      }
+
+      .text-lg {
+        font-size: 1.125rem;
+      }
+
+      .text-xl {
+        font-size: 1.25rem;
+      }
+
+      .text-6xl {
+        font-size: 3.75rem;
+      }
+
+      .font-bold {
+        font-weight: 700;
+      }
+
+      .font-semibold {
+        font-weight: 600;
+      }
+
+      .font-medium {
+        font-weight: 500;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .space-y-1 > * + * {
+        margin-top: 0.25rem;
+      }
+
+      .space-y-2 > * + * {
+        margin-top: 0.5rem;
+      }
+
+      .space-y-4 > * + * {
+        margin-top: 1rem;
+      }
+
+      .flex {
+        display: flex;
+      }
+
+      .flex-col {
+        flex-direction: column;
+      }
+
+      .flex-1 {
+        flex: 1;
+      }
+
+      .flex-shrink-0 {
+        flex-shrink: 0;
+      }
+
+      .items-center {
+        align-items: center;
+      }
+
+      .justify-start {
+        justify-content: flex-start;
+      }
+
+      .justify-center {
+        justify-content: center;
+      }
+
+      .justify-end {
+        justify-content: flex-end;
+      }
+
+      .justify-between {
+        justify-content: space-between;
+      }
+
+      .grid {
+        display: grid;
+      }
+
+      .grid-cols-1 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+
+      .grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .h-screen {
+        height: 100vh;
+      }
+
+      .h-full {
+        height: 100%;
+      }
+
+      .w-4 {
+        width: 1rem;
+      }
+
+      .h-4 {
+        height: 1rem;
+      }
+
+      .w-full {
+        width: 100%;
+      }
+
+      .w-72 {
+        width: 18rem;
+      }
+
+      .max-w-md {
+        max-width: 28rem;
+      }
+
+      .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .mx-4 {
+        margin-left: 1rem;
+        margin-right: 1rem;
       }
 
       .container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 1rem;
+      }
+
+      .overflow-hidden {
+        overflow: hidden;
+      }
+
+      .overflow-y-auto {
+        overflow-y: auto;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .block {
+        display: block;
+      }
+
+      .inline-flex {
+        display: inline-flex;
+      }
+
+      .fixed {
+        position: fixed;
+      }
+
+      .inset-0 {
+        inset: 0;
+      }
+
+      .right-0 {
+        right: 0;
+      }
+
+      .top-20 {
+        top: 5rem;
+      }
+
+      .z-50 {
+        z-index: 50;
+      }
+
+      .z-60 {
+        z-index: 60;
+      }
+
+      .z-70 {
+        z-index: 70;
+      }
+
+      .z-75 {
+        z-index: 75;
+      }
+
+      .cursor-pointer {
+        cursor: pointer;
+      }
+
+      .transition-all {
+        transition: all 0.3s ease;
+      }
+
+      .duration-300 {
+        transition-duration: 300ms;
+      }
+
+      .shadow-lg {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+
+      .shadow-xl {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      .rounded-lg {
+        border-radius: 0.5rem;
+      }
+
+      .rounded-l-2xl {
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+      }
+
+      .hover\:underline:hover {
+        text-decoration: underline;
+      }
+
+      .hover\:text-paragraph:hover {
+        color: #6b7280;
+      }
+
+      .hover\:bg-green-700:hover {
+        background-color: #15803d;
+      }
+
+      .hover\:bg-\[#3C4144\]:hover {
+        background-color: #3c4144;
+      }
+
+      .bg-\[#2F3436\] {
+        background-color: #2f3436;
+      }
+
+      .text-white {
+        color: white;
+      }
+
+      .bg-green-600 {
+        background-color: #16a34a;
+      }
+
+      .transition-colors {
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+      }
+
+      .whitespace-nowrap {
+        white-space: nowrap;
+      }
+
+      .focus\:outline-none:focus {
+        outline: none;
+      }
+
+      .text-gray-500 {
+        color: #6b7280;
+      }
+
+      .hover\:text-green-600:hover {
+        color: #16a34a;
+      }
+
+      .border-b {
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .border-b-2 {
+        border-bottom: 2px solid;
+      }
+
+      .border-green-600 {
+        border-color: #16a34a;
+      }
+
+      .text-green-600 {
+        color: #16a34a;
+      }
+
+      .border-t {
+        border-top: 1px solid #e5e7eb;
+      }
+
+      .flex-wrap {
+        flex-wrap: wrap;
+      }
+
+      .resize-none {
+        resize: none;
+      }
+
+      .border-none {
+        border: none;
+      }
+
+      .font-mono {
+        font-family: monospace;
+      }
+
+      .bg-black\/60 {
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+
+      .bg-black\/70 {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      .max-h-full {
+        max-height: 100%;
+      }
+
+      .max-w-full {
+        max-width: 100%;
       }
 
       .CodeMirror {
@@ -53,7 +487,6 @@
         border: 1px solid #d1d5db;
         border-radius: 0.375rem;
         overflow: hidden;
-        background: white;
       }
 
       .editor-panel {
@@ -65,577 +498,428 @@
         width: 50%;
         height: 100%;
         border-left: 1px solid #d1d5db;
-        background: white;
       }
 
-      /* Header Styles */
-      header {
-        background: white;
-        border-bottom: 1px solid #e5e7eb;
-        padding: 1rem 0;
+      .right-\[-300px\] {
+        right: -300px;
       }
 
-      .header-grid {
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .back-btn {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: #9ca3af;
-        text-decoration: none;
-        font-size: 0.875rem;
-        transition: color 0.2s;
-      }
-
-      .back-btn:hover {
-        color: #374151;
-        text-decoration: underline;
-      }
-
-      .header-title {
-        text-align: center;
-        color: #059669;
-        font-weight: 600;
-        font-size: 1.125rem;
-      }
-
-      .level-badge {
-        display: flex;
-        align-items: center;
-        justify-content: end;
-        gap: 0.5rem;
-        background: #dcfce7;
-        color: #16a34a;
-        padding: 0.5rem 1rem;
-        border-radius: 0.375rem;
-        font-size: 0.875rem;
-        width: fit-content;
-        margin-left: auto;
-      }
-
-      /* Main Content */
-      .main-content {
-        min-height: calc(100vh - 200px);
-        display: grid;
-        grid-template-columns: 300px 1fr;
-        gap: 0;
-      }
-
-      /* Instructions Panel */
-      .instructions-panel {
-        background: white;
-        padding: 1.5rem;
-        border-right: 1px solid #e5e7eb;
-        overflow-y: auto;
-      }
-
-      .instructions-title {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-        font-weight: bold;
-        font-size: 1.125rem;
-      }
-
-      .instruction-content {
-        space-y: 1rem;
-      }
-
-      .instruction-content > * {
-        margin-bottom: 1rem;
-      }
-
-      .code-tag {
-        background: #fdf2f8;
-        color: #ec4899;
-        padding: 0.125rem 0.25rem;
-        border-radius: 0.25rem;
-        font-family: monospace;
-        font-size: 0.875rem;
-      }
-
-      .success-box {
-        background: #f0fdf4;
-        padding: 0.75rem;
-        border-radius: 0.375rem;
-        border: 1px solid #bbf7d0;
-      }
-
-      .success-title {
-        font-weight: 600;
-        color: #166534;
-        margin-bottom: 0.5rem;
-      }
-
-      .success-list {
-        color: #15803d;
-        font-size: 0.875rem;
-      }
-
-      .success-list li {
-        margin-bottom: 0.25rem;
-        list-style: none;
-        padding-left: 1rem;
-        position: relative;
-      }
-
-      .success-list li:before {
-        content: "•";
-        position: absolute;
-        left: 0;
-      }
-
-      .preview-box {
-        background: #f9fafb;
-        padding: 0.75rem;
-        border-radius: 0.375rem;
-        border: 1px solid #e5e7eb;
-      }
-
-      .preview-title {
-        font-weight: 600;
-        color: #374151;
-        margin-bottom: 0.5rem;
-      }
-
-      .preview-image {
-        width: 100%;
-        border-radius: 0.375rem;
-        border: 1px solid #d1d5db;
-      }
-
-      /* Editor Area */
-      .editor-area {
-        background: white;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .tabs {
-        display: none;
-        border-bottom: 1px solid #e5e7eb;
-      }
-
-      .tab-btn {
-        padding: 0.75rem 1rem;
-        border: none;
-        background: none;
-        border-bottom: 2px solid transparent;
-        font-weight: 500;
-        color: #6b7280;
-        cursor: pointer;
-        transition: all 0.2s;
-      }
-
-      .tab-btn.active {
-        color: #059669;
-        border-bottom-color: #059669;
-      }
-
-      .editor-container-full {
-        flex: 1;
-        display: flex;
-        min-height: 70vh;
-      }
-
-      /* Action Bar */
-      .action-bar {
-        background: #2f3436;
-        padding: 0.75rem 1rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .action-left {
-        display: flex;
-        gap: 0.5rem;
-      }
-
-      .reset-btn {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 0.75rem;
-        background: none;
-        border: none;
-        color: white;
-        border-radius: 0.25rem;
-        cursor: pointer;
-        font-weight: 500;
-        transition: background-color 0.2s;
-      }
-
-      .reset-btn:hover {
-        background: #3c4144;
-      }
-
-      .submit-btn {
-        padding: 0.5rem 1.5rem;
-        background: #059669;
-        color: white;
-        border: none;
-        border-radius: 0.25rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: background-color 0.2s;
-      }
-
-      .submit-btn:hover {
-        background: #047857;
-      }
-
-      /* Modal Overlay */
-      .overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.6);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 50;
-      }
-
-      .overlay.hidden {
-        display: none;
-      }
-
-      .modal {
-        background: white;
-        padding: 2rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        text-align: center;
-        max-width: 28rem;
-        margin: 1rem;
-      }
-
-      .modal-icon {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-      }
-
-      .modal-title {
-        font-size: 1.25rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-      }
-
-      .modal-message {
-        color: #374151;
-        margin-bottom: 1rem;
-      }
-
-      .modal-btn {
-        padding: 0.5rem 1.5rem;
-        background: #059669;
-        color: white;
-        border: none;
-        border-radius: 0.25rem;
-        cursor: pointer;
-        transition: background-color 0.2s;
-      }
-
-      .modal-btn:hover {
-        background: #047857;
-      }
-
-      /* Mobile Instructions Button */
-      .mobile-instructions-btn {
-        display: none;
-        position: fixed;
-        bottom: 100px;
-        right: 20px;
-        background: #059669;
-        color: white;
-        border: none;
-        border-radius: 50px;
-        padding: 12px 16px;
-        box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
-        cursor: pointer;
-        z-index: 40;
-        font-size: 14px;
-        font-weight: 500;
-        align-items: center;
-        gap: 8px;
-        transition: all 0.3s ease;
-      }
-
-      .mobile-instructions-btn:hover {
-        background: #047857;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(5, 150, 105, 0.4);
-      }
-
-      /* Instructions Modal */
-      .instructions-modal {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.6);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 50;
-        padding: 20px;
-      }
-
-      .instructions-modal.hidden {
-        display: none;
-      }
-
-      .instructions-modal-content {
-        background: white;
-        border-radius: 12px;
-        padding: 24px;
-        max-width: 90vw;
-        max-height: 80vh;
-        overflow-y: auto;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        animation: modalSlideIn 0.3s ease-out;
-      }
-
-      @keyframes modalSlideIn {
-        from {
-          opacity: 0;
-          transform: translateY(20px) scale(0.95);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0) scale(1);
+      @media (max-width: 640px) {
+        .sm\:inline {
+          display: inline;
         }
       }
 
-      .instructions-modal-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-        padding-bottom: 12px;
-        border-bottom: 1px solid #e5e7eb;
-      }
-
-      .instructions-modal-title {
-        font-size: 18px;
-        font-weight: 600;
-        color: #059669;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .instructions-modal-close {
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: #6b7280;
-        cursor: pointer;
-        padding: 4px;
-        border-radius: 4px;
-        transition: all 0.2s;
-      }
-
-      .instructions-modal-close:hover {
-        background: #f3f4f6;
-        color: #374151;
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        .main-content {
-          grid-template-columns: 1fr;
-        }
-
-        .instructions-panel {
-          display: none;
-        }
-
-        .tabs {
-          display: flex;
-        }
-
-        .mobile-instructions-btn {
-          display: flex;
-        }
-
-        .header-grid {
-          grid-template-columns: auto 1fr auto;
-          gap: 0.5rem;
-        }
-
-        .header-title {
+      @media (min-width: 768px) {
+        .md\:text-base {
           font-size: 1rem;
         }
 
-        .level-badge {
-          padding: 0.25rem 0.5rem;
-          font-size: 0.75rem;
+        .md\:text-sm {
+          font-size: 0.875rem;
+        }
+
+        .md\:block {
+          display: block;
+        }
+
+        .md\:hidden {
+          display: none;
+        }
+
+        .md\:flex-row {
+          flex-direction: row;
+        }
+
+        .md\:w-1\/2 {
+          width: 50%;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .lg\:text-lg {
+          font-size: 1.125rem;
+        }
+
+        .lg\:text-base {
+          font-size: 1rem;
+        }
+
+        .lg\:py-6 {
+          padding-top: 1.5rem;
+          padding-bottom: 1.5rem;
+        }
+
+        .lg\:px-36 {
+          padding-left: 9rem;
+          padding-right: 9rem;
+        }
+
+        .lg\:grid-cols-4 {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .lg\:col-span-1 {
+          grid-column: span 1 / span 1;
+        }
+
+        .lg\:col-span-3 {
+          grid-column: span 3 / span 3;
+        }
+
+        .lg\:block {
+          display: block;
+        }
+
+        .lg\:hidden {
+          display: none;
+        }
+
+        .lg\:overflow-y-auto {
+          overflow-y: auto;
         }
       }
     </style>
   </head>
-
-  <body>
+  <body class="h-screen flex flex-col">
     <!-- Header -->
-    <header>
-      <div class="container">
-        <div class="header-grid">
-          <div>
-            <a href="javascript:history.back()" class="back-btn">
+    <header id="header" class="flex-shrink-0">
+      <div
+        class="container mx-auto px-4 py-4 lg:py-6 border bg-white lg:px-36 font-family-outfit"
+      >
+        <div class="grid grid-cols-3 items-center gap-4">
+          <!-- Back -->
+          <div class="flex justify-start">
+            <a
+              href="javascript:history.back()"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
+            >
               <svg
+                xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                class="inline-block"
               >
-                <path d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+                />
               </svg>
               <span class="hidden sm:inline">Kembali</span>
             </a>
           </div>
 
-          <div>
-            <h1 class="header-title">Tantangan: Menyisipkan CSS</h1>
+          <!-- Title -->
+          <div class="flex justify-center">
+            <p
+              class="text-center text-primary font-semibold lg:text-lg text-sm whitespace-nowrap"
+            >
+              Tantangan: Menyisipkan CSS
+            </p>
           </div>
 
-          <div>
-            <div class="level-badge">
+          <!-- Level -->
+          <div class="flex justify-end">
+            <p
+              class="inline-flex items-center gap-2 bg-green-100 text-green-700 px-2 py-1 rounded text-sm lg:text-base"
+            >
               <svg
+                xmlns="http://www.w3.org/2000/svg"
                 width="20"
                 height="20"
                 viewBox="0 0 24 24"
-                fill="currentColor"
+                class="inline-block fill-green-700"
               >
                 <path
                   d="M20 7h-4V4c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H4c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V9c0-1.103-.897-2-2-2M4 11h4v8H4zm6-1V4h4v15h-4zm10 9h-4V9h4z"
                 />
               </svg>
               <span class="hidden sm:inline">Menengah</span>
-            </div>
+            </p>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Main Content -->
-    <div class="main-content">
-      <!-- Instructions Panel -->
-      <div class="instructions-panel">
-        <div class="instructions-title">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+    <!-- Content Section -->
+    <section id="content" class="flex-1 overflow-hidden">
+      <div class="container mx-auto font-family-outfit h-full">
+        <div class="grid grid-cols-1 lg:grid-cols-4 h-full">
+          <!-- Instruksi Panel  -->
+          <div
+            class="lg:col-span-1 bg-white p-3 hidden lg:block lg:overflow-y-auto"
           >
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 16v-4m0-4h.01" />
-          </svg>
-          Instruksi Tugas
-        </div>
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-4 h-4 flex items-center justify-center">
+                <span class="text-paragraph text-xs">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                  >
+                    <g
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 16v-4m0-4h.01" />
+                    </g>
+                  </svg>
+                </span>
+              </div>
+              <h2 class="font-bold text-lg">Instruksi Tugas</h2>
+            </div>
 
-        <div class="instruction-content">
-          <p><strong>Saatnya mempercantik halaman web!</strong></p>
+            <div class="space-y-4 text-sm md:text-base">
+              <p class="font-medium">Saatnya mempercantik halaman web!</p>
 
-          <p>
-            Tambahkan CSS ke dalam HTML untuk mengubah tampilan elemen. Gunakan
-            tag <code class="code-tag">&lt;style&gt;</code> di dalam
-            <code class="code-tag">&lt;head&gt;</code> untuk menyisipkan CSS
-            internal.
-          </p>
-
-          <div class="success-box">
-            <p class="success-title">✅ Yang harus kamu capai:</p>
-            <ul class="success-list">
-              <li>
-                Gunakan tag <code class="code-tag">&lt;style&gt;</code> di dalam
-                <code class="code-tag">&lt;head&gt;</code>
-              </li>
-              <li>Ubah warna teks heading menjadi biru</li>
-              <li>Ubah warna background body menjadi abu-abu muda</li>
-              <li>Tambahkan margin pada paragraf</li>
-            </ul>
-          </div>
-
-          <div class="preview-box">
-            <p class="preview-title">💡 Hasil yang Diharapkan:</p>
-            <div
-              style="
-                background: white;
-                padding: 1rem;
-                border-radius: 0.25rem;
-                border: 1px solid #d1d5db;
-              "
-            >
-              <div
-                style="
-                  background: #f3f4f6;
-                  padding: 1rem;
-                  border-radius: 0.25rem;
-                "
-              >
-                <h1 style="color: #3b82f6; margin: 0 0 1rem 0">
-                  Selamat Datang
-                </h1>
-                <p style="margin: 1rem 0; color: #374151">
-                  Ini adalah contoh paragraf dengan styling CSS yang telah
-                  diterapkan.
+              <div class="space-y-2">
+                <p>
+                  Tambahkan CSS ke dalam HTML untuk mengubah tampilan elemen.
+                  Gunakan tag
+                  <code class="bg-pink-100 px-1 rounded text-pink-600"
+                    >&lt;style&gt;</code
+                  >
+                  di dalam
+                  <code class="bg-pink-100 px-1 rounded text-pink-600"
+                    >&lt;head&gt;</code
+                  >
+                  untuk menyisipkan CSS internal.
+                </p>
+                <p>
+                  Ubah warna, background, dan spacing sesuai dengan contoh yang
+                  diberikan.
                 </p>
               </div>
+
+              <div class="bg-green-50 p-3 rounded">
+                <p class="font-medium text-green-800 mb-2">
+                  ✅ Yang harus kamu capai:
+                </p>
+                <ul class="space-y-1 text-green-700 text-xs md:text-sm">
+                  <li>
+                    • Gunakan tag
+                    <code class="bg-green-100 px-1 rounded">&lt;style&gt;</code>
+                    di dalam &lt;head&gt;
+                  </li>
+                  <li>• Ubah warna teks heading menjadi biru</li>
+                  <li>• Ubah warna background body menjadi abu-abu muda</li>
+                  <li>• Tambahkan margin pada paragraf</li>
+                </ul>
+              </div>
+
+              <div class="bg-gray-100 p-3 rounded relative">
+                <p class="font-medium text-gray-800 mb-2">
+                  💡 Hasil yang Diharapkan:
+                </p>
+                <div
+                  class="bg-white rounded border text-xs md:text-sm relative"
+                >
+                  <div
+                    style="
+                      background: #f3f4f6;
+                      padding: 1rem;
+                      border-radius: 0.25rem;
+                    "
+                  >
+                    <h1 style="color: #3b82f6; margin: 0 0 1rem 0">
+                      Selamat Datang
+                    </h1>
+                    <p style="margin: 1rem 0; color: #374151">
+                      Ini adalah contoh paragraf dengan styling CSS yang telah
+                      diterapkan.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-xs md:text-sm text-gray-600">
+                Heading berwarna biru, background abu-abu muda, dan paragraf
+                memiliki margin yang rapi.
+              </p>
             </div>
           </div>
 
-          <p style="font-size: 0.875rem; color: #6b7280">
-            Heading berwarna biru, background abu-abu muda, dan paragraf
-            memiliki margin yang rapi.
-          </p>
-        </div>
-
-        <!-- Mobile Instructions Button -->
-        <button id="showInstructions" class="mobile-instructions-btn">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+          <!-- Side Instruksi -->
+          <button
+            id="open-instruksi"
+            class="fixed right-0 top-20 bg-white border rounded-l-2xl p-4 lg:hidden"
+            style="z-index: 60"
           >
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 16v-4m0-4h.01" />
-          </svg>
-          Lihat Instruksi
-        </button>
-      </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+            >
+              <g
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4m0-4h.01" />
+              </g>
+            </svg>
+          </button>
+          <div
+            class="instruksi-side p-3 fixed top-20 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300"
+            style="z-index: 70"
+          >
+            <div class="flex justify-between items-center mb-4">
+              <div class="flex items-center gap-2">
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <span class="text-paragraph text-xs">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                    >
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 16v-4m0-4h.01" />
+                      </g>
+                    </svg>
+                  </span>
+                </div>
+                <h2 class="font-bold text-lg">Instruksi Tugas</h2>
+              </div>
+              <span id="close-instruksi" class="text-paragraph cursor-pointer">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M8.4 17L7 15.6l3.6-3.6L7 8.425l1.4-1.4l3.6 3.6l3.575-3.6l1.4 1.4l-3.6 3.575l3.6 3.6l-1.4 1.4L12 13.4z"
+                  />
+                </svg>
+              </span>
+            </div>
 
-      <!-- Editor Area -->
-      <div class="editor-area">
-        <!-- Mobile Tabs -->
-        <div class="tabs">
-          <button id="tabHTML" class="tab-btn active">index.html</button>
-          <button id="tabPreview" class="tab-btn">Preview</button>
-        </div>
+            <div class="space-y-4 text-sm md:text-base">
+              <p class="font-medium">Saatnya mempercantik halaman web!</p>
 
-        <!-- Editor Container -->
-        <div class="editor-container-full">
-          <!-- HTML Editor -->
-          <div id="htmlEditor" class="editor-panel">
-            <textarea id="htmlCode">
+              <div class="space-y-2">
+                <p>
+                  Tambahkan CSS ke dalam HTML untuk mengubah tampilan elemen.
+                  Gunakan tag
+                  <code class="bg-pink-100 px-1 rounded text-pink-600"
+                    >&lt;style&gt;</code
+                  >
+                  di dalam
+                  <code class="bg-pink-100 px-1 rounded text-pink-600"
+                    >&lt;head&gt;</code
+                  >
+                  untuk menyisipkan CSS internal.
+                </p>
+                <p>
+                  Ubah warna, background, dan spacing sesuai dengan contoh yang
+                  diberikan.
+                </p>
+              </div>
+
+              <div class="bg-green-50 p-3 rounded">
+                <p class="font-medium text-green-800 mb-2">
+                  ✅ Yang harus kamu capai:
+                </p>
+                <ul class="space-y-1 text-green-700 text-xs md:text-sm">
+                  <li>
+                    • Gunakan tag
+                    <code class="bg-green-100 px-1 rounded">&lt;style&gt;</code>
+                    di dalam &lt;head&gt;
+                  </li>
+                  <li>• Ubah warna teks heading menjadi biru</li>
+                  <li>• Ubah warna background body menjadi abu-abu muda</li>
+                  <li>• Tambahkan margin pada paragraf</li>
+                </ul>
+              </div>
+
+              <div class="bg-gray-100 p-3 rounded relative">
+                <p class="font-medium text-gray-800 mb-2">
+                  💡 Hasil yang Diharapkan:
+                </p>
+                <div
+                  class="bg-white rounded border text-xs md:text-sm relative"
+                >
+                  <div
+                    style="
+                      background: #f3f4f6;
+                      padding: 1rem;
+                      border-radius: 0.25rem;
+                    "
+                  >
+                    <h1 style="color: #3b82f6; margin: 0 0 1rem 0">
+                      Selamat Datang
+                    </h1>
+                    <p style="margin: 1rem 0; color: #374151">
+                      Ini adalah contoh paragraf dengan styling CSS yang telah
+                      diterapkan.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-xs md:text-sm text-gray-600">
+                Heading berwarna biru, background abu-abu muda, dan paragraf
+                memiliki margin yang rapi.
+              </p>
+            </div>
+          </div>
+
+          <!-- Editor & Preview Panel -->
+          <div class="lg:col-span-3 bg-white overflow-hidden flex flex-col">
+            <!-- Tab -->
+            <div class="flex text-sm font-medium border-b md:hidden">
+              <button
+                id="tabEditor"
+                class="tab-btn px-4 py-2 border-b-2 border-green-600 text-green-600 focus:outline-none"
+              >
+                index.html
+              </button>
+              <button
+                id="tabPreview"
+                class="tab-btn px-4 py-2 text-gray-500 hover:text-green-600"
+              >
+                Preview
+              </button>
+            </div>
+
+            <!-- Editor Container -->
+            <div
+              class="editor-container flex flex-col md:flex-row w-full"
+              style="height: 100vh"
+            >
+              <!-- Editor -->
+              <div
+                id="editor-panel"
+                class="w-full md:w-1/2 border overflow-auto block md:block"
+                style="min-height: 100vh"
+              >
+                <textarea
+                  id="htmlCode"
+                  class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
+                >
 <!DOCTYPE html>
 <html>
 <head>
@@ -649,137 +933,80 @@
     <p>Cobalah untuk mengubah warna, background, dan spacing!</p>
 </body>
 </html></textarea
-            >
-          </div>
-
-          <!-- Preview -->
-          <iframe
-            id="preview"
-            class="preview-panel"
-            title="Preview HTML"
-          ></iframe>
-        </div>
-
-        <!-- Action Bar -->
-        <div class="action-bar">
-          <div class="action-left">
-            <button id="resetBtn" class="reset-btn">
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M4.266 16.06a8.92 8.92 0 0 0 3.915 3.978a8.7 8.7 0 0 0 5.471.832a8.8 8.8 0 0 0 4.887-2.64a9.07 9.07 0 0 0 2.388-5.079a9.14 9.14 0 0 0-1.044-5.53a8.9 8.9 0 0 0-4.068-3.815a8.7 8.7 0 0 0-5.5-.608c-1.85.401-3.367 1.313-4.62 2.755a7.6 7.6 0 0 0-1.22 1.781"
-                />
-                <path d="m8.931 7.813l-5.04.907L3 3.59" />
-              </svg>
-              Reset
-            </button>
-          </div>
-          <button id="submitBtn" class="submit-btn">Kirim</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Success Overlay -->
-    <div id="successOverlay" class="overlay hidden">
-      <div class="modal">
-        <div id="modalIcon" class="modal-icon">✓</div>
-        <h2 id="modalTitle" class="modal-title">Jawaban Benar!</h2>
-        <p id="modalMessage" class="modal-message">
-          CSS kamu sudah sesuai dengan syarat yang diminta.
-        </p>
-        <button id="closeModal" class="modal-btn">Tutup</button>
-      </div>
-    </div>
-
-    <!-- Instructions Modal for Mobile -->
-    <div id="instructionsModal" class="instructions-modal hidden">
-      <div class="instructions-modal-content">
-        <div class="instructions-modal-header">
-          <h2 class="instructions-modal-title">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 16v-4m0-4h.01" />
-            </svg>
-            Instruksi Tugas
-          </h2>
-          <button id="closeInstructionsModal" class="instructions-modal-close">
-            &times;
-          </button>
-        </div>
-
-        <div class="instruction-content">
-          <p><strong>Saatnya mempercantik halaman web!</strong></p>
-
-          <p>
-            Tambahkan CSS ke dalam HTML untuk mengubah tampilan elemen. Gunakan
-            tag <code class="code-tag">&lt;style&gt;</code> di dalam
-            <code class="code-tag">&lt;head&gt;</code> untuk menyisipkan CSS
-            internal.
-          </p>
-
-          <div class="success-box">
-            <p class="success-title">✅ Yang harus kamu capai:</p>
-            <ul class="success-list">
-              <li>
-                Gunakan tag <code class="code-tag">&lt;style&gt;</code> di dalam
-                <code class="code-tag">&lt;head&gt;</code>
-              </li>
-              <li>Ubah warna teks heading menjadi biru</li>
-              <li>Ubah warna background body menjadi abu-abu muda</li>
-              <li>Tambahkan margin pada paragraf</li>
-            </ul>
-          </div>
-
-          <div class="preview-box">
-            <p class="preview-title">💡 Hasil yang Diharapkan:</p>
-            <div
-              style="
-                background: white;
-                padding: 1rem;
-                border-radius: 0.25rem;
-                border: 1px solid #d1d5db;
-              "
-            >
-              <div
-                style="
-                  background: #f3f4f6;
-                  padding: 1rem;
-                  border-radius: 0.25rem;
-                "
-              >
-                <h1 style="color: #3b82f6; margin: 0 0 1rem 0">
-                  Selamat Datang
-                </h1>
-                <p style="margin: 1rem 0; color: #374151">
-                  Ini adalah contoh paragraf dengan styling CSS yang telah
-                  diterapkan.
-                </p>
+                >
               </div>
+
+              <!-- Preview -->
+              <iframe
+                id="preview"
+                class="w-full md:w-1/2 border hidden md:block"
+                title="Pratinjau HTML"
+                style="height: 100vh"
+              ></iframe>
+            </div>
+
+            <!-- Bottom Action Bar -->
+            <div
+              class="border-t bg-[#2F3436] px-4 py-3 flex flex-wrap gap-2 justify-between"
+            >
+              <div class="flex gap-2">
+                <button
+                  id="resetBtn"
+                  class="px-3 py-1 flex items-center gap-2 text-sm md:text-base text-white hover:bg-[#3C4144] rounded font-medium"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                  >
+                    <g
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M4.266 16.06a8.92 8.92 0 0 0 3.915 3.978a8.7 8.7 0 0 0 5.471.832a8.8 8.8 0 0 0 4.887-2.64a9.07 9.07 0 0 0 2.388-5.079a9.14 9.14 0 0 0-1.044-5.53a8.9 8.9 0 0 0-4.068-3.815a8.7 8.7 0 0 0-5.5-.608c-1.85.401-3.367 1.313-4.62 2.755a7.6 7.6 0 0 0-1.22 1.781"
+                      />
+                      <path d="m8.931 7.813l-5.04.907L3 3.59" />
+                    </g>
+                  </svg>
+                  Reset
+                </button>
+              </div>
+              <button
+                id="submitBtn"
+                class="px-6 py-1 text-sm md:text-base bg-green-600 hover:bg-green-700 text-white font-medium"
+              >
+                Kirim
+              </button>
             </div>
           </div>
-
-          <p style="font-size: 0.875rem; color: #6b7280">
-            Heading berwarna biru, background abu-abu muda, dan paragraf
-            memiliki margin yang rapi.
-          </p>
         </div>
+      </div>
+    </section>
+
+    <!-- Jawaban Benar -->
+    <div
+      id="successOverlay"
+      class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-xl text-center max-w-md mx-4">
+        <div id="overlayIcon" class="text-green-600 text-6xl mb-4">✓</div>
+        <h2 id="overlayTitle" class="text-xl font-bold text-green-600 mb-2">
+          Jawaban Benar!
+        </h2>
+        <p id="overlayMessage" class="text-gray-700 mb-4">
+          CSS kamu sudah sesuai dengan syarat yang diminta.
+        </p>
+        <button
+          id="closeOverlay"
+          class="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+        >
+          Tutup
+        </button>
       </div>
     </div>
 
@@ -792,206 +1019,110 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        console.log("DOM loaded, initializing...");
-
-        // Elements
+        // Deklarasi elemen
         const textarea = document.getElementById("htmlCode");
         const preview = document.getElementById("preview");
         const submitBtn = document.getElementById("submitBtn");
         const resetBtn = document.getElementById("resetBtn");
         const overlay = document.getElementById("successOverlay");
-        const closeModal = document.getElementById("closeModal");
-        const tabHTML = document.getElementById("tabHTML");
-        const tabPreview = document.getElementById("tabPreview");
-        const htmlEditor = document.getElementById("htmlEditor");
+        const closeBtn = document.getElementById("closeOverlay");
 
-        // Mobile instructions elements
-        const showInstructionsBtn = document.getElementById("showInstructions");
-        const instructionsModal = document.getElementById("instructionsModal");
-        const closeInstructionsModal = document.getElementById(
-          "closeInstructionsModal"
-        );
-
-        // Check if elements exist
-        console.log("Elements found:", {
-          textarea: !!textarea,
-          submitBtn: !!submitBtn,
-          overlay: !!overlay,
+        // Inisialisasi CodeMirror
+        const editor = CodeMirror.fromTextArea(textarea, {
+          lineNumbers: true,
+          mode: "htmlmixed",
+          theme: "material",
+          indentUnit: 2,
+          smartIndent: true,
+          tabSize: 2,
+          indentWithTabs: false,
+          lineWrapping: true,
+          foldGutter: true,
+          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+          autoCloseBrackets: true,
+          autoCloseTags: true,
+          matchBrackets: true,
+          matchTags: true,
         });
 
-        // Initialize CodeMirror
-        let editor;
-        try {
-          editor = CodeMirror.fromTextArea(textarea, {
-            lineNumbers: true,
-            mode: "htmlmixed",
-            theme: "material",
-            indentUnit: 2,
-            smartIndent: true,
-            tabSize: 2,
-            indentWithTabs: false,
-            lineWrapping: true,
-            autoCloseBrackets: true,
-            autoCloseTags: true,
-            matchBrackets: true,
-            matchTags: true,
-          });
-          console.log("CodeMirror initialized successfully");
-        } catch (error) {
-          console.error("Error initializing CodeMirror:", error);
-          // Fallback to textarea
-          editor = {
-            getValue: () => textarea.value,
-            setValue: (value) => {
-              textarea.value = value;
-            },
-            on: () => {},
-          };
-        }
-
-        // Update preview function
+        // Fungsi update preview
         function updatePreview() {
-          if (!preview) return;
-
-          const htmlContent = editor.getValue();
-          preview.srcdoc = htmlContent;
+          const fullHtml = editor.getValue();
+          preview.srcdoc = fullHtml;
         }
 
-        // Initial preview update
-        updatePreview();
-
-        // Update preview on change
+        // Update preview saat ada perubahan
         editor.on("change", function () {
           clearTimeout(window.updateTimeout);
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
-        // Auto-refresh preview
-        setInterval(updatePreview, 1000);
+        // Auto-refresh preview setiap 1 detik
+        setInterval(() => {
+          if (editor.getValue()) {
+            updatePreview();
+          }
+        }, 1000);
 
-        // Mobile tabs functionality
-        if (tabHTML && tabPreview) {
-          tabHTML.addEventListener("click", () => {
-            tabHTML.classList.add("active");
-            tabPreview.classList.remove("active");
-            htmlEditor.style.display = "block";
-            preview.style.display = "none";
-          });
+        // Submit button
+        submitBtn.addEventListener("click", () => {
+          const fullHtml = editor.getValue();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(fullHtml, "text/html");
 
-          tabPreview.addEventListener("click", () => {
-            tabPreview.classList.add("active");
-            tabHTML.classList.remove("active");
-            htmlEditor.style.display = "none";
-            preview.style.display = "block";
-          });
-        }
+          // Check for CSS requirements
+          const hasStyleTag = fullHtml.includes("<style>");
+          const contentLower = fullHtml.toLowerCase();
 
-        // Mobile instructions modal functionality
-        if (showInstructionsBtn && instructionsModal) {
-          showInstructionsBtn.addEventListener("click", () => {
-            instructionsModal.classList.remove("hidden");
-          });
-        }
+          const hasBlueHeading =
+            contentLower.includes("color") &&
+            (contentLower.includes("blue") ||
+              contentLower.includes("#3b82f6") ||
+              contentLower.includes("#0000ff") ||
+              contentLower.includes("rgb(") ||
+              contentLower.includes("hsl("));
 
-        if (closeInstructionsModal && instructionsModal) {
-          closeInstructionsModal.addEventListener("click", () => {
-            instructionsModal.classList.add("hidden");
-          });
-        }
+          const hasBackground = contentLower.includes("background");
+          const hasMargin =
+            contentLower.includes("margin") || contentLower.includes("padding");
 
-        if (instructionsModal) {
-          instructionsModal.addEventListener("click", (e) => {
-            if (e.target === instructionsModal) {
-              instructionsModal.classList.add("hidden");
-            }
-          });
-        }
+          const overlayIcon = document.getElementById("overlayIcon");
+          const overlayTitle = document.getElementById("overlayTitle");
+          const overlayMessage = document.getElementById("overlayMessage");
+          const overlayBox = document.getElementById("successOverlay");
 
-        // Submit button functionality
-        if (submitBtn) {
-          submitBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            console.log("Submit button clicked");
+          if (hasStyleTag && hasBlueHeading && hasBackground && hasMargin) {
+            // Success
+            overlayIcon.textContent = "✓";
+            overlayIcon.className = "text-green-600 text-6xl mb-4";
+            overlayTitle.textContent = "Jawaban Benar!";
+            overlayTitle.className = "text-xl font-bold text-green-600 mb-2";
+            overlayMessage.textContent =
+              "CSS kamu sudah sesuai dengan syarat yang diminta. Semua elemen styling telah diterapkan dengan benar!";
+          } else {
+            // Needs improvement
+            overlayIcon.textContent = "!";
+            overlayIcon.className = "text-yellow-500 text-6xl mb-4";
+            overlayTitle.textContent = "Perlu Perbaikan";
+            overlayTitle.className = "text-xl font-bold text-yellow-500 mb-2";
 
-            try {
-              const htmlContent = editor.getValue();
-              console.log("HTML Content:", htmlContent);
+            let missing = [];
+            if (!hasStyleTag) missing.push("tag <style>");
+            if (!hasBlueHeading) missing.push("warna biru untuk heading");
+            if (!hasBackground) missing.push("background color");
+            if (!hasMargin) missing.push("margin/padding");
 
-              // Check for CSS requirements
-              const hasStyleTag = htmlContent.includes("<style>");
-              const contentLower = htmlContent.toLowerCase();
+            overlayMessage.textContent = `Pastikan kamu menambahkan: ${missing.join(
+              ", "
+            )}.`;
+          }
 
-              const hasBlueHeading =
-                contentLower.includes("color") &&
-                (contentLower.includes("blue") ||
-                  contentLower.includes("#3b82f6") ||
-                  contentLower.includes("#0000ff") ||
-                  contentLower.includes("rgb(") ||
-                  contentLower.includes("hsl("));
-
-              const hasBackground = contentLower.includes("background");
-              const hasMargin =
-                contentLower.includes("margin") ||
-                contentLower.includes("padding");
-
-              console.log("Validation results:", {
-                hasStyleTag,
-                hasBlueHeading,
-                hasBackground,
-                hasMargin,
-              });
-
-              const modalIcon = document.getElementById("modalIcon");
-              const modalTitle = document.getElementById("modalTitle");
-              const modalMessage = document.getElementById("modalMessage");
-
-              if (!modalIcon || !modalTitle || !modalMessage || !overlay) {
-                console.error("Modal elements not found");
-                alert("Modal elements missing!");
-                return;
-              }
-
-              if (hasStyleTag && hasBlueHeading && hasBackground && hasMargin) {
-                // Success
-                modalIcon.textContent = "✓";
-                modalIcon.style.color = "#059669";
-                modalTitle.textContent = "Jawaban Benar!";
-                modalTitle.style.color = "#059669";
-                modalMessage.textContent =
-                  "CSS kamu sudah sesuai dengan syarat yang diminta. Semua elemen styling telah diterapkan dengan benar!";
-              } else {
-                // Needs improvement
-                modalIcon.textContent = "!";
-                modalIcon.style.color = "#eab308";
-                modalTitle.textContent = "Perlu Perbaikan";
-                modalTitle.style.color = "#eab308";
-
-                let missing = [];
-                if (!hasStyleTag) missing.push("tag <style>");
-                if (!hasBlueHeading) missing.push("warna biru untuk heading");
-                if (!hasBackground) missing.push("background color");
-                if (!hasMargin) missing.push("margin/padding");
-
-                modalMessage.textContent = `Pastikan kamu menambahkan: ${missing.join(
-                  ", "
-                )}.`;
-              }
-
-              console.log("Showing modal...");
-              overlay.classList.remove("hidden");
-            } catch (error) {
-              console.error("Error in submit handler:", error);
-              alert("Error: " + error.message);
-            }
-          });
-        } else {
-          console.error("Submit button not found!");
-        }
+          overlayBox.classList.remove("hidden");
+        });
 
         // Reset button
-        if (resetBtn) {
-          resetBtn.addEventListener("click", () => {
-            const defaultCode = `<!DOCTYPE html>
+        resetBtn.addEventListener("click", () => {
+          const defaultCode = `<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -1004,27 +1135,135 @@
     <p>Cobalah untuk mengubah warna, background, dan spacing!</p>
 </body>
 </html>`;
-            editor.setValue(defaultCode);
-            updatePreview();
-          });
-        }
+          editor.setValue(defaultCode);
+          updatePreview();
+        });
 
-        // Close modal
-        if (closeModal) {
-          closeModal.addEventListener("click", () => {
+        // Overlay close
+        closeBtn.addEventListener("click", () => {
+          overlay.classList.add("hidden");
+        });
+
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) {
             overlay.classList.add("hidden");
-          });
-        }
+          }
+        });
 
-        if (overlay) {
-          overlay.addEventListener("click", (e) => {
-            if (e.target === overlay) {
-              overlay.classList.add("hidden");
+        updatePreview();
+      });
+    </script>
+
+    <!-- Code Editor dan Preview -->
+    <script>
+      // Editor dan Preview Tantangan
+      const tabEditor = document.getElementById("tabEditor");
+      const tabPreview = document.getElementById("tabPreview");
+      const editorPanels = document.getElementById("editor-panel");
+      const previewPanels = document.getElementById("preview");
+
+      function activateEditor() {
+        // Show editor, hide preview
+        editorPanels.classList.remove("hidden");
+        editorPanels.classList.add("block");
+        previewPanels.classList.remove("block");
+        previewPanels.classList.add("hidden");
+
+        tabEditor.classList.add(
+          "border-b-2",
+          "border-green-600",
+          "text-green-600"
+        );
+        tabEditor.classList.remove("text-gray-500");
+
+        tabPreview.classList.remove(
+          "border-b-2",
+          "border-green-600",
+          "text-green-600"
+        );
+        tabPreview.classList.add("text-gray-500");
+      }
+
+      function activatePreview() {
+        // Show preview, hide editor
+        previewPanels.classList.remove("hidden");
+        previewPanels.classList.add("block");
+        editorPanels.classList.remove("block");
+        editorPanels.classList.add("hidden");
+
+        tabPreview.classList.add(
+          "border-b-2",
+          "border-green-600",
+          "text-green-600"
+        );
+        tabPreview.classList.remove("text-gray-500");
+
+        tabEditor.classList.remove(
+          "border-b-2",
+          "border-green-600",
+          "text-green-600"
+        );
+        tabEditor.classList.add("text-gray-500");
+      }
+
+      // Only enable tab switch on mobile
+      tabEditor.addEventListener("click", () => {
+        if (window.innerWidth < 768) activateEditor();
+      });
+
+      tabPreview.addEventListener("click", () => {
+        if (window.innerWidth < 768) activatePreview();
+      });
+
+      // Default to editor tab on mobile
+      if (window.innerWidth < 768) {
+        activateEditor();
+      }
+    </script>
+
+    <!-- Instruksi Responsive -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const openBtn = document.getElementById("open-instruksi");
+        const instruksi = document.querySelector(".instruksi-side");
+        const closeBtn = document.getElementById("close-instruksi");
+
+        let isVisible = false;
+
+        if (openBtn) {
+          openBtn.addEventListener("click", () => {
+            if (isVisible) {
+              instruksi.classList.remove("right-0");
+              instruksi.classList.add("right-[-300px]");
+            } else {
+              instruksi.classList.remove("right-[-300px]");
+              instruksi.classList.add("right-0");
             }
+            isVisible = !isVisible;
           });
         }
 
-        console.log("Initialization complete");
+        if (closeBtn) {
+          closeBtn.addEventListener("click", () => {
+            instruksi.classList.add("right-[-300px]");
+            instruksi.classList.remove("right-0");
+            isVisible = false;
+          });
+        }
+
+        // Close instructions when clicking outside
+        document.addEventListener("click", function (e) {
+          if (
+            isVisible &&
+            instruksi &&
+            !instruksi.contains(e.target) &&
+            !openBtn.contains(e.target)
+          ) {
+            instruksi.classList.add("right-[-300px]");
+            instruksi.classList.remove("right-0");
+            isVisible = false;
+          }
+        });
       });
     </script>
   </body>
