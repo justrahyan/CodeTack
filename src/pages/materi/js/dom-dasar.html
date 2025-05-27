@@ -470,22 +470,24 @@ paragrafSalam.style.color = "blue";</code></pre>
   <p>JavaScript bisa mengubah halaman ini!</p>
 
   <script>
-    // --- Ganti nilai 'mode' menjadi "gelap" ---
-    const mode = "terang";
-    // ----------------------------------------
+    window.onload = function() {
+      // --- Ganti nilai 'mode' menjadi "gelap" ---
+      const mode = "terang";
+      // ----------------------------------------
 
-    const elemenHalaman = document.getElementById("halaman");
-    const elemenJudul = document.getElementById("judul");
+      const elemenHalaman = document.getElementById("halaman");
+      const elemenJudul = document.getElementById("judul");
 
-    if (mode === "gelap") {
-      elemenHalaman.style.backgroundColor = "black";
-      elemenHalaman.style.color = "white";
-      elemenJudul.innerText = "Mode Gelap";
-    } else {
-      // Biarkan seperti semula jika bukan mode gelap
-      elemenHalaman.style.backgroundColor = "white";
-      elemenHalaman.style.color = "black";
-      elemenJudul.innerText = "Mode Terang";
+      if (mode === "gelap") {
+        elemenHalaman.style.backgroundColor = "black";
+        elemenHalaman.style.color = "white";
+        elemenJudul.innerText = "Mode Gelap";
+      } else {
+        // Biarkan seperti semula jika bukan mode gelap
+        elemenHalaman.style.backgroundColor = "white";
+        elemenHalaman.style.color = "black";
+        elemenJudul.innerText = "Mode Terang";
+      }
     }
   </script>
 </body>
@@ -768,13 +770,6 @@ paragrafSalam.style.color = "blue";</code></pre>
 
         // Update preview awal
         updatePreview();
-
-        // Auto-refresh preview setiap 1 detik untuk memastikan sinkronisasi
-        setInterval(() => {
-          if (editor.getValue()) {
-            updatePreview();
-          }
-        }, 1000);
       });
     </script>
   </body>

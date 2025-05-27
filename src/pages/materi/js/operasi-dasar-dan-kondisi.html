@@ -470,31 +470,33 @@ if (apakahLebihBesar) {
   <p id="keterangan-hasil"></p>
 
   <script>
-    // --- Ubah nilai ini (antara 0 - 100) ---
-    let nilai = 85;
-    // ----------------------------------------
+    window.onload = function () {
+      // --- Ubah nilai ini (antara 0 - 100) ---
+      let nilai = 85;
+      // ----------------------------------------
 
-    let grade = "";
-    let keterangan = "";
+      let grade = "";
+      let keterangan = "";
 
-    // Logika Kondisi untuk menentukan grade
-    if (nilai >= 80) {
-      grade = "A";
-      keterangan = "Luar Biasa, pertahankan!";
-    } else if (nilai >= 70) {
-      grade = "B";
-      keterangan = "Bagus, tingkatkan lagi!";
-    } else if (nilai >= 60) {
-      grade = "C";
-      keterangan = "Cukup, Anda lulus.";
-    } else {
-      grade = "D";
-      keterangan = "Maaf, Anda perlu belajar lebih giat.";
-    }
+      // Logika Kondisi untuk menentukan grade
+      if (nilai >= 80) {
+        grade = "A";
+        keterangan = "Luar Biasa, pertahankan!";
+      } else if (nilai >= 70) {
+        grade = "B";
+        keterangan = "Bagus, tingkatkan lagi!";
+      } else if (nilai >= 60) {
+        grade = "C";
+        keterangan = "Cukup, Anda lulus.";
+      } else {
+        grade = "D";
+        keterangan = "Maaf, Anda perlu belajar lebih giat.";
+      }
 
-    // Menampilkan hasilnya ke elemen HTML
-    document.getElementById("judul-hasil").innerText = "Nilai Anda: " + nilai;
-    document.getElementById("keterangan-hasil").innerText = "Status: " + keterangan + " (Grade " + grade + ")";
+      // Menampilkan hasilnya ke elemen HTML
+      document.getElementById("judul-hasil").innerText = "Nilai Anda: " + nilai;
+      document.getElementById("keterangan-hasil").innerText = "Status: " + keterangan + " (Grade " + grade + ")";
+    };
   </script>
 </body>
 </html>
@@ -735,10 +737,8 @@ if (apakahLebihBesar) {
     <script>
       // Inisialisasi CodeMirror
       document.addEventListener("DOMContentLoaded", function () {
-        // Highlight syntax dengan Prism
         Prism.highlightAll();
 
-        // Setup CodeMirror editor
         const textarea = document.getElementById("htmlCode");
         const preview = document.getElementById("preview");
 
@@ -759,7 +759,7 @@ if (apakahLebihBesar) {
           matchTags: true,
         });
 
-        // Update preview ketika code berubah
+        // Update preview saat code berubah
         function updatePreview() {
           const code = editor.getValue();
           const doc = preview.contentDocument || preview.contentWindow.document;
@@ -768,21 +768,14 @@ if (apakahLebihBesar) {
           doc.close();
         }
 
-        // Event listener untuk perubahan code
+        // Event listener saat ada perubahan di editor
         editor.on("change", function () {
           clearTimeout(window.updateTimeout);
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
-        // Update preview awal
+        // Update awal saat halaman dimuat
         updatePreview();
-
-        // Auto-refresh preview setiap 1 detik untuk memastikan sinkronisasi
-        setInterval(() => {
-          if (editor.getValue()) {
-            updatePreview();
-          }
-        }, 1000);
       });
     </script>
   </body>

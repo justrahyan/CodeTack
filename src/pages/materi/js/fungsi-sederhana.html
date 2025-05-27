@@ -460,22 +460,24 @@ console.log(hasilSapaan); // Output: "Halo, Budi! Selamat datang di CodeTack."</
   <p id="hasil"></p>
 
   <script>
-    // 1. DEFINISIKAN FUNGSI DI SINI
-    // Fungsi ini menerima nama dan usia, lalu mengembalikan kalimat perkenalan.
-    function buatPerkenalan(nama, usia) {
-      const kalimat = "Perkenalkan, nama saya " + nama + " dan saya berusia " + usia + " tahun.";
-      return kalimat;
+    window.onload = function() {
+      // 1. DEFINISIKAN FUNGSI DI SINI
+      // Fungsi ini menerima nama dan usia, lalu mengembalikan kalimat perkenalan.
+      function buatPerkenalan(nama, usia) {
+        const kalimat = "Perkenalkan, nama saya " + nama + " dan saya berusia " + usia + " tahun.";
+        return kalimat;
+      }
+
+      // 2. PANGGIL FUNGSI DENGAN ARGUMEN BERBEDA
+      // Coba ganti nilai variabel di bawah ini!
+      const namaPengguna = "Siti";
+      const usiaPengguna = 22;
+      
+      const hasilPerkenalan = buatPerkenalan(namaPengguna, usiaPengguna);
+
+      // 3. TAMPILKAN HASILNYA KE HALAMAN
+      document.getElementById("hasil").innerText = hasilPerkenalan;
     }
-
-    // 2. PANGGIL FUNGSI DENGAN ARGUMEN BERBEDA
-    // Coba ganti nilai variabel di bawah ini!
-    const namaPengguna = "Siti";
-    const usiaPengguna = 22;
-    
-    const hasilPerkenalan = buatPerkenalan(namaPengguna, usiaPengguna);
-
-    // 3. TAMPILKAN HASILNYA KE HALAMAN
-    document.getElementById("hasil").innerText = hasilPerkenalan;
   </script>
 </body>
 </html>
@@ -757,13 +759,6 @@ console.log(hasilSapaan); // Output: "Halo, Budi! Selamat datang di CodeTack."</
 
         // Update preview awal
         updatePreview();
-
-        // Auto-refresh preview setiap 1 detik untuk memastikan sinkronisasi
-        setInterval(() => {
-          if (editor.getValue()) {
-            updatePreview();
-          }
-        }, 1000);
       });
     </script>
   </body>

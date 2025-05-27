@@ -464,27 +464,29 @@ tombol.addEventListener("click", function() {
   <button id="tombolAksi">Klik Saya!</button>
 
   <script>
-    // 1. Pilih elemen yang dibutuhkan
-    const tombol = document.getElementById("tombolAksi");
-    const judul = document.getElementById("judul");
+    window.onload = function () {
+      // 1. Pilih elemen yang dibutuhkan
+      const tombol = document.getElementById("tombolAksi");
+      const judul = document.getElementById("judul");
 
-    // 2. Tambahkan event 'click' ke tombol
-    tombol.addEventListener("click", function() {
-      // Kode ini berjalan saat tombol diklik
-      judul.innerText = "Anda Mengklik Tombol!";
-    });
+      // 2. Tambahkan event 'click' ke tombol
+      tombol.addEventListener("click", function() {
+        // Kode ini berjalan saat tombol diklik
+        judul.innerText = "Anda Mengklik Tombol!";
+      });
 
-    // 3. Tambahkan event 'mouseover' ke judul
-    judul.addEventListener("mouseover", function() {
-      // Kode ini berjalan saat mouse di atas judul
-      judul.innerText = "Mouse Anda di sini!";
-    });
+      // 3. Tambahkan event 'mouseover' ke judul
+      judul.addEventListener("mouseover", function() {
+        // Kode ini berjalan saat mouse di atas judul
+        judul.innerText = "Mouse Anda di sini!";
+      });
 
-    // 4. Tambahkan event 'mouseout' ke judul
-    judul.addEventListener("mouseout", function() {
-      // Kode ini berjalan saat mouse keluar dari judul
-      judul.innerText = "Mouse Anda Pergi!";
-    });
+      // 4. Tambahkan event 'mouseout' ke judul
+      judul.addEventListener("mouseout", function() {
+        // Kode ini berjalan saat mouse keluar dari judul
+        judul.innerText = "Mouse Anda Pergi!";
+      });
+    }
   </script>
 </body>
 </html>
@@ -764,13 +766,6 @@ tombol.addEventListener("click", function() {
 
         // Update preview awal
         updatePreview();
-
-        // Auto-refresh preview setiap 1 detik untuk memastikan sinkronisasi
-        setInterval(() => {
-          if (editor.getValue()) {
-            updatePreview();
-          }
-        }, 1000);
       });
     </script>
   </body>
