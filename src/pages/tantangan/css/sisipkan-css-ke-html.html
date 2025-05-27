@@ -346,6 +346,105 @@
         background: #047857;
       }
 
+      /* Mobile Instructions Button */
+      .mobile-instructions-btn {
+        display: none;
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        background: #059669;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 12px 16px;
+        box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+        cursor: pointer;
+        z-index: 40;
+        font-size: 14px;
+        font-weight: 500;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-instructions-btn:hover {
+        background: #047857;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(5, 150, 105, 0.4);
+      }
+
+      /* Instructions Modal */
+      .instructions-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+        padding: 20px;
+      }
+
+      .instructions-modal.hidden {
+        display: none;
+      }
+
+      .instructions-modal-content {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        max-width: 90vw;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        animation: modalSlideIn 0.3s ease-out;
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .instructions-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .instructions-modal-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #059669;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .instructions-modal-close {
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #6b7280;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 4px;
+        transition: all 0.2s;
+      }
+
+      .instructions-modal-close:hover {
+        background: #f3f4f6;
+        color: #374151;
+      }
+
       /* Responsive */
       @media (max-width: 768px) {
         .main-content {
@@ -357,6 +456,10 @@
         }
 
         .tabs {
+          display: flex;
+        }
+
+        .mobile-instructions-btn {
           display: flex;
         }
 
@@ -500,6 +603,24 @@
             memiliki margin yang rapi.
           </p>
         </div>
+
+        <!-- Mobile Instructions Button -->
+        <button id="showInstructions" class="mobile-instructions-btn">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4m0-4h.01" />
+          </svg>
+          Lihat Instruksi
+        </button>
       </div>
 
       <!-- Editor Area -->
@@ -578,6 +699,90 @@
       </div>
     </div>
 
+    <!-- Instructions Modal for Mobile -->
+    <div id="instructionsModal" class="instructions-modal hidden">
+      <div class="instructions-modal-content">
+        <div class="instructions-modal-header">
+          <h2 class="instructions-modal-title">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4m0-4h.01" />
+            </svg>
+            Instruksi Tugas
+          </h2>
+          <button id="closeInstructionsModal" class="instructions-modal-close">
+            &times;
+          </button>
+        </div>
+
+        <div class="instruction-content">
+          <p><strong>Saatnya mempercantik halaman web!</strong></p>
+
+          <p>
+            Tambahkan CSS ke dalam HTML untuk mengubah tampilan elemen. Gunakan
+            tag <code class="code-tag">&lt;style&gt;</code> di dalam
+            <code class="code-tag">&lt;head&gt;</code> untuk menyisipkan CSS
+            internal.
+          </p>
+
+          <div class="success-box">
+            <p class="success-title">✅ Yang harus kamu capai:</p>
+            <ul class="success-list">
+              <li>
+                Gunakan tag <code class="code-tag">&lt;style&gt;</code> di dalam
+                <code class="code-tag">&lt;head&gt;</code>
+              </li>
+              <li>Ubah warna teks heading menjadi biru</li>
+              <li>Ubah warna background body menjadi abu-abu muda</li>
+              <li>Tambahkan margin pada paragraf</li>
+            </ul>
+          </div>
+
+          <div class="preview-box">
+            <p class="preview-title">💡 Hasil yang Diharapkan:</p>
+            <div
+              style="
+                background: white;
+                padding: 1rem;
+                border-radius: 0.25rem;
+                border: 1px solid #d1d5db;
+              "
+            >
+              <div
+                style="
+                  background: #f3f4f6;
+                  padding: 1rem;
+                  border-radius: 0.25rem;
+                "
+              >
+                <h1 style="color: #3b82f6; margin: 0 0 1rem 0">
+                  Selamat Datang
+                </h1>
+                <p style="margin: 1rem 0; color: #374151">
+                  Ini adalah contoh paragraf dengan styling CSS yang telah
+                  diterapkan.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.875rem; color: #6b7280">
+            Heading berwarna biru, background abu-abu muda, dan paragraf
+            memiliki margin yang rapi.
+          </p>
+        </div>
+      </div>
+    </div>
+
     <!-- CodeMirror Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
@@ -587,6 +792,8 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        console.log("DOM loaded, initializing...");
+
         // Elements
         const textarea = document.getElementById("htmlCode");
         const preview = document.getElementById("preview");
@@ -598,24 +805,54 @@
         const tabPreview = document.getElementById("tabPreview");
         const htmlEditor = document.getElementById("htmlEditor");
 
-        // Initialize CodeMirror
-        const editor = CodeMirror.fromTextArea(textarea, {
-          lineNumbers: true,
-          mode: "htmlmixed",
-          theme: "material",
-          indentUnit: 2,
-          smartIndent: true,
-          tabSize: 2,
-          indentWithTabs: false,
-          lineWrapping: true,
-          autoCloseBrackets: true,
-          autoCloseTags: true,
-          matchBrackets: true,
-          matchTags: true,
+        // Mobile instructions elements
+        const showInstructionsBtn = document.getElementById("showInstructions");
+        const instructionsModal = document.getElementById("instructionsModal");
+        const closeInstructionsModal = document.getElementById(
+          "closeInstructionsModal"
+        );
+
+        // Check if elements exist
+        console.log("Elements found:", {
+          textarea: !!textarea,
+          submitBtn: !!submitBtn,
+          overlay: !!overlay,
         });
+
+        // Initialize CodeMirror
+        let editor;
+        try {
+          editor = CodeMirror.fromTextArea(textarea, {
+            lineNumbers: true,
+            mode: "htmlmixed",
+            theme: "material",
+            indentUnit: 2,
+            smartIndent: true,
+            tabSize: 2,
+            indentWithTabs: false,
+            lineWrapping: true,
+            autoCloseBrackets: true,
+            autoCloseTags: true,
+            matchBrackets: true,
+            matchTags: true,
+          });
+          console.log("CodeMirror initialized successfully");
+        } catch (error) {
+          console.error("Error initializing CodeMirror:", error);
+          // Fallback to textarea
+          editor = {
+            getValue: () => textarea.value,
+            setValue: (value) => {
+              textarea.value = value;
+            },
+            on: () => {},
+          };
+        }
 
         // Update preview function
         function updatePreview() {
+          if (!preview) return;
+
           const htmlContent = editor.getValue();
           preview.srcdoc = htmlContent;
         }
@@ -649,62 +886,112 @@
           });
         }
 
+        // Mobile instructions modal functionality
+        if (showInstructionsBtn && instructionsModal) {
+          showInstructionsBtn.addEventListener("click", () => {
+            instructionsModal.classList.remove("hidden");
+          });
+        }
+
+        if (closeInstructionsModal && instructionsModal) {
+          closeInstructionsModal.addEventListener("click", () => {
+            instructionsModal.classList.add("hidden");
+          });
+        }
+
+        if (instructionsModal) {
+          instructionsModal.addEventListener("click", (e) => {
+            if (e.target === instructionsModal) {
+              instructionsModal.classList.add("hidden");
+            }
+          });
+        }
+
         // Submit button functionality
-        submitBtn.addEventListener("click", () => {
-          const htmlContent = editor.getValue();
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(htmlContent, "text/html");
+        if (submitBtn) {
+          submitBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            console.log("Submit button clicked");
 
-          // Check for CSS requirements
-          const hasStyleTag = htmlContent.includes("<style>");
-          const hasBlueHeading =
-            htmlContent.toLowerCase().includes("color") &&
-            (htmlContent.toLowerCase().includes("blue") ||
-              htmlContent.toLowerCase().includes("#") ||
-              htmlContent.toLowerCase().includes("rgb"));
-          const hasBackground = htmlContent
-            .toLowerCase()
-            .includes("background");
-          const hasMargin =
-            htmlContent.toLowerCase().includes("margin") ||
-            htmlContent.toLowerCase().includes("padding");
+            try {
+              const htmlContent = editor.getValue();
+              console.log("HTML Content:", htmlContent);
 
-          const modalIcon = document.getElementById("modalIcon");
-          const modalTitle = document.getElementById("modalTitle");
-          const modalMessage = document.getElementById("modalMessage");
+              // Check for CSS requirements
+              const hasStyleTag = htmlContent.includes("<style>");
+              const contentLower = htmlContent.toLowerCase();
 
-          if (hasStyleTag && hasBlueHeading && hasBackground && hasMargin) {
-            // Success
-            modalIcon.textContent = "✓";
-            modalIcon.style.color = "#059669";
-            modalTitle.textContent = "Jawaban Benar!";
-            modalTitle.style.color = "#059669";
-            modalMessage.textContent =
-              "CSS kamu sudah sesuai dengan syarat yang diminta. Semua elemen styling telah diterapkan dengan benar!";
-          } else {
-            // Needs improvement
-            modalIcon.textContent = "!";
-            modalIcon.style.color = "#eab308";
-            modalTitle.textContent = "Perlu Perbaikan";
-            modalTitle.style.color = "#eab308";
+              const hasBlueHeading =
+                contentLower.includes("color") &&
+                (contentLower.includes("blue") ||
+                  contentLower.includes("#3b82f6") ||
+                  contentLower.includes("#0000ff") ||
+                  contentLower.includes("rgb(") ||
+                  contentLower.includes("hsl("));
 
-            let missing = [];
-            if (!hasStyleTag) missing.push("tag <style>");
-            if (!hasBlueHeading) missing.push("warna biru untuk heading");
-            if (!hasBackground) missing.push("background color");
-            if (!hasMargin) missing.push("margin/padding");
+              const hasBackground = contentLower.includes("background");
+              const hasMargin =
+                contentLower.includes("margin") ||
+                contentLower.includes("padding");
 
-            modalMessage.textContent = `Pastikan kamu menambahkan: ${missing.join(
-              ", "
-            )}.`;
-          }
+              console.log("Validation results:", {
+                hasStyleTag,
+                hasBlueHeading,
+                hasBackground,
+                hasMargin,
+              });
 
-          overlay.classList.remove("hidden");
-        });
+              const modalIcon = document.getElementById("modalIcon");
+              const modalTitle = document.getElementById("modalTitle");
+              const modalMessage = document.getElementById("modalMessage");
+
+              if (!modalIcon || !modalTitle || !modalMessage || !overlay) {
+                console.error("Modal elements not found");
+                alert("Modal elements missing!");
+                return;
+              }
+
+              if (hasStyleTag && hasBlueHeading && hasBackground && hasMargin) {
+                // Success
+                modalIcon.textContent = "✓";
+                modalIcon.style.color = "#059669";
+                modalTitle.textContent = "Jawaban Benar!";
+                modalTitle.style.color = "#059669";
+                modalMessage.textContent =
+                  "CSS kamu sudah sesuai dengan syarat yang diminta. Semua elemen styling telah diterapkan dengan benar!";
+              } else {
+                // Needs improvement
+                modalIcon.textContent = "!";
+                modalIcon.style.color = "#eab308";
+                modalTitle.textContent = "Perlu Perbaikan";
+                modalTitle.style.color = "#eab308";
+
+                let missing = [];
+                if (!hasStyleTag) missing.push("tag <style>");
+                if (!hasBlueHeading) missing.push("warna biru untuk heading");
+                if (!hasBackground) missing.push("background color");
+                if (!hasMargin) missing.push("margin/padding");
+
+                modalMessage.textContent = `Pastikan kamu menambahkan: ${missing.join(
+                  ", "
+                )}.`;
+              }
+
+              console.log("Showing modal...");
+              overlay.classList.remove("hidden");
+            } catch (error) {
+              console.error("Error in submit handler:", error);
+              alert("Error: " + error.message);
+            }
+          });
+        } else {
+          console.error("Submit button not found!");
+        }
 
         // Reset button
-        resetBtn.addEventListener("click", () => {
-          const defaultCode = `<!DOCTYPE html>
+        if (resetBtn) {
+          resetBtn.addEventListener("click", () => {
+            const defaultCode = `<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -717,20 +1004,27 @@
     <p>Cobalah untuk mengubah warna, background, dan spacing!</p>
 </body>
 </html>`;
-          editor.setValue(defaultCode);
-          updatePreview();
-        });
+            editor.setValue(defaultCode);
+            updatePreview();
+          });
+        }
 
         // Close modal
-        closeModal.addEventListener("click", () => {
-          overlay.classList.add("hidden");
-        });
-
-        overlay.addEventListener("click", (e) => {
-          if (e.target === overlay) {
+        if (closeModal) {
+          closeModal.addEventListener("click", () => {
             overlay.classList.add("hidden");
-          }
-        });
+          });
+        }
+
+        if (overlay) {
+          overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) {
+              overlay.classList.add("hidden");
+            }
+          });
+        }
+
+        console.log("Initialization complete");
       });
     </script>
   </body>
