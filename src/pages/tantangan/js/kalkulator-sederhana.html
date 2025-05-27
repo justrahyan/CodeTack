@@ -564,13 +564,6 @@
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
-        // Auto-refresh preview setiap 1 detik
-        setInterval(() => {
-          if (editor.getValue()) {
-            updatePreview();
-          }
-        }, 1000);
-
         // Submit button
         submitBtn.addEventListener("click", () => {
           const fullHtml = editor.getValue();
