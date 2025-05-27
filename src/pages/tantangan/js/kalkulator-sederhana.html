@@ -177,7 +177,7 @@
                 <ul class="space-y-1 text-green-700 text-xs md:text-sm">
                   <li>• Ambil nilai dari dua input</li>
                   <li>
-                    • Gunakan fungsi add(), substract(), multiply(), divide().
+                    • Gunakan fungsi add(), subtract(), multiply(), divide().
                   </li>
                   <li>• Tampilkan hasil ke pengguna</li>
                 </ul>
@@ -223,9 +223,6 @@
                   id="htmlCode"
                   class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
                 >
-
-          <!-- Masukkan kode java script disini -->
-
                 </textarea>
               </div>
 
@@ -279,142 +276,31 @@
       </div>
     </section>
 
-    <!-- Pagination -->
-    <section id="pagination" class="flex-shrink-0">
-      <div
-        class="container border bg-white mx-auto px-4 py-4 lg:py-6 lg:px-36 font-family-outfit"
-      >
-        <div class="grid grid-cols-3 items-center gap-4">
-          <!-- Prev -->
-          <div class="invisible flex justify-start">
-            <a
-              href="./struktur-dasar.html"
-              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-6 md:w-5 h-6 md:h-5"
-                viewBox="0 0 24 24"
-                class="inline-block"
-              >
-                <g
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                >
-                  <path d="m13 9l-3 3l3 3" />
-                  <circle cx="12" cy="12" r="9" />
-                </g>
-              </svg>
-              <span class="hidden sm:inline">Struktur Dasar HTML</span>
-            </a>
-          </div>
-
-          <!-- Title -->
-          <div class="flex justify-center">
-            <p
-              class="text-center text-primary font-semibold lg:text-lg text-sm whitespace-nowrap"
-            >
-              Kalkulator Sederhana
-            </p>
-          </div>
-
-          <!-- Next -->
-          <div class="flex justify-end">
-            <a
-              href="./ganti-warna-latar.html"
-              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
-            >
-              <span class="hidden sm:inline">Ganti Warna Latar</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-6 md:w-5 h-6 md:h-5"
-                viewBox="0 0 24 24"
-                class="inline-block"
-              >
-                <g
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                >
-                  <circle cx="12" cy="12" r="9" />
-                  <path d="m11 9l3 3l-3 3" />
-                </g>
-              </svg>
-            </a>
-          </div>
-        </div>
+    <div
+      id="successOverlay"
+      class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-xl text-center max-w-md mx-4">
+        <div id="overlayIcon" class="text-6xl mb-4"></div>
+        <h2 id="overlayTitle" class="text-xl font-bold mb-2"></h2>
+        <p id="overlayMessage" class="text-gray-700 mb-4"></p>
+        <button
+          id="closeOverlay"
+          class="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+        >
+          Tutup
+        </button>
       </div>
-    </section>
+    </div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const openBtn = document.getElementById("open-instruksi");
-        const instruksi = document.querySelector(".instruksi-side");
-        const closeBtn = document.getElementById("close-instruksi");
-
-        let isVisible = false;
-
-        if (openBtn) {
-          openBtn.addEventListener("click", () => {
-            if (isVisible) {
-              instruksi.classList.remove("right-0");
-              instruksi.classList.add("right-[-300px]");
-            } else {
-              instruksi.classList.remove("right-[-300px]");
-              instruksi.classList.add("right-0");
-            }
-            isVisible = !isVisible;
-          });
-        }
-
-        if (closeBtn) {
-          closeBtn.addEventListener("click", () => {
-            instruksi.classList.add("right-[-300px]");
-            instruksi.classList.remove("right-0");
-            isVisible = false; // update status supaya sync
-          });
-        }
-      });
-
-      document.addEventListener("click", function (e) {
-        if (
-          isVisible &&
-          instruksi &&
-          !instruksi.contains(e.target) &&
-          !openBtn.contains(e.target)
-        ) {
-          instruksi.classList.add("right-[-300px]");
-          instruksi.classList.remove("right-0");
-          isVisible = false;
-        }
-      });
-    </script>
-
-    <!-- Prism.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
-
-    <!-- CodeMirror -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
 
-    <script src="../../../assets/js/script.js"></script>
-    <!-- Code Mirror -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Highlight syntax Prism
-        Prism.highlightAll();
-
-        // Deklarasi elemen
         const textarea = document.getElementById("htmlCode");
         const preview = document.getElementById("preview");
         const submitBtn = document.getElementById("submitBtn");
@@ -422,199 +308,134 @@
         const overlay = document.getElementById("successOverlay");
         const closeBtn = document.getElementById("closeOverlay");
 
-        // Inisialisasi CodeMirror
         const editor = CodeMirror.fromTextArea(textarea, {
           lineNumbers: true,
-          mode: "htmlmixed",
+          mode: "htmlmixed", // Mode untuk JavaScript di dalam HTML
           theme: "material",
-          indentUnit: 2,
-          smartIndent: true,
-          tabSize: 2,
-          indentWithTabs: false,
           lineWrapping: true,
-          foldGutter: true,
-          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-          autoCloseBrackets: true,
           autoCloseTags: true,
-          matchBrackets: true,
-          matchTags: true,
         });
 
-        let userHasTyped = false;
+        // Template HTML yang akan dimasukkan ke dalam editor dan preview
+        const htmlTemplate = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Preview</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; text-align: center; }
+    .calculator { max-width: 350px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    input[type="number"] { width: 95%; padding: 8px; margin-bottom: 10px; border-radius: 4px; border: 1px solid #ddd; }
+    .buttons button { padding: 10px 15px; margin: 5px; border: none; border-radius: 4px; cursor: pointer; background-color: #007bff; color: white; font-size: 16px; min-width: 40px; }
+    #result-container { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h2>Kalkulator Sederhana</h2>
+    <div>
+      <label for="num1">Angka Pertama:</label>
+      <input type="number" id="num1" placeholder="Masukkan angka">
+    </div>
+    <div>
+      <label for="num2">Angka Kedua:</label>
+      <input type="number" id="num2" placeholder="Masukkan angka">
+    </div>
+    <div class="buttons">
+      <button onclick="add()">+</button>
+      <button onclick="subtract()">-</button>
+      <button onclick="multiply()">×</button>
+      <button onclick="divide()">÷</button>
+    </div>
+    <div id="result-container">
+      Hasil: <span id="result">0</span>
+    </div>
+  </div>
 
-        // Fungsi update preview
+  <script>
+    // Tulis kodemu di sini
+  \<\/script>
+</body>
+</html>`;
+
+        // Atur nilai awal editor
+        editor.setValue(htmlTemplate);
+
         function updatePreview() {
-          const fullHtml = editor.getValue();
-          preview.srcdoc = fullHtml;
+          const userCode = editor.getValue();
+          preview.srcdoc = userCode;
         }
-
-        function setEditorWithTemplate(
-          bodyContent = `<!-- Masukkan kode anda disini -->`
-        ) {
-          const fullHtml = `<!DOCTYPE html>
-  <html>
-    <head>
-      <meta charset="UTF-8">
-      <title>Preview</title>
-      <style>
-        body {
-          font-family: sans-serif;
-          padding: 20px;
-        }
-        .calculator {
-          max-width: 350px;
-          margin: auto;
-          padding: 20px;
-          border: 1px solid #ccc;
-          border-radius: 10px;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        input[type="number"] {
-          width: 95%;
-          padding: 8px;
-          margin-bottom: 10px;
-          border-radius: 4px;
-          border: 1px solid #ddd;
-        }
-        .buttons button {
-          padding: 10px 15px;
-          margin-right: 5px;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          background-color: #007bff;
-          color: white;
-          font-size: 16px;
-        }
-        .buttons button:hover {
-          background-color: #0056b3;
-        }
-        #result-container {
-          margin-top: 20px;
-          font-size: 20px;
-          font-weight: bold;
-        }
-      </style>
-    </head>
-    <body>
-        <div class="calculator">
-            <h2>Kalkulator Sederhana</h2>
-            
-            <div>
-              <label for="num1">Angka Pertama:</label>
-              <input type="number" id="num1" placeholder="Masukkan angka pertama">
-            </div>
-            
-            <div>
-              <label for="num2">Angka Kedua:</label>
-              <input type="number" id="num2" placeholder="Masukkan angka kedua">
-            </div>
-            
-            <div class="buttons">
-              <button onclick="add()">+</button>
-              <button onclick="subtract()">-</button>
-              <button onclick="multiply()">×</button>
-              <button onclick="divide()">÷</button>
-            </div>
-            
-            <div id="result-container">
-              Hasil: <span id="result">0</span>
-            </div>
-          </div>
-  ${bodyContent}
-    </body>
-  </html>`;
-
-          editor.setValue(fullHtml);
-          setTimeout(() => {
-            const lines = editor.lineCount();
-            const startBodyLine = [...Array(lines)].findIndex((_, i) =>
-              editor.getLine(i).includes("<body>")
-            );
-            const endBodyLine = [...Array(lines)]
-              .reverse()
-              .findIndex((_, i) =>
-                editor.getLine(lines - 1 - i).includes("</body>")
-              );
-            const realEndBodyLine = lines - 1 - endBodyLine;
-
-            // Tandai bagian readonly
-            editor.markText(
-              { line: 0, ch: 0 },
-              { line: startBodyLine + 1, ch: 0 },
-              { readOnly: true, inclusiveRight: false }
-            );
-            editor.markText(
-              {
-                line: realEndBodyLine,
-                ch: editor.getLine(realEndBodyLine).length,
-              },
-              { line: lines },
-              { readOnly: true }
-            );
-          }, 100);
-        }
-
-        setEditorWithTemplate();
 
         // Update preview saat ada perubahan
-        editor.on("change", function () {
-          userHasTyped = true;
+        editor.on("change", () => {
           clearTimeout(window.updateTimeout);
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
-        // Submit button
+        // Panggil update pertama kali
+        updatePreview();
+
+        // **BAGIAN YANG DIPERBAIKI: LOGIKA TOMBOL SUBMIT**
         submitBtn.addEventListener("click", () => {
-          const fullHtml = editor.getValue();
+          const userCode = editor.getValue();
+
+          // Mengekstrak konten dari tag <script> untuk analisis yang lebih akurat
+          const scriptContent =
+            userCode.split(/<script.*?>/)[1]?.split(/<\/script>/)[0] || "";
+
+          // Cek keberadaan elemen input di dalam HTML
           const parser = new DOMParser();
-          const doc = parser.parseFromString(fullHtml, "text/html");
+          const doc = parser.parseFromString(userCode, "text/html");
+          const inputs = doc.querySelectorAll('input[type="number"]');
 
-          const hasH1 = doc.querySelector("h1");
-          const hasP = doc.querySelector("p");
+          // Verifikasi kondisi
+          const hasTwoInputs = inputs.length >= 2;
+          const hasAdd = /function\s+add\s*\(/.test(scriptContent);
+          const hasSubtract = /function\s+subtract\s*\(/.test(scriptContent);
+          const hasMultiply = /function\s+multiply\s*\(/.test(scriptContent);
+          const hasDivide = /function\s+divide\s*\(/.test(scriptContent);
 
+          const allConditionsMet =
+            hasTwoInputs && hasAdd && hasSubtract && hasMultiply && hasDivide;
+
+          // Ambil elemen notifikasi
           const overlayIcon = document.getElementById("overlayIcon");
           const overlayTitle = document.getElementById("overlayTitle");
           const overlayMessage = document.getElementById("overlayMessage");
-          const overlayBox = document.getElementById("successOverlay");
 
-          if (!hasH1 && !hasP) {
-            // Keduanya tidak ada
-            overlayIcon.textContent = "✗";
-            overlayIcon.className = "text-red-600 text-6xl mb-4";
-            overlayTitle.textContent = "Jawaban Salah!";
-            overlayTitle.className = "text-xl font-bold text-red-600 mb-2";
-            overlayMessage.textContent = "Tag <h1> dan <p> tidak ditemukan.";
-          } else if (
-            !hasH1 ||
-            !hasP ||
-            !hasH1.textContent.trim() ||
-            !hasP.textContent.trim()
-          ) {
-            // Salah satu kosong atau tidak ada
-            overlayIcon.textContent = "!";
-            overlayIcon.className = "text-yellow-500 text-6xl mb-4";
-            overlayTitle.textContent = "Perlu Perbaikan";
-            overlayTitle.className = "text-xl font-bold text-yellow-500 mb-2";
-            overlayMessage.textContent =
-              "Pastikan <h1> dan <p> ada dan tidak kosong.";
-          } else {
-            // Keduanya ada dan tidak kosong
+          if (allConditionsMet) {
+            // Jawaban BENAR
             overlayIcon.textContent = "✓";
             overlayIcon.className = "text-green-600 text-6xl mb-4";
             overlayTitle.textContent = "Jawaban Benar!";
             overlayTitle.className = "text-xl font-bold text-green-600 mb-2";
             overlayMessage.textContent =
-              "Struktur HTML kamu sudah sesuai dengan yang diminta.";
+              "Kerja bagus! Semua fungsi dan input yang diperlukan telah ditemukan.";
+          } else {
+            // Jawaban SALAH, beri pesan spesifik
+            let errorMessages = [];
+            if (!hasTwoInputs) errorMessages.push("Dibutuhkan 2 elemen input.");
+            if (!hasAdd) errorMessages.push("Fungsi 'add' tidak ada.");
+            if (!hasSubtract)
+              errorMessages.push("Fungsi 'subtract' tidak ada.");
+            if (!hasMultiply)
+              errorMessages.push("Fungsi 'multiply' tidak ada.");
+            if (!hasDivide) errorMessages.push("Fungsi 'divide' tidak ada.");
+
+            overlayIcon.textContent = "!";
+            overlayIcon.className = "text-yellow-500 text-6xl mb-4";
+            overlayTitle.textContent = "Perlu Perbaikan";
+            overlayTitle.className = "text-xl font-bold text-yellow-500 mb-2";
+            overlayMessage.textContent =
+              "Sepertinya ada yang kurang. " + errorMessages.join(" ");
           }
 
-          overlayBox.classList.remove("hidden");
+          overlay.classList.remove("hidden");
         });
 
-        // Reset
+        // Reset button
         resetBtn.addEventListener("click", () => {
-          setEditorWithTemplate();
-          userHasTyped = false;
+          editor.setValue(htmlTemplate);
           updatePreview();
         });
 
@@ -622,173 +443,11 @@
         closeBtn.addEventListener("click", () => {
           overlay.classList.add("hidden");
         });
-
         overlay.addEventListener("click", (e) => {
           if (e.target === overlay) {
             overlay.classList.add("hidden");
           }
         });
-
-        updatePreview();
-      });
-    </script>
-
-    <!-- Hasil yang diharapkan -->
-    <script>
-      const zoomBtn = document.getElementById("zoom-button");
-      const modal = document.getElementById("image-modal");
-      const zoomedImage = document.getElementById("zoomed-image");
-
-      zoomBtn.addEventListener("click", () => {
-        modal.classList.remove("hidden");
-      });
-
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal || e.target === zoomedImage) {
-          modal.classList.add("hidden");
-        }
-      });
-    </script>
-
-    <!-- Hasil yang diharapkan responsive -->
-    <script>
-      const zoomResponsive = document.getElementById("zoom-button-responsive");
-      const modalResponsive = document.getElementById("image-modal-responsive");
-      const zoomImageResponsive = document.getElementById(
-        "zoomed-image-responsive"
-      );
-
-      zoomResponsive.addEventListener("click", () => {
-        modalResponsive.classList.remove("hidden");
-      });
-
-      modalResponsive.addEventListener("click", (e) => {
-        if (e.target === modalResponsive && e.target !== zoomImageResponsive) {
-          modalResponsive.classList.add("hidden");
-        }
-      });
-    </script>
-
-    <!-- Code Editor dan Preview -->
-    <script>
-      // Editor dan Preview Tantangan
-      const tabEditor = document.getElementById("tabEditor");
-      const tabPreview = document.getElementById("tabPreview");
-      const editorPanels = document.getElementById("editor-panel");
-      const previewPanels = document.getElementById("preview");
-      const htmlCode = document.getElementById("htmlCode");
-
-      function updatePreview() {
-        const code = htmlCode.value;
-        const blob = new Blob([code], { type: "text/html" });
-        const url = URL.createObjectURL(blob);
-        previewPanels.src = url;
-      }
-
-      function activateEditor() {
-        // Show editor, hide preview
-        editorPanels.classList.remove("hidden");
-        editorPanels.classList.add("block");
-        previewPanels.classList.remove("block");
-        previewPanels.classList.add("hidden");
-
-        tabEditor.classList.add(
-          "border-b-2",
-          "border-green-600",
-          "text-green-600"
-        );
-        tabEditor.classList.remove("text-gray-500");
-
-        tabPreview.classList.remove(
-          "border-b-2",
-          "border-green-600",
-          "text-green-600"
-        );
-        tabPreview.classList.add("text-gray-500");
-      }
-
-      function activatePreview() {
-        // Update preview content
-        updatePreview();
-
-        // Show preview, hide editor
-        previewPanels.classList.remove("hidden");
-        previewPanels.classList.add("block");
-        editorPanels.classList.remove("block");
-        editorPanels.classList.add("hidden");
-
-        tabPreview.classList.add(
-          "border-b-2",
-          "border-green-600",
-          "text-green-600"
-        );
-        tabPreview.classList.remove("text-gray-500");
-
-        tabEditor.classList.remove(
-          "border-b-2",
-          "border-green-600",
-          "text-green-600"
-        );
-        tabEditor.classList.add("text-gray-500");
-      }
-
-      // Only enable tab switch on mobile
-      tabEditor.addEventListener("click", () => {
-        if (window.innerWidth < 768) activateEditor();
-      });
-
-      tabPreview.addEventListener("click", () => {
-        if (window.innerWidth < 768) activatePreview();
-      });
-
-      // Default to editor tab on mobile
-      if (window.innerWidth < 768) {
-        activateEditor();
-      }
-    </script>
-
-    <!-- Instruksi Responsive -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const openBtn = document.getElementById("open-instruksi");
-        const instruksi = document.querySelector(".instruksi-side");
-        const closeBtn = document.getElementById("close-instruksi");
-
-        let isVisible = false;
-
-        if (openBtn) {
-          openBtn.addEventListener("click", () => {
-            if (isVisible) {
-              instruksi.classList.remove("right-0");
-              instruksi.classList.add("right-[-300px]");
-            } else {
-              instruksi.classList.remove("right-[-300px]");
-              instruksi.classList.add("right-0");
-            }
-            isVisible = !isVisible;
-          });
-        }
-
-        if (closeBtn) {
-          closeBtn.addEventListener("click", () => {
-            instruksi.classList.add("right-[-300px]");
-            instruksi.classList.remove("right-0");
-            isVisible = false; // update status supaya sync
-          });
-        }
-      });
-
-      document.addEventListener("click", function (e) {
-        if (
-          isVisible &&
-          instruksi &&
-          !instruksi.contains(e.target) &&
-          !openBtn.contains(e.target)
-        ) {
-          instruksi.classList.add("right-[-300px]");
-          instruksi.classList.remove("right-0");
-          isVisible = false;
-        }
       });
     </script>
   </body>
