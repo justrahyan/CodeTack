@@ -4,13 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CodeTack - Tantangan Buat Navbar dengan Flexbox</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../../assets/css/output.css" />
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap"
       rel="stylesheet"
     />
+    <!-- Favicon -->
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -32,6 +34,7 @@
       rel="manifest"
       href="../../../assets/img/favicon_io/site.webmanifest"
     />
+    <!-- CodeMirror -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"
@@ -41,63 +44,76 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material.min.css"
     />
     <style>
-      /* Custom styles to ensure CodeMirror and layout consistency */
       .CodeMirror {
         height: 100%;
         font-size: 14px;
         font-family: "Courier New", monospace;
       }
 
-      /* Base styles for the main content area to ensure it fills available space */
-      html,
-      body {
+      .editor-container {
+        height: 500px;
+        display: flex;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        overflow: hidden;
+      }
+
+      .editor-panel {
+        width: 50%;
         height: 100%;
       }
-      body {
-        display: flex;
-        flex-direction: column;
+
+      .preview-panel {
+        width: 50%;
+        height: 100%;
+        border-left: 1px solid #d1d5db;
       }
-      main {
-        flex: 1; /* Allows main content to grow and fill remaining space */
-        min-height: 0; /* Prevents overflow issues in flex container */
+
+      /* Mobile tab styles */
+      .tab-btn.active {
+        border-color: #16a34a;
+        color: #16a34a;
       }
-      .editor-container,
-      .editor-panel,
-      .preview-iframe {
-        height: 100%; /* Ensure these elements take full height within their flex parent */
+
+      .tab-content {
+        display: none;
       }
-      @media (max-width: 767px) {
-        .editor-panel.hidden,
-        .preview-iframe.hidden {
-          display: none;
+
+      .tab-content.active {
+        display: block;
+      }
+
+      /* Mobile specific styles */
+      @media (max-width: 768px) {
+        .editor-container {
+          flex-direction: column;
+          height: calc(100vh - 200px);
         }
-      }
-      /* Modal overlay styles */
-      .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
+
+        #editor-panel {
+          width: 100%;
+          height: 100%;
+        }
+
+        #preview {
+          width: 100%;
+          height: 100%;
+        }
       }
     </style>
   </head>
-  <body class="h-screen flex flex-col font-outfit bg-gray-50">
-    <header
-      id="header"
-      class="flex-shrink-0 bg-white border-b border-gray-200 py-4"
-    >
-      <div class="container mx-auto px-4 lg:px-36">
+  <body class="h-screen flex flex-col">
+    <!-- Header -->
+    <header id="header" class="flex-shrink-0">
+      <div
+        class="container mx-auto px-4 py-4 lg:py-6 border bg-white lg:px-36 font-family-outfit"
+      >
         <div class="grid grid-cols-3 items-center gap-4">
+          <!-- Back -->
           <div class="flex justify-start">
             <a
               href="../tantangan-css.html"
-              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-gray-700 text-sm lg:text-base"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -119,14 +135,16 @@
             </a>
           </div>
 
+          <!-- Title -->
           <div class="flex justify-center">
             <p
-              class="text-center text-gray-800 font-semibold lg:text-lg text-sm whitespace-nowrap"
+              class="text-center text-primary font-semibold lg:text-lg text-sm whitespace-nowrap"
             >
               Tantangan: Buat Navbar dengan Flexbox
             </p>
           </div>
 
+          <!-- Level -->
           <div class="flex justify-end">
             <p
               class="inline-flex items-center gap-2 bg-green-100 text-green-700 px-2 py-1 rounded text-sm lg:text-base"
@@ -136,7 +154,7 @@
                 width="20"
                 height="20"
                 viewBox="0 0 24 24"
-                class="inline-block fill-current"
+                class="inline-block fill-green-700"
               >
                 <path
                   d="M20 7h-4V4c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H4c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V9c0-1.103-.897-2-2-2M4 11h4v8H4zm6-1V4h4v15h-4zm10 9h-4V9h4z"
@@ -149,94 +167,181 @@
       </div>
     </header>
 
-    <main id="content" class="flex-1 overflow-hidden">
-      <div class="container mx-auto h-full">
+    <!-- Content Section -->
+    <section id="content" class="flex-1 overflow-hidden">
+      <div class="container mx-auto font-family-outfit h-full">
         <div class="grid grid-cols-1 lg:grid-cols-4 h-full">
-          <aside
-            class="lg:col-span-1 bg-white p-3 hidden lg:block overflow-y-auto border-r border-gray-200"
+          <!-- Instruksi Panel  -->
+          <div
+            class="lg:col-span-1 bg-white p-3 hidden lg:block lg:overflow-y-auto"
           >
-            <div class="flex items-center gap-2 mb-4 text-gray-800">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 16v-4m0-4h.01" />
-              </svg>
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-4 h-4 flex items-center justify-center">
+                <span class="text-paragraph text-xs">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                  >
+                    <g
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 16v-4m0-4h.01" />
+                    </g>
+                  </svg>
+                </span>
+              </div>
               <h2 class="font-bold text-lg">Instruksi Tugas</h2>
             </div>
 
-            <div class="space-y-4 text-sm md:text-base text-gray-700">
-              <p class="font-medium">
-                <strong>🧠 Instruksi Tantangan:</strong>
+            <div class="space-y-4 text-sm md:text-base">
+              <p class="font-medium">🧠 Instruksi Tantangan:</p>
+              <p>
+                Susun tiga tautan navigasi (Beranda, Tentang, Kontak) secara
+                horizontal. Gunakan Flexbox untuk merapikan jarak antar elemen.
+                Semua link harus ada dalam satu elemen container seperti
+                &lt;nav&gt;.
               </p>
 
-              <div class="space-y-2">
-                <p>
-                  Susun tiga tautan navigasi (Beranda, Tentang, Kontak) secara
-                  horizontal. Gunakan Flexbox untuk merapikan jarak antar
-                  elemen. Semua link harus ada dalam satu elemen container
-                  seperti
-                  <code class="bg-pink-100 px-1 rounded text-pink-600"
-                    >&lt;nav&gt;</code
-                  >.
-                </p>
-              </div>
-
-              <div class="bg-green-50 p-3 rounded-md border border-green-200">
+              <div class="bg-green-50 p-3 rounded">
                 <p class="font-medium text-green-800 mb-2">
                   ✅ Yang harus kamu capai:
                 </p>
-                <ul
-                  class="space-y-1 text-green-700 text-xs md:text-sm list-none"
-                >
-                  <li>
-                    • Link berada dalam satu elemen
-                    <code class="bg-green-100 px-1 rounded">&lt;nav&gt;</code>
-                  </li>
-                  <li>
-                    • Gunakan CSS
-                    <code class="bg-green-100 px-1 rounded"
-                      >display: flex;</code
-                    >
-                    pada elemen
-                    <code class="bg-green-100 px-1 rounded">&lt;nav&gt;</code>
-                  </li>
-                  <li>
-                    • Terdapat minimal 3 tautan (<code
-                      class="bg-green-100 px-1 rounded"
-                      >&lt;a&gt;</code
-                    >) di dalam
-                    <code class="bg-green-100 px-1 rounded">&lt;nav&gt;</code>
-                  </li>
+                <ul class="space-y-1 text-green-700 text-xs md:text-sm">
+                  <li>• Link berada dalam satu div/nav</li>
+                  <li>• Gunakan display: flex;</li>
                   <li>• Tautan tampil sejajar (horizontal)</li>
                 </ul>
               </div>
 
-              <div
-                class="bg-gray-100 p-3 rounded-md relative border border-gray-300"
-              >
+              <div class="bg-gray-100 p-3 rounded relative">
                 <p class="font-medium text-gray-800 mb-2">
-                  💡 Hasil yang Diharapkan:
+                  🖥️ Preview yang Diharapkan:
                 </p>
                 <div
-                  class="bg-white rounded-md border border-gray-300 text-xs md:text-sm relative p-4"
+                  class="bg-white rounded border text-xs md:text-sm relative"
+                >
+                  <div style="padding: 1rem; border-radius: 0.25rem">
+                    <nav
+                      style="
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
+                        background-color: #f3f4f6;
+                        padding: 15px;
+                        border-radius: 5px;
+                      "
+                    >
+                      <a
+                        href="#"
+                        style="
+                          color: #2563eb;
+                          text-decoration: none;
+                          padding: 8px 16px;
+                        "
+                        >Beranda</a
+                      >
+                      <a
+                        href="#"
+                        style="
+                          color: #2563eb;
+                          text-decoration: none;
+                          padding: 8px 16px;
+                        "
+                        >Tentang</a
+                      >
+                      <a
+                        href="#"
+                        style="
+                          color: #2563eb;
+                          text-decoration: none;
+                          padding: 8px 16px;
+                        "
+                        >Kontak</a
+                      >
+                    </nav>
+                  </div>
+                  <!-- Tombol Zoom -->
+                  <button
+                    id="zoom-button"
+                    class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Modal Overlay -->
+              <div
+                id="image-modal"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden mb-0"
+              >
+                <div
+                  style="
+                    padding: 2rem;
+                    border-radius: 0.5rem;
+                    max-width: 90vw;
+                    max-height: 80vh;
+                  "
                 >
                   <nav
-                    class="flex justify-around items-center p-2 bg-gray-200 rounded-md"
+                    style="
+                      display: flex;
+                      justify-content: space-around;
+                      align-items: center;
+                      background-color: #f3f4f6;
+                      padding: 20px;
+                      border-radius: 8px;
+                      font-size: 1.2rem;
+                    "
                   >
-                    <a href="#" class="text-blue-600 hover:underline"
+                    <a
+                      href="#"
+                      style="
+                        color: #2563eb;
+                        text-decoration: none;
+                        padding: 12px 20px;
+                      "
                       >Beranda</a
                     >
-                    <a href="#" class="text-blue-600 hover:underline"
+                    <a
+                      href="#"
+                      style="
+                        color: #2563eb;
+                        text-decoration: none;
+                        padding: 12px 20px;
+                      "
                       >Tentang</a
                     >
-                    <a href="#" class="text-blue-600 hover:underline">Kontak</a>
+                    <a
+                      href="#"
+                      style="
+                        color: #2563eb;
+                        text-decoration: none;
+                        padding: 12px 20px;
+                      "
+                      >Kontak</a
+                    >
                   </nav>
                 </div>
               </div>
@@ -246,348 +351,412 @@
                 menu yang rapi.
               </p>
             </div>
-          </aside>
+          </div>
 
+          <!-- Side Instruksi -->
           <button
-            id="mobileToggle"
-            class="fixed right-0 top-20 bg-white border border-gray-200 rounded-l-2xl p-4 lg:hidden z-30 shadow-md"
+            id="open-instruksi"
+            class="fixed right-0 top-20 bg-white border rounded-l-2xl p-4 lg:hidden"
+            style="z-index: 60"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
               viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
             >
-              <circle cx="12" cy="12" r="10" />
-              <path d="M12 16v-4m0-4h.01" />
+              <g
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4m0-4h.01" />
+              </g>
             </svg>
           </button>
-
           <div
-            id="mobileInstructions"
-            class="fixed top-20 right-[-300px] w-72 h-[calc(100vh-5rem)] bg-white shadow-lg transition-all duration-300 z-40 overflow-y-auto p-3"
+            class="instruksi-side p-3 fixed top-20 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300"
+            style="z-index: 70"
           >
             <div class="flex justify-between items-center mb-4">
-              <div class="flex items-center gap-2 text-gray-800">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="12" y1="8" x2="12" y2="12" />
-                  <circle cx="12" cy="16" r="1" />
-                </svg>
+              <div class="flex items-center gap-2">
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <span class="text-paragraph text-xs">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                    >
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 16v-4m0-4h.01" />
+                      </g>
+                    </svg>
+                  </span>
+                </div>
                 <h2 class="font-bold text-lg">Instruksi Tugas</h2>
               </div>
-              <button
-                id="closeInstructions"
-                class="text-gray-500 hover:text-gray-700 p-1"
-              >
+              <span id="close-instruksi" class="text-paragraph cursor-pointer">
                 <svg
+                  xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
-                  fill="currentColor"
                 >
                   <path
+                    fill="currentColor"
                     d="M8.4 17L7 15.6l3.6-3.6L7 8.425l1.4-1.4l3.6 3.6l3.575-3.6l1.4 1.4l-3.6 3.575l3.6 3.6l-1.4 1.4L12 13.4z"
                   />
                 </svg>
-              </button>
+              </span>
             </div>
 
-            <div class="space-y-4 text-sm md:text-base text-gray-700">
-              <p class="font-medium">
-                <strong>🧠 Instruksi Tantangan:</strong>
-              </p>
+            <div class="space-y-4 text-sm md:text-base">
+              <p class="font-medium">🧠 Instruksi Tantangan:</p>
               <p>
                 Susun tiga tautan navigasi (Beranda, Tentang, Kontak) secara
                 horizontal. Gunakan Flexbox untuk merapikan jarak antar elemen.
                 Semua link harus ada dalam satu elemen container seperti
-                <code class="bg-pink-100 px-1 rounded text-pink-600"
-                  >&lt;nav&gt;</code
-                >.
+                &lt;nav&gt;.
               </p>
-              <div class="bg-green-50 p-3 rounded-md border border-green-200">
+
+              <div class="bg-green-50 p-3 rounded">
                 <p class="font-medium text-green-800 mb-2">
                   ✅ Yang harus kamu capai:
                 </p>
-                <ul
-                  class="space-y-1 text-green-700 text-xs md:text-sm list-none"
-                >
-                  <li>
-                    • Link berada dalam satu elemen
-                    <code class="bg-green-100 px-1 rounded">&lt;nav&gt;</code>
-                  </li>
-                  <li>
-                    • Gunakan CSS
-                    <code class="bg-green-100 px-1 rounded"
-                      >display: flex;</code
-                    >
-                    pada elemen
-                    <code class="bg-green-100 px-1 rounded">&lt;nav&gt;</code>
-                  </li>
-                  <li>
-                    • Terdapat minimal 3 tautan (<code
-                      class="bg-green-100 px-1 rounded"
-                      >&lt;a&gt;</code
-                    >) di dalam
-                    <code class="bg-green-100 px-1 rounded">&lt;nav&gt;</code>
-                  </li>
+                <ul class="space-y-1 text-green-700 text-xs md:text-sm">
+                  <li>• Link berada dalam satu div/nav</li>
+                  <li>• Gunakan display: flex;</li>
+                  <li>• Tautan tampil sejajar (horizontal)</li>
                 </ul>
               </div>
+
+              <div class="bg-gray-100 p-3 rounded relative">
+                <p class="font-medium text-gray-800 mb-2">
+                  🖥️ Preview yang Diharapkan:
+                </p>
+                <div
+                  class="bg-white rounded border text-xs md:text-sm relative"
+                >
+                  <div style="padding: 1rem; border-radius: 0.25rem">
+                    <nav
+                      style="
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
+                        background-color: #f3f4f6;
+                        padding: 15px;
+                        border-radius: 5px;
+                      "
+                    >
+                      <a
+                        href="#"
+                        style="
+                          color: #2563eb;
+                          text-decoration: none;
+                          padding: 8px 16px;
+                        "
+                        >Beranda</a
+                      >
+                      <a
+                        href="#"
+                        style="
+                          color: #2563eb;
+                          text-decoration: none;
+                          padding: 8px 16px;
+                        "
+                        >Tentang</a
+                      >
+                      <a
+                        href="#"
+                        style="
+                          color: #2563eb;
+                          text-decoration: none;
+                          padding: 8px 16px;
+                        "
+                        >Kontak</a
+                      >
+                    </nav>
+                  </div>
+                  <!-- Tombol Zoom -->
+                  <button
+                    id="zoom-button-responsive"
+                    class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Modal Overlay -->
+              <div
+                id="image-modal-responsive"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center hidden mb-0"
+                style="z-index: 75"
+              >
+                <div
+                  style="
+                    padding: 2rem;
+                    border-radius: 0.5rem;
+                    max-width: 90vw;
+                    max-height: 80vh;
+                  "
+                >
+                  <nav
+                    style="
+                      display: flex;
+                      justify-content: space-around;
+                      align-items: center;
+                      background-color: #f3f4f6;
+                      padding: 20px;
+                      border-radius: 8px;
+                      font-size: 1.2rem;
+                    "
+                  >
+                    <a
+                      href="#"
+                      style="
+                        color: #2563eb;
+                        text-decoration: none;
+                        padding: 12px 20px;
+                      "
+                      >Beranda</a
+                    >
+                    <a
+                      href="#"
+                      style="
+                        color: #2563eb;
+                        text-decoration: none;
+                        padding: 12px 20px;
+                      "
+                      >Tentang</a
+                    >
+                    <a
+                      href="#"
+                      style="
+                        color: #2563eb;
+                        text-decoration: none;
+                        padding: 12px 20px;
+                      "
+                      >Kontak</a
+                    >
+                  </nav>
+                </div>
+              </div>
+
+              <p class="text-xs md:text-sm text-gray-600">
+                Tiga link ditampilkan di satu baris, sejajar, dengan jarak antar
+                menu yang rapi.
+              </p>
             </div>
           </div>
 
-          <section
-            class="lg:col-span-3 bg-white overflow-hidden flex flex-col border-l border-gray-200"
-          >
-            <div
-              class="flex text-sm font-medium border-b border-gray-200 md:hidden"
-            >
+          <!-- Editor & Preview Panel -->
+          <div class="lg:col-span-3 bg-white overflow-hidden flex flex-col">
+            <!-- Tab (Mobile Only) -->
+            <div class="flex text-sm font-medium border-b md:hidden">
               <button
-                id="editorTab"
-                class="tab-button px-4 py-2 border-b-2 border-blue-500 text-blue-500 focus:outline-none"
+                id="tabEditor"
+                class="tab-btn px-4 py-2 border-b-2 border-green-600 text-green-600 focus:outline-none active"
               >
                 index.html
               </button>
               <button
-                id="previewTab"
-                class="tab-button px-4 py-2 text-gray-500 hover:text-blue-500"
+                id="tabPreview"
+                class="tab-btn px-4 py-2 text-gray-500 hover:text-green-600"
               >
                 Preview
               </button>
             </div>
 
+            <!-- Editor Container -->
             <div
-              class="editor-container flex flex-col md:flex-row w-full flex-1"
+              class="editor-container flex flex-col md:flex-row w-full"
+              style="height: 100vh"
             >
+              <!-- Editor -->
               <div
-                id="editorPanel"
-                class="w-full md:w-1/2 border-r border-gray-200 overflow-auto block md:block"
+                id="editor-panel"
+                class="tab-content active w-full md:w-1/2 border overflow-auto"
+                style="min-height: 100vh"
               >
-                <textarea id="htmlCode"></textarea>
+                <textarea
+                  id="htmlCode"
+                  class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
+                ></textarea>
               </div>
 
+              <!-- Preview -->
               <iframe
-                id="previewFrame"
-                class="w-full md:w-1/2 hidden md:block"
+                id="preview"
+                class="tab-content w-full md:w-1/2 border md:block"
                 title="Pratinjau HTML"
+                style="height: 100vh"
               ></iframe>
             </div>
 
+            <!-- Bottom Action Bar -->
             <div
-              class="border-t border-gray-200 bg-gray-800 px-4 py-3 flex flex-wrap gap-2 justify-between items-center"
+              class="border-t bg-[#2F3436] px-4 py-3 flex flex-wrap gap-2 justify-between"
             >
               <div class="flex gap-2">
                 <button
-                  id="resetButton"
-                  class="px-3 py-1 flex items-center gap-2 text-sm md:text-base text-white hover:bg-gray-700 rounded-md font-medium transition-colors"
+                  id="resetBtn"
+                  class="px-3 py-1 flex items-center gap-2 text-sm md:text-base text-white hover:bg-[#3C4144] rounded font-medium"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="18"
                     height="18"
                     viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
                   >
-                    <path
-                      d="M4.266 16.06a8.92 8.92 0 0 0 3.915 3.978a8.7 8.7 0 0 0 5.471.832a8.8 8.8 0 0 0 4.887-2.64a9.07 9.07 0 0 0 2.388-5.079a9.14 9.14 0 0 0-1.044-5.53a8.9 8.9 0 0 0-4.068-3.815a8.7 8.7 0 0 0-5.5-.608c-1.85.401-3.367 1.313-4.62 2.755a7.6 7.6 0 0 0-1.22 1.781"
-                    />
-                    <path d="m8.931 7.813l-5.04.907L3 3.59" />
+                    <g
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M4.266 16.06a8.92 8.92 0 0 0 3.915 3.978a8.7 8.7 0 0 0 5.471.832a8.8 8.8 0 0 0 4.887-2.64a9.07 9.07 0 0 0 2.388-5.079a9.14 9.14 0 0 0-1.044-5.53a8.9 8.9 0 0 0-4.068-3.815a8.7 8.7 0 0 0-5.5-.608c-1.85.401-3.367 1.313-4.62 2.755a7.6 7.6 0 0 0-1.22 1.781"
+                      />
+                      <path d="m8.931 7.813l-5.04.907L3 3.59" />
+                    </g>
                   </svg>
                   Reset
                 </button>
-                <button
-                  id="hintButton"
-                  class="px-3 py-1 flex items-center gap-2 text-sm md:text-base bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition-colors"
-                >
-                  ✨ Dapatkan Petunjuk CSS ✨
-                </button>
-                <button
-                  id="explainCodeButton"
-                  class="px-3 py-1 flex items-center gap-2 text-sm md:text-base bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-md transition-colors"
-                >
-                  ✨ Jelaskan Kode ✨
-                </button>
               </div>
               <button
-                id="submitButton"
-                class="px-6 py-1 text-sm md:text-base bg-green-600 hover:bg-green-700 text-white font-medium rounded-md transition-colors"
+                id="submitBtn"
+                class="px-6 py-1 text-sm md:text-base bg-green-600 hover:bg-green-700 text-white font-medium"
               >
                 Kirim
               </button>
             </div>
-          </section>
+          </div>
         </div>
       </div>
-    </main>
+    </section>
 
-    <div id="resultModal" class="modal-overlay hidden">
-      <div
-        class="modal-content bg-white p-6 rounded-lg shadow-xl text-center max-w-md mx-4"
-      >
-        <div
-          id="modalIcon"
-          class="text-6xl mb-4 flex items-center justify-center w-24 h-24 rounded-full mx-auto font-bold"
-        ></div>
-        <h2 id="modalTitle" class="text-xl font-bold mb-2"></h2>
-        <p id="modalMessage" class="text-gray-700 mb-4"></p>
+    <!-- Jawaban Benar -->
+    <div
+      id="successOverlay"
+      class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-xl text-center max-w-md mx-4">
+        <div id="overlayIcon" class="text-green-600 text-6xl mb-4">✓</div>
+        <h2 id="overlayTitle" class="text-xl font-bold text-green-600 mb-2">
+          Jawaban Benar!
+        </h2>
+        <p id="overlayMessage" class="text-gray-700 mb-4">
+          Navbar Flexbox kamu sudah dibuat dengan benar!
+        </p>
         <button
-          id="closeModal"
-          class="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+          id="closeOverlay"
+          class="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
         >
           Tutup
         </button>
       </div>
     </div>
 
-    <div id="hintModal" class="modal-overlay hidden">
+    <!-- Pagination -->
+    <section id="pagination" class="flex-shrink-0">
       <div
-        class="modal-content bg-white p-6 rounded-lg shadow-xl text-left max-w-lg mx-4"
+        class="container border bg-white mx-auto px-4 py-4 lg:py-6 lg:px-36 font-family-outfit"
       >
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-xl font-bold text-gray-800">
-            Petunjuk CSS dari AI ✨
-          </h2>
-          <button
-            id="closeHintModal"
-            class="text-gray-500 hover:text-gray-700 p-1"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M8.4 17L7 15.6l3.6-3.6L7 8.425l1.4-1.4l3.6 3.6l3.575-3.6l1.4 1.4l-3.6 3.575l3.6 3.6l-1.4 1.4L12 13.4z"
-              />
-            </svg>
-          </button>
-        </div>
-        <div
-          id="hintContent"
-          class="text-gray-700 text-base overflow-y-auto max-h-80"
-        >
-          <div class="flex items-center justify-center py-8">
-            <div
-              class="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"
-            ></div>
-          </div>
-        </div>
-        <div class="mt-4 text-sm text-gray-500">
-          *Petunjuk ini dihasilkan oleh AI dan mungkin tidak selalu sempurna.
-        </div>
-      </div>
-    </div>
-
-    <div id="explanationModal" class="modal-overlay hidden">
-      <div
-        class="modal-content bg-white p-6 rounded-lg shadow-xl text-left max-w-lg mx-4"
-      >
-        <div class="flex justify-between items-center mb-4">
-          <h2 class="text-xl font-bold text-gray-800">
-            Penjelasan Kode dari AI ✨
-          </h2>
-          <button
-            id="closeExplanationModal"
-            class="text-gray-500 hover:text-gray-700 p-1"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M8.4 17L7 15.6l3.6-3.6L7 8.425l1.4-1.4l3.6 3.6l3.575-3.6l1.4 1.4l-3.6 3.575l3.6 3.6l-1.4 1.4L12 13.4z"
-              />
-            </svg>
-          </button>
-        </div>
-        <div
-          id="explanationContent"
-          class="text-gray-700 text-base overflow-y-auto max-h-80"
-        >
-          <div class="flex items-center justify-center py-8">
-            <div
-              class="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"
-            ></div>
-          </div>
-        </div>
-        <div class="mt-4 text-sm text-gray-500">
-          *Penjelasan ini dihasilkan oleh AI dan mungkin tidak selalu sempurna.
-        </div>
-      </div>
-    </div>
-
-    <div id="imageModal" class="modal-overlay hidden">
-      <div
-        class="modal-content bg-white p-6 rounded-lg shadow-xl text-center max-w-md mx-4"
-      >
-        <div class="bg-gray-100 p-4 rounded-md">
-          <nav
-            class="flex justify-around items-center p-2 bg-gray-200 rounded-md"
-          >
-            <a href="#" class="text-blue-600 hover:underline">Beranda</a>
-            <a href="#" class="text-blue-600 hover:underline">Tentang</a>
-            <a href="#" class="text-blue-600 hover:underline">Kontak</a>
-          </nav>
-        </div>
-      </div>
-    </div>
-
-    <footer class="flex-shrink-0 bg-white border-t border-gray-200 py-4">
-      <div class="container mx-auto px-4 lg:px-36">
         <div class="grid grid-cols-3 items-center gap-4">
-          <a
-            href="./perbaiki-selector.html"
-            class="nav-link inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-gray-700 text-sm lg:text-base"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
+          <!-- Prev -->
+          <div class="flex justify-start">
+            <a
+              href="./perbaiki-selector.html"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
             >
-              <path d="m13 9l-3 3l3 3" />
-              <circle cx="12" cy="12" r="9" />
-            </svg>
-            <span class="hidden sm:inline">Perbaiki Selector Class/ID</span>
-          </a>
-
-          <div
-            class="text-center text-gray-800 font-semibold lg:text-lg text-sm whitespace-nowrap"
-          >
-            Buat Navbar dengan Flexbox
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 md:w-5 h-6 md:h-5"
+                viewBox="0 0 24 24"
+                class="inline-block"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                >
+                  <path d="m13 9l-3 3l3 3" />
+                  <circle cx="12" cy="12" r="9" />
+                </g>
+              </svg>
+              <span class="hidden sm:inline">Perbaiki Selector Class/ID</span>
+            </a>
           </div>
 
-          <a
-            href="#"
-            class="nav-link next inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-gray-700 text-sm lg:text-base justify-self-end"
-          >
-            <span class="hidden sm:inline">Tantangan Berikutnya</span>
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
+          <!-- Title -->
+          <div class="flex justify-center">
+            <p
+              class="text-center text-primary font-semibold lg:text-lg text-sm whitespace-nowrap"
             >
-              <circle cx="12" cy="12" r="9" />
-              <path d="m11 9l3 3l-3 3" />
-            </svg>
-          </a>
+              Buat Navbar dengan Flexbox
+            </p>
+          </div>
+
+          <!-- Next -->
+          <div class="flex justify-end">
+            <a
+              href="#"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
+            >
+              <span class="hidden sm:inline">Tantangan Berikutnya</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 md:w-5 h-6 md:h-5"
+                viewBox="0 0 24 24"
+                class="inline-block"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="m11 9l3 3l-3 3" />
+                </g>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
-    </footer>
+    </section>
 
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
@@ -595,8 +764,133 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
 
     <script>
+      // Mobile Tab Functionality and Main Script
       document.addEventListener("DOMContentLoaded", function () {
+        const tabEditor = document.getElementById("tabEditor");
+        const tabPreview = document.getElementById("tabPreview");
+        const editorPanel = document.getElementById("editor-panel");
+        const preview = document.getElementById("preview");
+
+        // Tab switching for mobile
+        function switchTab(
+          activeTab,
+          activeContent,
+          inactiveTab,
+          inactiveContent
+        ) {
+          // Update tab styles
+          activeTab.classList.add(
+            "active",
+            "border-green-600",
+            "text-green-600"
+          );
+          activeTab.classList.remove("text-gray-500");
+          inactiveTab.classList.remove(
+            "active",
+            "border-green-600",
+            "text-green-600"
+          );
+          inactiveTab.classList.add("text-gray-500");
+
+          // Update content visibility
+          activeContent.classList.add("active");
+          activeContent.classList.remove("hidden");
+          inactiveContent.classList.remove("active");
+          inactiveContent.classList.add("hidden");
+        }
+
+        tabEditor.addEventListener("click", () => {
+          switchTab(tabEditor, editorPanel, tabPreview, preview);
+        });
+
+        tabPreview.addEventListener("click", () => {
+          switchTab(tabPreview, preview, tabEditor, editorPanel);
+          // Update preview when switching to preview tab
+          updatePreview();
+        });
+
+        // Instructions panel functionality
+        const openBtn = document.getElementById("open-instruksi");
+        const instruksi = document.querySelector(".instruksi-side");
+        const closeBtn = document.getElementById("close-instruksi");
+        let isVisible = false;
+
+        if (openBtn) {
+          openBtn.addEventListener("click", () => {
+            if (isVisible) {
+              instruksi.classList.remove("right-0");
+              instruksi.classList.add("right-[-300px]");
+            } else {
+              instruksi.classList.remove("right-[-300px]");
+              instruksi.classList.add("right-0");
+            }
+            isVisible = !isVisible;
+          });
+        }
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", () => {
+            instruksi.classList.add("right-[-300px]");
+            instruksi.classList.remove("right-0");
+            isVisible = false;
+          });
+        }
+
+        // Close instructions when clicking outside
+        document.addEventListener("click", function (e) {
+          if (
+            isVisible &&
+            instruksi &&
+            !instruksi.contains(e.target) &&
+            !openBtn.contains(e.target)
+          ) {
+            instruksi.classList.add("right-[-300px]");
+            instruksi.classList.remove("right-0");
+            isVisible = false;
+          }
+        });
+
+        // Zoom functionality
+        const zoomButton = document.getElementById("zoom-button");
+        const zoomButtonResponsive = document.getElementById(
+          "zoom-button-responsive"
+        );
+        const imageModal = document.getElementById("image-modal");
+        const imageModalResponsive = document.getElementById(
+          "image-modal-responsive"
+        );
+
+        if (zoomButton) {
+          zoomButton.addEventListener("click", () => {
+            imageModal.classList.remove("hidden");
+          });
+        }
+
+        if (zoomButtonResponsive) {
+          zoomButtonResponsive.addEventListener("click", () => {
+            imageModalResponsive.classList.remove("hidden");
+          });
+        }
+
+        // Close modals when clicking outside
+        [imageModal, imageModalResponsive].forEach((modal) => {
+          if (modal) {
+            modal.addEventListener("click", (e) => {
+              if (e.target === modal) {
+                modal.classList.add("hidden");
+              }
+            });
+          }
+        });
+
+        // Initialize CodeMirror and editor functionality
         const textarea = document.getElementById("htmlCode");
+        const submitBtn = document.getElementById("submitBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        const overlay = document.getElementById("successOverlay");
+        const closeOverlayBtn = document.getElementById("closeOverlay");
+
+        // Initialize CodeMirror
         const editor = CodeMirror.fromTextArea(textarea, {
           lineNumbers: true,
           mode: "htmlmixed",
@@ -604,80 +898,42 @@
           indentUnit: 2,
           smartIndent: true,
           tabSize: 2,
+          indentWithTabs: false,
           lineWrapping: true,
+          foldGutter: true,
+          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
           autoCloseBrackets: true,
           autoCloseTags: true,
+          matchBrackets: true,
+          matchTags: true,
           readOnly: false,
         });
 
-        const previewFrame = document.getElementById("previewFrame");
-        const submitButton = document.getElementById("submitButton");
-        const resetButton = document.getElementById("resetButton");
-        const resultModal = document.getElementById("resultModal");
-        const closeModal = document.getElementById("closeModal");
-        const modalIcon = document.getElementById("modalIcon");
-        const modalTitle = document.getElementById("modalTitle");
-        const modalMessage = document.getElementById("modalMessage");
+        let userHasTyped = false;
 
-        const hintButton = document.getElementById("hintButton");
-        const hintModal = document.getElementById("hintModal");
-        const closeHintModal = document.getElementById("closeHintModal");
-        const hintContent = document.getElementById("hintContent");
-
-        const explainCodeButton = document.getElementById("explainCodeButton");
-        const explanationModal = document.getElementById("explanationModal");
-        const closeExplanationModal = document.getElementById(
-          "closeExplanationModal"
-        );
-        const explanationContent =
-          document.getElementById("explanationContent");
-
-        const mobileToggle = document.getElementById("mobileToggle");
-        const mobileInstructions =
-          document.getElementById("mobileInstructions");
-        const closeInstructions = document.getElementById("closeInstructions");
-        const editorTab = document.getElementById("editorTab");
-        const previewTab = document.getElementById("previewTab");
-        const editorPanel = document.getElementById("editorPanel");
-        const zoomButton = document.getElementById("zoomButton");
-        const imageModal = document.getElementById("imageModal");
-
-        // Initial code for the editor (for "Buat Navbar dengan Flexbox" challenge)
+        // Set initial content for navbar flexbox challenge
         const initialCode = `<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Navbar Flexbox</title>
-    <style>
-        /* Tambahkan CSS untuk membuat navbar dengan flexbox di sini */
-        nav {
-            /* Contoh: */
-            /* display: flex; */
-            /* justify-content: space-around; */
-            /* align-items: center; */
-            /* background-color: #333; */
-            /* padding: 10px; */
-        }
-        nav a {
-            /* Contoh: */
-            /* color: white; */
-            /* text-decoration: none; */
-            /* padding: 8px 15px; */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Navbar Flexbox</title>
+  <style>
+    /* Tambahkan CSS untuk membuat navbar dengan flexbox di sini */
+    
+  </style>
 </head>
 <body>
-    <nav>
-        <a href="#">Beranda</a>
-        <a href="#">Tentang</a>
-        <a href="#">Kontak</a>
-    </nav>
+  <nav>
+    <a href="#">Beranda</a>
+    <a href="#">Tentang</a>
+    <a href="#">Kontak</a>
+  </nav>
 </body>
 </html>`;
 
         editor.setValue(initialCode);
 
-        // Set cursor to the editable area (inside the <style> tag)
+        // Set cursor to editable area
         setTimeout(() => {
           const lines = editor.lineCount();
           for (let i = 0; i < lines; i++) {
@@ -694,375 +950,205 @@
           editor.focus();
         }, 500);
 
+        // Update preview function
         function updatePreview() {
-          const code = editor.getValue();
-          previewFrame.srcdoc = code;
+          const fullHtml = editor.getValue();
+          preview.srcdoc = fullHtml;
         }
 
-        updatePreview();
+        function setEditorWithTemplate() {
+          const fullHtml = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Navbar Flexbox</title>
+  <style>
+    /* Tambahkan CSS untuk membuat navbar dengan flexbox di sini */
+    
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#">Beranda</a>
+    <a href="#">Tentang</a>
+    <a href="#">Kontak</a>
+  </nav>
+</body>
+</html>`;
 
+          editor.setValue(fullHtml);
+
+          // Clear all marks
+          const marks = editor.getAllMarks();
+          marks.forEach((mark) => mark.clear());
+
+          // Set cursor to editable area
+          setTimeout(() => {
+            const lines = editor.lineCount();
+            for (let i = 0; i < lines; i++) {
+              const line = editor.getLine(i);
+              if (
+                line.includes(
+                  "/* Tambahkan CSS untuk membuat navbar dengan flexbox di sini */"
+                )
+              ) {
+                editor.setCursor(i + 1, 0);
+                break;
+              }
+            }
+            editor.focus();
+          }, 100);
+        }
+
+        setEditorWithTemplate();
+
+        // Update preview on change
         editor.on("change", function () {
+          userHasTyped = true;
           clearTimeout(window.updateTimeout);
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
-        if (mobileToggle) {
-          mobileToggle.addEventListener("click", function () {
-            mobileInstructions.classList.toggle("right-[-300px]");
-            mobileInstructions.classList.toggle("right-0");
-          });
-        } else {
-          console.error("Error: mobileToggle element not found.");
-        }
-
-        if (closeInstructions) {
-          closeInstructions.addEventListener("click", function () {
-            mobileInstructions.classList.remove("right-0");
-            mobileInstructions.classList.add("right-[-300px]");
-          });
-        } else {
-          console.error("Error: closeInstructions element not found.");
-        }
-
-        document.addEventListener("click", function (e) {
-          // Check if mobileInstructions and mobileToggle exist before accessing their properties
-          const isClickInsideMobileInstructions =
-            mobileInstructions && mobileInstructions.contains(e.target);
-          const isClickOnMobileToggle =
-            mobileToggle && mobileToggle.contains(e.target);
-          const isMobileInstructionsOpen =
-            mobileInstructions &&
-            mobileInstructions.classList.contains("right-0");
-
-          if (
-            isMobileInstructionsOpen &&
-            !isClickInsideMobileInstructions &&
-            !isClickOnMobileToggle
-          ) {
-            mobileInstructions.classList.remove("right-0");
-            mobileInstructions.classList.add("right-[-300px]");
-          }
-        });
-
-        if (editorTab) {
-          editorTab.addEventListener("click", function () {
-            if (window.innerWidth < 768) {
-              editorPanel.classList.remove("hidden");
-              previewFrame.classList.add("hidden");
-              editorTab.classList.add("border-blue-500", "text-blue-500");
-              editorTab.classList.remove(
-                "text-gray-500",
-                "hover:text-blue-500"
-              );
-              previewTab.classList.remove("border-blue-500", "text-blue-500");
-              previewTab.classList.add("text-gray-500", "hover:text-blue-500");
-            }
-          });
-        } else {
-          console.error("Error: editorTab element not found.");
-        }
-
-        if (previewTab) {
-          previewTab.addEventListener("click", function () {
-            if (window.innerWidth < 768) {
-              previewFrame.classList.remove("hidden");
-              editorPanel.classList.add("hidden");
-              previewTab.classList.add("border-blue-500", "text-blue-500");
-              previewTab.classList.remove(
-                "text-gray-500",
-                "hover:text-blue-500"
-              );
-              editorTab.classList.remove("border-blue-500", "text-blue-500");
-              editorTab.classList.add("text-gray-500", "hover:text-blue-500");
-              updatePreview();
-            }
-          });
-        } else {
-          console.error("Error: previewTab element not found.");
-        }
-
-        if (zoomButton) {
-          zoomButton.addEventListener("click", function () {
-            imageModal.classList.remove("hidden");
-          });
-        } else {
-          console.error("Error: zoomButton element not found.");
-        }
-
-        if (imageModal) {
-          imageModal.addEventListener("click", function (e) {
-            if (e.target === imageModal) {
-              imageModal.classList.add("hidden");
-            }
-          });
-        } else {
-          console.error("Error: imageModal element not found.");
-        }
-
-        if (submitButton) {
-          submitButton.addEventListener("click", function () {
-            const code = editor.getValue();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(code, "text/html");
-
-            const navElement = doc.querySelector("nav");
-            const styleElement = doc.querySelector("style");
-            const links = navElement ? navElement.querySelectorAll("a") : [];
-
-            let isValid = true;
-            let message = "";
-
-            // Check 1: Link berada dalam satu elemen <nav>
-            if (!navElement) {
-              isValid = false;
-              message = "Elemen <nav> tidak ditemukan.";
-            } else if (links.length < 3) {
-              isValid = false;
-              message = "Elemen <nav> harus berisi minimal 3 tautan (<a>).";
-            } else {
-              // Check 2: Gunakan display: flex; pada elemen <nav>
-              const navStyle = navElement.style;
-              if (!navStyle || navStyle.display !== "flex") {
-                // Fallback to check inline style or style tags
-                const navComputedStyle = window.getComputedStyle(navElement);
-                if (navComputedStyle.display !== "flex") {
-                  // Check if 'display: flex' is in the <style> tag for 'nav'
-                  if (
-                    styleElement &&
-                    styleElement.textContent.includes("nav {") &&
-                    styleElement.textContent.includes("display: flex")
-                  ) {
-                    // This case is handled by the preview, but for strict validation, we check the text content
-                    // We assume if it's in the style tag, it's applied.
-                  } else {
-                    isValid = false;
-                    message =
-                      "Properti 'display: flex;' tidak diterapkan pada elemen <nav>.";
-                  }
-                }
-              }
-
-              // Check 3: Tautan tampil sejajar (horizontal) - This is implicitly checked by display: flex
-              // If display: flex is correct, links will be horizontal by default.
-            }
-
-            if (isValid) {
-              modalIcon.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 16v-4m0-4h.01" />
-                </svg>
-              `;
-              modalIcon.className =
-                "text-green-600 text-6xl mb-4 flex items-center justify-center w-24 h-24 rounded-full mx-auto font-bold border-2 border-green-600";
-              modalTitle.textContent = "Jawaban Benar!";
-              modalTitle.className = "text-xl font-bold text-green-600 mb-2";
-              modalMessage.textContent =
-                "Navbar Flexbox kamu sudah dibuat dengan benar! Selamat!";
-            } else {
-              modalIcon.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 9v4m0 4h.01M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0Z"/>
-                </svg>
-              `;
-              modalIcon.className =
-                "text-red-600 text-6xl mb-4 flex items-center justify-center w-24 h-24 rounded-full mx-auto font-bold border-2 border-red-600";
-              modalTitle.textContent = "Perlu Perbaikan";
-              modalTitle.className = "text-xl font-bold text-red-600 mb-2";
-              modalMessage.textContent = message;
-            }
-
-            resultModal.classList.remove("hidden");
-          });
-        } else {
-          console.error("Error: submitButton element not found.");
-        }
-
-        if (resetButton) {
-          resetButton.addEventListener("click", function () {
-            editor.setValue(initialCode);
-            updatePreview();
-            editor.focus();
-          });
-        } else {
-          console.error("Error: resetButton element not found.");
-        }
-
-        if (closeModal) {
-          closeModal.addEventListener("click", function () {
-            resultModal.classList.add("hidden");
-          });
-        } else {
-          console.error("Error: closeModal element not found.");
-        }
-
-        if (resultModal) {
-          resultModal.addEventListener("click", function (e) {
-            if (e.target === resultModal) {
-              resultModal.classList.add("hidden");
-            }
-          });
-        } else {
-          console.error("Error: resultModal element not found.");
-        }
-
-        // LLM Hint Button Logic
-        if (hintButton) {
-          hintButton.addEventListener("click", async function () {
-            if (hintModal && hintContent) {
-              hintModal.classList.remove("hidden");
-              hintContent.innerHTML = `
-                <div class="flex items-center justify-center py-8">
-                  <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
-                </div>
-              `; // Show loading spinner
-            } else {
-              console.error(
-                "Error: hintModal or hintContent not found for hint button."
-              );
-              return; // Exit if elements are not found
-            }
-
-            const currentCode = editor.getValue();
-            const prompt = `Sebagai tutor CSS, berikan petunjuk singkat atau penjelasan tentang penggunaan Flexbox untuk membuat navbar horizontal. Jangan berikan jawaban langsung, hanya petunjuk. Fokus pada properti 'display', 'justify-content', dan 'align-items'. Kode saat ini: \n\n\`\`\`html\n${currentCode}\n\`\`\``;
-
-            let chatHistory = [];
-            chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-            const payload = { contents: chatHistory };
-            const apiKey = ""; // Leave as-is for Canvas runtime
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-            try {
-              const response = await fetch(apiUrl, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload),
-              });
-              const result = await response.json();
-              if (
-                result.candidates &&
-                result.candidates.length > 0 &&
-                result.candidates[0].content &&
-                result.candidates[0].content.parts &&
-                result.candidates[0].content.parts.length > 0
-              ) {
-                hintContent.textContent =
-                  result.candidates[0].content.parts[0].text; // Display the hint
-              } else {
-                hintContent.textContent =
-                  "Maaf, tidak dapat menghasilkan petunjuk saat ini. Coba lagi nanti.";
-              }
-            } catch (error) {
-              console.error("Error fetching hint:", error);
-              hintContent.textContent =
-                "Terjadi kesalahan saat mengambil petunjuk. Silakan coba lagi.";
-            }
-          });
-        } else {
-          console.error("Error: hintButton element not found.");
-        }
-
-        if (closeHintModal) {
-          closeHintModal.addEventListener("click", function () {
-            if (hintModal) {
-              hintModal.classList.add("hidden");
-            }
-          });
-        } else {
-          console.error("Error: closeHintModal element not found.");
-        }
-
-        if (hintModal) {
-          hintModal.addEventListener("click", function (e) {
-            if (e.target === hintModal) {
-              hintModal.classList.add("hidden");
-            }
-          });
-        } else {
-          console.error("Error: hintModal element not found.");
-        }
-
-        // LLM Code Explanation Button Logic
-        if (explainCodeButton) {
-          explainCodeButton.addEventListener("click", async function () {
-            if (explanationModal && explanationContent) {
-              explanationModal.classList.remove("hidden");
-              explanationContent.innerHTML = `
-                <div class="flex items-center justify-center py-8">
-                  <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
-                </div>
-              `; // Show loading spinner
-            } else {
-              console.error(
-                "Error: explanationModal or explanationContent not found for explanation button."
-              );
-              return; // Exit if elements are not found
-            }
-
-            const currentCode = editor.getValue();
-            const prompt = `Jelaskan kode HTML dan CSS berikut secara rinci, fokus pada bagaimana Flexbox digunakan untuk menata elemen navbar. Jelaskan setiap bagian penting dari kode dan hubungannya. Kode: \n\n\`\`\`html\n${currentCode}\n\`\`\``;
-
-            let chatHistory = [];
-            chatHistory.push({ role: "user", parts: [{ text: prompt }] });
-            const payload = { contents: chatHistory };
-            const apiKey = ""; // Leave as-is for Canvas runtime
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-            try {
-              const response = await fetch(apiUrl, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload),
-              });
-              const result = await response.json();
-              if (
-                result.candidates &&
-                result.candidates.length > 0 &&
-                result.candidates[0].content &&
-                result.candidates[0].content.parts &&
-                result.candidates[0].content.parts.length > 0
-              ) {
-                explanationContent.textContent =
-                  result.candidates[0].content.parts[0].text; // Display the explanation
-              } else {
-                explanationContent.textContent =
-                  "Maaf, tidak dapat menghasilkan penjelasan saat ini. Coba lagi nanti.";
-              }
-            } catch (error) {
-              console.error("Error fetching explanation:", error);
-              explanationContent.textContent =
-                "Terjadi kesalahan saat mengambil penjelasan. Silakan coba lagi.";
-            }
-          });
-        } else {
-          console.error("Error: explainCodeButton element not found.");
-        }
-
-        if (closeExplanationModal) {
-          closeExplanationModal.addEventListener("click", function () {
-            if (explanationModal) {
-              explanationModal.classList.add("hidden");
-            }
-          });
-        } else {
-          console.error("Error: closeExplanationModal element not found.");
-        }
-
-        if (explanationModal) {
-          explanationModal.addEventListener("click", function (e) {
-            if (e.target === explanationModal) {
-              explanationModal.classList.add("hidden");
-            }
-          });
-        } else {
-          console.error("Error: explanationModal element not found.");
-        }
-
+        // Auto-refresh preview
         setInterval(() => {
           if (editor.getValue()) {
             updatePreview();
           }
-        }, 2000);
+        }, 1000);
+
+        // Initial preview update
+        updatePreview();
+
+        // Submit button functionality - Enhanced checking for navbar flexbox challenge
+        submitBtn.addEventListener("click", () => {
+          const fullHtml = editor.getValue();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(fullHtml, "text/html");
+
+          // Get the nav element and its children
+          const navElement = doc.querySelector("nav");
+          const links = navElement ? navElement.querySelectorAll("a") : [];
+
+          // Check for CSS requirements
+          const hasNavElement = !!navElement;
+          const hasMinThreeLinks = links.length >= 3;
+          const hasFlexDisplay =
+            fullHtml.includes("display:") &&
+            (fullHtml.includes("display: flex") ||
+              fullHtml.includes("display:flex"));
+
+          const overlayIcon = document.getElementById("overlayIcon");
+          const overlayTitle = document.getElementById("overlayTitle");
+          const overlayMessage = document.getElementById("overlayMessage");
+
+          let isValid = true;
+          let errorMessages = [];
+
+          // Validation checks
+          if (!hasNavElement) {
+            isValid = false;
+            errorMessages.push("Elemen <nav> tidak ditemukan");
+          }
+
+          if (!hasMinThreeLinks) {
+            isValid = false;
+            errorMessages.push("Minimal 3 tautan (<a>) harus ada dalam <nav>");
+          }
+
+          if (!hasFlexDisplay) {
+            isValid = false;
+            errorMessages.push(
+              "Properti 'display: flex' tidak ditemukan pada CSS"
+            );
+          }
+
+          // Check if nav specifically has display: flex in CSS
+          if (hasNavElement && hasFlexDisplay) {
+            const navPattern = /nav\s*\{[^}]*display\s*:\s*flex[^}]*\}/;
+            if (!navPattern.test(fullHtml.replace(/\s+/g, " "))) {
+              isValid = false;
+              errorMessages.push(
+                "Properti 'display: flex' harus diterapkan pada selector 'nav'"
+              );
+            }
+          }
+
+          if (isValid) {
+            // Success
+            overlayIcon.textContent = "✓";
+            overlayIcon.className = "text-green-600 text-6xl mb-4";
+            overlayTitle.textContent = "Jawaban Benar!";
+            overlayTitle.className = "text-xl font-bold text-green-600 mb-2";
+            overlayMessage.textContent =
+              "Navbar Flexbox kamu sudah dibuat dengan benar! Semua elemen sudah sejajar horizontal menggunakan flexbox.";
+          } else {
+            // Needs improvement
+            overlayIcon.textContent = "!";
+            overlayIcon.className = "text-yellow-500 text-6xl mb-4";
+            overlayTitle.textContent = "Perlu Perbaikan";
+            overlayTitle.className = "text-xl font-bold text-yellow-500 mb-2";
+            overlayMessage.textContent = `Pastikan: ${errorMessages.join(
+              ", "
+            )}.`;
+          }
+
+          overlay.classList.remove("hidden");
+        });
+
+        // Reset button functionality
+        resetBtn.addEventListener("click", () => {
+          // Clear all marks first
+          const marks = editor.getAllMarks();
+          marks.forEach((mark) => mark.clear());
+
+          // Set default template
+          const defaultCode = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Navbar Flexbox</title>
+  <style>
+    /* Tambahkan CSS untuk membuat navbar dengan flexbox di sini */
+    
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#">Beranda</a>
+    <a href="#">Tentang</a>
+    <a href="#">Kontak</a>
+  </nav>
+</body>
+</html>`;
+
+          editor.setValue(defaultCode);
+          updatePreview();
+
+          // Focus back to editor
+          setTimeout(() => {
+            const lines = editor.lineCount();
+            for (let i = 0; i < lines; i++) {
+              const line = editor.getLine(i);
+              if (
+                line.includes(
+                  "/* Tambahkan CSS untuk membuat navbar dengan flexbox di sini */"
+                )
+              ) {
+                editor.setCursor(i + 1, 0);
+                break;
+              }
+            }
+            editor.focus();
+          }, 100);
+        });
+
+        // Close overlay functionality
+        closeOverlayBtn.addEventListener("click", () => {
+          overlay.classList.add("hidden");
+        });
+
+        // Make updatePreview available globally for tab switching
+        window.updatePreview = updatePreview;
       });
     </script>
   </body>
