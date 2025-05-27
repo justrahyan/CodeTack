@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CodeTack - Tantangan Memperbaiki Selector</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,677 +12,226 @@
       rel="stylesheet"
     />
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"
     />
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material.min.css"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material.min.css"
     />
-
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Outfit", sans-serif;
-        background: #f8fafc;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1rem;
-      }
-
-      /* Header Styles */
-      header {
-        background: white;
-        border-bottom: 1px solid #e2e8f0;
-        padding: 1rem 0;
-        position: sticky;
-        top: 0;
-        z-index: 40;
-      }
-
-      .header-grid {
-        display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .back-link {
-        color: #9ca3af;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.875rem;
-        transition: color 0.2s;
-      }
-
-      .back-link:hover {
-        color: #374151;
-        text-decoration: underline;
-      }
-
-      .challenge-title {
-        text-align: center;
-        color: #3b82f6;
-        font-weight: 600;
-        font-size: 1rem;
-        white-space: nowrap;
-      }
-
-      .difficulty-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: #fef3c7;
-        color: #d97706;
-        padding: 0.5rem 0.75rem;
-        border-radius: 0.375rem;
-        font-size: 0.875rem;
-        justify-self: end;
-      }
-
-      .difficulty-badge.easy {
-        background: #dcfce7;
-        color: #16a34a;
-      }
-
-      .difficulty-badge.medium {
-        background: #fef3c7;
-        color: #d97706;
-      }
-
-      /* Main Content */
-      .main-content {
-        flex: 1;
-        display: grid;
-        grid-template-columns: 1fr;
-        min-height: 0;
-      }
-
-      @media (min-width: 1024px) {
-        .main-content {
-          grid-template-columns: 300px 1fr;
-        }
-      }
-
-      /* Instructions Panel */
-      .instructions-panel {
-        background: white;
-        padding: 1rem;
-        border-right: 1px solid #e2e8f0;
-        overflow-y: auto;
-        display: none;
-      }
-
-      @media (min-width: 1024px) {
-        .instructions-panel {
-          display: block;
-        }
-      }
-
-      .instructions-header {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-      }
-
-      .instructions-header h2 {
-        font-size: 1.125rem;
-        font-weight: 700;
-        color: #1f2937;
-      }
-
-      .instruction-content {
-        font-size: 0.875rem;
-        line-height: 1.5;
-        color: #374151;
-      }
-
-      .instruction-content p {
-        margin-bottom: 1rem;
-      }
-
-      .requirement-box {
-        background: #f0fdf4;
-        border: 1px solid #bbf7d0;
-        border-radius: 0.5rem;
-        padding: 1rem;
-        margin: 1rem 0;
-      }
-
-      .requirement-title {
-        color: #16a34a;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-      }
-
-      .requirement-list {
-        list-style: none;
-        color: #16a34a;
-      }
-
-      .requirement-list li {
-        margin-bottom: 0.25rem;
-      }
-
-      .code-snippet {
-        background: #fce7f3;
-        color: #be185d;
-        padding: 0.125rem 0.375rem;
-        border-radius: 0.25rem;
-        font-family: "Courier New", monospace;
-        font-size: 0.75rem;
-      }
-
-      .preview-box {
-        background: #f3f4f6;
-        border-radius: 0.5rem;
-        padding: 1rem;
-        margin: 1rem 0;
-        position: relative;
-      }
-
-      .preview-content {
-        background: white;
-        border-radius: 0.375rem;
-        padding: 1rem;
-        border: 1px solid #d1d5db;
-      }
-
-      .zoom-button {
-        position: absolute;
-        bottom: 0.5rem;
-        right: 0.5rem;
-        background: rgba(0, 0, 0, 0.5);
-        color: white;
-        border: none;
-        border-radius: 0.25rem;
-        padding: 0.25rem 0.5rem;
-        font-size: 0.75rem;
-        cursor: pointer;
-        transition: background-color 0.2s;
-      }
-
-      .zoom-button:hover {
-        background: rgba(0, 0, 0, 0.7);
-      }
-
-      /* Mobile Instructions Toggle */
-      .mobile-instructions-toggle {
-        position: fixed;
-        right: 0;
-        top: 5rem;
-        background: white;
-        border: 1px solid #e2e8f0;
-        border-radius: 1rem 0 0 1rem;
-        padding: 1rem;
-        z-index: 60;
-        cursor: pointer;
-        transition: transform 0.2s;
-      }
-
-      @media (min-width: 1024px) {
-        .mobile-instructions-toggle {
-          display: none;
-        }
-      }
-
-      .mobile-instructions-panel {
-        position: fixed;
-        top: 5rem;
-        right: -300px;
-        width: 280px;
-        height: calc(100vh - 5rem);
-        background: white;
-        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s ease;
-        z-index: 70;
-        overflow-y: auto;
-        padding: 1rem;
-      }
-
-      .mobile-instructions-panel.open {
-        right: 0;
-      }
-
-      .mobile-instructions-header {
-        display: flex;
-        justify-content: between;
-        align-items: center;
-        margin-bottom: 1rem;
-      }
-
-      .close-button {
-        background: none;
-        border: none;
-        color: #6b7280;
-        cursor: pointer;
-        padding: 0.25rem;
-      }
-
-      /* Editor Area */
-      .editor-area {
-        background: white;
-        display: flex;
-        flex-direction: column;
-        min-height: 0;
-      }
-
-      .editor-tabs {
-        display: flex;
-        border-bottom: 1px solid #e2e8f0;
-        background: #f8fafc;
-      }
-
-      @media (min-width: 768px) {
-        .editor-tabs {
-          display: none;
-        }
-      }
-
-      .tab-button {
-        padding: 0.75rem 1rem;
-        border: none;
-        background: none;
-        color: #6b7280;
-        cursor: pointer;
-        border-bottom: 2px solid transparent;
-        transition: all 0.2s;
-      }
-
-      .tab-button.active {
-        color: #16a34a;
-        border-bottom-color: #16a34a;
-      }
-
-      .editor-container {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        min-height: 0;
-      }
-
-      @media (min-width: 768px) {
-        .editor-container {
-          flex-direction: row;
-        }
-      }
-
-      .editor-panel,
-      .preview-panel {
-        flex: 1;
-        min-height: 400px;
-      }
-
-      @media (max-width: 767px) {
-        .editor-panel.hidden,
-        .preview-panel.hidden {
-          display: none;
-        }
-      }
-
-      @media (min-width: 768px) {
-        .preview-panel {
-          border-left: 1px solid #e2e8f0;
-        }
-      }
-
+      /* Custom styles to ensure CodeMirror and layout consistency */
       .CodeMirror {
         height: 100%;
         font-size: 14px;
         font-family: "Courier New", monospace;
       }
 
-      .preview-iframe {
-        width: 100%;
+      /* Base styles for the main content area to ensure it fills available space */
+      html,
+      body {
         height: 100%;
-        border: none;
       }
-
-      /* Action Bar */
-      .action-bar {
-        background: #2f3436;
-        padding: 0.75rem 1rem;
+      body {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 0.5rem;
+        flex-direction: column;
       }
-
-      .reset-button {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: none;
-        border: none;
-        color: white;
-        padding: 0.5rem 0.75rem;
-        border-radius: 0.375rem;
-        cursor: pointer;
-        font-size: 0.875rem;
-        transition: background-color 0.2s;
+      main {
+        flex: 1; /* Allows main content to grow and fill remaining space */
+        min-height: 0; /* Prevents overflow issues in flex container */
       }
-
-      .reset-button:hover {
-        background: #3c4144;
+      .editor-container,
+      .editor-panel,
+      .preview-iframe {
+        height: 100%; /* Ensure these elements take full height within their flex parent */
       }
-
-      .submit-button {
-        background: #16a34a;
-        color: white;
-        border: none;
-        padding: 0.5rem 1.5rem;
-        border-radius: 0.375rem;
-        cursor: pointer;
-        font-size: 0.875rem;
-        font-weight: 500;
-        transition: background-color 0.2s;
-      }
-
-      .submit-button:hover {
-        background: #15803d;
-      }
-
-      /* Modal Overlay */
-      .modal-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.6);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 50;
-      }
-
-      .modal-overlay.hidden {
-        display: none;
-      }
-
-      .modal-content {
-        background: white;
-        padding: 2rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        max-width: 90vw;
-        max-height: 80vh;
-        margin: 1rem;
-      }
-
-      .modal-icon {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-      }
-
-      .modal-icon.success {
-        color: #16a34a;
-      }
-
-      .modal-icon.warning {
-        color: #f59e0b;
-      }
-
-      .modal-title {
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-      }
-
-      .modal-title.success {
-        color: #16a34a;
-      }
-
-      .modal-title.warning {
-        color: #f59e0b;
-      }
-
-      .modal-message {
-        color: #374151;
-        margin-bottom: 1rem;
-        line-height: 1.5;
-      }
-
-      .modal-close-button {
-        background: #16a34a;
-        color: white;
-        border: none;
-        padding: 0.5rem 1.5rem;
-        border-radius: 0.375rem;
-        cursor: pointer;
-        transition: background-color 0.2s;
-      }
-
-      .modal-close-button:hover {
-        background: #15803d;
-      }
-
-      /* Footer */
-      footer {
-        background: white;
-        border-top: 1px solid #e2e8f0;
-        padding: 1rem 0;
-      }
-
-      .footer-nav {
-        display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .nav-link {
-        color: #9ca3af;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.875rem;
-        transition: color 0.2s;
-      }
-
-      .nav-link:hover {
-        color: #374151;
-        text-decoration: underline;
-      }
-
-      .nav-link.next {
-        justify-self: end;
-      }
-
-      /* Preview Example Styles */
-      .example-header {
-        background: #3b82f6;
-        color: white;
-        padding: 0.5rem;
-        border-radius: 0.25rem;
-        margin-bottom: 1rem;
-      }
-
-      .example-nav {
-        background: #10b981;
-        color: white;
-        padding: 0.5rem;
-        border-radius: 0.25rem;
-        margin-bottom: 1rem;
-      }
-
-      .example-text {
-        color: #ef4444;
-        font-weight: bold;
-        margin: 0;
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 640px) {
-        .container {
-          padding: 0 0.5rem;
-        }
-
-        .challenge-title {
-          font-size: 0.875rem;
-        }
-
-        .back-link span,
-        .nav-link span {
+      @media (max-width: 767px) {
+        .editor-panel.hidden,
+        .preview-iframe.hidden {
           display: none;
         }
       }
     </style>
   </head>
-  <body>
-    <!-- Header -->
-    <header>
-      <div class="container">
-        <div class="header-grid">
-          <a href="javascript:history.back()" class="back-link">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
+  <body class="h-screen flex flex-col font-outfit bg-gray-50">
+    <header
+      id="header"
+      class="flex-shrink-0 bg-white border-b border-gray-200 py-4"
+    >
+      <div class="container mx-auto px-4 lg:px-36">
+        <div class="grid grid-cols-3 items-center gap-4">
+          <div class="flex justify-start">
+            <a
+              href="javascript:history.back()"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-gray-700 text-sm lg:text-base"
             >
-              <path d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-            </svg>
-            <span>Kembali</span>
-          </a>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                class="inline-block"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+                />
+              </svg>
+              <span class="hidden sm:inline">Kembali</span>
+            </a>
+          </div>
 
-          <h1 class="challenge-title">Tantangan: Memperbaiki Selector</h1>
+          <div class="flex justify-center">
+            <p
+              class="text-center text-gray-800 font-semibold lg:text-lg text-sm whitespace-nowrap"
+            >
+              Tantangan: Memperbaiki Selector
+            </p>
+          </div>
 
-          <div class="difficulty-badge medium">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M20 7h-4V4c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H4c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V9c0-1.103-.897-2-2-2M4 11h4v8H4zm6-1V4h4v15h-4zm10 9h-4V9h4z"
-              />
-            </svg>
-            <span>Sedang</span>
+          <div class="flex justify-end">
+            <p
+              class="inline-flex items-center gap-2 bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-sm lg:text-base"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                class="inline-block fill-current"
+              >
+                <path
+                  d="M20 7h-4V4c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H4c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V9c0-1.103-.897-2-2-2M4 11h4v8H4zm6-1V4h4v15h-4zm10 9h-4V9h4z"
+                />
+              </svg>
+              <span class="hidden sm:inline">Sedang</span>
+            </p>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <!-- Instructions Panel -->
-      <aside class="instructions-panel">
-        <div class="instructions-header">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
+    <main id="content" class="flex-1 overflow-hidden">
+      <div class="container mx-auto h-full">
+        <div class="grid grid-cols-1 lg:grid-cols-4 h-full">
+          <aside
+            class="lg:col-span-1 bg-white p-3 hidden lg:block overflow-y-auto border-r border-gray-200"
           >
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 16v-4m0-4h.01" />
-          </svg>
-          <h2>Instruksi Tugas</h2>
-        </div>
-
-        <div class="instruction-content">
-          <p><strong>🔧 Saatnya memperbaiki selector CSS!</strong></p>
-
-          <p>
-            Ada beberapa CSS selector yang salah dalam kode. Perbaiki selector
-            <code class="code-snippet">CSS</code> agar styling dapat diterapkan
-            dengan benar pada elemen HTML yang sesuai.
-          </p>
-
-          <p>
-            Perhatikan penggunaan selector class, ID, dan elemen tag yang tepat.
-          </p>
-
-          <div class="requirement-box">
-            <div class="requirement-title">✅ Yang harus kamu capai:</div>
-            <ul class="requirement-list">
-              <li>
-                • Perbaiki selector untuk header dengan ID
-                <code class="code-snippet">#header</code>
-              </li>
-              <li>
-                • Perbaiki selector untuk navigasi dengan class
-                <code class="code-snippet">.nav</code>
-              </li>
-              <li>
-                • Perbaiki selector untuk paragraf
-                <code class="code-snippet">p</code>
-              </li>
-              <li>• Pastikan semua styling diterapkan dengan benar</li>
-            </ul>
-          </div>
-
-          <div class="preview-box">
-            <div><strong>💡 Hasil yang Diharapkan:</strong></div>
-            <div class="preview-content">
-              <div class="example-header">
-                <h1>Website Header</h1>
-              </div>
-              <div class="example-nav">
-                <span>Home | About | Contact</span>
-              </div>
-              <p class="example-text">
-                Ini adalah paragraf dengan warna merah dan teks tebal.
-              </p>
-            </div>
-            <button class="zoom-button" id="zoomButton">
+            <div class="flex items-center gap-2 mb-4 text-gray-800">
               <svg
-                width="18"
-                height="18"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
               >
-                <path
-                  d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
-                />
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4m0-4h.01" />
               </svg>
-            </button>
-          </div>
+              <h2 class="font-bold text-lg">Instruksi Tugas</h2>
+            </div>
 
-          <p>
-            <small
-              >Header berwarna biru, navigasi hijau, dan paragraf merah dengan
-              teks tebal.</small
-            >
-          </p>
-        </div>
-      </aside>
+            <div class="space-y-4 text-sm md:text-base text-gray-700">
+              <p class="font-medium">
+                <strong>🔧 Saatnya memperbaiki selector CSS!</strong>
+              </p>
 
-      <!-- Mobile Instructions Toggle -->
-      <button class="mobile-instructions-toggle" id="mobileToggle">
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <circle cx="12" cy="12" r="10" />
-          <path d="M12 16v-4m0-4h.01" />
-        </svg>
-      </button>
+              <div class="space-y-2">
+                <p>
+                  Ada beberapa CSS selector yang salah dalam kode. Perbaiki
+                  selector
+                  <code class="bg-pink-100 px-1 rounded text-pink-600"
+                    >CSS</code
+                  >
+                  agar styling dapat diterapkan dengan benar pada elemen HTML
+                  yang sesuai.
+                </p>
+                <p>
+                  Perhatikan penggunaan selector class, ID, dan elemen tag yang
+                  tepat.
+                </p>
+              </div>
 
-      <!-- Mobile Instructions Panel -->
-      <div class="mobile-instructions-panel" id="mobileInstructions">
-        <div class="mobile-instructions-header">
-          <div class="instructions-header">
+              <div class="bg-green-50 p-3 rounded-md border border-green-200">
+                <p class="font-medium text-green-800 mb-2">
+                  ✅ Yang harus kamu capai:
+                </p>
+                <ul
+                  class="space-y-1 text-green-700 text-xs md:text-sm list-none"
+                >
+                  <li>
+                    • Perbaiki selector untuk header dengan ID
+                    <code class="bg-green-100 px-1 rounded">#header</code>
+                  </li>
+                  <li>
+                    • Perbaiki selector untuk navigasi dengan class
+                    <code class="bg-green-100 px-1 rounded">.nav</code>
+                  </li>
+                  <li>
+                    • Perbaiki selector untuk paragraf
+                    <code class="bg-green-100 px-1 rounded">p</code>
+                  </li>
+                  <li>• Pastikan semua styling diterapkan dengan benar</li>
+                </ul>
+              </div>
+
+              <div
+                class="bg-gray-100 p-3 rounded-md relative border border-gray-300"
+              >
+                <p class="font-medium text-gray-800 mb-2">
+                  💡 Hasil yang Diharapkan:
+                </p>
+                <div
+                  class="bg-white rounded-md border border-gray-300 text-xs md:text-sm relative p-4"
+                >
+                  <div class="bg-blue-500 text-white p-2 rounded-md mb-2">
+                    <h1 class="text-lg font-bold">Website Header</h1>
+                  </div>
+                  <div class="bg-green-500 text-white p-2 rounded-md mb-2">
+                    <span class="text-base">Home | About | Contact</span>
+                  </div>
+                  <p class="text-red-500 font-bold text-base">
+                    Ini adalah paragraf dengan warna merah dan teks tebal.
+                  </p>
+                  <button
+                    id="zoomButton"
+                    class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded-md hover:bg-opacity-70 flex items-center gap-1"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
+                      />
+                    </svg>
+                    Zoom
+                  </button>
+                </div>
+              </div>
+
+              <p class="text-xs md:text-sm text-gray-600">
+                Header berwarna biru, navigasi hijau, dan paragraf merah dengan
+                teks tebal.
+              </p>
+            </div>
+          </aside>
+
+          <button
+            id="mobileToggle"
+            class="fixed right-0 top-20 bg-white border border-gray-200 rounded-l-2xl p-4 lg:hidden z-30 shadow-md"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -690,201 +240,203 @@
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
             >
               <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <circle cx="12" cy="16" r="1" />
-            </svg>
-            <h2>Instruksi Tugas</h2>
-          </div>
-          <button class="close-button" id="closeInstructions">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M8.4 17L7 15.6l3.6-3.6L7 8.425l1.4-1.4l3.6 3.6l3.575-3.6l1.4 1.4l-3.6 3.575l3.6 3.6l-1.4 1.4L12 13.4z"
-              />
+              <path d="M12 16v-4m0-4h.01" />
             </svg>
           </button>
-        </div>
 
-        <div class="instruction-content">
-          <p><strong>🔧 Saatnya memperbaiki selector CSS!</strong></p>
+          <div
+            id="mobileInstructions"
+            class="fixed top-20 right-[-300px] w-72 h-[calc(100vh-5rem)] bg-white shadow-lg transition-all duration-300 z-40 overflow-y-auto p-3"
+          >
+            <div class="flex justify-between items-center mb-4">
+              <div class="flex items-center gap-2 text-gray-800">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <circle cx="12" cy="16" r="1" />
+                </svg>
+                <h2 class="font-bold text-lg">Instruksi Tugas</h2>
+              </div>
+              <button
+                id="closeInstructions"
+                class="text-gray-500 hover:text-gray-700 p-1"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M8.4 17L7 15.6l3.6-3.6L7 8.425l1.4-1.4l3.6 3.6l3.575-3.6l1.4 1.4l-3.6 3.575l3.6 3.6l-1.4 1.4L12 13.4z"
+                  />
+                </svg>
+              </button>
+            </div>
 
-          <p>
-            Ada beberapa CSS selector yang salah dalam kode. Perbaiki selector
-            <code class="code-snippet">CSS</code> agar styling dapat diterapkan
-            dengan benar pada elemen HTML yang sesuai.
-          </p>
-
-          <div class="requirement-box">
-            <div class="requirement-title">✅ Yang harus kamu capai:</div>
-            <ul class="requirement-list">
-              <li>
-                • Perbaiki selector untuk header dengan ID
-                <code class="code-snippet">#header</code>
-              </li>
-              <li>
-                • Perbaiki selector untuk navigasi dengan class
-                <code class="code-snippet">.nav</code>
-              </li>
-              <li>
-                • Perbaiki selector untuk paragraf
-                <code class="code-snippet">p</code>
-              </li>
-            </ul>
+            <div class="space-y-4 text-sm md:text-base text-gray-700">
+              <p class="font-medium">
+                <strong>🔧 Saatnya memperbaiki selector CSS!</strong>
+              </p>
+              <p>
+                Ada beberapa CSS selector yang salah dalam kode. Perbaiki
+                selector
+                <code class="bg-pink-100 px-1 rounded text-pink-600">CSS</code>
+                agar styling dapat diterapkan dengan benar pada elemen HTML yang
+                sesuai.
+              </p>
+              <div class="bg-green-50 p-3 rounded-md border border-green-200">
+                <p class="font-medium text-green-800 mb-2">
+                  ✅ Yang harus kamu capai:
+                </p>
+                <ul
+                  class="space-y-1 text-green-700 text-xs md:text-sm list-none"
+                >
+                  <li>
+                    • Perbaiki selector untuk header dengan ID
+                    <code class="bg-green-100 px-1 rounded">#header</code>
+                  </li>
+                  <li>
+                    • Perbaiki selector untuk navigasi dengan class
+                    <code class="bg-green-100 px-1 rounded">.nav</code>
+                  </li>
+                  <li>
+                    • Perbaiki selector untuk paragraf
+                    <code class="bg-green-100 px-1 rounded">p</code>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
+
+          <section
+            class="lg:col-span-3 bg-white overflow-hidden flex flex-col border-l border-gray-200"
+          >
+            <div
+              class="flex text-sm font-medium border-b border-gray-200 md:hidden"
+            >
+              <button
+                id="editorTab"
+                class="tab-button px-4 py-2 border-b-2 border-blue-500 text-blue-500 focus:outline-none"
+              >
+                index.html
+              </button>
+              <button
+                id="previewTab"
+                class="tab-button px-4 py-2 text-gray-500 hover:text-blue-500"
+              >
+                Preview
+              </button>
+            </div>
+
+            <div
+              class="editor-container flex flex-col md:flex-row w-full flex-1"
+            >
+              <div
+                id="editorPanel"
+                class="w-full md:w-1/2 border-r border-gray-200 overflow-auto block md:block"
+              >
+                <textarea id="htmlCode"></textarea>
+              </div>
+
+              <iframe
+                id="previewFrame"
+                class="w-full md:w-1/2 hidden md:block"
+                title="Pratinjau HTML"
+              ></iframe>
+            </div>
+
+            <div
+              class="border-t border-gray-200 bg-gray-800 px-4 py-3 flex flex-wrap gap-2 justify-between items-center"
+            >
+              <div class="flex gap-2">
+                <button
+                  id="resetButton"
+                  class="px-3 py-1 flex items-center gap-2 text-sm md:text-base text-white hover:bg-gray-700 rounded-md font-medium transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M4.266 16.06a8.92 8.92 0 0 0 3.915 3.978a8.7 8.7 0 0 0 5.471.832a8.8 8.8 0 0 0 4.887-2.64a9.07 9.07 0 0 0 2.388-5.079a9.14 9.14 0 0 0-1.044-5.53a8.9 8.9 0 0 0-4.068-3.815a8.7 8.7 0 0 0-5.5-.608c-1.85.401-3.367 1.313-4.62 2.755a7.6 7.6 0 0 0-1.22 1.781"
+                    />
+                    <path d="m8.931 7.813l-5.04.907L3 3.59" />
+                  </svg>
+                  Reset
+                </button>
+              </div>
+              <button
+                id="submitButton"
+                class="px-6 py-1 text-sm md:text-base bg-green-600 hover:bg-green-700 text-white font-medium rounded-md transition-colors"
+              >
+                Kirim
+              </button>
+            </div>
+          </section>
         </div>
       </div>
-
-      <!-- Editor Area -->
-      <section class="editor-area">
-        <!-- Mobile Tabs -->
-        <div class="editor-tabs">
-          <button class="tab-button active" id="editorTab">index.html</button>
-          <button class="tab-button" id="previewTab">Preview</button>
-        </div>
-
-        <!-- Editor Container -->
-        <div class="editor-container">
-          <div class="editor-panel" id="editorPanel">
-            <textarea id="htmlCode">
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Memperbaiki Selector</title>
-    <style>
-        /* PERBAIKI SELECTOR YANG SALAH DI BAWAH INI */
-        
-        /* Selector untuk header dengan ID "header" - SALAH! */
-        .header {
-            background-color: blue;
-            color: white;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        
-        /* Selector untuk navigasi dengan class "nav" - SALAH! */
-        #nav {
-            background-color: green;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        
-        /* Selector untuk paragraf - SALAH! */
-        .paragraph {
-            color: red;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <div id="header">
-        <h1>Website Header</h1>
-    </div>
-    
-    <div class="nav">
-        <span>Home | About | Contact</span>
-    </div>
-    
-    <p>Ini adalah paragraf dengan warna merah dan teks tebal.</p>
-</body>
-</html></textarea
-            >
-          </div>
-
-          <iframe
-            class="preview-panel preview-iframe"
-            id="previewFrame"
-            title="Pratinjau HTML"
-          ></iframe>
-        </div>
-
-        <!-- Action Bar -->
-        <div class="action-bar">
-          <button class="reset-button" id="resetButton">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                d="M4.266 16.06a8.92 8.92 0 0 0 3.915 3.978a8.7 8.7 0 0 0 5.471.832a8.8 8.8 0 0 0 4.887-2.64a9.07 9.07 0 0 0 2.388-5.079a9.14 9.14 0 0 0-1.044-5.53a8.9 8.9 0 0 0-4.068-3.815a8.7 8.7 0 0 0-5.5-.608c-1.85.401-3.367 1.313-4.62 2.755a7.6 7.6 0 0 0-1.22 1.781"
-              />
-              <path d="m8.931 7.813l-5.04.907L3 3.59" />
-            </svg>
-            Reset
-          </button>
-
-          <button class="submit-button" id="submitButton">Kirim</button>
-        </div>
-      </section>
     </main>
 
-    <!-- Success/Error Modal -->
-    <div class="modal-overlay hidden" id="resultModal">
-      <div class="modal-content">
-        <div class="modal-icon" id="modalIcon">✓</div>
-        <h2 class="modal-title" id="modalTitle">Jawaban Benar!</h2>
-        <p class="modal-message" id="modalMessage">
-          Selector CSS kamu sudah diperbaiki dengan benar!
-        </p>
-        <button class="modal-close-button" id="closeModal">Tutup</button>
+    <div id="resultModal" class="modal-overlay hidden">
+      <div
+        class="modal-content bg-white p-6 rounded-lg shadow-xl text-center max-w-md mx-4"
+      >
+        <div
+          id="modalIcon"
+          class="text-6xl mb-4 flex items-center justify-center w-24 h-24 rounded-full mx-auto font-bold"
+        ></div>
+        <h2 id="modalTitle" class="text-xl font-bold mb-2"></h2>
+        <p id="modalMessage" class="text-gray-700 mb-4"></p>
+        <button
+          id="closeModal"
+          class="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+        >
+          Tutup
+        </button>
       </div>
     </div>
 
-    <!-- Image Zoom Modal -->
-    <div class="modal-overlay hidden" id="imageModal">
-      <div class="modal-content" style="max-width: 600px">
-        <div style="background: #f3f4f6; padding: 2rem; border-radius: 0.5rem">
-          <div
-            style="
-              background: #3b82f6;
-              color: white;
-              padding: 1rem;
-              margin-bottom: 1rem;
-              border-radius: 0.5rem;
-            "
-          >
-            <h1 style="margin: 0; font-size: 2rem">Website Header</h1>
-          </div>
-          <div
-            style="
-              background: #10b981;
-              color: white;
-              padding: 1rem;
-              margin-bottom: 1rem;
-              border-radius: 0.5rem;
-            "
-          >
-            <span style="font-size: 1.2rem">Home | About | Contact</span>
-          </div>
-          <p
-            style="
-              color: #ef4444;
-              font-weight: bold;
-              margin: 0;
-              font-size: 1.2rem;
-            "
-          >
+    <div id="imageModal" class="modal-overlay hidden">
+      <div
+        class="modal-content bg-white p-6 rounded-lg shadow-xl text-center max-w-md mx-4"
+      >
+        <div class="bg-gray-100 p-4 rounded-md">
+          <h1 class="text-blue-500 mb-4 text-2xl font-bold">Website Header</h1>
+          <p class="text-green-500 mb-4 text-2xl font-bold">
+            Home | About | Contact
+          </p>
+          <p class="text-red-500 text-base font-bold">
             Ini adalah paragraf dengan warna merah dan teks tebal.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="footer-nav">
-          <a href="sisipkan-css-ke-html.html" class="nav-link invisible">
+    <footer class="flex-shrink-0 bg-white border-t border-gray-200 py-4">
+      <div class="container mx-auto px-4 lg:px-36">
+        <div class="grid grid-cols-3 items-center gap-4">
+          <a
+            href="sisipkan-css-ke-html.html"
+            class="nav-link inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-gray-700 text-sm lg:text-base"
+          >
             <svg
               width="20"
               height="20"
@@ -896,15 +448,20 @@
               <path d="m13 9l-3 3l3 3" />
               <circle cx="12" cy="12" r="9" />
             </svg>
-            <span>Menyisipkan CSS</span>
+            <span class="hidden sm:inline">Menyisipkan CSS</span>
           </a>
 
-          <div style="text-align: center; font-weight: 600">
+          <div
+            class="text-center text-gray-800 font-semibold lg:text-lg text-sm whitespace-nowrap"
+          >
             Memperbaiki Selector
           </div>
 
-          <a href="buat-navbar-dengan-flexbox.html" class="nav-link next">
-            <span>Membuat Navbar dengan flexbox</span>
+          <a
+            href="buat-navbar-dengan-flexbox.html"
+            class="nav-link next inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-gray-700 text-sm lg:text-base justify-self-end"
+          >
+            <span class="hidden sm:inline">Membuat Navbar dengan flexbox</span>
             <svg
               width="20"
               height="20"
@@ -921,7 +478,6 @@
       </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
@@ -930,7 +486,6 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Initialize CodeMirror
         const textarea = document.getElementById("htmlCode");
         const editor = CodeMirror.fromTextArea(textarea, {
           lineNumbers: true,
@@ -944,9 +499,9 @@
           autoCloseTags: true,
           matchBrackets: true,
           matchTags: true,
+          readOnly: false,
         });
 
-        // Elements
         const previewFrame = document.getElementById("previewFrame");
         const submitButton = document.getElementById("submitButton");
         const resetButton = document.getElementById("resetButton");
@@ -956,7 +511,6 @@
         const modalTitle = document.getElementById("modalTitle");
         const modalMessage = document.getElementById("modalMessage");
 
-        // Mobile elements
         const mobileToggle = document.getElementById("mobileToggle");
         const mobileInstructions =
           document.getElementById("mobileInstructions");
@@ -967,7 +521,7 @@
         const zoomButton = document.getElementById("zoomButton");
         const imageModal = document.getElementById("imageModal");
 
-        // Initial code
+        // Initial code for the editor (for "Memperbaiki Selector" challenge)
         const initialCode = `<!DOCTYPE html>
 <html>
 <head>
@@ -1014,50 +568,71 @@
 </body>
 </html>`;
 
-        // Set initial content
         editor.setValue(initialCode);
 
-        // Update preview function
+        // Set cursor to the editable area
+        setTimeout(() => {
+          const lines = editor.lineCount();
+          for (let i = 0; i < lines; i++) {
+            const line = editor.getLine(i);
+            if (
+              line.includes("/* PERBAIKI SELECTOR YANG SALAH DI BAWAH INI */")
+            ) {
+              editor.setCursor(i + 1, 0);
+              break;
+            }
+          }
+          editor.focus();
+        }, 500);
+
         function updatePreview() {
           const code = editor.getValue();
           previewFrame.srcdoc = code;
         }
 
-        // Initial preview update
         updatePreview();
 
-        // Update preview on code change
         editor.on("change", function () {
           clearTimeout(window.updateTimeout);
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
-        // Mobile instructions toggle
         mobileToggle.addEventListener("click", function () {
-          mobileInstructions.classList.toggle("open");
+          mobileInstructions.classList.toggle("right-[-300px]");
+          mobileInstructions.classList.toggle("right-0");
         });
 
         closeInstructions.addEventListener("click", function () {
-          mobileInstructions.classList.remove("open");
+          mobileInstructions.classList.remove("right-0");
+          mobileInstructions.classList.add("right-[-300px]");
         });
 
-        // Close instructions when clicking outside
         document.addEventListener("click", function (e) {
+          const isClickInsideMobileInstructions = mobileInstructions.contains(
+            e.target
+          );
+          const isClickOnMobileToggle = mobileToggle.contains(e.target);
+          const isMobileInstructionsOpen =
+            mobileInstructions.classList.contains("right-0");
+
           if (
-            !mobileInstructions.contains(e.target) &&
-            !mobileToggle.contains(e.target)
+            isMobileInstructionsOpen &&
+            !isClickInsideMobileInstructions &&
+            !isClickOnMobileToggle
           ) {
-            mobileInstructions.classList.remove("open");
+            mobileInstructions.classList.remove("right-0");
+            mobileInstructions.classList.add("right-[-300px]");
           }
         });
 
-        // Mobile tabs
         editorTab.addEventListener("click", function () {
           if (window.innerWidth < 768) {
             editorPanel.classList.remove("hidden");
             previewFrame.classList.add("hidden");
-            editorTab.classList.add("active");
-            previewTab.classList.remove("active");
+            editorTab.classList.add("border-blue-500", "text-blue-500");
+            editorTab.classList.remove("text-gray-500", "hover:text-blue-500");
+            previewTab.classList.remove("border-blue-500", "text-blue-500");
+            previewTab.classList.add("text-gray-500", "hover:text-blue-500");
           }
         });
 
@@ -1065,13 +640,14 @@
           if (window.innerWidth < 768) {
             previewFrame.classList.remove("hidden");
             editorPanel.classList.add("hidden");
-            previewTab.classList.add("active");
-            editorTab.classList.remove("active");
+            previewTab.classList.add("border-blue-500", "text-blue-500");
+            previewTab.classList.remove("text-gray-500", "hover:text-blue-500");
+            editorTab.classList.remove("border-blue-500", "text-blue-500");
+            editorTab.classList.add("text-gray-500", "hover:text-blue-500");
             updatePreview();
           }
         });
 
-        // Zoom functionality
         zoomButton.addEventListener("click", function () {
           imageModal.classList.remove("hidden");
         });
@@ -1082,69 +658,79 @@
           }
         });
 
-        // Submit functionality
         submitButton.addEventListener("click", function () {
           const code = editor.getValue();
           const lowerCode = code.toLowerCase();
 
-          // Check if selectors are correct
+          // Validation logic for "Memperbaiki Selector" challenge
           const hasCorrectHeaderSelector =
-            lowerCode.includes("#header") &&
-            lowerCode.indexOf("#header") <
-              lowerCode.indexOf("background-color: blue");
+            (lowerCode.includes("#header {") ||
+              lowerCode.includes("#header{")) &&
+            lowerCode.includes("background-color: blue;");
 
           const hasCorrectNavSelector =
-            lowerCode.includes(".nav") &&
-            lowerCode.indexOf(".nav") <
-              lowerCode.indexOf("background-color: green");
+            (lowerCode.includes(".nav {") || lowerCode.includes(".nav{")) &&
+            lowerCode.includes("background-color: green;");
 
           const hasCorrectParagraphSelector =
-            lowerCode.includes("p {") ||
-            (lowerCode.includes("p{") &&
-              lowerCode.indexOf("p{") < lowerCode.indexOf("color: red"));
+            (lowerCode.includes("p {") || lowerCode.includes("p{")) &&
+            lowerCode.includes("color: red;") &&
+            lowerCode.includes("font-weight: bold;");
 
           if (
             hasCorrectHeaderSelector &&
             hasCorrectNavSelector &&
             hasCorrectParagraphSelector
           ) {
-            // Success
-            modalIcon.textContent = "✓";
-            modalIcon.className = "modal-icon success";
+            // Success: Set modal icon to 'i' SVG
+            modalIcon.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4m0-4h.01" />
+              </svg>
+            `;
+            // Ensure correct styling for success icon
+            modalIcon.className =
+              "text-green-600 text-6xl mb-4 flex items-center justify-center w-24 h-24 rounded-full mx-auto font-bold border-2 border-green-600";
             modalTitle.textContent = "Jawaban Benar!";
-            modalTitle.className = "modal-title success";
+            modalTitle.className = "text-xl font-bold text-green-600 mb-2";
             modalMessage.textContent =
               "Selector CSS kamu sudah diperbaiki dengan benar! Semua elemen sekarang memiliki styling yang tepat.";
           } else {
-            // Error
-            modalIcon.textContent = "!";
-            modalIcon.className = "modal-icon warning";
+            // Error: Set modal icon to '!' SVG
+            modalIcon.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 9v4m0 4h.01M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0Z"/>
+              </svg>
+            `;
+            // Ensure correct styling for error icon
+            modalIcon.className =
+              "text-red-600 text-6xl mb-4 flex items-center justify-center w-24 h-24 rounded-full mx-auto font-bold border-2 border-red-600";
             modalTitle.textContent = "Perlu Perbaikan";
-            modalTitle.className = "modal-title warning";
+            modalTitle.className = "text-xl font-bold text-red-600 mb-2";
 
             let errors = [];
             if (!hasCorrectHeaderSelector)
-              errors.push("selector header (#header)");
-            if (!hasCorrectNavSelector) errors.push("selector navigasi (.nav)");
+              errors.push("selector header (#header) atau styling-nya");
+            if (!hasCorrectNavSelector)
+              errors.push("selector navigasi (.nav) atau styling-nya");
             if (!hasCorrectParagraphSelector)
-              errors.push("selector paragraf (p)");
+              errors.push("selector paragraf (p) atau styling-nya");
 
             modalMessage.textContent = `Periksa kembali: ${errors.join(
               ", "
-            )}. Pastikan menggunakan selector yang tepat!`;
+            )}. Pastikan menggunakan selector yang tepat dan styling tidak berubah!`;
           }
 
           resultModal.classList.remove("hidden");
         });
 
-        // Reset functionality
         resetButton.addEventListener("click", function () {
           editor.setValue(initialCode);
           updatePreview();
           editor.focus();
         });
 
-        // Close modal
         closeModal.addEventListener("click", function () {
           resultModal.classList.add("hidden");
         });
@@ -1155,12 +741,6 @@
           }
         });
 
-        // Set focus to editor
-        setTimeout(() => {
-          editor.focus();
-        }, 500);
-
-        // Auto-refresh preview periodically
         setInterval(() => {
           if (editor.getValue()) {
             updatePreview();
