@@ -196,6 +196,20 @@
           </div>
 
           <div class="lg:col-span-3 bg-white overflow-hidden flex flex-col">
+            <div class="flex text-sm font-medium border-b md:hidden">
+              <button
+                id="tabEditor"
+                class="tab-btn px-4 py-2 border-b-2 border-green-600 text-green-600 focus:outline-none"
+              >
+                index.html
+              </button>
+              <button
+                id="tabPreview"
+                class="tab-btn px-4 py-2 text-gray-500 hover:text-green-600"
+              >
+                Preview
+              </button>
+            </div>
             <div
               class="editor-container flex flex-col md:flex-row w-full"
               style="height: 100vh"
@@ -404,45 +418,347 @@
       </div>
     </section>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const openBtn = document.getElementById("open-instruksi");
+        const instruksi = document.querySelector(".instruksi-side");
+        const closeBtn = document.getElementById("close-instruksi");
+
+        let isVisible = false;
+
+        if (openBtn) {
+          openBtn.addEventListener("click", () => {
+            if (isVisible) {
+              instruksi.classList.remove("right-0");
+              instruksi.classList.add("right-[-300px]");
+            } else {
+              instruksi.classList.remove("right-[-300px]");
+              instruksi.classList.add("right-0");
+            }
+            isVisible = !isVisible;
+          });
+        }
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", () => {
+            instruksi.classList.add("right-[-300px]");
+            instruksi.classList.remove("right-0");
+            isVisible = false; // update status supaya sync
+          });
+        }
+      });
+
+      document.addEventListener("click", function (e) {
+        if (
+          isVisible &&
+          instruksi &&
+          !instruksi.contains(e.target) &&
+          !openBtn.contains(e.target)
+        ) {
+          instruksi.classList.add("right-[-300px]");
+          instruksi.classList.remove("right-0");
+          isVisible = false;
+        }
+      });
+    </script>
+
+    <!-- Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+
+    <!-- CodeMirror -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
 
+    <script src="../../../assets/js/script.js"></script>
+    <!-- Code Mirror -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // Highlight syntax Prism
+        Prism.highlightAll();
+
+        // Deklarasi elemen
         const textarea = document.getElementById("htmlCode");
         const preview = document.getElementById("preview");
         const submitBtn = document.getElementById("submitBtn");
         const resetBtn = document.getElementById("resetBtn");
+        const overlay = document.getElementById("successOverlay");
+        const closeBtn = document.getElementById("closeOverlay");
 
+        // Inisialisasi CodeMirror
         const editor = CodeMirror.fromTextArea(textarea, {
           lineNumbers: true,
           mode: "htmlmixed",
           theme: "material",
-          // ... (konfigurasi CodeMirror lainnya)
+          indentUnit: 2,
+          smartIndent: true,
+          tabSize: 2,
+          indentWithTabs: false,
+          lineWrapping: true,
+          foldGutter: true,
+          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+          autoCloseBrackets: true,
+          autoCloseTags: true,
+          matchBrackets: true,
+          matchTags: true,
         });
 
+        let userHasTyped = false;
+
+        // Fungsi update preview
         function updatePreview() {
           const fullHtml = editor.getValue();
           preview.srcdoc = fullHtml;
         }
 
-        editor.on("change", updatePreview);
+        function setEditorWithTemplate(
+          bodyContent = `<!-- Masukkan kode anda disini -->`
+        ) {
+          const fullHtml = `<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Preview</title>
+    </head>
+    <body>
+  ${bodyContent}
+    </body>
+  </html>`;
 
-        resetBtn.addEventListener("click", () => {
-          // Logika untuk mereset kode di editor jika diperlukan
-          // editor.setValue('kode awal');
+          editor.setValue(fullHtml);
+          setTimeout(() => {
+            const lines = editor.lineCount();
+            const startBodyLine = [...Array(lines)].findIndex((_, i) =>
+              editor.getLine(i).includes("<body>")
+            );
+            const endBodyLine = [...Array(lines)]
+              .reverse()
+              .findIndex((_, i) =>
+                editor.getLine(lines - 1 - i).includes("</body>")
+              );
+            const realEndBodyLine = lines - 1 - endBodyLine;
+
+            // Tandai bagian readonly
+            editor.markText(
+              { line: 0, ch: 0 },
+              { line: startBodyLine + 1, ch: 0 },
+              { readOnly: true, inclusiveRight: false }
+            );
+            editor.markText(
+              {
+                line: realEndBodyLine,
+                ch: editor.getLine(realEndBodyLine).length,
+              },
+              { line: lines },
+              { readOnly: true }
+            );
+          }, 100);
+        }
+
+        setEditorWithTemplate();
+
+        // Update preview saat ada perubahan
+        editor.on("change", function () {
+          userHasTyped = true;
+          clearTimeout(window.updateTimeout);
+          window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
+        // Auto-refresh preview setiap 1 detik
+        setInterval(() => {
+          if (editor.getValue()) {
+            updatePreview();
+          }
+        }, 1000);
+
+        // Submit button
         submitBtn.addEventListener("click", () => {
-          alert("Tantangan berhasil dikirim!");
+          const fullHtml = editor.getValue();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(fullHtml, "text/html");
+
+          const hasH1 = doc.querySelector("h1");
+          const hasP = doc.querySelector("p");
+
+          const overlayIcon = document.getElementById("overlayIcon");
+          const overlayTitle = document.getElementById("overlayTitle");
+          const overlayMessage = document.getElementById("overlayMessage");
+          const overlayBox = document.getElementById("successOverlay");
+
+          if (!hasH1 && !hasP) {
+            // Keduanya tidak ada
+            overlayIcon.textContent = "✗";
+            overlayIcon.className = "text-red-600 text-6xl mb-4";
+            overlayTitle.textContent = "Jawaban Salah!";
+            overlayTitle.className = "text-xl font-bold text-red-600 mb-2";
+            overlayMessage.textContent = "Tag <h1> dan <p> tidak ditemukan.";
+          } else if (
+            !hasH1 ||
+            !hasP ||
+            !hasH1.textContent.trim() ||
+            !hasP.textContent.trim()
+          ) {
+            // Salah satu kosong atau tidak ada
+            overlayIcon.textContent = "!";
+            overlayIcon.className = "text-yellow-500 text-6xl mb-4";
+            overlayTitle.textContent = "Perlu Perbaikan";
+            overlayTitle.className = "text-xl font-bold text-yellow-500 mb-2";
+            overlayMessage.textContent =
+              "Pastikan <h1> dan <p> ada dan tidak kosong.";
+          } else {
+            // Keduanya ada dan tidak kosong
+            overlayIcon.textContent = "✓";
+            overlayIcon.className = "text-green-600 text-6xl mb-4";
+            overlayTitle.textContent = "Jawaban Benar!";
+            overlayTitle.className = "text-xl font-bold text-green-600 mb-2";
+            overlayMessage.textContent =
+              "Struktur HTML kamu sudah sesuai dengan yang diminta.";
+          }
+
+          overlayBox.classList.remove("hidden");
         });
 
-        updatePreview(); // Tampilkan preview awal saat halaman dimuat
+        // Reset
+        resetBtn.addEventListener("click", () => {
+          setEditorWithTemplate();
+          userHasTyped = false;
+          updatePreview();
+        });
+
+        // Overlay close
+        closeBtn.addEventListener("click", () => {
+          overlay.classList.add("hidden");
+        });
+
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) {
+            overlay.classList.add("hidden");
+          }
+        });
+
+        updatePreview();
       });
     </script>
+
+    <!-- Hasil yang diharapkan -->
+    <script>
+      const zoomBtn = document.getElementById("zoom-button");
+      const modal = document.getElementById("image-modal");
+      const zoomedImage = document.getElementById("zoomed-image");
+
+      zoomBtn.addEventListener("click", () => {
+        modal.classList.remove("hidden");
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal || e.target === zoomedImage) {
+          modal.classList.add("hidden");
+        }
+      });
+    </script>
+
+    <!-- Hasil yang diharapkan responsive -->
+    <script>
+      const zoomResponsive = document.getElementById("zoom-button-responsive");
+      const modalResponsive = document.getElementById("image-modal-responsive");
+      const zoomImageResponsive = document.getElementById(
+        "zoomed-image-responsive"
+      );
+
+      zoomResponsive.addEventListener("click", () => {
+        modalResponsive.classList.remove("hidden");
+      });
+
+      modalResponsive.addEventListener("click", (e) => {
+        if (e.target === modalResponsive && e.target !== zoomImageResponsive) {
+          modalResponsive.classList.add("hidden");
+        }
+      });
+    </script>
+
+    <!-- Code Editor dan Preview -->
+    <script>
+      // Editor dan Preview Tantangan
+      const tabEditor = document.getElementById("tabEditor");
+      const tabPreview = document.getElementById("tabPreview");
+      const editorPanels = document.getElementById("editor-panel");
+      const previewPanels = document.getElementById("preview");
+      const htmlCode = document.getElementById("htmlCode");
+
+      function updatePreview() {
+        const code = htmlCode.value;
+        const blob = new Blob([code], { type: "text/html" });
+        const url = URL.createObjectURL(blob);
+        previewPanels.src = url;
+      }
+
+      function activateEditor() {
+        // Show editor, hide preview
+        editorPanels.classList.remove("hidden");
+        editorPanels.classList.add("block");
+        previewPanels.classList.remove("block");
+        previewPanels.classList.add("hidden");
+
+        tabEditor.classList.add(
+          "border-b-2",
+          "border-green-600",
+          "text-green-600"
+        );
+        tabEditor.classList.remove("text-gray-500");
+
+        tabPreview.classList.remove(
+          "border-b-2",
+          "border-green-600",
+          "text-green-600"
+        );
+        tabPreview.classList.add("text-gray-500");
+      }
+
+      function activatePreview() {
+        // Update preview content
+        updatePreview();
+
+        // Show preview, hide editor
+        previewPanels.classList.remove("hidden");
+        previewPanels.classList.add("block");
+        editorPanels.classList.remove("block");
+        editorPanels.classList.add("hidden");
+
+        tabPreview.classList.add(
+          "border-b-2",
+          "border-green-600",
+          "text-green-600"
+        );
+        tabPreview.classList.remove("text-gray-500");
+
+        tabEditor.classList.remove(
+          "border-b-2",
+          "border-green-600",
+          "text-green-600"
+        );
+        tabEditor.classList.add("text-gray-500");
+      }
+
+      // Only enable tab switch on mobile
+      tabEditor.addEventListener("click", () => {
+        if (window.innerWidth < 768) activateEditor();
+      });
+
+      tabPreview.addEventListener("click", () => {
+        if (window.innerWidth < 768) activatePreview();
+      });
+
+      // Default to editor tab on mobile
+      if (window.innerWidth < 768) {
+        activateEditor();
+      }
+    </script>
+
+    <!-- Instruksi Responsive -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const openBtn = document.getElementById("open-instruksi");
