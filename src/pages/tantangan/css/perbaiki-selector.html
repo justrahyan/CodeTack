@@ -4,13 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CodeTack - Tantangan Memperbaiki Selector</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../../../assets/css/output.css" />
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap"
       rel="stylesheet"
     />
+    <!-- Favicon -->
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -32,6 +34,12 @@
       rel="manifest"
       href="../../../assets/img/favicon_io/site.webmanifest"
     />
+    <!-- Prism.css -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <!-- CodeMirror -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"
@@ -41,50 +49,44 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material.min.css"
     />
     <style>
-      /* Custom styles to ensure CodeMirror and layout consistency */
       .CodeMirror {
         height: 100%;
         font-size: 14px;
         font-family: "Courier New", monospace;
       }
 
-      /* Base styles for the main content area to ensure it fills available space */
-      html,
-      body {
+      .editor-container {
+        height: 500px;
+        display: flex;
+        border: 1px solid #d1d5db;
+        border-radius: 0.375rem;
+        overflow: hidden;
+      }
+
+      .editor-panel {
+        width: 50%;
         height: 100%;
       }
-      body {
-        display: flex;
-        flex-direction: column;
-      }
-      main {
-        flex: 1; /* Allows main content to grow and fill remaining space */
-        min-height: 0; /* Prevents overflow issues in flex container */
-      }
-      .editor-container,
-      .editor-panel,
-      .preview-iframe {
-        height: 100%; /* Ensure these elements take full height within their flex parent */
-      }
-      @media (max-width: 767px) {
-        .editor-panel.hidden,
-        .preview-iframe.hidden {
-          display: none;
-        }
+
+      .preview-panel {
+        width: 50%;
+        height: 100%;
+        border-left: 1px solid #d1d5db;
       }
     </style>
   </head>
-  <body class="h-screen flex flex-col font-outfit bg-gray-50">
-    <header
-      id="header"
-      class="flex-shrink-0 bg-white border-b border-gray-200 py-4"
-    >
-      <div class="container mx-auto px-4 lg:px-36">
+  <body class="h-screen flex flex-col">
+    <!-- Header -->
+    <header id="header" class="flex-shrink-0">
+      <div
+        class="container mx-auto px-4 py-4 lg:py-6 border bg-white lg:px-36 font-family-outfit"
+      >
         <div class="grid grid-cols-3 items-center gap-4">
+          <!-- Back -->
           <div class="flex justify-start">
             <a
               href="javascript:history.back()"
-              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-gray-700 text-sm lg:text-base"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -106,14 +108,16 @@
             </a>
           </div>
 
+          <!-- Title -->
           <div class="flex justify-center">
             <p
-              class="text-center text-gray-800 font-semibold lg:text-lg text-sm whitespace-nowrap"
+              class="text-center text-primary font-semibold lg:text-lg text-sm whitespace-nowrap"
             >
               Tantangan: Memperbaiki Selector
             </p>
           </div>
 
+          <!-- Level -->
           <div class="flex justify-end">
             <p
               class="inline-flex items-center gap-2 bg-yellow-100 text-yellow-700 px-2 py-1 rounded text-sm lg:text-base"
@@ -123,7 +127,7 @@
                 width="20"
                 height="20"
                 viewBox="0 0 24 24"
-                class="inline-block fill-current"
+                class="inline-block fill-yellow-700"
               >
                 <path
                   d="M20 7h-4V4c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H4c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V9c0-1.103-.897-2-2-2M4 11h4v8H4zm6-1V4h4v15h-4zm10 9h-4V9h4z"
@@ -136,13 +140,16 @@
       </div>
     </header>
 
-    <main id="content" class="flex-1 overflow-hidden">
-      <div class="container mx-auto h-full">
+    <!-- Content Section -->
+    <section id="content" class="flex-1 overflow-hidden">
+      <div class="container mx-auto font-family-outfit h-full">
         <div class="grid grid-cols-1 lg:grid-cols-4 h-full">
-          <aside
-            class="lg:col-span-1 bg-white p-3 hidden lg:block overflow-y-auto border-r border-gray-200"
+          <!-- Instruksi Panel  -->
+          <div
+            class="lg:col-span-1 bg-white p-3 hidden lg:block lg:overflow-y-auto"
           >
-            <div class="flex items-center gap-2 mb-4 text-gray-800">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-4 h-4 flex items-center justify-center">
                 <span class="text-paragraph text-xs">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -161,368 +168,649 @@
                       <path d="M12 16v-4m0-4h.01" />
                     </g>
                   </svg>
+                </span>
+              </div>
               <h2 class="font-bold text-lg">Instruksi Tugas</h2>
             </div>
 
-            <div class="space-y-4 text-sm md:text-base text-gray-700">
-              <p class="font-medium">
-                <strong>🔧 Saatnya memperbaiki selector CSS!</strong>
-              </p>
+            <div class="space-y-4 text-sm md:text-base">
+              <p class="font-medium">Perbaiki selector CSS!</p>
+              <p>Beberapa selector di bawah ini masih salah. Perbaiki:</p>
+              <ul class="list-disc ml-5">
+                <li>#header</li>
+                <li>.nav</li>
+                <li>p</li>
+              </ul>
 
-              <div class="space-y-2">
-                <p>
-                  Ada beberapa CSS selector yang salah dalam kode. Perbaiki
-                  selector
-                  <code class="bg-pink-100 px-1 rounded text-pink-600"
-                    >CSS</code
-                  >
-                  agar styling dapat diterapkan dengan benar pada elemen HTML
-                  yang sesuai.
-                </p>
-                <p>
-                  Perhatikan penggunaan selector class, ID, dan elemen tag yang
-                  tepat.
-                </p>
-              </div>
-
-              <div class="bg-green-50 p-3 rounded-md border border-green-200">
+              <div class="bg-green-50 p-3 rounded">
                 <p class="font-medium text-green-800 mb-2">
                   ✅ Yang harus kamu capai:
                 </p>
-                <ul
-                  class="space-y-1 text-green-700 text-xs md:text-sm list-none"
-                >
-                  <li>
-                    • Perbaiki selector untuk header dengan ID
-                    <code class="bg-green-100 px-1 rounded">#header</code>
-                  </li>
-                  <li>
-                    • Perbaiki selector untuk navigasi dengan class
-                    <code class="bg-green-100 px-1 rounded">.nav</code>
-                  </li>
-                  <li>
-                    • Perbaiki selector untuk paragraf
-                    <code class="bg-green-100 px-1 rounded">p</code>
-                  </li>
-                  <li>• Pastikan semua styling diterapkan dengan benar</li>
+                <ul class="space-y-1 text-green-700 text-xs md:text-sm">
+                  <li>• Header berwarna biru dan teks putih</li>
+                  <li>• Navigasi berwarna hijau dan teks putih</li>
+                  <li>• Paragraf berwarna merah dan teks tebal</li>
                 </ul>
               </div>
 
-              <div
-                class="bg-gray-100 p-3 rounded-md relative border border-gray-300"
-              >
+              <div class="bg-gray-100 p-3 rounded relative">
                 <p class="font-medium text-gray-800 mb-2">
                   💡 Hasil yang Diharapkan:
                 </p>
                 <div
-                  class="bg-white rounded-md border border-gray-300 text-xs md:text-sm relative p-4"
+                  class="bg-white rounded border text-xs md:text-sm relative"
                 >
-                  <div class="bg-blue-500 text-white p-2 rounded-md mb-2">
-                    <h1 class="text-lg font-bold">Website Header</h1>
+                  <div style="padding: 1rem; border-radius: 0.25rem">
+                    <div
+                      id="header"
+                      style="
+                        background-color: blue;
+                        color: white;
+                        padding: 20px;
+                        border-radius: 5px;
+                        margin-bottom: 10px;
+                      "
+                    >
+                      <h1>Website Header</h1>
+                    </div>
+                    <div
+                      class="nav"
+                      style="
+                        background-color: green;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 5px;
+                        margin-bottom: 10px;
+                      "
+                    >
+                      <span>Home | About | Contact</span>
+                    </div>
+                    <p style="color: red; font-weight: bold">
+                      Ini adalah paragraf dengan warna merah dan teks tebal.
+                    </p>
                   </div>
-                  <div class="bg-green-500 text-white p-2 rounded-md mb-2">
-                    <span class="text-base">Home | About | Contact</span>
-                  </div>
-                  <p class="text-red-500 font-bold text-base">
-                    Ini adalah paragraf dengan warna merah dan teks tebal.
-                  </p>
+                  <!-- Tombol Zoom -->
                   <button
-                    id="zoomButton"
-                    class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded-md hover:bg-opacity-70 flex items-center gap-1"
+                    id="zoom-button"
+                    class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="18"
                       height="18"
                       viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
                     >
                       <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
                         d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
                       />
                     </svg>
-                    Zoom
                   </button>
                 </div>
               </div>
 
-              <p class="text-xs md:text-sm text-gray-600">
-                Header berwarna biru, navigasi hijau, dan paragraf merah dengan
-                teks tebal.
-              </p>
-            </div>
-          </aside>
-
-          <button
-            id="mobileToggle"
-            class="fixed right-0 top-20 bg-white border border-gray-200 rounded-l-2xl p-4 lg:hidden z-30 shadow-md"
-          >
-                <span class="text-paragraph text-xs">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                  >
-                    <g
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                    >
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M12 16v-4m0-4h.01" />
-                    </g>
-                  </svg>
-          </button>
-
-          <div
-            id="mobileInstructions"
-            class="fixed top-20 right-[-300px] w-72 h-[calc(100vh-5rem)] bg-white shadow-lg transition-all duration-300 z-40 overflow-y-auto p-3"
-          >
-            <div class="flex justify-between items-center mb-4">
-              <div class="flex items-center gap-2 text-gray-800">
-                <span class="text-paragraph text-xs">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                  >
-                    <g
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                    >
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M12 16v-4m0-4h.01" />
-                    </g>
-                  </svg>
-                <h2 class="font-bold text-lg">Instruksi Tugas</h2>
-              </div>
-              <button
-                id="closeInstructions"
-                class="text-gray-500 hover:text-gray-700 p-1"
+              <!-- Modal Overlay -->
+              <div
+                id="image-modal"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden mb-0"
               >
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
+                <div
+                  style="
+                    padding: 2rem;
+                    border-radius: 0.5rem;
+                    max-width: 90vw;
+                    max-height: 80vh;
+                  "
                 >
-                  <path
-                    d="M8.4 17L7 15.6l3.6-3.6L7 8.425l1.4-1.4l3.6 3.6l3.575-3.6l1.4 1.4l-3.6 3.575l3.6 3.6l-1.4 1.4L12 13.4z"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            <div class="space-y-4 text-sm md:text-base text-gray-700">
-              <p class="font-medium">
-                <strong>🔧 Saatnya memperbaiki selector CSS!</strong>
-              </p>
-              <p>
-                Ada beberapa CSS selector yang salah dalam kode. Perbaiki
-                selector
-                <code class="bg-pink-100 px-1 rounded text-pink-600">CSS</code>
-                agar styling dapat diterapkan dengan benar pada elemen HTML yang
-                sesuai.
-              </p>
-              <div class="bg-green-50 p-3 rounded-md border border-green-200">
-                <p class="font-medium text-green-800 mb-2">
-                  ✅ Yang harus kamu capai:
-                </p>
-                <ul
-                  class="space-y-1 text-green-700 text-xs md:text-sm list-none"
-                >
-                  <li>
-                    • Perbaiki selector untuk header dengan ID
-                    <code class="bg-green-100 px-1 rounded">#header</code>
-                  </li>
-                  <li>
-                    • Perbaiki selector untuk navigasi dengan class
-                    <code class="bg-green-100 px-1 rounded">.nav</code>
-                  </li>
-                  <li>
-                    • Perbaiki selector untuk paragraf
-                    <code class="bg-green-100 px-1 rounded">p</code>
-                  </li>
-                </ul>
+                  <div
+                    id="header"
+                    style="
+                      background-color: blue;
+                      color: white;
+                      padding: 20px;
+                      border-radius: 5px;
+                      margin-bottom: 10px;
+                    "
+                  >
+                    <h1 style="margin: 0; font-size: 2rem">Website Header</h1>
+                  </div>
+                  <div
+                    class="nav"
+                    style="
+                      background-color: green;
+                      color: white;
+                      padding: 15px;
+                      border-radius: 5px;
+                      margin-bottom: 10px;
+                    "
+                  >
+                    <span style="font-size: 1.1rem"
+                      >Home | About | Contact</span
+                    >
+                  </div>
+                  <p
+                    style="
+                      color: red;
+                      font-weight: bold;
+                      font-size: 1.1rem;
+                      margin: 1rem 0;
+                    "
+                  >
+                    Ini adalah paragraf dengan warna merah dan teks tebal.
+                  </p>
+                </div>
               </div>
+
+              <p class="text-xs md:text-sm text-gray-600">
+                Header biru, navigasi hijau, dan paragraf merah dengan teks
+                tebal.
+              </p>
             </div>
           </div>
 
-          <section
-            class="lg:col-span-3 bg-white overflow-hidden flex flex-col border-l border-gray-200"
+          <!-- Side Instruksi -->
+          <button
+            id="open-instruksi"
+            class="fixed right-0 top-20 bg-white border rounded-l-2xl p-4 lg:hidden"
+            style="z-index: 60"
           >
-            <div
-              class="flex text-sm font-medium border-b border-gray-200 md:hidden"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
             >
+              <g
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4m0-4h.01" />
+              </g>
+            </svg>
+          </button>
+          <div
+            class="instruksi-side p-3 fixed top-20 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300"
+            style="z-index: 70"
+          >
+            <div class="flex justify-between items-center mb-4">
+              <div class="flex items-center gap-2">
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <span class="text-paragraph text-xs">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                    >
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 16v-4m0-4h.01" />
+                      </g>
+                    </svg>
+                  </span>
+                </div>
+                <h2 class="font-bold text-lg">Instruksi Tugas</h2>
+              </div>
+              <span id="close-instruksi" class="text-paragraph cursor-pointer">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M8.4 17L7 15.6l3.6-3.6L7 8.425l1.4-1.4l3.6 3.6l3.575-3.6l1.4 1.4l-3.6 3.575l3.6 3.6l-1.4 1.4L12 13.4z"
+                  />
+                </svg>
+              </span>
+            </div>
+
+            <div class="space-y-4 text-sm md:text-base">
+              <p class="font-medium">Perbaiki selector CSS!</p>
+              <p>Beberapa selector di bawah ini masih salah. Perbaiki:</p>
+              <ul class="list-disc ml-5">
+                <li>#header</li>
+                <li>.nav</li>
+                <li>p</li>
+              </ul>
+
+              <div class="bg-green-50 p-3 rounded">
+                <p class="font-medium text-green-800 mb-2">
+                  ✅ Yang harus kamu capai:
+                </p>
+                <ul class="space-y-1 text-green-700 text-xs md:text-sm">
+                  <li>• Header berwarna biru dan teks putih</li>
+                  <li>• Navigasi berwarna hijau dan teks putih</li>
+                  <li>• Paragraf berwarna merah dan teks tebal</li>
+                </ul>
+              </div>
+
+              <div class="bg-gray-100 p-3 rounded relative">
+                <p class="font-medium text-gray-800 mb-2">
+                  💡 Hasil yang Diharapkan:
+                </p>
+                <div
+                  class="bg-white rounded border text-xs md:text-sm relative"
+                >
+                  <div style="padding: 1rem; border-radius: 0.25rem">
+                    <div
+                      id="header"
+                      style="
+                        background-color: blue;
+                        color: white;
+                        padding: 20px;
+                        border-radius: 5px;
+                        margin-bottom: 10px;
+                      "
+                    >
+                      <h1>Website Header</h1>
+                    </div>
+                    <div
+                      class="nav"
+                      style="
+                        background-color: green;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 5px;
+                        margin-bottom: 10px;
+                      "
+                    >
+                      <span>Home | About | Contact</span>
+                    </div>
+                    <p style="color: red; font-weight: bold">
+                      Ini adalah paragraf dengan warna merah dan teks tebal.
+                    </p>
+                  </div>
+                  <!-- Tombol Zoom -->
+                  <button
+                    id="zoom-button-responsive"
+                    class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Modal Overlay -->
+              <div
+                id="image-modal-responsive"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center hidden mb-0"
+                style="z-index: 75"
+              >
+                <div
+                  style="
+                    padding: 2rem;
+                    border-radius: 0.5rem;
+                    max-width: 90vw;
+                    max-height: 80vh;
+                  "
+                >
+                  <div
+                    id="header"
+                    style="
+                      background-color: blue;
+                      color: white;
+                      padding: 20px;
+                      border-radius: 5px;
+                      margin-bottom: 10px;
+                    "
+                  >
+                    <h1 style="margin: 0; font-size: 2rem">Website Header</h1>
+                  </div>
+                  <div
+                    class="nav"
+                    style="
+                      background-color: green;
+                      color: white;
+                      padding: 15px;
+                      border-radius: 5px;
+                      margin-bottom: 10px;
+                    "
+                  >
+                    <span style="font-size: 1.1rem"
+                      >Home | About | Contact</span
+                    >
+                  </div>
+                  <p
+                    style="
+                      color: red;
+                      font-weight: bold;
+                      font-size: 1.1rem;
+                      margin: 1rem 0;
+                    "
+                  >
+                    Ini adalah paragraf dengan warna merah dan teks tebal.
+                  </p>
+                </div>
+              </div>
+
+              <p class="text-xs md:text-sm text-gray-600">
+                Header biru, navigasi hijau, dan paragraf merah dengan teks
+                tebal.
+              </p>
+            </div>
+          </div>
+
+          <!-- Editor & Preview Panel -->
+          <div class="lg:col-span-3 bg-white overflow-hidden flex flex-col">
+            <!-- Tab -->
+            <div class="flex text-sm font-medium border-b md:hidden">
               <button
-                id="editorTab"
-                class="tab-button px-4 py-2 border-b-2 border-blue-500 text-blue-500 focus:outline-none"
+                id="tabEditor"
+                class="tab-btn px-4 py-2 border-b-2 border-green-600 text-green-600 focus:outline-none"
               >
                 index.html
               </button>
               <button
-                id="previewTab"
-                class="tab-button px-4 py-2 text-gray-500 hover:text-blue-500"
+                id="tabPreview"
+                class="tab-btn px-4 py-2 text-gray-500 hover:text-green-600"
               >
                 Preview
               </button>
             </div>
 
+            <!-- Editor Container -->
             <div
-              class="editor-container flex flex-col md:flex-row w-full flex-1"
+              class="editor-container flex flex-col md:flex-row w-full"
+              style="height: 100vh"
             >
+              <!-- Editor -->
               <div
-                id="editorPanel"
-                class="w-full md:w-1/2 border-r border-gray-200 overflow-auto block md:block"
+                id="editor-panel"
+                class="w-full md:w-1/2 border overflow-auto block md:block"
+                style="min-height: 100vh"
               >
-                <textarea id="htmlCode"></textarea>
+                <textarea
+                  id="htmlCode"
+                  class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
+                >
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Memperbaiki Selector</title>
+  <style>
+    #header {
+      background-color: blue;
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .nav {
+      background-color: green;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    p {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1>Website Header</h1>
+  </div>
+  <div class="nav">
+    <span>Home | About | Contact</span>
+  </div>
+  <p>Ini adalah paragraf dengan warna merah dan teks tebal.</p>
+</body>
+</html></textarea
+                >
               </div>
 
+              <!-- Preview -->
               <iframe
-                id="previewFrame"
-                class="w-full md:w-1/2 hidden md:block"
+                id="preview"
+                class="w-full md:w-1/2 border hidden md:block"
                 title="Pratinjau HTML"
+                style="height: 100vh"
               ></iframe>
             </div>
 
+            <!-- Bottom Action Bar -->
             <div
-              class="border-t border-gray-200 bg-gray-800 px-4 py-3 flex flex-wrap gap-2 justify-between items-center"
+              class="border-t bg-[#2F3436] px-4 py-3 flex flex-wrap gap-2 justify-between"
             >
               <div class="flex gap-2">
                 <button
-                  id="resetButton"
-                  class="px-3 py-1 flex items-center gap-2 text-sm md:text-base text-white hover:bg-gray-700 rounded-md font-medium transition-colors"
+                  id="resetBtn"
+                  class="px-3 py-1 flex items-center gap-2 text-sm md:text-base text-white hover:bg-[#3C4144] rounded font-medium"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="18"
                     height="18"
                     viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
                   >
-                    <path
-                      d="M4.266 16.06a8.92 8.92 0 0 0 3.915 3.978a8.7 8.7 0 0 0 5.471.832a8.8 8.8 0 0 0 4.887-2.64a9.07 9.07 0 0 0 2.388-5.079a9.14 9.14 0 0 0-1.044-5.53a8.9 8.9 0 0 0-4.068-3.815a8.7 8.7 0 0 0-5.5-.608c-1.85.401-3.367 1.313-4.62 2.755a7.6 7.6 0 0 0-1.22 1.781"
-                    />
-                    <path d="m8.931 7.813l-5.04.907L3 3.59" />
+                    <g
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M4.266 16.06a8.92 8.92 0 0 0 3.915 3.978a8.7 8.7 0 0 0 5.471.832a8.8 8.8 0 0 0 4.887-2.64a9.07 9.07 0 0 0 2.388-5.079a9.14 9.14 0 0 0-1.044-5.53a8.9 8.9 0 0 0-4.068-3.815a8.7 8.7 0 0 0-5.5-.608c-1.85.401-3.367 1.313-4.62 2.755a7.6 7.6 0 0 0-1.22 1.781"
+                      />
+                      <path d="m8.931 7.813l-5.04.907L3 3.59" />
+                    </g>
                   </svg>
                   Reset
                 </button>
               </div>
               <button
-                id="submitButton"
-                class="px-6 py-1 text-sm md:text-base bg-green-600 hover:bg-green-700 text-white font-medium rounded-md transition-colors"
+                id="submitBtn"
+                class="px-6 py-1 text-sm md:text-base bg-green-600 hover:bg-green-700 text-white font-medium"
               >
                 Kirim
               </button>
             </div>
-          </section>
+          </div>
         </div>
       </div>
-    </main>
+    </section>
 
-    <div id="resultModal" class="modal-overlay hidden">
-      <div
-        class="modal-content bg-white p-6 rounded-lg shadow-xl text-center max-w-md mx-4"
-      >
-        <div
-          id="modalIcon"
-          class="text-6xl mb-4 flex items-center justify-center w-24 h-24 rounded-full mx-auto font-bold"
-        ></div>
-        <h2 id="modalTitle" class="text-xl font-bold mb-2"></h2>
-        <p id="modalMessage" class="text-gray-700 mb-4"></p>
+    <!-- Jawaban Benar -->
+    <div
+      id="successOverlay"
+      class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-xl text-center max-w-md mx-4">
+        <div id="overlayIcon" class="text-green-600 text-6xl mb-4">✓</div>
+        <h2 id="overlayTitle" class="text-xl font-bold text-green-600 mb-2">
+          Jawaban Benar!
+        </h2>
+        <p id="overlayMessage" class="text-gray-700 mb-4">
+          Selector CSS kamu sudah sesuai dengan syarat yang diminta.
+        </p>
         <button
-          id="closeModal"
-          class="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+          id="closeOverlay"
+          class="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
         >
           Tutup
         </button>
       </div>
     </div>
 
-    <div id="imageModal" class="modal-overlay hidden">
+    <!-- Pagination -->
+    <section id="pagination" class="flex-shrink-0">
       <div
-        class="modal-content bg-white p-6 rounded-lg shadow-xl text-center max-w-md mx-4"
+        class="container border bg-white mx-auto px-4 py-4 lg:py-6 lg:px-36 font-family-outfit"
       >
-        <div class="bg-gray-100 p-4 rounded-md">
-          <h1 class="text-blue-500 mb-4 text-2xl font-bold">Website Header</h1>
-          <p class="text-green-500 mb-4 text-2xl font-bold">
-            Home | About | Contact
-          </p>
-          <p class="text-red-500 text-base font-bold">
-            Ini adalah paragraf dengan warna merah dan teks tebal.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <footer class="flex-shrink-0 bg-white border-t border-gray-200 py-4">
-      <div class="container mx-auto px-4 lg:px-36">
         <div class="grid grid-cols-3 items-center gap-4">
-          <a
-            href="sisipkan-css-ke-html.html"
-            class="nav-link inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-gray-700 text-sm lg:text-base"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
+          <!-- Prev -->
+          <div class="flex justify-start">
+            <a
+              href="./menyisipkan-css.html"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
             >
-              <path d="m13 9l-3 3l3 3" />
-              <circle cx="12" cy="12" r="9" />
-            </svg>
-            <span class="hidden sm:inline">Menyisipkan CSS</span>
-          </a>
-
-          <div
-            class="text-center text-gray-800 font-semibold lg:text-lg text-sm whitespace-nowrap"
-          >
-            Memperbaiki Selector
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 md:w-5 h-6 md:h-5"
+                viewBox="0 0 24 24"
+                class="inline-block"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                >
+                  <path d="m13 9l-3 3l3 3" />
+                  <circle cx="12" cy="12" r="9" />
+                </g>
+              </svg>
+              <span class="hidden sm:inline">Menyisipkan CSS</span>
+            </a>
           </div>
 
-          <a
-            href="buat-navbar-dengan-flexbox.html"
-            class="nav-link next inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-gray-700 text-sm lg:text-base justify-self-end"
-          >
-            <span class="hidden sm:inline">Membuat Navbar dengan flexbox</span>
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
+          <!-- Title -->
+          <div class="flex justify-center">
+            <p
+              class="text-center text-primary font-semibold lg:text-lg text-sm whitespace-nowrap"
             >
-              <circle cx="12" cy="12" r="9" />
-              <path d="m11 9l3 3l-3 3" />
-            </svg>
-          </a>
+              Memperbaiki Selector
+            </p>
+          </div>
+
+          <!-- Next -->
+          <div class="flex justify-end">
+            <a
+              href="./perbaiki-selector.html"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
+            >
+              <span class="hidden sm:inline">Perbaiki Selector</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 md:w-5 h-6 md:h-5"
+                viewBox="0 0 24 24"
+                class="inline-block"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="m11 9l3 3l-3 3" />
+                </g>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
-    </footer>
+    </section>
 
+    <!-- Instruksi Responsive -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const openBtn = document.getElementById("open-instruksi");
+        const instruksi = document.querySelector(".instruksi-side");
+        const closeBtn = document.getElementById("close-instruksi");
+
+        let isVisible = false;
+
+        if (openBtn) {
+          openBtn.addEventListener("click", () => {
+            if (isVisible) {
+              instruksi.classList.remove("right-0");
+              instruksi.classList.add("right-[-300px]");
+            } else {
+              instruksi.classList.remove("right-[-300px]");
+              instruksi.classList.add("right-0");
+            }
+            isVisible = !isVisible;
+          });
+        }
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", () => {
+            instruksi.classList.add("right-[-300px]");
+            instruksi.classList.remove("right-0");
+            isVisible = false; // update status supaya sync
+          });
+        }
+      });
+
+      document.addEventListener("click", function (e) {
+        if (
+          isVisible &&
+          instruksi &&
+          !instruksi.contains(e.target) &&
+          !openBtn.contains(e.target)
+        ) {
+          instruksi.classList.add("right-[-300px]");
+          instruksi.classList.remove("right-0");
+          isVisible = false;
+        }
+      });
+    </script>
+
+    <!-- Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+
+    <!-- CodeMirror -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
 
+    <script src="../../../assets/js/script.js"></script>
+    <!-- Code Mirror -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // Highlight syntax Prism
+        Prism.highlightAll();
+
+        // Deklarasi elemen
         const textarea = document.getElementById("htmlCode");
+        const preview = document.getElementById("preview");
+        const submitBtn = document.getElementById("submitBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        const overlay = document.getElementById("successOverlay");
+        const closeBtn = document.getElementById("closeOverlay");
+
+        // Inisialisasi CodeMirror
         const editor = CodeMirror.fromTextArea(textarea, {
           lineNumbers: true,
           mode: "htmlmixed",
@@ -530,90 +818,65 @@
           indentUnit: 2,
           smartIndent: true,
           tabSize: 2,
+          indentWithTabs: false,
           lineWrapping: true,
+          foldGutter: true,
+          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
           autoCloseBrackets: true,
           autoCloseTags: true,
           matchBrackets: true,
           matchTags: true,
-          readOnly: false,
+          readOnly: false, // Pastikan tidak readonly
         });
 
-        const previewFrame = document.getElementById("previewFrame");
-        const submitButton = document.getElementById("submitButton");
-        const resetButton = document.getElementById("resetButton");
-        const resultModal = document.getElementById("resultModal");
-        const closeModal = document.getElementById("closeModal");
-        const modalIcon = document.getElementById("modalIcon");
-        const modalTitle = document.getElementById("modalTitle");
-        const modalMessage = document.getElementById("modalMessage");
+        let userHasTyped = false;
 
-        const mobileToggle = document.getElementById("mobileToggle");
-        const mobileInstructions =
-          document.getElementById("mobileInstructions");
-        const closeInstructions = document.getElementById("closeInstructions");
-        const editorTab = document.getElementById("editorTab");
-        const previewTab = document.getElementById("previewTab");
-        const editorPanel = document.getElementById("editorPanel");
-        const zoomButton = document.getElementById("zoomButton");
-        const imageModal = document.getElementById("imageModal");
-
-        // Initial code for the editor (for "Memperbaiki Selector" challenge)
+        // Set initial content
         const initialCode = `<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Memperbaiki Selector</title>
-    <style>
-        /* PERBAIKI SELECTOR YANG SALAH DI BAWAH INI */
-        
-        /* Selector untuk header dengan ID "header" - SALAH! */
-        .header {
-            background-color: blue;
-            color: white;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        
-        /* Selector untuk navigasi dengan class "nav" - SALAH! */
-        #nav {
-            background-color: green;
-            color: white;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        
-        /* Selector untuk paragraf - SALAH! */
-        .paragraph {
-            color: red;
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Memperbaiki Selector</title>
+  <style>
+    #header {
+      background-color: blue;
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .nav {
+      background-color: green;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    p {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div id="header">
-        <h1>Website Header</h1>
-    </div>
-    
-    <div class="nav">
-        <span>Home | About | Contact</span>
-    </div>
-    
-    <p>Ini adalah paragraf dengan warna merah dan teks tebal.</p>
+  <div id="header">
+    <h1>Website Header</h1>
+  </div>
+  <div class="nav">
+    <span>Home | About | Contact</span>
+  </div>
+  <p>Ini adalah paragraf dengan warna merah dan teks tebal.</p>
 </body>
 </html>`;
 
         editor.setValue(initialCode);
 
-        // Set cursor to the editable area
+        // Set cursor ke area yang bisa diedit
         setTimeout(() => {
           const lines = editor.lineCount();
           for (let i = 0; i < lines; i++) {
             const line = editor.getLine(i);
-            if (
-              line.includes("/* PERBAIKI SELECTOR YANG SALAH DI BAWAH INI */")
-            ) {
+            if (line.includes("<style>")) {
               editor.setCursor(i + 1, 0);
               break;
             }
@@ -621,181 +884,200 @@
           editor.focus();
         }, 500);
 
+        // Fungsi update preview
         function updatePreview() {
-          const code = editor.getValue();
-          previewFrame.srcdoc = code;
+          const fullHtml = editor.getValue();
+          preview.srcdoc = fullHtml;
         }
 
-        updatePreview();
+        function setEditorWithTemplate(
+          bodyContent = `    <!-- Sisipkan CSS di sini -->`
+        ) {
+          const fullHtml = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Memperbaiki Selector</title>
+  <style>
+    #header {
+      background-color: blue;
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .nav {
+      background-color: green;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    p {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1>Website Header</h1>
+  </div>
+  <div class="nav">
+    <span>Home | About | Contact</span>
+  </div>
+  <p>Ini adalah paragraf dengan warna merah dan teks tebal.</p>
+</body>
+</html>`;
 
+          editor.setValue(fullHtml);
+          // Hapus semua mark text readonly yang ada
+          const marks = editor.getAllMarks();
+          marks.forEach((mark) => mark.clear());
+
+          // Set cursor ke area yang bisa diedit (setelah comment)
+          setTimeout(() => {
+            const lines = editor.lineCount();
+            for (let i = 0; i < lines; i++) {
+              const line = editor.getLine(i);
+              if (line.includes("<style>")) {
+                editor.setCursor(i + 1, 0);
+                break;
+              }
+            }
+            editor.focus();
+          }, 100);
+        }
+
+        setEditorWithTemplate();
+
+        // Update preview saat ada perubahan
         editor.on("change", function () {
+          userHasTyped = true;
           clearTimeout(window.updateTimeout);
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
-        mobileToggle.addEventListener("click", function () {
-          mobileInstructions.classList.toggle("right-[-300px]");
-          mobileInstructions.classList.toggle("right-0");
-        });
-
-        closeInstructions.addEventListener("click", function () {
-          mobileInstructions.classList.remove("right-0");
-          mobileInstructions.classList.add("right-[-300px]");
-        });
-
-        document.addEventListener("click", function (e) {
-          const isClickInsideMobileInstructions = mobileInstructions.contains(
-            e.target
-          );
-          const isClickOnMobileToggle = mobileToggle.contains(e.target);
-          const isMobileInstructionsOpen =
-            mobileInstructions.classList.contains("right-0");
-
-          if (
-            isMobileInstructionsOpen &&
-            !isClickInsideMobileInstructions &&
-            !isClickOnMobileToggle
-          ) {
-            mobileInstructions.classList.remove("right-0");
-            mobileInstructions.classList.add("right-[-300px]");
-          }
-        });
-
-        editorTab.addEventListener("click", function () {
-          if (window.innerWidth < 768) {
-            editorPanel.classList.remove("hidden");
-            previewFrame.classList.add("hidden");
-            editorTab.classList.add("border-blue-500", "text-blue-500");
-            editorTab.classList.remove("text-gray-500", "hover:text-blue-500");
-            previewTab.classList.remove("border-blue-500", "text-blue-500");
-            previewTab.classList.add("text-gray-500", "hover:text-blue-500");
-          }
-        });
-
-        previewTab.addEventListener("click", function () {
-          if (window.innerWidth < 768) {
-            previewFrame.classList.remove("hidden");
-            editorPanel.classList.add("hidden");
-            previewTab.classList.add("border-blue-500", "text-blue-500");
-            previewTab.classList.remove("text-gray-500", "hover:text-blue-500");
-            editorTab.classList.remove("border-blue-500", "text-blue-500");
-            editorTab.classList.add("text-gray-500", "hover:text-blue-500");
-            updatePreview();
-          }
-        });
-
-        zoomButton.addEventListener("click", function () {
-          imageModal.classList.remove("hidden");
-        });
-
-        imageModal.addEventListener("click", function (e) {
-          if (e.target === imageModal) {
-            imageModal.classList.add("hidden");
-          }
-        });
-
-        submitButton.addEventListener("click", function () {
-          const code = editor.getValue();
-          const lowerCode = code.toLowerCase();
-
-          // Validation logic for "Memperbaiki Selector" challenge
-          const hasCorrectHeaderSelector =
-            (lowerCode.includes("#header {") ||
-              lowerCode.includes("#header{")) &&
-            lowerCode.includes("background-color: blue;");
-
-          const hasCorrectNavSelector =
-            (lowerCode.includes(".nav {") || lowerCode.includes(".nav{")) &&
-            lowerCode.includes("background-color: green;");
-
-          const hasCorrectParagraphSelector =
-            (lowerCode.includes("p {") || lowerCode.includes("p{")) &&
-            lowerCode.includes("color: red;") &&
-            lowerCode.includes("font-weight: bold;");
-
-          if (
-            hasCorrectHeaderSelector &&
-            hasCorrectNavSelector &&
-            hasCorrectParagraphSelector
-          ) {
-            // Success: Set modal icon to 'i' SVG
-            modalIcon.innerHTML = `
-                <span class="text-paragraph text-xs">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                  >
-                    <g
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                    >
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M12 16v-4m0-4h.01" />
-                    </g>
-                  </svg>
-            `;
-            // Ensure correct styling for success icon
-            modalIcon.className =
-              "text-green-600 text-6xl mb-4 flex items-center justify-center w-24 h-24 rounded-full mx-auto font-bold border-2 border-green-600";
-            modalTitle.textContent = "Jawaban Benar!";
-            modalTitle.className = "text-xl font-bold text-green-600 mb-2";
-            modalMessage.textContent =
-              "Selector CSS kamu sudah diperbaiki dengan benar! Semua elemen sekarang memiliki styling yang tepat.";
-          } else {
-            // Error: Set modal icon to '!' SVG
-            modalIcon.innerHTML = `
-              <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 9v4m0 4h.01M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0Z"/>
-              </svg>
-            `;
-            // Ensure correct styling for error icon
-            modalIcon.className =
-              "text-red-600 text-6xl mb-4 flex items-center justify-center w-24 h-24 rounded-full mx-auto font-bold border-2 border-red-600";
-            modalTitle.textContent = "Perlu Perbaikan";
-            modalTitle.className = "text-xl font-bold text-red-600 mb-2";
-
-            let errors = [];
-            if (!hasCorrectHeaderSelector)
-              errors.push("selector header (#header) atau styling-nya");
-            if (!hasCorrectNavSelector)
-              errors.push("selector navigasi (.nav) atau styling-nya");
-            if (!hasCorrectParagraphSelector)
-              errors.push("selector paragraf (p) atau styling-nya");
-
-            modalMessage.textContent = `Periksa kembali: ${errors.join(
-              ", "
-            )}. Pastikan menggunakan selector yang tepat dan styling tidak berubah!`;
-          }
-
-          resultModal.classList.remove("hidden");
-        });
-
-        resetButton.addEventListener("click", function () {
-          editor.setValue(initialCode);
-          updatePreview();
-          editor.focus();
-        });
-
-        closeModal.addEventListener("click", function () {
-          resultModal.classList.add("hidden");
-        });
-
-        resultModal.addEventListener("click", function (e) {
-          if (e.target === resultModal) {
-            resultModal.classList.add("hidden");
-          }
-        });
-
+        // Auto-refresh preview setiap 1 detik
         setInterval(() => {
           if (editor.getValue()) {
             updatePreview();
           }
-        }, 2000);
+        }, 1000);
+
+        // Submit button
+        submitBtn.addEventListener("click", () => {
+          const fullHtml = editor.getValue();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(fullHtml, "text/html");
+
+          // Check for CSS requirements
+          const hasHeaderSelector = fullHtml.includes("#header");
+          const hasNavSelector = fullHtml.includes(".nav");
+          const hasParagraphSelector = fullHtml.includes("p {");
+
+          const overlayIcon = document.getElementById("overlayIcon");
+          const overlayTitle = document.getElementById("overlayTitle");
+          const overlayMessage = document.getElementById("overlayMessage");
+          const overlayBox = document.getElementById("successOverlay");
+
+          if (hasHeaderSelector && hasNavSelector && hasParagraphSelector) {
+            // Success
+            overlayIcon.textContent = "✓";
+            overlayIcon.className = "text-green-600 text-6xl mb-4";
+            overlayTitle.textContent = "Jawaban Benar!";
+            overlayTitle.className = "text-xl font-bold text-green-600 mb-2";
+            overlayMessage.textContent =
+              "Selector CSS kamu sudah sesuai dengan syarat yang diminta. Semua elemen styling telah diterapkan dengan benar!";
+          } else {
+            // Needs improvement
+            overlayIcon.textContent = "!";
+            overlayIcon.className = "text-yellow-500 text-6xl mb-4";
+            overlayTitle.textContent = "Perlu Perbaikan";
+            overlayTitle.className = "text-xl font-bold text-yellow-500 mb-2";
+
+            let missing = [];
+            if (!hasHeaderSelector) missing.push("selector #header");
+            if (!hasNavSelector) missing.push("selector .nav");
+            if (!hasParagraphSelector) missing.push("selector p");
+
+            overlayMessage.textContent = `Pastikan kamu menambahkan: ${missing.join(
+              ", "
+            )}.`;
+          }
+
+          overlayBox.classList.remove("hidden");
+        });
+
+        // Reset
+        resetBtn.addEventListener("click", () => {
+          // Clear all marks first
+          const marks = editor.getAllMarks();
+          marks.forEach((mark) => mark.clear());
+
+          // Set default template
+          const defaultCode = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Memperbaiki Selector</title>
+  <style>
+    #header
+      <style>
+    #header {
+      background-color: blue;
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .nav {
+      background-color: green;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    p {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1>Website Header</h1>
+  </div>
+  <div class="nav">
+    <span>Home | About | Contact</span>
+  </div>
+  <p>Ini adalah paragraf dengan warna merah dan teks tebal.</p>
+</body>
+</html>`;
+
+          editor.setValue(defaultCode);
+
+          // Reset preview update
+          updatePreview();
+
+          // Fokus kembali ke editor
+          setTimeout(() => {
+            const lines = editor.lineCount();
+            for (let i = 0; i < lines; i++) {
+              const line = editor.getLine(i);
+              if (line.includes("<style>")) {
+                editor.setCursor(i + 1, 0);
+                break;
+              }
+            }
+            editor.focus();
+          }, 100);
+        });
+
+        // Tutup overlay hasil
+        closeBtn.addEventListener("click", () => {
+          overlay.classList.add("hidden");
+        });
       });
     </script>
   </body>
