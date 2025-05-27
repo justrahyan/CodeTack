@@ -321,7 +321,9 @@
                 </p>
                 <p>
                   Untuk gambar silahkan
-                  <button id="salinGambar" class="text-blue-600">Salin</button>
+                  <button id="salinGambarMobile" class="text-blue-600">
+                    Salin
+                  </button>
                   gambar ini.
                 </p>
               </div>
@@ -794,6 +796,26 @@ ${bodyContent}
             btnGambar.textContent = "Salin";
             btnGambar.classList.remove("text-green-600");
             btnGambar.classList.add("text-blue-500");
+          }, 2000);
+        });
+      });
+
+      // Salin Link Gambar Responsive
+      const btnGambarMobile = document.getElementById("salinGambarMobile");
+
+      btnGambarMobile.addEventListener("click", function () {
+        const url =
+          "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
+
+        navigator.clipboard.writeText(url).then(() => {
+          btnGambarMobile.textContent = "Disalin!";
+          btnGambarMobile.classList.remove("text-blue-500");
+          btnGambarMobile.classList.add("text-green-600");
+
+          setTimeout(() => {
+            btnGambarMobile.textContent = "Salin";
+            btnGambarMobile.classList.remove("text-green-600");
+            btnGambarMobile.classList.add("text-blue-500");
           }, 2000);
         });
       });
