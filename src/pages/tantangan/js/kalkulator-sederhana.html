@@ -317,7 +317,10 @@
         });
 
         // Template HTML yang akan dimasukkan ke dalam editor dan preview
-        const htmlTemplate = `<!DOCTYPE html>
+        function setEditorWithTemplate(
+          bodyContent = `<!-- Masukkan kode anda disini -->`
+        ) {
+          const htmlTemplate = `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -352,14 +355,12 @@
     </div>
   </div>
 
-  <script>
-    // Tulis kodemu di sini
-  \<\/script>
+  ${bodyContent}
 </body>
 </html>`;
+        }
 
-        // Atur nilai awal editor
-        editor.setValue(htmlTemplate);
+        setEditorWithTemplate();
 
         function updatePreview() {
           const userCode = editor.getValue();
@@ -435,7 +436,7 @@
 
         // Reset button
         resetBtn.addEventListener("click", () => {
-          editor.setValue(htmlTemplate);
+          setEditorWithTemplate();
           updatePreview();
         });
 
