@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CodeTack - Tantangan Memperbaiki Selector</title>
+    <title>CodeTack - Tantangan Perbaiki Selector Class/ID</title>
     <link rel="stylesheet" href="../../../assets/css/output.css" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,11 +33,6 @@
     <link
       rel="manifest"
       href="../../../assets/img/favicon_io/site.webmanifest"
-    />
-    <!-- Prism.css -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
-      rel="stylesheet"
     />
     <!-- CodeMirror -->
     <link
@@ -206,60 +201,71 @@
             </div>
 
             <div class="space-y-4 text-sm md:text-base">
-              <p class="font-medium">Perbaiki selector CSS!</p>
-              <p>Beberapa selector di bawah ini masih salah. Perbaiki:</p>
-              <ul class="list-disc ml-5">
-                <li>#header</li>
-                <li>.nav</li>
-                <li>p</li>
+              <p class="font-medium">🧠 Instruksi Tantangan:</p>
+              <p>
+                Halaman ini sudah memiliki elemen dengan
+                <code class="bg-pink-100 px-1 rounded text-pink-600"
+                  >class="kotak"</code
+                >
+                dan
+                <code class="bg-pink-100 px-1 rounded text-pink-600"
+                  >id="judul"</code
+                >.
+              </p>
+              <p>Tugasmu adalah menambahkan CSS agar:</p>
+              <ul class="list-disc ml-5 space-y-1">
+                <li>
+                  <code class="bg-gray-100 px-1 rounded">.kotak</code> punya
+                  background abu-abu
+                </li>
+                <li>
+                  <code class="bg-gray-100 px-1 rounded">#judul</code> berwarna
+                  merah
+                </li>
               </ul>
+              <p>Pastikan penulisan selector-nya tepat!</p>
 
               <div class="bg-green-50 p-3 rounded">
                 <p class="font-medium text-green-800 mb-2">
                   ✅ Yang harus kamu capai:
                 </p>
                 <ul class="space-y-1 text-green-700 text-xs md:text-sm">
-                  <li>• Header berwarna biru dan teks putih</li>
-                  <li>• Navigasi berwarna hijau dan teks putih</li>
-                  <li>• Paragraf berwarna merah dan teks tebal</li>
+                  <li>
+                    • Gunakan
+                    <code class="bg-green-100 px-1 rounded">.kotak {}</code> dan
+                    <code class="bg-green-100 px-1 rounded">#judul {}</code>
+                  </li>
+                  <li>• Pastikan class/id cocok dengan elemen HTML</li>
+                  <li>• Style tampil di preview</li>
                 </ul>
               </div>
 
               <div class="bg-gray-100 p-3 rounded relative">
                 <p class="font-medium text-gray-800 mb-2">
-                  💡 Hasil yang Diharapkan:
+                  🖥️ Preview yang Diharapkan:
                 </p>
                 <div
                   class="bg-white rounded border text-xs md:text-sm relative"
                 >
                   <div style="padding: 1rem; border-radius: 0.25rem">
+                    <h1
+                      style="color: red; margin-bottom: 15px; font-size: 1.5rem"
+                    >
+                      Ini adalah Judul
+                    </h1>
                     <div
-                      id="header"
                       style="
-                        background-color: blue;
-                        color: white;
+                        background-color: #d1d5db;
                         padding: 20px;
                         border-radius: 5px;
                         margin-bottom: 10px;
                       "
                     >
-                      <h1>Website Header</h1>
+                      <p style="margin: 0">
+                        Ini adalah kotak dengan background abu-abu
+                      </p>
                     </div>
-                    <div
-                      class="nav"
-                      style="
-                        background-color: green;
-                        color: white;
-                        padding: 15px;
-                        border-radius: 5px;
-                        margin-bottom: 10px;
-                      "
-                    >
-                      <span>Home | About | Contact</span>
-                    </div>
-                    <p style="color: red; font-weight: bold">
-                      Ini adalah paragraf dengan warna merah dan teks tebal.
-                    </p>
+                    <p style="margin: 0">Paragraf biasa tanpa styling khusus</p>
                   </div>
                   <!-- Tombol Zoom -->
                   <button
@@ -296,50 +302,33 @@
                     border-radius: 0.5rem;
                     max-width: 90vw;
                     max-height: 80vh;
+                    background-color: white;
                   "
                 >
+                  <h1 style="color: red; margin-bottom: 20px; font-size: 2rem">
+                    Ini adalah Judul
+                  </h1>
                   <div
-                    id="header"
                     style="
-                      background-color: blue;
-                      color: white;
-                      padding: 20px;
-                      border-radius: 5px;
-                      margin-bottom: 10px;
+                      background-color: #d1d5db;
+                      padding: 25px;
+                      border-radius: 8px;
+                      margin-bottom: 15px;
                     "
                   >
-                    <h1 style="margin: 0; font-size: 2rem">Website Header</h1>
+                    <p style="margin: 0; font-size: 1.1rem">
+                      Ini adalah kotak dengan background abu-abu
+                    </p>
                   </div>
-                  <div
-                    class="nav"
-                    style="
-                      background-color: green;
-                      color: white;
-                      padding: 15px;
-                      border-radius: 5px;
-                      margin-bottom: 10px;
-                    "
-                  >
-                    <span style="font-size: 1.1rem"
-                      >Home | About | Contact</span
-                    >
-                  </div>
-                  <p
-                    style="
-                      color: red;
-                      font-weight: bold;
-                      font-size: 1.1rem;
-                      margin: 1rem 0;
-                    "
-                  >
-                    Ini adalah paragraf dengan warna merah dan teks tebal.
+                  <p style="margin: 0; font-size: 1.1rem">
+                    Paragraf biasa tanpa styling khusus
                   </p>
                 </div>
               </div>
 
               <p class="text-xs md:text-sm text-gray-600">
-                Header biru, navigasi hijau, dan paragraf merah dengan teks
-                tebal.
+                Judul berwarna merah, dan kotak dengan background abu-abu
+                terlihat di halaman.
               </p>
             </div>
           </div>
@@ -370,7 +359,7 @@
           </button>
           <div
             class="instruksi-side p-3 fixed top-20 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300"
-            style="z-index: 70"
+            style="z-index: 70; height: calc(100vh - 5rem); overflow-y: auto"
           >
             <div class="flex justify-between items-center mb-4">
               <div class="flex items-center gap-2">
@@ -413,59 +402,72 @@
             </div>
 
             <div class="space-y-4 text-sm md:text-base">
-              <p class="font-medium">Perbaiki selector CSS!</p>
-              <p>Beberapa selector di bawah ini masih salah. Perbaiki:</p>
-              <ul class="list-disc ml-5">
-                <li>#header</li>
-                <li>.nav</li>
-                <li>p</li>
+              <p class="font-medium">🧠 Instruksi Tantangan:</p>
+              <p>
+                Halaman ini sudah memiliki elemen dengan
+                <code class="bg-pink-100 px-1 rounded text-pink-600"
+                  >class="kotak"</code
+                >
+                dan
+                <code class="bg-pink-100 px-1 rounded text-pink-600"
+                  >id="judul"</code
+                >.
+              </p>
+              <p>Tugasmu adalah menambahkan CSS agar:</p>
+              <ul class="list-disc ml-5 space-y-1">
+                <li>
+                  <code class="bg-gray-100 px-1 rounded">.kotak</code> punya
+                  background abu-abu
+                </li>
+                <li>
+                  <code class="bg-gray-100 px-1 rounded">#judul</code> berwarna
+                  merah
+                </li>
               </ul>
+              <p>Pastikan penulisan selector-nya tepat!</p>
 
               <div class="bg-green-50 p-3 rounded">
                 <p class="font-medium text-green-800 mb-2">
                   ✅ Yang harus kamu capai:
                 </p>
                 <ul class="space-y-1 text-green-700 text-xs md:text-sm">
-                  <li>• Header berwarna biru dan teks putih</li>
-                  <li>• Navigasi berwarna hijau dan teks putih</li>
-                  <li>• Paragraf berwarna merah dan teks tebal</li>
+                  <li>
+                    • Gunakan
+                    <code class="bg-green-100 px-1 rounded">.kotak {}</code> dan
+                    <code class="bg-green-100 px-1 rounded">#judul {}</code>
+                  </li>
+                  <li>• Pastikan class/id cocok dengan elemen HTML</li>
+                  <li>• Style tampil di preview</li>
                 </ul>
               </div>
 
               <div class="bg-gray-100 p-3 rounded relative">
                 <p class="font-medium text-gray-800 mb-2">
-                  💡 Hasil yang Diharapkan:
+                  🖥️ Preview yang Diharapkan:
                 </p>
                 <div
                   class="bg-white rounded border text-xs md:text-sm relative"
                 >
                   <div style="padding: 1rem; border-radius: 0.25rem">
-                    <div
-                      id="header"
-                      style="
-                        background-color: blue;
-                        color: white;
-                        padding: 20px;
-                        border-radius: 5px;
-                        margin-bottom: 10px;
-                      "
+                    <h1
+                      style="color: red; margin-bottom: 15px; font-size: 1.2rem"
                     >
-                      <h1>Website Header</h1>
-                    </div>
+                      Ini adalah Judul
+                    </h1>
                     <div
-                      class="nav"
                       style="
-                        background-color: green;
-                        color: white;
+                        background-color: #d1d5db;
                         padding: 15px;
                         border-radius: 5px;
                         margin-bottom: 10px;
                       "
                     >
-                      <span>Home | About | Contact</span>
+                      <p style="margin: 0; font-size: 0.9rem">
+                        Ini adalah kotak dengan background abu-abu
+                      </p>
                     </div>
-                    <p style="color: red; font-weight: bold">
-                      Ini adalah paragraf dengan warna merah dan teks tebal.
+                    <p style="margin: 0; font-size: 0.9rem">
+                      Paragraf biasa tanpa styling khusus
                     </p>
                   </div>
                   <!-- Tombol Zoom -->
@@ -504,50 +506,33 @@
                     border-radius: 0.5rem;
                     max-width: 90vw;
                     max-height: 80vh;
+                    background-color: white;
                   "
                 >
+                  <h1 style="color: red; margin-bottom: 20px; font-size: 2rem">
+                    Ini adalah Judul
+                  </h1>
                   <div
-                    id="header"
                     style="
-                      background-color: blue;
-                      color: white;
-                      padding: 20px;
-                      border-radius: 5px;
-                      margin-bottom: 10px;
+                      background-color: #d1d5db;
+                      padding: 25px;
+                      border-radius: 8px;
+                      margin-bottom: 15px;
                     "
                   >
-                    <h1 style="margin: 0; font-size: 2rem">Website Header</h1>
+                    <p style="margin: 0; font-size: 1.1rem">
+                      Ini adalah kotak dengan background abu-abu
+                    </p>
                   </div>
-                  <div
-                    class="nav"
-                    style="
-                      background-color: green;
-                      color: white;
-                      padding: 15px;
-                      border-radius: 5px;
-                      margin-bottom: 10px;
-                    "
-                  >
-                    <span style="font-size: 1.1rem"
-                      >Home | About | Contact</span
-                    >
-                  </div>
-                  <p
-                    style="
-                      color: red;
-                      font-weight: bold;
-                      font-size: 1.1rem;
-                      margin: 1rem 0;
-                    "
-                  >
-                    Ini adalah paragraf dengan warna merah dan teks tebal.
+                  <p style="margin: 0; font-size: 1.1rem">
+                    Paragraf biasa tanpa styling khusus
                   </p>
                 </div>
               </div>
 
               <p class="text-xs md:text-sm text-gray-600">
-                Header biru, navigasi hijau, dan paragraf merah dengan teks
-                tebal.
+                Judul berwarna merah, dan kotak dengan background abu-abu
+                terlihat di halaman.
               </p>
             </div>
           </div>
@@ -584,44 +569,7 @@
                 <textarea
                   id="htmlCode"
                   class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
-                >
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Memperbaiki Selector</title>
-  <style>
-    #header {
-      background-color: blue;
-      color: white;
-      padding: 20px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-    .nav {
-      background-color: green;
-      color: white;
-      padding: 15px;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-    p {
-      color: red;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
-  <div id="header">
-    <h1>Website Header</h1>
-  </div>
-  <div class="nav">
-    <span>Home | About | Contact</span>
-  </div>
-  <p>Ini adalah paragraf dengan warna merah dan teks tebal.</p>
-</body>
-</html></textarea
-                >
+                ></textarea>
               </div>
 
               <!-- Preview -->
@@ -771,9 +719,6 @@
     </section>
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
@@ -781,7 +726,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
 
     <script>
-      // Mobile Tab Functionality
+      // Mobile Tab Functionality and Main Script
       document.addEventListener("DOMContentLoaded", function () {
         const tabEditor = document.getElementById("tabEditor");
         const tabPreview = document.getElementById("tabPreview");
@@ -900,9 +845,6 @@
           }
         });
 
-        // Initialize syntax highlighting
-        Prism.highlightAll();
-
         // Initialize CodeMirror and editor functionality
         const textarea = document.getElementById("htmlCode");
         const submitBtn = document.getElementById("submitBtn");
@@ -931,24 +873,23 @@
 
         let userHasTyped = false;
 
-        // Set initial content
+        // Set initial content for selector challenge
         const initialCode = `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Memperbaiki Selector</title>
+  <title>Perbaiki Selector</title>
   <style>
-// masukkan selector yg di minta ke sini 
+    /* Tambahkan CSS selector di sini */
+    
   </style>
 </head>
 <body>
-  <div id="header">
-    <h1>Website Header</h1>
+  <h1 id="judul">Ini adalah Judul</h1>
+  <div class="kotak">
+    <p>Ini adalah kotak dengan background abu-abu</p>
   </div>
-  <div class="nav">
-    <span>Home | About | Contact</span>
-  </div>
-  <p>Ini adalah paragraf dengan warna merah dan teks tebal.</p>
+  <p>Paragraf biasa tanpa styling khusus</p>
 </body>
 </html>`;
 
@@ -959,7 +900,7 @@
           const lines = editor.lineCount();
           for (let i = 0; i < lines; i++) {
             const line = editor.getLine(i);
-            if (line.includes("<style>")) {
+            if (line.includes("/* Tambahkan CSS selector di sini */")) {
               editor.setCursor(i + 1, 0);
               break;
             }
@@ -978,19 +919,18 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Memperbaiki Selector</title>
+  <title>Perbaiki Selector</title>
   <style>
-// masukkan selector yg di minta ke sini 
+    /* Tambahkan CSS selector di sini */
+    
   </style>
 </head>
 <body>
-  <div id="header">
-    <h1>Website Header</h1>
+  <h1 id="judul">Ini adalah Judul</h1>
+  <div class="kotak">
+    <p>Ini adalah kotak dengan background abu-abu</p>
   </div>
-  <div class="nav">
-    <span>Home | About | Contact</span>
-  </div>
-  <p>Ini adalah paragraf dengan warna merah dan teks tebal.</p>
+  <p>Paragraf biasa tanpa styling khusus</p>
 </body>
 </html>`;
 
@@ -1005,7 +945,7 @@
             const lines = editor.lineCount();
             for (let i = 0; i < lines; i++) {
               const line = editor.getLine(i);
-              if (line.includes("<style>")) {
+              if (line.includes("/* Tambahkan CSS selector di sini */")) {
                 editor.setCursor(i + 1, 0);
                 break;
               }
@@ -1033,27 +973,42 @@
         // Initial preview update
         updatePreview();
 
-        // Submit button functionality
+        // Submit button functionality - Enhanced checking for selector challenge
         submitBtn.addEventListener("click", () => {
           const fullHtml = editor.getValue();
 
           // Check for CSS requirements
-          const hasHeaderSelector = fullHtml.includes("#header");
-          const hasNavSelector = fullHtml.includes(".nav");
-          const hasParagraphSelector = fullHtml.includes("p {");
+          const hasKotakSelector =
+            fullHtml.includes(".kotak") && fullHtml.includes("background");
+          const hasJudulSelector =
+            fullHtml.includes("#judul") && fullHtml.includes("color");
 
           const overlayIcon = document.getElementById("overlayIcon");
           const overlayTitle = document.getElementById("overlayTitle");
           const overlayMessage = document.getElementById("overlayMessage");
 
-          if (hasHeaderSelector && hasNavSelector && hasParagraphSelector) {
+          let isValid = true;
+          let errorMessages = [];
+
+          // Validation checks
+          if (!hasKotakSelector) {
+            isValid = false;
+            errorMessages.push("selector .kotak dengan background");
+          }
+
+          if (!hasJudulSelector) {
+            isValid = false;
+            errorMessages.push("selector #judul dengan color");
+          }
+
+          if (isValid) {
             // Success
             overlayIcon.textContent = "✓";
             overlayIcon.className = "text-green-600 text-6xl mb-4";
             overlayTitle.textContent = "Jawaban Benar!";
             overlayTitle.className = "text-xl font-bold text-green-600 mb-2";
             overlayMessage.textContent =
-              "Selector CSS kamu sudah sesuai dengan syarat yang diminta. Semua elemen styling telah diterapkan dengan benar!";
+              "Selector CSS kamu sudah sesuai dengan syarat yang diminta! Class dan ID sudah diterapkan dengan benar.";
           } else {
             // Needs improvement
             overlayIcon.textContent = "!";
@@ -1061,14 +1016,13 @@
             overlayTitle.textContent = "Perlu Perbaikan";
             overlayTitle.className = "text-xl font-bold text-yellow-500 mb-2";
 
-            let missing = [];
-            if (!hasHeaderSelector) missing.push("selector #header");
-            if (!hasNavSelector) missing.push("selector .nav");
-            if (!hasParagraphSelector) missing.push("selector p");
-
-            overlayMessage.textContent = `Pastikan kamu menambahkan: ${missing.join(
-              ", "
-            )}.`;
+            if (errorMessages.length === 1) {
+              overlayMessage.textContent = `Pastikan ada ${errorMessages[0]}.`;
+            } else {
+              overlayMessage.textContent = `Pastikan ada: ${errorMessages.join(
+                ", "
+              )}.`;
+            }
           }
 
           overlay.classList.remove("hidden");
@@ -1085,19 +1039,18 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Memperbaiki Selector</title>
+  <title>Perbaiki Selector</title>
   <style>
-// masukkan selector yg di minta ke sini 
+    /* Tambahkan CSS selector di sini */
+    
   </style>
 </head>
 <body>
-  <div id="header">
-    <h1>Website Header</h1>
+  <h1 id="judul">Ini adalah Judul</h1>
+  <div class="kotak">
+    <p>Ini adalah kotak dengan background abu-abu</p>
   </div>
-  <div class="nav">
-    <span>Home | About | Contact</span>
-  </div>
-  <p>Ini adalah paragraf dengan warna merah dan teks tebal.</p>
+  <p>Paragraf biasa tanpa styling khusus</p>
 </body>
 </html>`;
 
@@ -1109,7 +1062,7 @@
             const lines = editor.lineCount();
             for (let i = 0; i < lines; i++) {
               const line = editor.getLine(i);
-              if (line.includes("<style>")) {
+              if (line.includes("/* Tambahkan CSS selector di sini */")) {
                 editor.setCursor(i + 1, 0);
                 break;
               }
