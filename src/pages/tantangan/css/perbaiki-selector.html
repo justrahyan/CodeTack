@@ -73,6 +73,38 @@
         height: 100%;
         border-left: 1px solid #d1d5db;
       }
+
+      /* Mobile tab styles */
+      .tab-btn.active {
+        border-color: #16a34a;
+        color: #16a34a;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      /* Mobile specific styles */
+      @media (max-width: 768px) {
+        .editor-container {
+          flex-direction: column;
+          height: calc(100vh - 200px);
+        }
+
+        #editor-panel {
+          width: 100%;
+          height: 100%;
+        }
+
+        #preview {
+          width: 100%;
+          height: 100%;
+        }
+      }
     </style>
   </head>
   <body class="h-screen flex flex-col">
@@ -522,11 +554,11 @@
 
           <!-- Editor & Preview Panel -->
           <div class="lg:col-span-3 bg-white overflow-hidden flex flex-col">
-            <!-- Tab -->
+            <!-- Tab (Mobile Only) -->
             <div class="flex text-sm font-medium border-b md:hidden">
               <button
                 id="tabEditor"
-                class="tab-btn px-4 py-2 border-b-2 border-green-600 text-green-600 focus:outline-none"
+                class="tab-btn px-4 py-2 border-b-2 border-green-600 text-green-600 focus:outline-none active"
               >
                 index.html
               </button>
@@ -546,7 +578,7 @@
               <!-- Editor -->
               <div
                 id="editor-panel"
-                class="w-full md:w-1/2 border overflow-auto block md:block"
+                class="tab-content active w-full md:w-1/2 border overflow-auto"
                 style="min-height: 100vh"
               >
                 <textarea
@@ -595,7 +627,7 @@
               <!-- Preview -->
               <iframe
                 id="preview"
-                class="w-full md:w-1/2 border hidden md:block"
+                class="tab-content w-full md:w-1/2 border md:block"
                 title="Pratinjau HTML"
                 style="height: 100vh"
               ></iframe>
@@ -738,13 +770,66 @@
       </div>
     </section>
 
-    <!-- Instruksi Responsive -->
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+
     <script>
+      // Mobile Tab Functionality
       document.addEventListener("DOMContentLoaded", function () {
+        const tabEditor = document.getElementById("tabEditor");
+        const tabPreview = document.getElementById("tabPreview");
+        const editorPanel = document.getElementById("editor-panel");
+        const preview = document.getElementById("preview");
+
+        // Tab switching for mobile
+        function switchTab(
+          activeTab,
+          activeContent,
+          inactiveTab,
+          inactiveContent
+        ) {
+          // Update tab styles
+          activeTab.classList.add(
+            "active",
+            "border-green-600",
+            "text-green-600"
+          );
+          activeTab.classList.remove("text-gray-500");
+          inactiveTab.classList.remove(
+            "active",
+            "border-green-600",
+            "text-green-600"
+          );
+          inactiveTab.classList.add("text-gray-500");
+
+          // Update content visibility
+          activeContent.classList.add("active");
+          activeContent.classList.remove("hidden");
+          inactiveContent.classList.remove("active");
+          inactiveContent.classList.add("hidden");
+        }
+
+        tabEditor.addEventListener("click", () => {
+          switchTab(tabEditor, editorPanel, tabPreview, preview);
+        });
+
+        tabPreview.addEventListener("click", () => {
+          switchTab(tabPreview, preview, tabEditor, editorPanel);
+          // Update preview when switching to preview tab
+          updatePreview();
+        });
+
+        // Instructions panel functionality
         const openBtn = document.getElementById("open-instruksi");
         const instruksi = document.querySelector(".instruksi-side");
         const closeBtn = document.getElementById("close-instruksi");
-
         let isVisible = false;
 
         if (openBtn) {
@@ -764,53 +849,68 @@
           closeBtn.addEventListener("click", () => {
             instruksi.classList.add("right-[-300px]");
             instruksi.classList.remove("right-0");
-            isVisible = false; // update status supaya sync
+            isVisible = false;
           });
         }
-      });
 
-      document.addEventListener("click", function (e) {
-        if (
-          isVisible &&
-          instruksi &&
-          !instruksi.contains(e.target) &&
-          !openBtn.contains(e.target)
-        ) {
-          instruksi.classList.add("right-[-300px]");
-          instruksi.classList.remove("right-0");
-          isVisible = false;
+        // Close instructions when clicking outside
+        document.addEventListener("click", function (e) {
+          if (
+            isVisible &&
+            instruksi &&
+            !instruksi.contains(e.target) &&
+            !openBtn.contains(e.target)
+          ) {
+            instruksi.classList.add("right-[-300px]");
+            instruksi.classList.remove("right-0");
+            isVisible = false;
+          }
+        });
+
+        // Zoom functionality
+        const zoomButton = document.getElementById("zoom-button");
+        const zoomButtonResponsive = document.getElementById(
+          "zoom-button-responsive"
+        );
+        const imageModal = document.getElementById("image-modal");
+        const imageModalResponsive = document.getElementById(
+          "image-modal-responsive"
+        );
+
+        if (zoomButton) {
+          zoomButton.addEventListener("click", () => {
+            imageModal.classList.remove("hidden");
+          });
         }
-      });
-    </script>
 
-    <!-- Prism.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+        if (zoomButtonResponsive) {
+          zoomButtonResponsive.addEventListener("click", () => {
+            imageModalResponsive.classList.remove("hidden");
+          });
+        }
 
-    <!-- CodeMirror -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+        // Close modals when clicking outside
+        [imageModal, imageModalResponsive].forEach((modal) => {
+          if (modal) {
+            modal.addEventListener("click", (e) => {
+              if (e.target === modal) {
+                modal.classList.add("hidden");
+              }
+            });
+          }
+        });
 
-    <script src="../../../assets/js/script.js"></script>
-    <!-- Code Mirror -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Highlight syntax Prism
+        // Initialize syntax highlighting
         Prism.highlightAll();
 
-        // Deklarasi elemen
+        // Initialize CodeMirror and editor functionality
         const textarea = document.getElementById("htmlCode");
-        const preview = document.getElementById("preview");
         const submitBtn = document.getElementById("submitBtn");
         const resetBtn = document.getElementById("resetBtn");
         const overlay = document.getElementById("successOverlay");
-        const closeBtn = document.getElementById("closeOverlay");
+        const closeOverlayBtn = document.getElementById("closeOverlay");
 
-        // Inisialisasi CodeMirror
+        // Initialize CodeMirror
         const editor = CodeMirror.fromTextArea(textarea, {
           lineNumbers: true,
           mode: "htmlmixed",
@@ -826,7 +926,7 @@
           autoCloseTags: true,
           matchBrackets: true,
           matchTags: true,
-          readOnly: false, // Pastikan tidak readonly
+          readOnly: false,
         });
 
         let userHasTyped = false;
@@ -854,7 +954,7 @@
 
         editor.setValue(initialCode);
 
-        // Set cursor ke area yang bisa diedit
+        // Set cursor to editable area
         setTimeout(() => {
           const lines = editor.lineCount();
           for (let i = 0; i < lines; i++) {
@@ -867,15 +967,13 @@
           editor.focus();
         }, 500);
 
-        // Fungsi update preview
+        // Update preview function
         function updatePreview() {
           const fullHtml = editor.getValue();
           preview.srcdoc = fullHtml;
         }
 
-        function setEditorWithTemplate(
-          bodyContent = `    <!-- Sisipkan CSS di sini -->`
-        ) {
+        function setEditorWithTemplate() {
           const fullHtml = `<!DOCTYPE html>
 <html>
 <head>
@@ -897,11 +995,12 @@
 </html>`;
 
           editor.setValue(fullHtml);
-          // Hapus semua mark text readonly yang ada
+
+          // Clear all marks
           const marks = editor.getAllMarks();
           marks.forEach((mark) => mark.clear());
 
-          // Set cursor ke area yang bisa diedit (setelah comment)
+          // Set cursor to editable area
           setTimeout(() => {
             const lines = editor.lineCount();
             for (let i = 0; i < lines; i++) {
@@ -917,25 +1016,26 @@
 
         setEditorWithTemplate();
 
-        // Update preview saat ada perubahan
+        // Update preview on change
         editor.on("change", function () {
           userHasTyped = true;
           clearTimeout(window.updateTimeout);
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
-        // Auto-refresh preview setiap 1 detik
+        // Auto-refresh preview
         setInterval(() => {
           if (editor.getValue()) {
             updatePreview();
           }
         }, 1000);
 
-        // Submit button
+        // Initial preview update
+        updatePreview();
+
+        // Submit button functionality
         submitBtn.addEventListener("click", () => {
           const fullHtml = editor.getValue();
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(fullHtml, "text/html");
 
           // Check for CSS requirements
           const hasHeaderSelector = fullHtml.includes("#header");
@@ -945,7 +1045,6 @@
           const overlayIcon = document.getElementById("overlayIcon");
           const overlayTitle = document.getElementById("overlayTitle");
           const overlayMessage = document.getElementById("overlayMessage");
-          const overlayBox = document.getElementById("successOverlay");
 
           if (hasHeaderSelector && hasNavSelector && hasParagraphSelector) {
             // Success
@@ -972,10 +1071,10 @@
             )}.`;
           }
 
-          overlayBox.classList.remove("hidden");
+          overlay.classList.remove("hidden");
         });
 
-        // Reset
+        // Reset button functionality
         resetBtn.addEventListener("click", () => {
           // Clear all marks first
           const marks = editor.getAllMarks();
@@ -1003,11 +1102,9 @@
 </html>`;
 
           editor.setValue(defaultCode);
-
-          // Reset preview update
           updatePreview();
 
-          // Fokus kembali ke editor
+          // Focus back to editor
           setTimeout(() => {
             const lines = editor.lineCount();
             for (let i = 0; i < lines; i++) {
@@ -1021,10 +1118,13 @@
           }, 100);
         });
 
-        // Tutup overlay hasil
-        closeBtn.addEventListener("click", () => {
+        // Close overlay functionality
+        closeOverlayBtn.addEventListener("click", () => {
           overlay.classList.add("hidden");
         });
+
+        // Make updatePreview available globally for tab switching
+        window.updatePreview = updatePreview;
       });
     </script>
   </body>
