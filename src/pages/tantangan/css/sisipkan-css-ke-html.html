@@ -4,11 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CodeTack - Tantangan Menyisipkan CSS</title>
+    <link rel="stylesheet" href="../../../assets/css/output.css" />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../../assets/img/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../../assets/img/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../../../assets/img/favicon_io/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="../../../assets/img/favicon_io/site.webmanifest"
+    />
+    <!-- Prism.css -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
       rel="stylesheet"
     />
     <!-- CodeMirror -->
@@ -21,460 +49,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material.min.css"
     />
     <style>
-      body {
-        font-family: "Outfit", sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-
-      .font-family-outfit {
-        font-family: "Outfit", sans-serif;
-      }
-
-      .text-primary {
-        color: #059669;
-      }
-
-      .text-paragraph {
-        color: #6b7280;
-      }
-
-      .bg-green-100 {
-        background-color: #dcfce7;
-      }
-
-      .text-green-700 {
-        color: #15803d;
-      }
-
-      .bg-green-50 {
-        background-color: #f0fdf4;
-      }
-
-      .text-green-800 {
-        color: #166534;
-      }
-
-      .bg-green-100 {
-        background-color: #dcfce7;
-      }
-
-      .bg-pink-100 {
-        background-color: #fce7f3;
-      }
-
-      .text-pink-600 {
-        color: #db2777;
-      }
-
-      .bg-gray-100 {
-        background-color: #f3f4f6;
-      }
-
-      .text-gray-800 {
-        color: #1f2937;
-      }
-
-      .text-gray-600 {
-        color: #4b5563;
-      }
-
-      .text-gray-700 {
-        color: #374151;
-      }
-
-      .bg-white {
-        background-color: white;
-      }
-
-      .border {
-        border: 1px solid #e5e7eb;
-      }
-
-      .rounded {
-        border-radius: 0.25rem;
-      }
-
-      .px-1 {
-        padding-left: 0.25rem;
-        padding-right: 0.25rem;
-      }
-
-      .px-2 {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-      }
-
-      .py-1 {
-        padding-top: 0.25rem;
-        padding-bottom: 0.25rem;
-      }
-
-      .p-3 {
-        padding: 0.75rem;
-      }
-
-      .px-4 {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-
-      .py-4 {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-      }
-
-      .px-6 {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-      }
-
-      .py-2 {
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-      }
-
-      .py-3 {
-        padding-top: 0.75rem;
-        padding-bottom: 0.75rem;
-      }
-
-      .mb-2 {
-        margin-bottom: 0.5rem;
-      }
-
-      .mb-4 {
-        margin-bottom: 1rem;
-      }
-
-      .gap-2 {
-        gap: 0.5rem;
-      }
-
-      .gap-4 {
-        gap: 1rem;
-      }
-
-      .text-sm {
-        font-size: 0.875rem;
-      }
-
-      .text-xs {
-        font-size: 0.75rem;
-      }
-
-      .text-lg {
-        font-size: 1.125rem;
-      }
-
-      .text-xl {
-        font-size: 1.25rem;
-      }
-
-      .text-6xl {
-        font-size: 3.75rem;
-      }
-
-      .font-bold {
-        font-weight: 700;
-      }
-
-      .font-semibold {
-        font-weight: 600;
-      }
-
-      .font-medium {
-        font-weight: 500;
-      }
-
-      .text-center {
-        text-align: center;
-      }
-
-      .space-y-1 > * + * {
-        margin-top: 0.25rem;
-      }
-
-      .space-y-2 > * + * {
-        margin-top: 0.5rem;
-      }
-
-      .space-y-4 > * + * {
-        margin-top: 1rem;
-      }
-
-      .flex {
-        display: flex;
-      }
-
-      .flex-col {
-        flex-direction: column;
-      }
-
-      .flex-1 {
-        flex: 1;
-      }
-
-      .flex-shrink-0 {
-        flex-shrink: 0;
-      }
-
-      .items-center {
-        align-items: center;
-      }
-
-      .justify-start {
-        justify-content: flex-start;
-      }
-
-      .justify-center {
-        justify-content: center;
-      }
-
-      .justify-end {
-        justify-content: flex-end;
-      }
-
-      .justify-between {
-        justify-content: space-between;
-      }
-
-      .grid {
-        display: grid;
-      }
-
-      .grid-cols-1 {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-      }
-
-      .grid-cols-3 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .h-screen {
-        height: 100vh;
-      }
-
-      .h-full {
-        height: 100%;
-      }
-
-      .w-4 {
-        width: 1rem;
-      }
-
-      .h-4 {
-        height: 1rem;
-      }
-
-      .w-full {
-        width: 100%;
-      }
-
-      .w-72 {
-        width: 18rem;
-      }
-
-      .max-w-md {
-        max-width: 28rem;
-      }
-
-      .mx-auto {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .mx-4 {
-        margin-left: 1rem;
-        margin-right: 1rem;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .overflow-hidden {
-        overflow: hidden;
-      }
-
-      .overflow-y-auto {
-        overflow-y: auto;
-      }
-
-      .hidden {
-        display: none;
-      }
-
-      .block {
-        display: block;
-      }
-
-      .inline-flex {
-        display: inline-flex;
-      }
-
-      .fixed {
-        position: fixed;
-      }
-
-      .inset-0 {
-        inset: 0;
-      }
-
-      .right-0 {
-        right: 0;
-      }
-
-      .top-20 {
-        top: 5rem;
-      }
-
-      .z-50 {
-        z-index: 50;
-      }
-
-      .z-60 {
-        z-index: 60;
-      }
-
-      .z-70 {
-        z-index: 70;
-      }
-
-      .z-75 {
-        z-index: 75;
-      }
-
-      .cursor-pointer {
-        cursor: pointer;
-      }
-
-      .transition-all {
-        transition: all 0.3s ease;
-      }
-
-      .duration-300 {
-        transition-duration: 300ms;
-      }
-
-      .shadow-lg {
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-      }
-
-      .shadow-xl {
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-      }
-
-      .rounded-lg {
-        border-radius: 0.5rem;
-      }
-
-      .rounded-l-2xl {
-        border-top-left-radius: 1rem;
-        border-bottom-left-radius: 1rem;
-      }
-
-      .hover\:underline:hover {
-        text-decoration: underline;
-      }
-
-      .hover\:text-paragraph:hover {
-        color: #6b7280;
-      }
-
-      .hover\:bg-green-700:hover {
-        background-color: #15803d;
-      }
-
-      .hover\:bg-\[#3C4144\]:hover {
-        background-color: #3c4144;
-      }
-
-      .bg-\[#2F3436\] {
-        background-color: #2f3436;
-      }
-
-      .text-white {
-        color: white;
-      }
-
-      .bg-green-600 {
-        background-color: #16a34a;
-      }
-
-      .transition-colors {
-        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
-      }
-
-      .whitespace-nowrap {
-        white-space: nowrap;
-      }
-
-      .focus\:outline-none:focus {
-        outline: none;
-      }
-
-      .text-gray-500 {
-        color: #6b7280;
-      }
-
-      .hover\:text-green-600:hover {
-        color: #16a34a;
-      }
-
-      .border-b {
-        border-bottom: 1px solid #e5e7eb;
-      }
-
-      .border-b-2 {
-        border-bottom: 2px solid;
-      }
-
-      .border-green-600 {
-        border-color: #16a34a;
-      }
-
-      .text-green-600 {
-        color: #16a34a;
-      }
-
-      .border-t {
-        border-top: 1px solid #e5e7eb;
-      }
-
-      .flex-wrap {
-        flex-wrap: wrap;
-      }
-
-      .resize-none {
-        resize: none;
-      }
-
-      .border-none {
-        border: none;
-      }
-
-      .font-mono {
-        font-family: monospace;
-      }
-
-      .bg-black\/60 {
-        background-color: rgba(0, 0, 0, 0.6);
-      }
-
-      .bg-black\/70 {
-        background-color: rgba(0, 0, 0, 0.7);
-      }
-
-      .max-h-full {
-        max-height: 100%;
-      }
-
-      .max-w-full {
-        max-width: 100%;
-      }
-
       .CodeMirror {
         height: 100%;
         font-size: 14px;
@@ -498,86 +72,6 @@
         width: 50%;
         height: 100%;
         border-left: 1px solid #d1d5db;
-      }
-
-      .right-\[-300px\] {
-        right: -300px;
-      }
-
-      @media (max-width: 640px) {
-        .sm\:inline {
-          display: inline;
-        }
-      }
-
-      @media (min-width: 768px) {
-        .md\:text-base {
-          font-size: 1rem;
-        }
-
-        .md\:text-sm {
-          font-size: 0.875rem;
-        }
-
-        .md\:block {
-          display: block;
-        }
-
-        .md\:hidden {
-          display: none;
-        }
-
-        .md\:flex-row {
-          flex-direction: row;
-        }
-
-        .md\:w-1\/2 {
-          width: 50%;
-        }
-      }
-
-      @media (min-width: 1024px) {
-        .lg\:text-lg {
-          font-size: 1.125rem;
-        }
-
-        .lg\:text-base {
-          font-size: 1rem;
-        }
-
-        .lg\:py-6 {
-          padding-top: 1.5rem;
-          padding-bottom: 1.5rem;
-        }
-
-        .lg\:px-36 {
-          padding-left: 9rem;
-          padding-right: 9rem;
-        }
-
-        .lg\:grid-cols-4 {
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-
-        .lg\:col-span-1 {
-          grid-column: span 1 / span 1;
-        }
-
-        .lg\:col-span-3 {
-          grid-column: span 3 / span 3;
-        }
-
-        .lg\:block {
-          display: block;
-        }
-
-        .lg\:hidden {
-          display: none;
-        }
-
-        .lg\:overflow-y-auto {
-          overflow-y: auto;
-        }
       }
     </style>
   </head>
@@ -696,8 +190,8 @@
                   untuk menyisipkan CSS internal.
                 </p>
                 <p>
-                  Ubah warna, background, dan spacing sesuai dengan contoh yang
-                  diberikan.
+                  Gunakan struktur CSS yang tepat seperti yang sudah kamu
+                  pelajari sebelumnya.
                 </p>
               </div>
 
@@ -739,6 +233,53 @@
                       diterapkan.
                     </p>
                   </div>
+                  <!-- Tombol Zoom -->
+                  <button
+                    id="zoom-button"
+                    class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Modal Overlay -->
+              <div
+                id="image-modal"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden mb-0"
+              >
+                <div
+                  style="
+                    background: #f3f4f6;
+                    padding: 2rem;
+                    border-radius: 0.5rem;
+                    max-width: 90vw;
+                    max-height: 80vh;
+                  "
+                >
+                  <h1
+                    style="color: #3b82f6; margin: 0 0 1rem 0; font-size: 2rem"
+                  >
+                    Selamat Datang
+                  </h1>
+                  <p style="margin: 1rem 0; color: #374151; font-size: 1.1rem">
+                    Ini adalah contoh paragraf dengan styling CSS yang telah
+                    diterapkan.
+                  </p>
                 </div>
               </div>
 
@@ -834,8 +375,8 @@
                   untuk menyisipkan CSS internal.
                 </p>
                 <p>
-                  Ubah warna, background, dan spacing sesuai dengan contoh yang
-                  diberikan.
+                  Gunakan struktur CSS yang tepat seperti yang sudah kamu
+                  pelajari sebelumnya.
                 </p>
               </div>
 
@@ -877,6 +418,54 @@
                       diterapkan.
                     </p>
                   </div>
+                  <!-- Tombol Zoom -->
+                  <button
+                    id="zoom-button-responsive"
+                    class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Modal Overlay -->
+              <div
+                id="image-modal-responsive"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center hidden mb-0"
+                style="z-index: 75"
+              >
+                <div
+                  style="
+                    background: #f3f4f6;
+                    padding: 2rem;
+                    border-radius: 0.5rem;
+                    max-width: 90vw;
+                    max-height: 80vh;
+                  "
+                >
+                  <h1
+                    style="color: #3b82f6; margin: 0 0 1rem 0; font-size: 2rem"
+                  >
+                    Selamat Datang
+                  </h1>
+                  <p style="margin: 1rem 0; color: #374151; font-size: 1.1rem">
+                    Ini adalah contoh paragraf dengan styling CSS yang telah
+                    diterapkan.
+                  </p>
                 </div>
               </div>
 
@@ -1010,15 +599,142 @@
       </div>
     </div>
 
-    <!-- CodeMirror Scripts -->
+    <!-- Pagination -->
+    <section id="pagination" class="flex-shrink-0">
+      <div
+        class="container border bg-white mx-auto px-4 py-4 lg:py-6 lg:px-36 font-family-outfit"
+      >
+        <div class="grid grid-cols-3 items-center gap-4">
+          <!-- Prev -->
+          <div class="invisible flex justify-start">
+            <a
+              href="./struktur-dasar.html"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 md:w-5 h-6 md:h-5"
+                viewBox="0 0 24 24"
+                class="inline-block"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                >
+                  <path d="m13 9l-3 3l3 3" />
+                  <circle cx="12" cy="12" r="9" />
+                </g>
+              </svg>
+              <span class="hidden sm:inline">Struktur Dasar HTML</span>
+            </a>
+          </div>
+
+          <!-- Title -->
+          <div class="flex justify-center">
+            <p
+              class="text-center text-primary font-semibold lg:text-lg text-sm whitespace-nowrap"
+            >
+              Menyisipkan CSS
+            </p>
+          </div>
+
+          <!-- Next -->
+          <div class="flex justify-end">
+            <a
+              href="./logo-dengan-tautan.html"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
+            >
+              <span class="hidden sm:inline">Logo dengan Tautan</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 md:w-5 h-6 md:h-5"
+                viewBox="0 0 24 24"
+                class="inline-block"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="m11 9l3 3l-3 3" />
+                </g>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instruksi Responsive -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const openBtn = document.getElementById("open-instruksi");
+        const instruksi = document.querySelector(".instruksi-side");
+        const closeBtn = document.getElementById("close-instruksi");
+
+        let isVisible = false;
+
+        if (openBtn) {
+          openBtn.addEventListener("click", () => {
+            if (isVisible) {
+              instruksi.classList.remove("right-0");
+              instruksi.classList.add("right-[-300px]");
+            } else {
+              instruksi.classList.remove("right-[-300px]");
+              instruksi.classList.add("right-0");
+            }
+            isVisible = !isVisible;
+          });
+        }
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", () => {
+            instruksi.classList.add("right-[-300px]");
+            instruksi.classList.remove("right-0");
+            isVisible = false; // update status supaya sync
+          });
+        }
+      });
+
+      document.addEventListener("click", function (e) {
+        if (
+          isVisible &&
+          instruksi &&
+          !instruksi.contains(e.target) &&
+          !openBtn.contains(e.target)
+        ) {
+          instruksi.classList.add("right-[-300px]");
+          instruksi.classList.remove("right-0");
+          isVisible = false;
+        }
+      });
+    </script>
+
+    <!-- Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+
+    <!-- CodeMirror -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
 
+    <script src="../../../assets/js/script.js"></script>
+    <!-- Code Mirror -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // Highlight syntax Prism
+        Prism.highlightAll();
+
         // Deklarasi elemen
         const textarea = document.getElementById("htmlCode");
         const preview = document.getElementById("preview");
@@ -1045,14 +761,69 @@
           matchTags: true,
         });
 
+        let userHasTyped = false;
+
         // Fungsi update preview
         function updatePreview() {
           const fullHtml = editor.getValue();
           preview.srcdoc = fullHtml;
         }
 
+        function setEditorWithTemplate(
+          bodyContent = `    <!-- Sisipkan CSS di sini -->`
+        ) {
+          const fullHtml = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tantangan CSS</title>
+${bodyContent}
+</head>
+<body>
+    <h1>Selamat Datang</h1>
+    <p>Ini adalah contoh paragraf yang perlu diberi styling dengan CSS.</p>
+    <p>Cobalah untuk mengubah warna, background, dan spacing!</p>
+</body>
+</html>`;
+
+          editor.setValue(fullHtml);
+          setTimeout(() => {
+            const lines = editor.lineCount();
+            const startHeadLine = [...Array(lines)].findIndex((_, i) =>
+              editor.getLine(i).includes("<head>")
+            );
+            const endHeadLine = [...Array(lines)].findIndex((_, i) =>
+              editor.getLine(i).includes("</head>")
+            );
+            const startBodyLine = [...Array(lines)].findIndex((_, i) =>
+              editor.getLine(i).includes("<body>")
+            );
+            const endBodyLine = [...Array(lines)]
+              .reverse()
+              .findIndex((_, i) =>
+                editor.getLine(lines - 1 - i).includes("</body>")
+              );
+            const realEndBodyLine = lines - 1 - endBodyLine;
+
+            // Tandai bagian readonly (kecuali area head untuk CSS)
+            editor.markText(
+              { line: 0, ch: 0 },
+              { line: startHeadLine + 3, ch: 0 },
+              { readOnly: true, inclusiveRight: false }
+            );
+            editor.markText(
+              { line: endHeadLine, ch: 0 },
+              { line: realEndBodyLine + 1, ch: 0 },
+              { readOnly: true, inclusiveRight: false }
+            );
+          }, 100);
+        }
+
+        setEditorWithTemplate();
+
         // Update preview saat ada perubahan
         editor.on("change", function () {
+          userHasTyped = true;
           clearTimeout(window.updateTimeout);
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
@@ -1120,22 +891,10 @@
           overlayBox.classList.remove("hidden");
         });
 
-        // Reset button
+        // Reset
         resetBtn.addEventListener("click", () => {
-          const defaultCode = `<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Tantangan CSS</title>
-    <!-- Sisipkan CSS di sini -->
-</head>
-<body>
-    <h1>Selamat Datang</h1>
-    <p>Ini adalah contoh paragraf yang perlu diberi styling dengan CSS.</p>
-    <p>Cobalah untuk mengubah warna, background, dan spacing!</p>
-</body>
-</html>`;
-          editor.setValue(defaultCode);
+          setEditorWithTemplate();
+          userHasTyped = false;
           updatePreview();
         });
 
@@ -1154,6 +913,42 @@
       });
     </script>
 
+    <!-- Hasil yang diharapkan -->
+    <script>
+      const zoomBtn = document.getElementById("zoom-button");
+      const modal = document.getElementById("image-modal");
+
+      if (zoomBtn && modal) {
+        zoomBtn.addEventListener("click", () => {
+          modal.classList.remove("hidden");
+        });
+
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            modal.classList.add("hidden");
+          }
+        });
+      }
+    </script>
+
+    <!-- Hasil yang diharapkan responsive -->
+    <script>
+      const zoomResponsive = document.getElementById("zoom-button-responsive");
+      const modalResponsive = document.getElementById("image-modal-responsive");
+
+      if (zoomResponsive && modalResponsive) {
+        zoomResponsive.addEventListener("click", () => {
+          modalResponsive.classList.remove("hidden");
+        });
+
+        modalResponsive.addEventListener("click", (e) => {
+          if (e.target === modalResponsive) {
+            modalResponsive.classList.add("hidden");
+          }
+        });
+      }
+    </script>
+
     <!-- Code Editor dan Preview -->
     <script>
       // Editor dan Preview Tantangan
@@ -1161,6 +956,14 @@
       const tabPreview = document.getElementById("tabPreview");
       const editorPanels = document.getElementById("editor-panel");
       const previewPanels = document.getElementById("preview");
+      const htmlCode = document.getElementById("htmlCode");
+
+      function updatePreview() {
+        const code = htmlCode.value;
+        const blob = new Blob([code], { type: "text/html" });
+        const url = URL.createObjectURL(blob);
+        previewPanels.src = url;
+      }
 
       function activateEditor() {
         // Show editor, hide preview
@@ -1185,6 +988,9 @@
       }
 
       function activatePreview() {
+        // Update preview content
+        updatePreview();
+
         // Show preview, hide editor
         previewPanels.classList.remove("hidden");
         previewPanels.classList.add("block");
@@ -1207,17 +1013,19 @@
       }
 
       // Only enable tab switch on mobile
-      tabEditor.addEventListener("click", () => {
-        if (window.innerWidth < 768) activateEditor();
-      });
+      if (tabEditor && tabPreview) {
+        tabEditor.addEventListener("click", () => {
+          if (window.innerWidth < 768) activateEditor();
+        });
 
-      tabPreview.addEventListener("click", () => {
-        if (window.innerWidth < 768) activatePreview();
-      });
+        tabPreview.addEventListener("click", () => {
+          if (window.innerWidth < 768) activatePreview();
+        });
 
-      // Default to editor tab on mobile
-      if (window.innerWidth < 768) {
-        activateEditor();
+        // Default to editor tab on mobile
+        if (window.innerWidth < 768) {
+          activateEditor();
+        }
       }
     </script>
 
@@ -1247,7 +1055,7 @@
           closeBtn.addEventListener("click", () => {
             instruksi.classList.add("right-[-300px]");
             instruksi.classList.remove("right-0");
-            isVisible = false;
+            isVisible = false; // update status supaya sync
           });
         }
 
