@@ -223,76 +223,9 @@
                   id="htmlCode"
                   class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
                 >
-<!DOCTYPE html>
-<html lang="en">
-    <style>
-        body {
-          font-family: sans-serif;
-          padding: 20px;
-        }
-        .calculator {
-          max-width: 350px;
-          margin: auto;
-          padding: 20px;
-          border: 1px solid #ccc;
-          border-radius: 10px;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        input[type="number"] {
-          width: 95%;
-          padding: 8px;
-          margin-bottom: 10px;
-          border-radius: 4px;
-          border: 1px solid #ddd;
-        }
-        .buttons button {
-          padding: 10px 15px;
-          margin-right: 5px;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          background-color: #007bff;
-          color: white;
-          font-size: 16px;
-        }
-        .buttons button:hover {
-          background-color: #0056b3;
-        }
-        #result-container {
-          margin-top: 20px;
-          font-size: 20px;
-          font-weight: bold;
-        }
-      </style>
-    </head>
-    <body>
-        <div class="calculator">
-            <h2>Kalkulator Sederhana</h2>
-            
-            <div>
-              <label for="num1">Angka Pertama:</label>
-              <input type="number" id="num1" placeholder="Masukkan angka pertama">
-            </div>
-            
-            <div>
-              <label for="num2">Angka Kedua:</label>
-              <input type="number" id="num2" placeholder="Masukkan angka kedua">
-            </div>
-            
-            <div class="buttons">
-              <button onclick="add()">+</button>
-              <button onclick="subtract()">-</button>
-              <button onclick="multiply()">×</button>
-              <button onclick="divide()">÷</button>
-            </div>
-            
-            <div id="result-container">
-              Hasil: <span id="result">0</span>
-            </div>
-          </div>
+
           <!-- Masukkan kode java script disini -->
-    </body>
-    </html>
+
                 </textarea>
               </div>
 
@@ -523,8 +456,71 @@
     <head>
       <meta charset="UTF-8">
       <title>Preview</title>
+      <style>
+        body {
+          font-family: sans-serif;
+          padding: 20px;
+        }
+        .calculator {
+          max-width: 350px;
+          margin: auto;
+          padding: 20px;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        input[type="number"] {
+          width: 95%;
+          padding: 8px;
+          margin-bottom: 10px;
+          border-radius: 4px;
+          border: 1px solid #ddd;
+        }
+        .buttons button {
+          padding: 10px 15px;
+          margin-right: 5px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          background-color: #007bff;
+          color: white;
+          font-size: 16px;
+        }
+        .buttons button:hover {
+          background-color: #0056b3;
+        }
+        #result-container {
+          margin-top: 20px;
+          font-size: 20px;
+          font-weight: bold;
+        }
+      </style>
     </head>
     <body>
+        <div class="calculator">
+            <h2>Kalkulator Sederhana</h2>
+            
+            <div>
+              <label for="num1">Angka Pertama:</label>
+              <input type="number" id="num1" placeholder="Masukkan angka pertama">
+            </div>
+            
+            <div>
+              <label for="num2">Angka Kedua:</label>
+              <input type="number" id="num2" placeholder="Masukkan angka kedua">
+            </div>
+            
+            <div class="buttons">
+              <button onclick="add()">+</button>
+              <button onclick="subtract()">-</button>
+              <button onclick="multiply()">×</button>
+              <button onclick="divide()">÷</button>
+            </div>
+            
+            <div id="result-container">
+              Hasil: <span id="result">0</span>
+            </div>
+          </div>
   ${bodyContent}
     </body>
   </html>`;
