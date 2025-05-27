@@ -1007,14 +1007,6 @@
           const navElement = doc.querySelector("nav");
           const links = navElement ? navElement.querySelectorAll("a") : [];
 
-          // Check for CSS requirements
-          const hasNavElement = !!navElement;
-          const hasMinThreeLinks = links.length >= 3;
-          const hasFlexDisplay =
-            fullHtml.includes("display:") &&
-            (fullHtml.includes("display: flex") ||
-              fullHtml.includes("display:flex"));
-
           const overlayIcon = document.getElementById("overlayIcon");
           const overlayTitle = document.getElementById("overlayTitle");
           const overlayMessage = document.getElementById("overlayMessage");
@@ -1023,32 +1015,23 @@
           let errorMessages = [];
 
           // Validation checks
-          if (!hasNavElement) {
+          if (!navElement) {
             isValid = false;
-            errorMessages.push("Elemen <nav> tidak ditemukan");
+            errorMessages.push("ada elemen <nav> dalam HTML");
           }
 
-          if (!hasMinThreeLinks) {
+          if (navElement && links.length < 3) {
             isValid = false;
-            errorMessages.push("Minimal 3 tautan (<a>) harus ada dalam <nav>");
-          }
-
-          if (!hasFlexDisplay) {
-            isValid = false;
-            errorMessages.push(
-              "Properti 'display: flex' tidak ditemukan pada CSS"
-            );
+            errorMessages.push("ada minimal 3 tautan (<a>) dalam <nav>");
           }
 
           // Check if nav specifically has display: flex in CSS
-          if (hasNavElement && hasFlexDisplay) {
-            const navPattern = /nav\s*\{[^}]*display\s*:\s*flex[^}]*\}/;
-            if (!navPattern.test(fullHtml.replace(/\s+/g, " "))) {
-              isValid = false;
-              errorMessages.push(
-                "Properti 'display: flex' harus diterapkan pada selector 'nav'"
-              );
-            }
+          const navFlexPattern = /nav\s*\{[^}]*display\s*:\s*flex[^}]*\}/i;
+          const hasNavFlex = navFlexPattern.test(fullHtml.replace(/\s+/g, " "));
+
+          if (!hasNavFlex) {
+            isValid = false;
+            errorMessages.push("'display: flex' diterapkan pada selector nav");
           }
 
           if (isValid) {
@@ -1065,9 +1048,14 @@
             overlayIcon.className = "text-yellow-500 text-6xl mb-4";
             overlayTitle.textContent = "Perlu Perbaikan";
             overlayTitle.className = "text-xl font-bold text-yellow-500 mb-2";
-            overlayMessage.textContent = `Pastikan: ${errorMessages.join(
-              ", "
-            )}.`;
+
+            if (errorMessages.length === 1) {
+              overlayMessage.textContent = `Pastikan ${errorMessages[0]}.`;
+            } else {
+              overlayMessage.textContent = `Pastikan: ${errorMessages.join(
+                ", "
+              )}.`;
+            }
           }
 
           overlay.classList.remove("hidden");
