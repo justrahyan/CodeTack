@@ -564,15 +564,15 @@
 
         function setEditorWithTemplate(bodyContent = ``) {
           const fullHtml = `<!DOCTYPE html>
-      <html>
-        <head>
-          <meta charset="UTF-8">
-          <title>Preview</title>
-        </head>
-        <body>
-      ${bodyContent}
-        </body>
-      </html>`;
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Preview</title>
+  </head>
+  <body>
+${bodyContent}
+  </body>
+</html>`;
 
           editor.setValue(fullHtml);
           setTimeout(() => {

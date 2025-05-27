@@ -240,29 +240,44 @@
             class="instruksi-side p-3 fixed top-20 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300"
             style="z-index: 70"
           >
-            <div class="flex items-center gap-2 mb-4">
-              <div class="w-4 h-4 flex items-center justify-center">
-                <span class="text-paragraph text-xs">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                  >
-                    <g
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+            <div class="flex justify-between items-center mb-4">
+              <div class="flex items-center gap-2">
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <span class="text-paragraph text-xs">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
                     >
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M12 16v-4m0-4h.01" />
-                    </g>
-                  </svg>
-                </span>
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 16v-4m0-4h.01" />
+                      </g>
+                    </svg>
+                  </span>
+                </div>
+                <h2 class="font-bold text-lg">Instruksi Tugas</h2>
               </div>
-              <h2 class="font-bold text-lg">Instruksi Tugas</h2>
+              <span id="close-instruksi" class="text-paragraph cursor-pointer">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M8.4 17L7 15.6l3.6-3.6L7 8.425l1.4-1.4l3.6 3.6l3.575-3.6l1.4 1.4l-3.6 3.575l3.6 3.6l-1.4 1.4L12 13.4z"
+                  />
+                </svg>
+              </span>
             </div>
 
             <div class="space-y-4 text-sm md:text-base">
@@ -495,13 +510,13 @@
         function setEditorWithTemplate(bodyContent = ``) {
           const fullHtml = `<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Preview</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Preview</title>
+  </head>
+  <body>
 ${bodyContent}
-</body>
+  </body>
 </html>`;
           editor.setValue(fullHtml);
         }
