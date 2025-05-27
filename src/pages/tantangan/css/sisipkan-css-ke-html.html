@@ -759,9 +759,40 @@
           autoCloseTags: true,
           matchBrackets: true,
           matchTags: true,
+          readOnly: false, // Pastikan tidak readonly
         });
 
         let userHasTyped = false;
+
+        // Set initial content
+        const initialCode = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tantangan CSS</title>
+    <!-- Sisipkan CSS di sini -->
+</head>
+<body>
+    <h1>Selamat Datang</h1>
+    <p>Ini adalah contoh paragraf yang perlu diberi styling dengan CSS.</p>
+    <p>Cobalah untuk mengubah warna, background, dan spacing!</p>
+</body>
+</html>`;
+
+        editor.setValue(initialCode);
+
+        // Set cursor ke area yang bisa diedit
+        setTimeout(() => {
+          const lines = editor.lineCount();
+          for (let i = 0; i < lines; i++) {
+            const line = editor.getLine(i);
+            if (line.includes("<!-- Sisipkan CSS di sini -->")) {
+              editor.setCursor(i + 1, 0);
+              break;
+            }
+          }
+          editor.focus();
+        }, 500);
 
         // Fungsi update preview
         function updatePreview() {
@@ -787,37 +818,25 @@ ${bodyContent}
 </html>`;
 
           editor.setValue(fullHtml);
+          // Hapus semua mark text readonly yang ada
+          const marks = editor.getAllMarks();
+          marks.forEach((mark) => mark.clear());
+
+          // Set cursor ke area yang bisa diedit (setelah comment)
           setTimeout(() => {
             const lines = editor.lineCount();
-            const startHeadLine = [...Array(lines)].findIndex((_, i) =>
-              editor.getLine(i).includes("<head>")
-            );
-            const endHeadLine = [...Array(lines)].findIndex((_, i) =>
-              editor.getLine(i).includes("</head>")
-            );
-            const startBodyLine = [...Array(lines)].findIndex((_, i) =>
-              editor.getLine(i).includes("<body>")
-            );
-            const endBodyLine = [...Array(lines)]
-              .reverse()
-              .findIndex((_, i) =>
-                editor.getLine(lines - 1 - i).includes("</body>")
-              );
-            const realEndBodyLine = lines - 1 - endBodyLine;
-
-            // Tandai bagian readonly (kecuali area head untuk CSS)
-            editor.markText(
-              { line: 0, ch: 0 },
-              { line: startHeadLine + 3, ch: 0 },
-              { readOnly: true, inclusiveRight: false }
-            );
-            editor.markText(
-              { line: endHeadLine, ch: 0 },
-              { line: realEndBodyLine + 1, ch: 0 },
-              { readOnly: true, inclusiveRight: false }
-            );
+            for (let i = 0; i < lines; i++) {
+              const line = editor.getLine(i);
+              if (line.includes("<!-- Sisipkan CSS di sini -->")) {
+                editor.setCursor(i + 1, 0);
+                break;
+              }
+            }
+            editor.focus();
           }, 100);
         }
+
+        setEditorWithTemplate();
 
         setEditorWithTemplate();
 
@@ -893,8 +912,41 @@ ${bodyContent}
 
         // Reset
         resetBtn.addEventListener("click", () => {
-          setEditorWithTemplate();
+          // Clear all marks first
+          const marks = editor.getAllMarks();
+          marks.forEach((mark) => mark.clear());
+
+          // Set default template
+          const defaultCode = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tantangan CSS</title>
+    <!-- Sisipkan CSS di sini -->
+</head>
+<body>
+    <h1>Selamat Datang</h1>
+    <p>Ini adalah contoh paragraf yang perlu diberi styling dengan CSS.</p>
+    <p>Cobalah untuk mengubah warna, background, dan spacing!</p>
+</body>
+</html>`;
+
+          editor.setValue(defaultCode);
           userHasTyped = false;
+
+          // Set cursor ke area yang bisa diedit
+          setTimeout(() => {
+            const lines = editor.lineCount();
+            for (let i = 0; i < lines; i++) {
+              const line = editor.getLine(i);
+              if (line.includes("<!-- Sisipkan CSS di sini -->")) {
+                editor.setCursor(i + 1, 0);
+                break;
+              }
+            }
+            editor.focus();
+          }, 100);
+
           updatePreview();
         });
 
