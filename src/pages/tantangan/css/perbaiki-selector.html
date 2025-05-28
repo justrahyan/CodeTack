@@ -916,10 +916,17 @@
 
         editor.setValue(initialCode);
 
+        setTimeout(() => {
+          editor.focus();
+          editor.setCursor(6, 0); // Position cursor after the comment
+        }, 100);
+
         // Update preview function
         function updatePreview() {
           const fullHtml = editor.getValue();
-          preview.srcdoc = fullHtml;
+          if (fullHtml.trim()) {
+            preview.srcdoc = fullHtml;
+          }
         }
 
         // Update preview on change
@@ -928,8 +935,14 @@
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
-        // Initial preview update
-        updatePreview();
+        setInterval(() => {
+          updatePreview();
+        }, 1000);
+
+        // Initial preview update with delay
+        setTimeout(() => {
+          updatePreview();
+        }, 500);
 
         // Submit button functionality - Check if selectors are fixed
         submitBtn.addEventListener("click", () => {
