@@ -878,30 +878,9 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Perbaiki Selector CSS</title>
+  <title>Perbaiki Selector</title>
   <style>
-    /* Selector di bawah ini SALAH - perbaiki agar sesuai dengan HTML! */
-    
-    .judul {
-      color: #2563eb;
-      font-size: 2em;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    
-    #kotak {
-      background-color: #f3f4f6;
-      padding: 20px;
-      border-radius: 8px;
-      margin: 20px 0;
-      border: 2px solid #d1d5db;
-    }
-    
-    .paragraf-khusus {
-      color: #dc2626;
-      font-weight: bold;
-      font-style: italic;
-    }
+    /* Tambahkan CSS selector di sini */
     
   </style>
 </head>
@@ -910,59 +889,99 @@
   <div class="kotak">
     <p>Ini adalah kotak dengan background abu-abu</p>
   </div>
-  <p class="paragraf-merah">Paragraf dengan warna merah dan bold</p>
+  <p>Paragraf biasa tanpa styling khusus</p>
 </body>
 </html>`;
 
         editor.setValue(initialCode);
 
+        // Set cursor to editable area
         setTimeout(() => {
+          const lines = editor.lineCount();
+          for (let i = 0; i < lines; i++) {
+            const line = editor.getLine(i);
+            if (line.includes("/* Tambahkan CSS selector di sini */")) {
+              editor.setCursor(i + 1, 0);
+              break;
+            }
+          }
           editor.focus();
-          editor.setCursor(6, 0); // Position cursor after the comment
-        }, 100);
+        }, 500);
 
         // Update preview function
         function updatePreview() {
           const fullHtml = editor.getValue();
-          if (fullHtml.trim()) {
-            preview.srcdoc = fullHtml;
-          }
+          preview.srcdoc = fullHtml;
         }
+
+        function setEditorWithTemplate() {
+          const fullHtml = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Perbaiki Selector</title>
+  <style>
+    /* Tambahkan CSS selector di sini */
+    
+  </style>
+</head>
+<body>
+  <h1 id="judul">Ini adalah Judul</h1>
+  <div class="kotak">
+    <p>Ini adalah kotak dengan background abu-abu</p>
+  </div>
+  <p>Paragraf biasa tanpa styling khusus</p>
+</body>
+</html>`;
+
+          editor.setValue(fullHtml);
+
+          // Clear all marks
+          const marks = editor.getAllMarks();
+          marks.forEach((mark) => mark.clear());
+
+          // Set cursor to editable area
+          setTimeout(() => {
+            const lines = editor.lineCount();
+            for (let i = 0; i < lines; i++) {
+              const line = editor.getLine(i);
+              if (line.includes("/* Tambahkan CSS selector di sini */")) {
+                editor.setCursor(i + 1, 0);
+                break;
+              }
+            }
+            editor.focus();
+          }, 100);
+        }
+
+        setEditorWithTemplate();
 
         // Update preview on change
         editor.on("change", function () {
+          userHasTyped = true;
           clearTimeout(window.updateTimeout);
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
+        // Auto-refresh preview
         setInterval(() => {
-          updatePreview();
+          if (editor.getValue()) {
+            updatePreview();
+          }
         }, 1000);
 
-        // Initial preview update with delay
-        setTimeout(() => {
-          updatePreview();
-        }, 500);
+        // Initial preview update
+        updatePreview();
 
-        // Submit button functionality - Check if selectors are fixed
+        // Submit button functionality - Enhanced checking for selector challenge
         submitBtn.addEventListener("click", () => {
           const fullHtml = editor.getValue();
 
-          // Check for CORRECT CSS selectors
-          const hasCorrectJudulSelector =
-            fullHtml.includes("#judul") &&
-            fullHtml.includes("color:") &&
-            !fullHtml.includes(".judul {");
-
-          const hasCorrectKotakSelector =
-            fullHtml.includes(".kotak") &&
-            fullHtml.includes("background") &&
-            !fullHtml.includes("#kotak {");
-
-          const hasCorrectParagrafSelector =
-            fullHtml.includes(".paragraf-merah") &&
-            fullHtml.includes("color:") &&
-            !fullHtml.includes(".paragraf-khusus {");
+          // Check for CSS requirements
+          const hasKotakSelector =
+            fullHtml.includes(".kotak") && fullHtml.includes("background");
+          const hasJudulSelector =
+            fullHtml.includes("#judul") && fullHtml.includes("color");
 
           const overlayIcon = document.getElementById("overlayIcon");
           const overlayTitle = document.getElementById("overlayTitle");
@@ -972,44 +991,38 @@
           let errorMessages = [];
 
           // Validation checks
-          if (!hasCorrectJudulSelector) {
+          if (!hasKotakSelector) {
             isValid = false;
-            errorMessages.push(
-              "selector untuk elemen dengan id='judul' harus menggunakan #judul"
-            );
+            errorMessages.push("selector .kotak dengan background");
           }
 
-          if (!hasCorrectKotakSelector) {
+          if (!hasJudulSelector) {
             isValid = false;
-            errorMessages.push(
-              "selector untuk elemen dengan class='kotak' harus menggunakan .kotak"
-            );
-          }
-
-          if (!hasCorrectParagrafSelector) {
-            isValid = false;
-            errorMessages.push(
-              "selector untuk elemen dengan class='paragraf-merah' harus menggunakan .paragraf-merah"
-            );
+            errorMessages.push("selector #judul dengan color");
           }
 
           if (isValid) {
             // Success
             overlayIcon.textContent = "✓";
             overlayIcon.className = "text-green-600 text-6xl mb-4";
-            overlayTitle.textContent = "Sempurna!";
+            overlayTitle.textContent = "Jawaban Benar!";
             overlayTitle.className = "text-xl font-bold text-green-600 mb-2";
             overlayMessage.textContent =
-              "Semua selector CSS sudah diperbaiki dengan benar! Sekarang styling akan diterapkan ke elemen yang tepat.";
+              "Selector CSS kamu sudah sesuai dengan syarat yang diminta! Class dan ID sudah diterapkan dengan benar.";
           } else {
             // Needs improvement
-            overlayIcon.textContent = "⚠";
+            overlayIcon.textContent = "!";
             overlayIcon.className = "text-yellow-500 text-6xl mb-4";
-            overlayTitle.textContent = "Masih Ada yang Salah";
+            overlayTitle.textContent = "Perlu Perbaikan";
             overlayTitle.className = "text-xl font-bold text-yellow-500 mb-2";
-            overlayMessage.textContent = `Periksa kembali: ${errorMessages.join(
-              ", "
-            )}.`;
+
+            if (errorMessages.length === 1) {
+              overlayMessage.textContent = `Pastikan ada ${errorMessages[0]}.`;
+            } else {
+              overlayMessage.textContent = `Pastikan ada: ${errorMessages.join(
+                ", "
+              )}.`;
+            }
           }
 
           overlay.classList.remove("hidden");
@@ -1017,34 +1030,18 @@
 
         // Reset button functionality
         resetBtn.addEventListener("click", () => {
+          // Clear all marks first
+          const marks = editor.getAllMarks();
+          marks.forEach((mark) => mark.clear());
+
+          // Set default template
           const defaultCode = `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Perbaiki Selector CSS</title>
+  <title>Perbaiki Selector</title>
   <style>
-    /* Selector di bawah ini SALAH - perbaiki agar sesuai dengan HTML! */
-    
-    .judul {
-      color: #2563eb;
-      font-size: 2em;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    
-    #kotak {
-      background-color: #f3f4f6;
-      padding: 20px;
-      border-radius: 8px;
-      margin: 20px 0;
-      border: 2px solid #d1d5db;
-    }
-    
-    .paragraf-khusus {
-      color: #dc2626;
-      font-weight: bold;
-      font-style: italic;
-    }
+    /* Tambahkan CSS selector di sini */
     
   </style>
 </head>
@@ -1053,13 +1050,25 @@
   <div class="kotak">
     <p>Ini adalah kotak dengan background abu-abu</p>
   </div>
-  <p class="paragraf-merah">Paragraf dengan warna merah dan bold</p>
+  <p>Paragraf biasa tanpa styling khusus</p>
 </body>
 </html>`;
 
           editor.setValue(defaultCode);
           updatePreview();
-          editor.focus();
+
+          // Focus back to editor
+          setTimeout(() => {
+            const lines = editor.lineCount();
+            for (let i = 0; i < lines; i++) {
+              const line = editor.getLine(i);
+              if (line.includes("/* Tambahkan CSS selector di sini */")) {
+                editor.setCursor(i + 1, 0);
+                break;
+              }
+            }
+            editor.focus();
+          }, 100);
         });
 
         // Close overlay functionality
