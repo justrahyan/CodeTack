@@ -378,223 +378,205 @@
             </svg>
           </button>
           <div
-            class="instruksi-side fixed top-20 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300"
-            style="z-index: 70"
+            class="instruksi-side p-3 pb-36 fixed top-20 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300"
+            style="
+              z-index: 70;
+              max-height: calc(100vh - 5rem);
+              overflow-y: auto;
+            "
           >
-            <div class="h-full max-h-[calc(100vh-5rem)] overflow-y-auto p-3">
-              <div class="pb-36">
-                <div
-                  class="flex justify-between items-center mb-4 sticky top-0 left-0 right-0 bg-white"
-                >
-                  <div class="flex items-center gap-2">
-                    <div class="w-4 h-4 flex items-center justify-center">
-                      <span class="text-paragraph text-xs">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="20"
-                          height="20"
-                          viewBox="0 0 24 24"
-                        >
-                          <g
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                          >
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M12 16v-4m0-4h.01" />
-                          </g>
-                        </svg>
-                      </span>
-                    </div>
-                    <h2 class="font-bold text-lg">Instruksi Tugas</h2>
-                  </div>
-                  <span
-                    id="close-instruksi"
-                    class="text-paragraph cursor-pointer"
-                  >
+            <div
+              class="flex justify-between items-center mb-4 sticky top-0 left-0 right-0 bg-white py-3"
+            >
+              <div class="flex items-center gap-2">
+                <div class="w-4 h-4 flex items-center justify-center">
+                  <span class="text-paragraph text-xs">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
+                      width="20"
+                      height="20"
                       viewBox="0 0 24 24"
                     >
-                      <path
-                        fill="currentColor"
-                        d="M8.4 17L7 15.6l3.6-3.6L7 8.425l1.4-1.4l3.6 3.6l3.575-3.6l1.4 1.4l-3.6 3.575l3.6 3.6l-1.4 1.4L12 13.4z"
-                      />
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 16v-4m0-4h.01" />
+                      </g>
                     </svg>
                   </span>
                 </div>
+                <h2 class="font-bold text-lg">Instruksi Tugas</h2>
+              </div>
+              <span id="close-instruksi" class="text-paragraph cursor-pointer">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M8.4 17L7 15.6l3.6-3.6L7 8.425l1.4-1.4l3.6 3.6l3.575-3.6l1.4 1.4l-3.6 3.575l3.6 3.6l-1.4 1.4L12 13.4z"
+                  />
+                </svg>
+              </span>
+            </div>
 
-                <div class="space-y-4 text-sm md:text-base">
-                  <p class="font-medium">🧠 Instruksi Tantangan:</p>
-                  <p>
-                    Halaman ini sudah memiliki elemen dengan
-                    <code class="bg-pink-100 px-1 rounded text-pink-600"
-                      >class="kotak"</code
-                    >
-                    ,
-                    <code class="bg-pink-100 px-1 rounded text-pink-600"
-                      >id="judul"</code
-                    >
-                    dan
-                    <code class="bg-pink-100 px-1 rounded text-pink-600"
-                      >class="paragraf-merah"</code
-                    >.
-                  </p>
-                  <p>Tugasmu adalah memperbaiki Selector CSS agar:</p>
-                  <ul class="list-disc ml-5 space-y-1">
-                    <li>
-                      <code class="bg-gray-100 px-1 rounded">.kotak</code> punya
-                      background abu-abu
-                    </li>
-                    <li>
-                      <code class="bg-gray-100 px-1 rounded">#judul</code>
-                      berwarna biru dan rata tengah
-                    </li>
-                    <li>
-                      <code class="bg-gray-100 px-1 rounded"
-                        >.paragraf-merah</code
-                      >
-                      berwarna merah dan bold
-                    </li>
-                  </ul>
-                  <p>Pastikan penulisan selector-nya tepat!</p>
+            <div class="space-y-4 text-sm md:text-base">
+              <p class="font-medium">🧠 Instruksi Tantangan:</p>
+              <p>
+                Halaman ini sudah memiliki elemen dengan
+                <code class="bg-pink-100 px-1 rounded text-pink-600"
+                  >class="kotak"</code
+                >
+                ,
+                <code class="bg-pink-100 px-1 rounded text-pink-600"
+                  >id="judul"</code
+                >
+                dan
+                <code class="bg-pink-100 px-1 rounded text-pink-600"
+                  >class="paragraf-merah"</code
+                >.
+              </p>
+              <p>Tugasmu adalah memperbaiki Selector CSS agar:</p>
+              <ul class="list-disc ml-5 space-y-1">
+                <li>
+                  <code class="bg-gray-100 px-1 rounded">.kotak</code> punya
+                  background abu-abu
+                </li>
+                <li>
+                  <code class="bg-gray-100 px-1 rounded">#judul</code> berwarna
+                  biru dan rata tengah
+                </li>
+                <li>
+                  <code class="bg-gray-100 px-1 rounded">.paragraf-merah</code>
+                  berwarna merah dan bold
+                </li>
+              </ul>
+              <p>Pastikan penulisan selector-nya tepat!</p>
 
-                  <div class="bg-green-50 p-3 rounded">
-                    <p class="font-medium text-green-800 mb-2">
-                      ✅ Yang harus kamu capai:
-                    </p>
-                    <ul class="space-y-1 text-green-700 text-xs md:text-sm">
+              <div class="bg-green-50 p-3 rounded">
+                <p class="font-medium text-green-800 mb-2">
+                  ✅ Yang harus kamu capai:
+                </p>
+                <ul class="space-y-1 text-green-700 text-xs md:text-sm">
+                  <li>
+                    • Perbaiki selector CSS agar:
+                    <ul class="list-disc ml-5">
                       <li>
-                        • Perbaiki selector CSS agar:
-                        <ul class="list-disc ml-5">
-                          <li>
-                            <code
-                              class="bg-green-100 px-1 rounded text-green-600"
-                              >.kotak</code
-                            >
-                            punya background abu-abu
-                          </li>
-                          <li>
-                            <code
-                              class="bg-green-100 px-1 rounded text-green-600"
-                              >#judul</code
-                            >
-                            berwarna biru dan teks rata tengah
-                          </li>
-                          <li>
-                            <code
-                              class="bg-green-100 px-1 rounded text-green-600"
-                              >.paragraf-merah</code
-                            >
-                            berwarna merah dan bold
-                          </li>
-                        </ul>
-                      </li>
-                      <li>• Pastikan class dan id cocok dengan elemen HTML</li>
-                      <li>• Style muncul sesuai preview</li>
-                    </ul>
-                  </div>
-
-                  <div class="bg-gray-100 p-3 rounded relative">
-                    <p class="font-medium text-gray-800 mb-2">
-                      🖥️ Preview yang Diharapkan:
-                    </p>
-                    <div
-                      class="bg-white rounded border text-xs md:text-sm relative"
-                    >
-                      <div style="padding: 1rem; border-radius: 0.25rem">
-                        <h1 style="color: blue; text-align: center">
-                          Ini adalah Judul
-                        </h1>
-                        <div style="background-color: gray">
-                          <p style="margin: 0; background-color: gray">
-                            Ini adalah kotak dengan background abu-abu
-                          </p>
-                        </div>
-                        <p style="margin: 0; color: #dc2626; font-weight: bold">
-                          Paragraf dengan warna merah dan bold
-                        </p>
-                      </div>
-                      <!-- Tombol Zoom -->
-                      <button
-                        id="zoom-button"
-                        class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="18"
-                          height="18"
-                          viewBox="0 0 24 24"
+                        <code class="bg-green-100 px-1 rounded text-green-600"
+                          >.kotak</code
                         >
-                          <path
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
+                        punya background abu-abu
+                      </li>
+                      <li>
+                        <code class="bg-green-100 px-1 rounded text-green-600"
+                          >#judul</code
+                        >
+                        berwarna biru dan teks rata tengah
+                      </li>
+                      <li>
+                        <code class="bg-green-100 px-1 rounded text-green-600"
+                          >.paragraf-merah</code
+                        >
+                        berwarna merah dan bold
+                      </li>
+                    </ul>
+                  </li>
+                  <li>• Pastikan class dan id cocok dengan elemen HTML</li>
+                  <li>• Style muncul sesuai preview</li>
+                </ul>
+              </div>
 
-                  <!-- Modal Overlay -->
-                  <div
-                    id="image-modal"
-                    class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden mb-0"
-                  >
-                    <div
-                      style="
-                        padding: 2rem;
-                        border-radius: 0.5rem;
-                        max-width: 90vw;
-                        max-height: 80vh;
-                        background-color: white;
-                      "
-                    >
-                      <h1
-                        style="
-                          color: blue;
-                          margin-bottom: 20px;
-                          font-size: 2rem;
-                        "
-                      >
-                        Ini adalah Judul
-                      </h1>
-                      <p
-                        style="
-                          margin: 0;
-                          font-size: 1.1rem;
-                          background-color: gray;
-                        "
-                      >
+              <div class="bg-gray-100 p-3 rounded relative">
+                <p class="font-medium text-gray-800 mb-2">
+                  🖥️ Preview yang Diharapkan:
+                </p>
+                <div
+                  class="bg-white rounded border text-xs md:text-sm relative"
+                >
+                  <div style="padding: 1rem; border-radius: 0.25rem">
+                    <h1 style="color: blue; text-align: center">
+                      Ini adalah Judul
+                    </h1>
+                    <div style="background-color: gray">
+                      <p style="margin: 0; background-color: gray">
                         Ini adalah kotak dengan background abu-abu
                       </p>
-                      <p
-                        style="
-                          margin: 0;
-                          font-size: 1.1rem;
-                          color: red;
-                          font-weight: bold;
-                        "
-                      >
-                        Paragraf dengan warna merah dan bold
-                      </p>
                     </div>
+                    <p style="margin: 0; color: #dc2626; font-weight: bold">
+                      Paragraf dengan warna merah dan bold
+                    </p>
                   </div>
+                  <!-- Tombol Zoom -->
+                  <button
+                    id="zoom-button"
+                    class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
 
-                  <p class="text-xs md:text-sm text-gray-600">
-                    Judul berwarna biru dan rata tengah, kotak dengan background
-                    abu-abu dan paragraf dengan warna merah dan bold terlihat di
-                    halaman.
+              <!-- Modal Overlay -->
+              <div
+                id="image-modal"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden mb-0"
+              >
+                <div
+                  style="
+                    padding: 2rem;
+                    border-radius: 0.5rem;
+                    max-width: 90vw;
+                    max-height: 80vh;
+                    background-color: white;
+                  "
+                >
+                  <h1 style="color: blue; margin-bottom: 20px; font-size: 2rem">
+                    Ini adalah Judul
+                  </h1>
+                  <p
+                    style="margin: 0; font-size: 1.1rem; background-color: gray"
+                  >
+                    Ini adalah kotak dengan background abu-abu
+                  </p>
+                  <p
+                    style="
+                      margin: 0;
+                      font-size: 1.1rem;
+                      color: red;
+                      font-weight: bold;
+                    "
+                  >
+                    Paragraf dengan warna merah dan bold
                   </p>
                 </div>
               </div>
+
+              <p class="text-xs md:text-sm text-gray-600">
+                Judul berwarna biru dan rata tengah, kotak dengan background
+                abu-abu dan paragraf dengan warna merah dan bold terlihat di
+                halaman.
+              </p>
             </div>
           </div>
 
