@@ -711,6 +711,19 @@
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
+        // Auto-refresh preview
+        setInterval(() => {
+          if (editor.getValue()) {
+            updatePreview();
+          }
+        }, 1000);
+
+        // Initial preview update
+        updatePreview();
+
+        // Make updatePreview available globally for tab switching
+        window.updatePreview = updatePreview;
+
         // Submit button - Validasi untuk form validation challenge
         submitBtn.addEventListener("click", () => {
           const userCode = editor.getValue();
@@ -802,82 +815,55 @@
       });
     </script>
 
-    <!-- Code Editor dan Preview -->
+    <!-- Tab Switching for Mobile -->
     <script>
-      // Editor dan Preview Tantangan
-      const tabEditor = document.getElementById("tabEditor");
-      const tabPreview = document.getElementById("tabPreview");
-      const editorPanels = document.getElementById("editor-panel");
-      const previewPanels = document.getElementById("preview");
-      const htmlCode = document.getElementById("htmlCode");
+      document.addEventListener("DOMContentLoaded", function () {
+        // Tab switching functionality
+        const tabEditor = document.getElementById("tabEditor");
+        const tabPreview = document.getElementById("tabPreview");
+        const editorPanel = document.getElementById("editor-panel");
+        const preview = document.getElementById("preview");
 
-      function updatePreview() {
-        const code = htmlCode.value;
-        const blob = new Blob([code], { type: "text/html" });
-        const url = URL.createObjectURL(blob);
-        previewPanels.src = url;
-      }
+        function switchTab(activeTab, activePanel, inactiveTab, inactivePanel) {
+          // Show active panel
+          activePanel.classList.remove("hidden");
+          activePanel.classList.add("block");
+          
+          // Hide inactive panel
+          inactivePanel.classList.remove("block");
+          inactivePanel.classList.add("hidden");
 
-      function activateEditor() {
-        // Show editor, hide preview
-        editorPanels.classList.remove("hidden");
-        editorPanels.classList.add("block");
-        previewPanels.classList.remove("block");
-        previewPanels.classList.add("hidden");
+          // Style active tab
+          activeTab.classList.add("border-b-2", "border-green-600", "text-green-600");
+          activeTab.classList.remove("text-gray-500");
 
-        tabEditor.classList.add(
-          "border-b-2",
-          "border-green-600",
-          "text-green-600"
-        );
-        tabEditor.classList.remove("text-gray-500");
+          // Style inactive tab
+          inactiveTab.classList.remove("border-b-2", "border-green-600", "text-green-600");
+          inactiveTab.classList.add("text-gray-500");
+        }
 
-        tabPreview.classList.remove(
-          "border-b-2",
-          "border-green-600",
-          "text-green-600"
-        );
-        tabPreview.classList.add("text-gray-500");
-      }
+        // Tab event listeners
+        tabEditor.addEventListener("click", () => {
+          if (window.innerWidth < 768) {
+            switchTab(tabEditor, editorPanel, tabPreview, preview);
+          }
+        });
 
-      function activatePreview() {
-        // Update preview content
-        updatePreview();
+        tabPreview.addEventListener("click", () => {
+          if (window.innerWidth < 768) {
+            switchTab(tabPreview, preview, tabEditor, editorPanel);
+            // Update preview when switching to preview tab
+            if (window.updatePreview) {
+              window.updatePreview();
+            }
+          }
+        });
 
-        // Show preview, hide editor
-        previewPanels.classList.remove("hidden");
-        previewPanels.classList.add("block");
-        editorPanels.classList.remove("block");
-        editorPanels.classList.add("hidden");
-
-        tabPreview.classList.add(
-          "border-b-2",
-          "border-green-600",
-          "text-green-600"
-        );
-        tabPreview.classList.remove("text-gray-500");
-
-        tabEditor.classList.remove(
-          "border-b-2",
-          "border-green-600",
-          "text-green-600"
-        );
-        tabEditor.classList.add("text-gray-500");
-      }
-
-      // Only enable tab switch on mobile
-      tabEditor.addEventListener("click", () => {
-        if (window.innerWidth < 768) activateEditor();
+        // Default to editor tab on mobile
+        if (window.innerWidth < 768) {
+          switchTab(tabEditor, editorPanel, tabPreview, preview);
+        }
       });
-
-      tabPreview.addEventListener("click", () => {
-        if (window.innerWidth < 768) activatePreview();
-      });
-
-      // Default to editor tab on mobile
-      if (window.innerWidth < 768) {
-        activateEditor();
-      }
     </script>
 
     <!-- Instruksi Responsive -->
