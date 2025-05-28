@@ -671,37 +671,40 @@
 
         // Submit button
         submitBtn.addEventListener("click", () => {
-          // Mengambil seluruh kode dari editor
           const userCode = editor.getValue();
 
-          // **Kondisi baru: Cek apakah string ".addEventListener" ada di dalam kode**
           const hasListener = userCode.includes(".addEventListener");
+          const hasColorChange = userCode.includes(
+            "document.body.style.backgroundColor"
+          );
+          const hasButton =
+            userCode.includes('id="colorButton"') ||
+            userCode.includes('getElementById("colorButton")');
 
-          // Ambil elemen notifikasi
+          const isCorrect = hasListener && hasColorChange;
+
           const overlayIcon = document.getElementById("overlayIcon");
           const overlayTitle = document.getElementById("overlayTitle");
           const overlayMessage = document.getElementById("overlayMessage");
           const overlayBox = document.getElementById("successOverlay");
 
-          if (hasListener) {
-            // Jawaban BENAR jika ditemukan event listener
+          if (isCorrect) {
             overlayIcon.textContent = "✓";
             overlayIcon.className = "text-green-600 text-6xl mb-4";
             overlayTitle.textContent = "Jawaban Benar!";
             overlayTitle.className = "text-xl font-bold text-green-600 mb-2";
             overlayMessage.textContent =
-              "Kerja bagus! Kamu telah menggunakan event listener.";
+              "Kerja bagus! Kamu telah menambahkan event listener dan mengubah warna latar halaman.";
           } else {
-            // Jawaban SALAH jika tidak ada event listener
             overlayIcon.textContent = "!";
             overlayIcon.className = "text-yellow-500 text-6xl mb-4";
             overlayTitle.textContent = "Perlu Perbaikan";
             overlayTitle.className = "text-xl font-bold text-yellow-500 mb-2";
-            overlayMessage.textContent =
-              "Sepertinya kamu belum menggunakan '.addEventListener'. Coba periksa kembali kodemu.";
+            overlayMessage.textContent = `Pastikan kamu telah:
+- Menambahkan event listener,
+- Mengubah background menggunakan document.body.style.backgroundColor.`;
           }
 
-          // Tampilkan notifikasi
           overlayBox.classList.remove("hidden");
         });
 
