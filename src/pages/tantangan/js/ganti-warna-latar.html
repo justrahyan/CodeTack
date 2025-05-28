@@ -663,48 +663,37 @@
 
         // Submit button
         submitBtn.addEventListener("click", () => {
-          const fullHtml = editor.getValue();
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(fullHtml, "text/html");
+          // Mengambil seluruh kode dari editor
+          const userCode = editor.getValue();
 
-          const hasH1 = doc.querySelector("h1");
-          const hasP = doc.querySelector("p");
+          // **Kondisi baru: Cek apakah string ".addEventListener" ada di dalam kode**
+          const hasListener = userCode.includes(".addEventListener");
 
+          // Ambil elemen notifikasi
           const overlayIcon = document.getElementById("overlayIcon");
           const overlayTitle = document.getElementById("overlayTitle");
           const overlayMessage = document.getElementById("overlayMessage");
           const overlayBox = document.getElementById("successOverlay");
 
-          if (!hasH1 && !hasP) {
-            // Keduanya tidak ada
-            overlayIcon.textContent = "✗";
-            overlayIcon.className = "text-red-600 text-6xl mb-4";
-            overlayTitle.textContent = "Jawaban Salah!";
-            overlayTitle.className = "text-xl font-bold text-red-600 mb-2";
-            overlayMessage.textContent = "Tag <h1> dan <p> tidak ditemukan.";
-          } else if (
-            !hasH1 ||
-            !hasP ||
-            !hasH1.textContent.trim() ||
-            !hasP.textContent.trim()
-          ) {
-            // Salah satu kosong atau tidak ada
-            overlayIcon.textContent = "!";
-            overlayIcon.className = "text-yellow-500 text-6xl mb-4";
-            overlayTitle.textContent = "Perlu Perbaikan";
-            overlayTitle.className = "text-xl font-bold text-yellow-500 mb-2";
-            overlayMessage.textContent =
-              "Pastikan <h1> dan <p> ada dan tidak kosong.";
-          } else {
-            // Keduanya ada dan tidak kosong
+          if (hasListener) {
+            // Jawaban BENAR jika ditemukan event listener
             overlayIcon.textContent = "✓";
             overlayIcon.className = "text-green-600 text-6xl mb-4";
             overlayTitle.textContent = "Jawaban Benar!";
             overlayTitle.className = "text-xl font-bold text-green-600 mb-2";
             overlayMessage.textContent =
-              "Struktur HTML kamu sudah sesuai dengan yang diminta.";
+              "Kerja bagus! Kamu telah menggunakan event listener.";
+          } else {
+            // Jawaban SALAH jika tidak ada event listener
+            overlayIcon.textContent = "!";
+            overlayIcon.className = "text-yellow-500 text-6xl mb-4";
+            overlayTitle.textContent = "Perlu Perbaikan";
+            overlayTitle.className = "text-xl font-bold text-yellow-500 mb-2";
+            overlayMessage.textContent =
+              "Sepertinya kamu belum menggunakan '.addEventListener'. Coba periksa kembali kodemu.";
           }
 
+          // Tampilkan notifikasi
           overlayBox.classList.remove("hidden");
         });
 
