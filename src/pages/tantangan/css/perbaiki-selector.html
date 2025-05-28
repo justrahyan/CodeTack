@@ -274,36 +274,15 @@
                   class="bg-white rounded border text-xs md:text-sm relative"
                 >
                   <div style="padding: 1rem; border-radius: 0.25rem">
-                    <h1
-                      style="
-                        color: blue;
-                        margin-bottom: 15px;
-                        font-size: 1.5rem;
-                        text-align: center;
-                      "
-                    >
+                    <h1 style="color: blue; text-align: center">
                       Ini adalah Judul
                     </h1>
-                    <div
-                      style="
-                        background-color: gray;
-                        padding: 20px;
-                        border-radius: 5px;
-                        margin-bottom: 10px;
-                      "
-                    >
+                    <div style="background-color: gray">
                       <p style="margin: 0; background-color: gray">
                         Ini adalah kotak dengan background abu-abu
                       </p>
                     </div>
-                    <p
-                      style="
-                        margin: 0;
-                        color: #dc2626;
-                        font-weight: bold;
-                        font-style: italic;
-                      "
-                    >
+                    <p style="margin: 0; color: #dc2626; font-weight: bold">
                       Paragraf dengan warna merah dan bold
                     </p>
                   </div>
@@ -448,12 +427,16 @@
                 <code class="bg-pink-100 px-1 rounded text-pink-600"
                   >class="kotak"</code
                 >
-                dan
+                ,
                 <code class="bg-pink-100 px-1 rounded text-pink-600"
                   >id="judul"</code
+                >
+                dan
+                <code class="bg-pink-100 px-1 rounded text-pink-600"
+                  >class="paragraf-merah"</code
                 >.
               </p>
-              <p>Tugasmu adalah menambahkan CSS agar:</p>
+              <p>Tugasmu adalah memperbaiki Selector CSS agar:</p>
               <ul class="list-disc ml-5 space-y-1">
                 <li>
                   <code class="bg-gray-100 px-1 rounded">.kotak</code> punya
@@ -461,7 +444,11 @@
                 </li>
                 <li>
                   <code class="bg-gray-100 px-1 rounded">#judul</code> berwarna
-                  merah
+                  biru dan rata tengah
+                </li>
+                <li>
+                  <code class="bg-gray-100 px-1 rounded">.paragraf-merah</code>
+                  berwarna merah dan bold
                 </li>
               </ul>
               <p>Pastikan penulisan selector-nya tepat!</p>
@@ -472,12 +459,30 @@
                 </p>
                 <ul class="space-y-1 text-green-700 text-xs md:text-sm">
                   <li>
-                    • Gunakan
-                    <code class="bg-green-100 px-1 rounded">.kotak {}</code> dan
-                    <code class="bg-green-100 px-1 rounded">#judul {}</code>
+                    • Perbaiki selector CSS agar:
+                    <ul class="list-disc ml-5">
+                      <li>
+                        <code class="bg-green-100 px-1 rounded text-green-600"
+                          >.kotak</code
+                        >
+                        punya background abu-abu
+                      </li>
+                      <li>
+                        <code class="bg-green-100 px-1 rounded text-green-600"
+                          >#judul</code
+                        >
+                        berwarna biru dan teks rata tengah
+                      </li>
+                      <li>
+                        <code class="bg-green-100 px-1 rounded text-green-600"
+                          >.paragraf-merah</code
+                        >
+                        berwarna merah dan bold
+                      </li>
+                    </ul>
                   </li>
-                  <li>• Pastikan class/id cocok dengan elemen HTML</li>
-                  <li>• Style tampil di preview</li>
+                  <li>• Pastikan class dan id cocok dengan elemen HTML</li>
+                  <li>• Style muncul sesuai preview</li>
                 </ul>
               </div>
 
@@ -489,36 +494,21 @@
                   class="bg-white rounded border text-xs md:text-sm relative"
                 >
                   <div style="padding: 1rem; border-radius: 0.25rem">
-                    <h1
-                      style="color: red; margin-bottom: 15px; font-size: 1.2rem"
-                    >
+                    <h1 style="color: blue; text-align: center">
                       Ini adalah Judul
                     </h1>
-                    <div
-                      style="
-                        background-color: #d1d5db;
-                        padding: 15px;
-                        border-radius: 5px;
-                        margin-bottom: 10px;
-                      "
-                    >
-                      <p
-                        style="
-                          margin: 0;
-                          font-size: 0.9rem;
-                          background-color: gray;
-                        "
-                      >
+                    <div style="background-color: gray">
+                      <p style="margin: 0; background-color: gray">
                         Ini adalah kotak dengan background abu-abu
                       </p>
                     </div>
-                    <p style="margin: 0; font-size: 0.9rem">
+                    <p style="margin: 0; color: #dc2626; font-weight: bold">
                       Paragraf dengan warna merah dan bold
                     </p>
                   </div>
                   <!-- Tombol Zoom -->
                   <button
-                    id="zoom-button-responsive"
+                    id="zoom-button"
                     class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
                   >
                     <svg
@@ -542,9 +532,8 @@
 
               <!-- Modal Overlay -->
               <div
-                id="image-modal-responsive"
-                class="fixed inset-0 bg-black/70 flex items-center justify-center hidden mb-0"
-                style="z-index: 75"
+                id="image-modal"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden mb-0"
               >
                 <div
                   style="
@@ -555,28 +544,22 @@
                     background-color: white;
                   "
                 >
-                  <h1 style="color: red; margin-bottom: 20px; font-size: 2rem">
+                  <h1 style="color: blue; margin-bottom: 20px; font-size: 2rem">
                     Ini adalah Judul
                   </h1>
-                  <div
+                  <p
+                    style="margin: 0; font-size: 1.1rem; background-color: gray"
+                  >
+                    Ini adalah kotak dengan background abu-abu
+                  </p>
+                  <p
                     style="
-                      background-color: #d1d5db;
-                      padding: 25px;
-                      border-radius: 8px;
-                      margin-bottom: 15px;
+                      margin: 0;
+                      font-size: 1.1rem;
+                      color: red;
+                      font-weight: bold;
                     "
                   >
-                    <p
-                      style="
-                        margin: 0;
-                        font-size: 1.1rem;
-                        background-color: gray;
-                      "
-                    >
-                      Ini adalah kotak dengan background abu-abu
-                    </p>
-                  </div>
-                  <p style="margin: 0; font-size: 1.1rem">
                     Paragraf dengan warna merah dan bold
                   </p>
                 </div>
