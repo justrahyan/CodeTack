@@ -213,31 +213,8 @@
             </div>
           </div>
 
-          <button
-            id="open-instruksi"
-            class="fixed right-0 top-20 bg-white border rounded-l-2xl p-4 lg:hidden"
-            style="z-index: 60"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-            >
-              <g
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 16v-4m0-4h.01" />
-              </g>
-            </svg>
-          </button>
           <div
-            class="instruksi-side p-3 fixed top-20 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300"
+            class="instruksi-side p-3 fixed top-16 right-[-300px] w-72 bg-white shadow-lg transition-all duration-300"
             style="z-index: 70"
           >
             <div class="flex justify-between items-center mb-4">
@@ -331,18 +308,49 @@
           </div>
 
           <div class="lg:col-span-3 bg-white overflow-hidden flex flex-col">
-            <div class="flex text-sm font-medium border-b md:hidden">
+            <!-- Tab (Mobile Only) -->
+            <div
+              class="flex justify-between items-center text-sm font-medium border-b md:hidden"
+            >
+              <!-- Tombol Tab -->
+              <div class="flex">
+                <button
+                  id="tabEditor"
+                  class="tab-btn px-4 py-2 border-b-2 border-green-600 text-green-600 focus:outline-none active"
+                >
+                  index.html
+                </button>
+                <button
+                  id="tabPreview"
+                  class="tab-btn px-4 py-2 text-gray-500 hover:text-green-600"
+                >
+                  Preview
+                </button>
+              </div>
+
+              <!-- Tombol Instruksi -->
               <button
-                id="tabEditor"
-                class="tab-btn px-4 py-2 border-b-2 border-green-600 text-green-600 focus:outline-none"
+                id="open-instruksi"
+                class="bg-white p-3 ml-auto"
+                style="z-index: 60"
               >
-                index.html
-              </button>
-              <button
-                id="tabPreview"
-                class="tab-btn px-4 py-2 text-gray-500 hover:text-green-600"
-              >
-                Preview
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                >
+                  <g
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 16v-4m0-4h.01" />
+                  </g>
+                </svg>
               </button>
             </div>
 
