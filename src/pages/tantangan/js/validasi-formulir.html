@@ -86,7 +86,7 @@
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
-                viewBox="0 0 24"
+                viewBox="0 0 24 24"
                 class="inline-block"
               >
                 <path
@@ -536,379 +536,401 @@
       </div>
     </section>
 
-    <!-- Prism.js -->
+    <!-- Required Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
-
-    <!-- CodeMirror -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
 
-    <script src="../../../assets/js/script.js"></script>
-    <!-- Code Mirror -->
+    <!-- Main Application Script -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Highlight syntax Prism
-        Prism.highlightAll();
+      document.addEventListener('DOMContentLoaded', function () {
+        // Initialize Prism syntax highlighting
+        if (typeof Prism !== 'undefined') {
+          Prism.highlightAll();
+        }
 
-        // Deklarasi elemen
-        const textarea = document.getElementById("htmlCode");
-        const preview = document.getElementById("preview");
-        const submitBtn = document.getElementById("submitBtn");
-        const resetBtn = document.getElementById("resetBtn");
-        const overlay = document.getElementById("successOverlay");
-        const closeBtn = document.getElementById("closeOverlay");
+        // Get DOM elements
+        const textarea = document.getElementById('htmlCode');
+        const preview = document.getElementById('preview');
+        const submitBtn = document.getElementById('submitBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const overlay = document.getElementById('successOverlay');
+        const closeBtn = document.getElementById('closeOverlay');
+        const tabEditor = document.getElementById('tabEditor');
+        const tabPreview = document.getElementById('tabPreview');
+        const editorPanel = document.getElementById('editor-panel');
+        const openBtn = document.getElementById('open-instruksi');
+        const instruksi = document.querySelector('.instruksi-side');
+        const closeInstruksi = document.getElementById('close-instruksi');
 
-        // Inisialisasi CodeMirror
+        let isInstruksiVisible = false;
+        let userHasTyped = false;
+
+        // Initialize CodeMirror
         const editor = CodeMirror.fromTextArea(textarea, {
           lineNumbers: true,
-          mode: "htmlmixed",
-          theme: "material",
+          mode: 'htmlmixed',
+          theme: 'material',
           indentUnit: 2,
           smartIndent: true,
           tabSize: 2,
           indentWithTabs: false,
           lineWrapping: true,
           foldGutter: true,
-          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+          gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
           autoCloseBrackets: true,
           autoCloseTags: true,
           matchBrackets: true,
           matchTags: true,
         });
 
-        let userHasTyped = false;
-
-        // Fungsi update preview
+        // Update preview function
         function updatePreview() {
-          const fullHtml = editor.getValue();
-          preview.srcdoc = fullHtml;
+          if (preview && editor) {
+            const fullHtml = editor.getValue();
+            preview.srcdoc = fullHtml;
+          }
         }
 
-        function setEditorWithTemplate(
-          bodyContent = `<!-- Tambahkan JavaScript validasi di sini -->`
-        ) {
-          const fullHtml = `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Validasi Formulir</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 500px;
-      margin: 50px auto;
-      padding: 20px;
-      background-color: #f9f9f9;
-    }
-    
-    .form-container {
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    
-    h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #333;
-    }
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
-    
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-      color: #555;
-    }
-    
-    input[type="text"], input[type="email"] {
-      width: 100%;
-      padding: 12px;
-      border: 2px solid #ddd;
-      border-radius: 6px;
-      font-size: 16px;
-      box-sizing: border-box;
-      transition: border-color 0.3s;
-    }
-    
-    input[type="text"]:focus, input[type="email"]:focus {
-      outline: none;
-      border-color: #007bff;
-    }
-    
-    .submit-btn {
-      background-color: #007bff;
-      color: white;
-      padding: 12px 30px;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-      width: 100%;
-      transition: background-color 0.3s;
-    }
-    
-    .submit-btn:hover {
-      background-color: #0056b3;
-    }
-  </style>
-</head>
-<body>
-  <div class="form-container">
-    <h2>Formulir Pendaftaran</h2>
-    <form id="myForm">
-      <div class="form-group">
-        <label for="nama">Nama:</label>
-        <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda">
-      </div>
-      
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Masukkan email Anda">
-      </div>
-      
-      <button type="submit" class="submit-btn">Kirim</button>
-    </form>
-  </div>
+        // Set editor with template
+        function setEditorWithTemplate() {
+          const htmlTemplate = [
+            '<!DOCTYPE html>',
+            '<html>',
+            '<head>',
+            '  <meta charset="UTF-8">',
+            '  <title>Validasi Formulir</title>',
+            '  <style>',
+            '    body {',
+            '      font-family: Arial, sans-serif;',
+            '      max-width: 500px;',
+            '      margin: 50px auto;',
+            '      padding: 20px;',
+            '      background-color: #f9f9f9;',
+            '    }',
+            '    ',
+            '    .form-container {',
+            '      background: white;',
+            '      padding: 30px;',
+            '      border-radius: 8px;',
+            '      box-shadow: 0 2px 10px rgba(0,0,0,0.1);',
+            '    }',
+            '    ',
+            '    h2 {',
+            '      text-align: center;',
+            '      margin-bottom: 30px;',
+            '      color: #333;',
+            '    }',
+            '    ',
+            '    .form-group {',
+            '      margin-bottom: 20px;',
+            '    }',
+            '    ',
+            '    label {',
+            '      display: block;',
+            '      margin-bottom: 8px;',
+            '      font-weight: bold;',
+            '      color: #555;',
+            '    }',
+            '    ',
+            '    input[type="text"], input[type="email"] {',
+            '      width: 100%;',
+            '      padding: 12px;',
+            '      border: 2px solid #ddd;',
+            '      border-radius: 6px;',
+            '      font-size: 16px;',
+            '      box-sizing: border-box;',
+            '      transition: border-color 0.3s;',
+            '    }',
+            '    ',
+            '    input[type="text"]:focus, input[type="email"]:focus {',
+            '      outline: none;',
+            '      border-color: #007bff;',
+            '    }',
+            '    ',
+            '    .submit-btn {',
+            '      background-color: #007bff;',
+            '      color: white;',
+            '      padding: 12px 30px;',
+            '      border: none;',
+            '      border-radius: 6px;',
+            '      font-size: 16px;',
+            '      cursor: pointer;',
+            '      width: 100%;',
+            '      transition: background-color 0.3s;',
+            '    }',
+            '    ',
+            '    .submit-btn:hover {',
+            '      background-color: #0056b3;',
+            '    }',
+            '  </style>',
+            '</head>',
+            '<body>',
+            '  <div class="form-container">',
+            '    <h2>Formulir Pendaftaran</h2>',
+            '    <form id="myForm">',
+            '      <div class="form-group">',
+            '        <label for="nama">Nama:</label>',
+            '        <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda">',
+            '      </div>',
+            '      ',
+            '      <div class="form-group">',
+            '        <label for="email">Email:</label>',
+            '        <input type="email" id="email" name="email" placeholder="Masukkan email Anda">',
+            '      </div>',
+            '      ',
+            '      <button type="submit" class="submit-btn">Kirim</button>',
+            '    </form>',
+            '  </div>',
+            '',
+            '  <script>',
+            '    // Tambahkan JavaScript validasi di sini',
+            '    ',
+            '  </script>',
+            '</body>',
+            '</html>'
+          ].join('\n');
 
-  <script>
-    ${bodyContent}
-  </script>
-</body>
-</html>`;
-
-          editor.setValue(fullHtml);
+          editor.setValue(htmlTemplate);
           
-          // Set cursor ke bagian script
-          setTimeout(() => {
+          // Set cursor to JavaScript section
+          setTimeout(function() {
             const lines = editor.lineCount();
             for (let i = 0; i < lines; i++) {
               const line = editor.getLine(i);
-              if (line.includes("<!-- Tambahkan JavaScript validasi di sini -->")) {
-                editor.setCursor(i, line.length);
+              if (line.includes('// Tambahkan JavaScript validasi di sini')) {
+                editor.setCursor(i + 1, 4); // Position after the comment with indent
                 break;
               }
             }
             editor.focus();
+            editor.refresh();
           }, 100);
         }
 
-        setEditorWithTemplate();
+        // Tab switching function
+        function switchTab(activeTab, activePanel, inactiveTab, inactivePanel) {
+          if (activePanel) {
+            activePanel.classList.remove('hidden');
+            activePanel.classList.add('block');
+          }
+          
+          if (inactivePanel) {
+            inactivePanel.classList.remove('block');
+            inactivePanel.classList.add('hidden');
+          }
 
-        // Update preview saat ada perubahan
-        editor.on("change", function () {
+          if (activeTab) {
+            activeTab.classList.add('border-b-2', 'border-green-600', 'text-green-600');
+            activeTab.classList.remove('text-gray-500');
+          }
+
+          if (inactiveTab) {
+            inactiveTab.classList.remove('border-b-2', 'border-green-600', 'text-green-600');
+            inactiveTab.classList.add('text-gray-500');
+          }
+
+          // Refresh CodeMirror when switching to editor
+          if (activePanel === editorPanel && editor) {
+            setTimeout(function() {
+              editor.refresh();
+            }, 50);
+          }
+        }
+
+        // Event Listeners
+
+        // Editor change listener
+        editor.on('change', function () {
           userHasTyped = true;
           clearTimeout(window.updateTimeout);
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
         // Auto-refresh preview
-        setInterval(() => {
-          if (editor.getValue()) {
+        setInterval(function() {
+          if (editor && editor.getValue()) {
             updatePreview();
           }
         }, 1000);
 
-        // Initial preview update
-        updatePreview();
-
-        // Make updatePreview available globally for tab switching
-        window.updatePreview = updatePreview;
-
-        // Submit button - Validasi untuk form validation challenge
-        submitBtn.addEventListener("click", () => {
-          const userCode = editor.getValue();
-
-          // Cek komponen penting untuk validasi formulir
-          const hasFormListener = userCode.includes(".addEventListener") && 
-                                  (userCode.includes("submit") || userCode.includes("click"));
-          const hasPreventDefault = userCode.includes("preventDefault");
-          const hasAlert = userCode.includes("alert");
-          const hasValidation = userCode.includes(".value") && 
-                               (userCode.includes("===") || userCode.includes("==") || 
-                                userCode.includes("trim()") || userCode.includes("length"));
-
-          // Ambil elemen notifikasi
-          const overlayIcon = document.getElementById("overlayIcon");
-          const overlayTitle = document.getElementById("overlayTitle");
-          const overlayMessage = document.getElementById("overlayMessage");
-          const overlayBox = document.getElementById("successOverlay");
-
-          let isValid = true;
-          let errorMessages = [];
-
-          // Validasi komponen
-          if (!hasFormListener) {
-            isValid = false;
-            errorMessages.push("event listener untuk form");
-          }
-
-          if (!hasPreventDefault) {
-            isValid = false;
-            errorMessages.push("preventDefault()");
-          }
-
-          if (!hasAlert) {
-            isValid = false;
-            errorMessages.push("alert() untuk notifikasi");
-          }
-
-          if (!hasValidation) {
-            isValid = false;
-            errorMessages.push("validasi input kosong");
-          }
-
-          if (isValid) {
-            // Jawaban BENAR
-            overlayIcon.textContent = "✓";
-            overlayIcon.className = "text-green-600 text-6xl mb-4";
-            overlayTitle.textContent = "Jawaban Benar!";
-            overlayTitle.className = "text-xl font-bold text-green-600 mb-2";
-            overlayMessage.textContent =
-              "Excellent! Validasi formulir kamu sudah lengkap dengan event listener, preventDefault(), alert(), dan pengecekan input kosong.";
-          } else {
-            // Jawaban perlu perbaikan
-            overlayIcon.textContent = "!";
-            overlayIcon.className = "text-yellow-500 text-6xl mb-4";
-            overlayTitle.textContent = "Perlu Perbaikan";
-            overlayTitle.className = "text-xl font-bold text-yellow-500 mb-2";
-            
-            if (errorMessages.length === 1) {
-              overlayMessage.textContent = `Pastikan ada ${errorMessages[0]}.`;
-            } else {
-              overlayMessage.textContent = `Pastikan ada: ${errorMessages.join(", ")}.`;
+        // Tab event listeners (mobile only)
+        if (tabEditor) {
+          tabEditor.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (window.innerWidth < 768) {
+              switchTab(tabEditor, editorPanel, tabPreview, preview);
             }
-          }
-
-          // Tampilkan notifikasi
-          overlayBox.classList.remove("hidden");
-        });
-
-        // Reset
-        resetBtn.addEventListener("click", () => {
-          setEditorWithTemplate();
-          userHasTyped = false;
-          updatePreview();
-        });
-
-        // Overlay close
-        closeBtn.addEventListener("click", () => {
-          overlay.classList.add("hidden");
-        });
-
-        overlay.addEventListener("click", (e) => {
-          if (e.target === overlay) {
-            overlay.classList.add("hidden");
-          }
-        });
-
-        updatePreview();
-      });
-    </script>
-
-    <!-- Tab Switching for Mobile -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Tab switching functionality
-        const tabEditor = document.getElementById("tabEditor");
-        const tabPreview = document.getElementById("tabPreview");
-        const editorPanel = document.getElementById("editor-panel");
-        const preview = document.getElementById("preview");
-
-        function switchTab(activeTab, activePanel, inactiveTab, inactivePanel) {
-          // Show active panel
-          activePanel.classList.remove("hidden");
-          activePanel.classList.add("block");
-          
-          // Hide inactive panel
-          inactivePanel.classList.remove("block");
-          inactivePanel.classList.add("hidden");
-
-          // Style active tab
-          activeTab.classList.add("border-b-2", "border-green-600", "text-green-600");
-          activeTab.classList.remove("text-gray-500");
-
-          // Style inactive tab
-          inactiveTab.classList.remove("border-b-2", "border-green-600", "text-green-600");
-          inactiveTab.classList.add("text-gray-500");
-        }
-
-        // Tab event listeners
-        tabEditor.addEventListener("click", () => {
-          if (window.innerWidth < 768) {
-            switchTab(tabEditor, editorPanel, tabPreview, preview);
-          }
-        });
-
-        tabPreview.addEventListener("click", () => {
-          if (window.innerWidth < 768) {
-            switchTab(tabPreview, preview, tabEditor, editorPanel);
-            // Update preview when switching to preview tab
-            if (window.updatePreview) {
-              window.updatePreview();
-            }
-          }
-        });
-
-        // Default to editor tab on mobile
-        if (window.innerWidth < 768) {
-          switchTab(tabEditor, editorPanel, tabPreview, preview);
-        }
-      });
-    </script>
-
-    <!-- Instruksi Responsive -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const openBtn = document.getElementById("open-instruksi");
-        const instruksi = document.querySelector(".instruksi-side");
-        const closeBtn = document.getElementById("close-instruksi");
-
-        let isVisible = false;
-
-        if (openBtn) {
-          openBtn.addEventListener("click", () => {
-            if (isVisible) {
-              instruksi.classList.remove("right-0");
-              instruksi.classList.add("right-[-300px]");
-            } else {
-              instruksi.classList.remove("right-[-300px]");
-              instruksi.classList.add("right-0");
-            }
-            isVisible = !isVisible;
           });
         }
 
+        if (tabPreview) {
+          tabPreview.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (window.innerWidth < 768) {
+              switchTab(tabPreview, preview, tabEditor, editorPanel);
+              setTimeout(updatePreview, 100);
+            }
+          });
+        }
+
+        // Submit button validation
+        if (submitBtn) {
+          submitBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const userCode = editor.getValue();
+
+            // Check for form validation components
+            const hasFormListener = userCode.includes('.addEventListener') && 
+                                    (userCode.includes('submit') || userCode.includes('click'));
+            const hasPreventDefault = userCode.includes('preventDefault');
+            const hasAlert = userCode.includes('alert');
+            const hasValidation = userCode.includes('.value') && 
+                                 (userCode.includes('===') || userCode.includes('==') || 
+                                  userCode.includes('trim()') || userCode.includes('length'));
+
+            // Get notification elements
+            const overlayIcon = document.getElementById('overlayIcon');
+            const overlayTitle = document.getElementById('overlayTitle');
+            const overlayMessage = document.getElementById('overlayMessage');
+            const overlayBox = document.getElementById('successOverlay');
+
+            let isValid = true;
+            let errorMessages = [];
+
+            // Validation checks
+            if (!hasFormListener) {
+              isValid = false;
+              errorMessages.push('event listener untuk form');
+            }
+
+            if (!hasPreventDefault) {
+              isValid = false;
+              errorMessages.push('preventDefault()');
+            }
+
+            if (!hasAlert) {
+              isValid = false;
+              errorMessages.push('alert() untuk notifikasi');
+            }
+
+            if (!hasValidation) {
+              isValid = false;
+              errorMessages.push('validasi input kosong');
+            }
+
+            if (overlayIcon && overlayTitle && overlayMessage && overlayBox) {
+              if (isValid) {
+                // Success
+                overlayIcon.textContent = '✓';
+                overlayIcon.className = 'text-green-600 text-6xl mb-4';
+                overlayTitle.textContent = 'Jawaban Benar!';
+                overlayTitle.className = 'text-xl font-bold text-green-600 mb-2';
+                overlayMessage.textContent = 'Excellent! Validasi formulir kamu sudah lengkap dengan event listener, preventDefault(), alert(), dan pengecekan input kosong.';
+              } else {
+                // Needs improvement
+                overlayIcon.textContent = '!';
+                overlayIcon.className = 'text-yellow-500 text-6xl mb-4';
+                overlayTitle.textContent = 'Perlu Perbaikan';
+                overlayTitle.className = 'text-xl font-bold text-yellow-500 mb-2';
+                
+                if (errorMessages.length === 1) {
+                  overlayMessage.textContent = 'Pastikan ada ' + errorMessages[0] + '.';
+                } else {
+                  overlayMessage.textContent = 'Pastikan ada: ' + errorMessages.join(', ') + '.';
+                }
+              }
+
+              // Show notification
+              overlayBox.classList.remove('hidden');
+            }
+          });
+        }
+
+        // Reset button
+        if (resetBtn) {
+          resetBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            setEditorWithTemplate();
+            userHasTyped = false;
+            setTimeout(updatePreview, 100);
+          });
+        }
+
+        // Overlay close
         if (closeBtn) {
-          closeBtn.addEventListener("click", () => {
-            instruksi.classList.add("right-[-300px]");
-            instruksi.classList.remove("right-0");
-            isVisible = false;
+          closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (overlay) {
+              overlay.classList.add('hidden');
+            }
+          });
+        }
+
+        if (overlay) {
+          overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) {
+              overlay.classList.add('hidden');
+            }
+          });
+        }
+
+        // Instructions panel functionality
+        if (openBtn) {
+          openBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (isInstruksiVisible) {
+              instruksi.classList.remove('right-0');
+              instruksi.classList.add('right-[-300px]');
+            } else {
+              instruksi.classList.remove('right-[-300px]');
+              instruksi.classList.add('right-0');
+            }
+            isInstruksiVisible = !isInstruksiVisible;
+          });
+        }
+
+        if (closeInstruksi) {
+          closeInstruksi.addEventListener('click', function(e) {
+            e.preventDefault();
+            instruksi.classList.add('right-[-300px]');
+            instruksi.classList.remove('right-0');
+            isInstruksiVisible = false;
           });
         }
 
         // Close instructions when clicking outside
-        document.addEventListener("click", function (e) {
+        document.addEventListener('click', function (e) {
           if (
-            isVisible &&
+            isInstruksiVisible &&
             instruksi &&
             !instruksi.contains(e.target) &&
             !openBtn.contains(e.target)
           ) {
-            instruksi.classList.add("right-[-300px]");
-            instruksi.classList.remove("right-0");
-            isVisible = false;
+            instruksi.classList.add('right-[-300px]');
+            instruksi.classList.remove('right-0');
+            isInstruksiVisible = false;
           }
         });
+
+        // Initialize
+        setEditorWithTemplate();
+        
+        // Default to editor tab on mobile
+        if (window.innerWidth < 768) {
+          switchTab(tabEditor, editorPanel, tabPreview, preview);
+        }
+
+        // Initial preview update
+        setTimeout(updatePreview, 200);
+
+        // Make updatePreview available globally for tab switching
+        window.updatePreview = updatePreview;
       });
     </script>
   </body>
