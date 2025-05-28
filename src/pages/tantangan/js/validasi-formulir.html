@@ -838,13 +838,6 @@
           window.updateTimeout = setTimeout(updatePreview, 300);
         });
 
-        // Auto-refresh preview
-        setInterval(() => {
-          if (editor.getValue()) {
-            updatePreview();
-          }
-        }, 1000);
-
         // Initial preview update
         updatePreview();
 
