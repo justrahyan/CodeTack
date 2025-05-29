@@ -3,16 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CodeTack - Box Model & Border</title>
+    <title>CodeTack - Looping (Perulangan)</title>
     <link rel="stylesheet" href="../../../assets/css/output.css" />
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap"
       rel="stylesheet"
     />
-    <!-- Favicon -->
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -34,12 +32,10 @@
       rel="manifest"
       href="../../../assets/img/favicon_io/site.webmanifest"
     />
-    <!-- Prism.css -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
       rel="stylesheet"
     />
-    <!-- CodeMirror -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"
@@ -75,12 +71,11 @@
       }
     </style>
   </head>
-  <body class="font-family-outfit">
-    <header class="sticky top-0 bg-white shadow-sm z-50">
+  <body>
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
       <nav
         class="container mx-auto px-4 flex justify-between items-center lg:py-10 lg:px-36 h-16"
       >
-        <!-- Logo -->
         <a href="../../../../index.html" class="flex items-center">
           <img
             src="../../../assets/img/logo.png"
@@ -89,7 +84,6 @@
           />
         </a>
 
-        <!-- Desktop Menu -->
         <div class="hidden lg:flex gap-7 text-primary font-medium items-center">
           <ul class="flex gap-7 items-center">
             <li>
@@ -121,7 +115,6 @@
                   />
                 </svg>
               </button>
-              <!-- Materi Belajar Dropdown -->
               <div
                 id="materiMenu"
                 class="hidden absolute left-0 mt-1 w-44 bg-white border border-gray-300 rounded shadow-lg p-2 z-50"
@@ -210,7 +203,6 @@
           </ul>
         </div>
 
-        <!-- Mobile Hamburger -->
         <button
           id="hamburgerButton"
           class="lg:hidden flex items-center text-primary"
@@ -238,7 +230,6 @@
           </svg>
         </button>
       </nav>
-      <!-- Mobile Menu -->
       <div
         id="mobileMenu"
         class="hidden fixed lg:hidden bg-white z-50 w-full h-full transition-all duration-300 ease-in-out"
@@ -313,127 +304,229 @@
         </ul>
       </div>
     </header>
-    <!-- Hero Section -->
+
     <section
-      class="relative bg-cover bg-center bg-no-repeat py-14 md:py-20"
+      id="hero"
+      class="relative bg-cover bg-center bg-no-repeat py-14 md:py-20 font-family-outfit"
       style="background-image: url('../../../assets/img/hero-bg.png')"
     >
       <div class="absolute inset-0 bg-black/60"></div>
+
       <div class="relative container mx-auto px-4 text-center">
         <h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-          Box Model & Border
+          Looping (Perulangan)
         </h1>
         <p class="text-white text-sm md:text-base">
           Materi Belajar /
-          <a href="../materi-css.html" class="hover:underline">CSS</a> /
-          <span class="font-semibold">Box Model & Border</span>
+          <a href="../materi-javascript.html" class="hover:underline"
+            >JavaScript</a
+          >
+          /
+          <span class="font-semibold">Looping (Perulangan)</span>
         </p>
       </div>
     </section>
 
-    <!-- Materi -->
     <section id="materi">
-      <div class="container mx-auto px-4 py-10 lg:px-36">
-        <h1 class="text-2xl lg:text-3xl font-bold mb-6">
-          📦 Box Model & Border
+      <div
+        class="container mx-auto px-4 py-4 lg:py-10 lg:px-36 font-family-outfit"
+      >
+        <h1 class="text-2xl lg:text-3xl font-bold mb-4">
+          🔁 Looping (Perulangan) dalam JavaScript
         </h1>
-        <p class="mb-8 text-sm lg:text-base text-justify">
-          Dalam CSS, setiap elemen pada halaman web itu sebenarnya bisa kita
-          bayangin seperti kotak yang punya beberapa lapisan. Lapisan paling
-          dalam itu adalah content, tempat isi teks, gambar, atau apa pun yang
-          pengen kamu tampilkan. Nah, di luar content itu ada padding, semacam
-          ruang kosong yang bikin isi kotak nggak nempel langsung ke pinggir.
-          Padding ini penting supaya konten terlihat lebih rapi dan nggak mepet
-          ke garis tepi. <br />
-          Setelah padding, ada border, yaitu garis yang mengelilingi kotak itu.
-          Border ini bisa kamu atur tebal, warna, atau gaya garisnya sesuai
-          kebutuhan biar tampilannya makin menarik. Terakhir, di bagian paling
-          luar ada margin, yaitu jarak kosong antara kotak ini dengan kotak
-          elemen lain di sekitarnya. Margin ini penting supaya elemen nggak
-          saling berhimpitan dan tata letak web jadi lebih enak dilihat. Nah,
-          konsep gabungan dari content, padding, border, dan margin ini disebut
-          Box Model, dan ngerti ini bakal bikin kamu lebih gampang atur tampilan
-          dan jarak antar elemen di halaman webmu.
+        <p class="text-justify text-sm lg:text-base mb-8">
+          Selamat datang di materi perulangan JavaScript! Perulangan, atau
+          <strong>looping</strong>, adalah konsep fundamental dalam pemrograman
+          yang memungkinkan kita menjalankan blok kode yang sama berulang kali.
+          Ini sangat berguna ketika kita perlu melakukan tugas yang repetitif,
+          seperti menampilkan daftar item, memproses data dalam jumlah besar,
+          atau mengulang animasi hingga kondisi tertentu terpenuhi. <br />
+          Tanpa looping, kita harus menulis kode yang sama berkali-kali, yang
+          tentu saja tidak efisien dan sulit dikelola. Dengan looping, kode kita
+          menjadi lebih ringkas, mudah dibaca, dan tentunya lebih powerful! Ada
+          beberapa jenis perulangan di JavaScript, dan kita akan membahas yang
+          paling umum digunakan.
         </p>
 
-        <h2 class="text-xl lg:text-2xl font-semibold mb-4">
-          🔍 Bagian dari Box Model
-        </h2>
-        <ul class="list-disc pl-6 text-sm lg:text-base mb-6">
+        <h1 class="text-xl lg:text-2xl font-bold mb-4">
+          ⚙️ Struktur Umum Looping
+        </h1>
+        <pre><code class="language-javascript">// 1. for loop
+for (inisialisasi; kondisi; iterasi) {
+  // Blok kode yang akan diulang
+  // selama 'kondisi' bernilai true
+}
+
+// 2. while loop
+// Inisialisasi variabel (jika ada) di luar loop
+while (kondisi) {
+  // Blok kode yang akan diulang
+  // selama 'kondisi' bernilai true
+  // Penting: pastikan ada perubahan pada variabel kondisi di dalam loop!
+  // (misalnya, increment/decrement atau perubahan status)
+}
+
+// 3. do...while loop
+// Inisialisasi variabel (jika ada) di luar loop
+do {
+  // Blok kode yang akan diulang
+  // Blok ini akan dijalankan setidaknya satu kali
+  // Penting: pastikan ada perubahan pada variabel kondisi di dalam loop!
+} while (kondisi); // Kondisi dicek setelah blok kode dijalankan</code></pre>
+
+        <p class="mt-8">Penjelasan dari struktur di atas sebagai berikut:</p>
+        <ul class="list-disc pl-6 mb-8 space-y-2">
           <li>
-            <code class="bg-pink-100 px-1 text-pink-600 rounded">content</code>:
-            Ini adalah isi utama elemen, seperti teks, gambar, atau video yang
-            ingin kamu tampilkan.
+            <strong class="text-code">for loop</strong>: Jenis loop ini ideal
+            ketika kamu sudah tahu berapa kali perulangan akan dilakukan.
+            <ul>
+              <li class="ml-4">
+                <code class="text-code">inisialisasi</code>: Ekspresi ini
+                dijalankan sekali sebelum loop dimulai. Biasanya digunakan untuk
+                mendeklarasikan dan menginisialisasi variabel counter (misalnya,
+                <code class="bg-gray-200 p-1 rounded">let i = 0</code>).
+              </li>
+              <li class="ml-4">
+                <code class="text-code">kondisi</code>: Ekspresi ini dievaluasi
+                sebelum setiap iterasi. Jika bernilai
+                <code class="bg-gray-200 p-1 rounded">true</code>, blok kode
+                dalam loop akan dijalankan. Jika
+                <code class="bg-gray-200 p-1 rounded">false</code>, loop akan
+                berhenti.
+              </li>
+              <li class="ml-4">
+                <code class="text-code">iterasi</code>: Ekspresi ini dijalankan
+                setelah setiap iterasi. Biasanya digunakan untuk memperbarui
+                variabel counter (misalnya,
+                <code class="bg-gray-200 p-1 rounded">i++</code> atau
+                <code class="bg-gray-200 p-1 rounded">i--</code>).
+              </li>
+            </ul>
           </li>
           <li>
-            <code class="bg-pink-100 px-1 text-pink-600 rounded">padding</code>:
-            Ruang kosong di dalam elemen yang memisahkan isi (content) dari
-            garis tepi (border). Bayangin ini seperti jarak napas supaya konten
-            nggak nempel ke pinggir.
+            <strong class="text-code">while loop</strong>: Loop ini akan terus
+            berjalan selama kondisi yang ditentukan bernilai
+            <code class="bg-gray-200 p-1 rounded">true</code>. Kondisi diperiksa
+            *sebelum* blok kode dijalankan. Jika kondisi awalnya sudah
+            <code class="bg-gray-200 p-1 rounded">false</code>, blok kode tidak
+            akan pernah dijalankan. Sangat penting untuk memastikan bahwa ada
+            sesuatu di dalam loop yang pada akhirnya akan membuat kondisi
+            menjadi <code class="bg-gray-200 p-1 rounded">false</code>, jika
+            tidak, kamu akan membuat *infinite loop* (perulangan tak terbatas)!
           </li>
           <li>
-            <code class="bg-pink-100 px-1 text-pink-600 rounded">border</code>:
-            Garis pembatas yang mengelilingi elemen. Kamu bisa atur warna,
-            ketebalan, dan gaya garisnya sesuai selera.
-          </li>
-          <li>
-            <code class="bg-pink-100 px-1 text-pink-600 rounded">margin</code>:
-            Jarak kosong di luar border yang memisahkan elemen ini dari elemen
-            lain di halaman. Fungsinya supaya elemen nggak saling berdempetan
-            dan tata letak jadi rapi.
+            <strong class="text-code">do...while loop</strong>: Mirip dengan
+            <code class="text-code">while</code> loop, tetapi perbedaannya
+            adalah blok kode di dalam
+            <code class="text-code">do...while</code> akan dijalankan
+            *setidaknya satu kali* sebelum kondisi diperiksa. Setelah itu, loop
+            akan berlanjut selama kondisi bernilai
+            <code class="bg-gray-200 p-1 rounded">true</code>.
           </li>
         </ul>
+        <p class="text-sm lg:text-base mb-8">
+          Selain itu, ada juga loop
+          <code class="text-code">for...in</code> untuk iterasi properti objek
+          dan <code class="text-code">for...of</code> untuk iterasi item dalam
+          objek iterable (seperti Array, String, Map, Set). Namun, untuk dasar
+          ini kita fokus pada tiga jenis di atas.
+        </p>
 
-        <h2 class="text-xl lg:text-2xl font-semibold mb-4">
-          🧱 Properti Border
-        </h2>
-        <ul class="list-disc pl-6 text-sm lg:text-base mb-6">
-          <li>
-            <code class="bg-pink-100 px-1 text-pink-600 rounded">border</code>:
-            Ini kayak paket lengkap buat bikin garis di sekitar elemen. Kamu
-            bisa atur ketebalan, jenis garisnya (misal: solid, dashed, dotted),
-            dan warnanya sekaligus.
-          </li>
-          <li>
-            <code class="bg-pink-100 px-1 text-pink-600 rounded"
-              >border-radius</code
-            >: Biar sudut kotak nggak kotak banget, kamu pakai ini buat bikin
-            sudutnya melengkung atau bulat. Semakin besar nilainya, makin
-            melengkung sudutnya.
-          </li>
-          <li>
-            <code class="bg-pink-100 px-1 text-pink-600 rounded"
-              >border-style</code
-            >: Buat pilih jenis garisnya, misal garis penuh (solid), putus-putus
-            (dashed), atau titik-titik (dotted).
-          </li>
-          <li>
-            <code class="bg-pink-100 px-1 text-pink-600 rounded"
-              >border-color</code
-            >: Buat tentuin warna garisnya, bisa warna apa saja yang kamu mau.
-          </li>
-          <li>
-            <code class="bg-pink-100 px-1 text-pink-600 rounded"
-              >border-width</code
-            >: Buat atur ketebalan garisnya, bisa tipis banget sampai tebal.
-          </li>
-        </ul>
+        <h1 class="text-xl lg:text-2xl font-bold mb-4">💻 Contoh Kode:</h1>
+        <div class="relative border rounded-md overflow-hidden mb-8">
+          <div
+            class="flex justify-between items-center bg-white px-4 py-2 border-b text-sm font-semibold"
+          >
+            <span class="text-gray-700">index.html</span>
+            <button
+              onclick="salinKode(this)"
+              class="text-sm md:text-base text-blue-600 hover:underline focus:outline-none"
+            >
+              Salin Kode
+            </button>
+          </div>
+          <pre
+            style="margin: 0"
+          ><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Contoh Looping JavaScript&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .output-item { border-bottom: 1px solid #eee; padding: 5px 0; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hasil Looping (Cek Juga Konsol Browser)&lt;/h1&gt;
+  &lt;div id="outputDiv"&gt;&lt;/div&gt;
 
-        <pre><code class="language-css">.box {
-  width: 200px;
-  padding: 20px;
-  margin: 20px;
-  border: 2px solid #4ade80;
-  border-radius: 10px;
-  background-color: #f0fdf4;
-}</code></pre>
+  &lt;script&gt;
+    const outputDiv = document.getElementById('outputDiv');
 
-        <!-- Editor -->
-        <h2 class="text-xl lg:text-2xl font-bold mb-4 mt-8">
-          ⚙️ Demo Interaktif:
-        </h2>
-        <div class="editor-container w-full mb-4">
-          <div class="editor-panel">
+    // Contoh 1: for loop (Mencetak angka 1 sampai 5)
+    outputDiv.innerHTML += '&lt;h2&gt;Contoh for loop:&lt;/h2&gt;';
+    console.log("--- Contoh for loop ---");
+    for (let i = 1; i &lt;= 5; i++) {
+      let pesan = "Iterasi ke-" + i;
+      console.log(pesan);
+      outputDiv.innerHTML += `&lt;div class="output-item"&gt;${pesan}&lt;/div&gt;`;
+    }
+
+    // Contoh 2: while loop (Menggandakan angka selama kurang dari 30)
+    outputDiv.innerHTML += '&lt;h2&gt;Contoh while loop:&lt;/h2&gt;';
+    console.log("--- Contoh while loop ---");
+    let angka = 2;
+    while (angka &lt; 30) {
+      let pesan = "Angka saat ini (while): " + angka;
+      console.log(pesan);
+      outputDiv.innerHTML += `&lt;div class="output-item"&gt;${pesan}&lt;/div&gt;`;
+      angka *= 2; // Penting: update kondisi!
+    }
+    let pesanAkhirWhile = "Angka setelah loop (while): " + angka;
+    console.log(pesanAkhirWhile);
+    outputDiv.innerHTML += `&lt;div class="output-item"&gt;&lt;strong&gt;${pesanAkhirWhile}&lt;/strong&gt;&lt;/div&gt;`;
+
+    // Contoh 3: do...while loop (Menjalankan setidaknya sekali)
+    outputDiv.innerHTML += '&lt;h2&gt;Contoh do...while loop:&lt;/h2&gt;';
+    console.log("--- Contoh do...while loop ---");
+    let counter = 5; // Meskipun kondisi (counter < 5) awalnya false
+    do {
+      let pesan = "Counter (do...while): " + counter;
+      console.log(pesan);
+      outputDiv.innerHTML += `&lt;div class="output-item"&gt;${pesan}&lt;/div&gt;`;
+      counter++;
+    } while (counter &lt; 5); // Kondisi dicek di sini
+
+    // Contoh 4: Looping array dengan for loop
+    outputDiv.innerHTML += '&lt;h2&gt;Daftar Buah (for loop):&lt;/h2&gt;';
+    const buah = ["Apel", "Mangga", "Jeruk", "Pisang", "Anggur"];
+    let listBuahHTML = '&lt;ul&gt;';
+    for (let i = 0; i &lt; buah.length; i++) {
+      listBuahHTML += `&lt;li&gt;${buah[i]}&lt;/li&gt;`;
+      console.log("Buah:", buah[i]);
+    }
+    listBuahHTML += '&lt;/ul&gt;';
+    outputDiv.innerHTML += listBuahHTML;
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <h1 class="text-xl lg:text-2xl font-bold mb-4">⚙️ Demo Interaktif:</h1>
+        <p class="text-sm lg:text-base mb-4">
+          Coba ubah kode di bawah ini untuk melihat bagaimana loop bekerja
+          secara langsung! Kamu bisa mengganti batas atas perulangan atau teks
+          yang ditampilkan.
+        </p>
+        <div
+          class="editor-container flex flex-col md:flex-row w-full mb-4"
+          style="height: 500px"
+        >
+          <div
+            id="editor-panel"
+            class="w-full md:w-1/2 border rounded overflow-auto"
+            style="max-height: 100%"
+          >
             <textarea
               id="htmlCode"
               class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
@@ -441,76 +534,107 @@
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
+  &lt;title&gt;Demo Looping Interaktif&lt;/title&gt;
   &lt;style&gt;
-    .box {
-      width: 250px;
-      padding: 20px;
-      margin: 20px auto;
-      border: 3px dashed #fb923c;
-      background-color: #fef3c7;
-      border-radius: 8px;
-      box-sizing: border-box;
-      text-align: center;
-    }
+    body { font-family: sans-serif; padding: 15px; background-color: #f9f9f9; color: #333; }
+    #controls { margin-bottom: 15px; padding: 10px; background-color: #e9e9e9; border-radius: 5px;}
+    label { margin-right: 5px; }
+    input[type="number"], input[type="text"] { padding: 5px; border-radius: 3px; border: 1px solid #ccc; margin-right: 10px;}
+    button { padding: 6px 12px; background-color: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; }
+    button:hover { background-color: #0056b3; }
+    #loopOutput { margin-top: 15px; border: 1px solid #ddd; padding: 10px; min-height: 100px; background-color: white; border-radius: 5px; }
+    .item { margin-bottom: 5px; background-color: #f0f8ff; padding: 8px; border-radius: 3px; border-left: 3px solid #007bff;}
   &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;div class="box"&gt;Contoh Box Model dengan Border&lt;/div&gt;
+  &lt;h3&gt;Pembuat Daftar Dinamis dengan Loop&lt;/h3&gt;
+  &lt;div id="controls"&gt;
+    &lt;label for="jumlahItem"&gt;Jumlah Item:&lt;/label&gt;
+    &lt;input type="number" id="jumlahItem" value="3" min="1" max="10"&gt;
+    &lt;label for="teksItem"&gt;Teks Item:&lt;/label&gt;
+    &lt;input type="text" id="teksItem" value="Item"&gt;
+    &lt;button onclick="jalankanLoop()"&gt;Buat Daftar&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div id="loopOutput"&gt;Hasil loop akan muncul di sini.&lt;/div&gt;
+
+  &lt;script&gt;
+    function jalankanLoop() {
+      const jumlah = parseInt(document.getElementById("jumlahItem").value);
+      const teksDasar = document.getElementById("teksItem").value || "Item";
+      const outputDiv = document.getElementById("loopOutput");
+      outputDiv.innerHTML = ""; // Bersihkan output sebelumnya
+
+      if (isNaN(jumlah) || jumlah &lt; 1 || jumlah &gt; 10) {
+        outputDiv.innerHTML = "&lt;p style='color:red;'&gt;Masukkan jumlah item antara 1 dan 10.&lt;/p&gt;";
+        return;
+      }
+
+      outputDiv.innerHTML += "&lt;p&gt;Daftar item yang dibuat:&lt;/p&gt;";
+      for (let i = 1; i &lt;= jumlah; i++) {
+        let newItem = document.createElement("div");
+        newItem.classList.add("item");
+        newItem.textContent = teksDasar + " ke-" + i;
+        outputDiv.appendChild(newItem);
+      }
+    }
+    // Jalankan loop saat pertama kali dimuat dengan nilai default
+    jalankanLoop();
+  &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-          </textarea
+</textarea
             >
           </div>
+
           <iframe
             id="preview"
-            class="preview-panel"
+            class="w-full md:w-1/2 border rounded"
             title="Pratinjau HTML"
+            style="height: 100%"
           ></iframe>
         </div>
 
         <div class="tips flex items-start gap-3 mb-4 lg:mb-10">
           <div class="w-2 h-9 bg-amber-300"></div>
           <p class="text-left text-sm md:text-base">
-            <span class="text-xl md:text-2xl">💡</span> Tips: Gunakan
-            <code class="bg-pink-100 px-1 text-pink-600 rounded"
-              >box-sizing: border-box</code
-            >
-            agar padding dan border tidak menambah total ukuran elemen.
+            <span class="text-xl md:text-2xl">💡</span> Tips: Hati-hati dengan
+            <strong>infinite loops</strong> (perulangan tak terbatas)! Selalu
+            pastikan kondisi dalam <code>while</code> atau
+            <code>do...while</code> loop pada akhirnya akan bernilai
+            <code>false</code>, dan variabel iterasi pada <code>for</code> loop
+            akan mencapai batasnya. Browser bisa <em>hang</em> atau bahkan
+            <em>crash</em> loh jika terjebak dalam infinite loop!
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Tantangan Button -->
     <section>
       <div
         class="container mx-auto text-center px-4 py-4 lg:py-10 lg:px-36 font-family-outfit mb-6 lg:mb-0"
       >
         <a
           class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full lg:w-96 h-10 rounded-md mx-auto"
-          href="../../tantangan/tantangan-css.html"
+          href="../../tantangan/tantangan-javascript.html"
           >Ikuti Tantangan</a
         >
       </div>
     </section>
 
-    <!-- Pagination -->
     <section id="pagination">
       <div
         class="container mx-auto px-4 py-4 lg:py-10 lg:px-36 font-family-outfit mb-6 lg:mb-0"
       >
         <div class="grid grid-cols-3 items-center gap-4">
-          <!-- Prev -->
           <div class="flex justify-start">
             <a
-              href="./typography-dan-warna.html"
+              href="./event-handling.html"
               class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-6 md:w-5 h-6 md:h-5"
                 viewBox="0 0 24 24"
-                class="inline-block"
               >
                 <g
                   fill="none"
@@ -523,33 +647,28 @@
                   <circle cx="12" cy="12" r="9" />
                 </g>
               </svg>
-              <span class="hidden sm:inline">Typography & Warna</span>
+              <span class="hidden sm:inline">Event Handling</span>
             </a>
           </div>
 
-          <!-- Title -->
           <div class="flex justify-center">
             <p
               class="text-center text-primary font-semibold lg:text-lg text-sm whitespace-nowrap"
             >
-              Box Model & Border
+              Looping (Perulangan)
             </p>
           </div>
 
-          <!-- Next -->
           <div class="flex justify-end">
             <a
-              href="./layout-sederhana-dengan-flexbox.html"
+              href="./konsep-oop.html"
               class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
             >
-              <span class="hidden sm:inline"
-                >Layout Sederhana dengan Flexbox</span
-              >
+              <span class="hidden sm:inline">Konsep OOP</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-6 md:w-5 h-6 md:h-5"
                 viewBox="0 0 24 24"
-                class="inline-block"
               >
                 <g
                   fill="none"
@@ -568,10 +687,8 @@
       </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-primary text-white font-family-outfit py-16 px-6">
       <div class="max-w-6xl mx-auto">
-        <!-- Footer Content Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div class="lg:col-span-1">
             <div class="mb-6">
@@ -678,7 +795,6 @@
           </div>
         </div>
 
-        <!-- Footer Bottom -->
         <div class="border-t border-blue-400 pt-8">
           <p class="text-center text-blue-100 text-sm">
             © 2025 CodeTack. All rights reserved.
@@ -687,58 +803,106 @@
       </div>
     </footer>
 
-    <script src="../../../assets/js/script.js"></script>
-    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldcode.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldgutter.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/xml-fold.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
 
+    <script src="../../../assets/js/script.js"></script>
     <script>
+      // Inisialisasi CodeMirror
       document.addEventListener("DOMContentLoaded", function () {
+        // Highlight syntax dengan Prism
         Prism.highlightAll();
+
+        // Setup CodeMirror editor
         const textarea = document.getElementById("htmlCode");
         const preview = document.getElementById("preview");
 
-        const editor = CodeMirror.fromTextArea(textarea, {
-          lineNumbers: true,
-          mode: "htmlmixed",
-          theme: "material",
-          indentUnit: 2,
-          smartIndent: true,
-          tabSize: 2,
-          indentWithTabs: false,
-          lineWrapping: true,
-          foldGutter: true,
-          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-          autoCloseBrackets: true,
-          autoCloseTags: true,
-          matchBrackets: true,
-          matchTags: true,
-        });
+        if (textarea && preview) {
+          // Pastikan elemen ada sebelum inisialisasi
+          const editor = CodeMirror.fromTextArea(textarea, {
+            lineNumbers: true,
+            mode: "htmlmixed",
+            theme: "material",
+            indentUnit: 2,
+            smartIndent: true,
+            tabSize: 2,
+            indentWithTabs: false,
+            lineWrapping: true,
+            foldGutter: true,
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+            autoCloseBrackets: true,
+            autoCloseTags: true,
+            matchBrackets: true,
+            matchTags: true,
+          });
 
-        function updatePreview() {
-          const code = editor.getValue();
-          const doc = preview.contentDocument || preview.contentWindow.document;
-          doc.open();
-          doc.write(code);
-          doc.close();
+          // Update preview ketika code berubah
+          let updateTimeout;
+          function updatePreview() {
+            let code = editor.getValue();
+
+            // Wrapper sederhana untuk script agar dijalankan setelah DOM demo siap
+            // dan untuk menghindari masalah dengan document.write setelah halaman utama dimuat.
+            if (code.includes("<script>") && !code.includes("window.onload")) {
+              code = code.replace(
+                /<script>([\s\S]*?)<\/script>/,
+                '<script>window.addEventListener("DOMContentLoaded", function() { try { $1 } catch(e) { console.error(e); document.body.innerHTML = "<pre style=\\"color:red;\\">Error: " + e.message + "</pre>"; } });<\/script>'
+              );
+            }
+
+            const doc =
+              preview.contentDocument || preview.contentWindow.document;
+            doc.open();
+            doc.write(code);
+            doc.close();
+          }
+
+          // Event listener untuk perubahan code
+          editor.on("change", function () {
+            clearTimeout(updateTimeout);
+            updateTimeout = setTimeout(updatePreview, 300);
+          });
+
+          // Update preview awal
+          updatePreview();
+        } else {
+          console.warn(
+            "CodeMirror textarea atau preview iframe tidak ditemukan."
+          );
         }
-
-        editor.on("change", function () {
-          clearTimeout(window.updateTimeout);
-          window.updateTimeout = setTimeout(updatePreview, 300);
-        });
-
-        updatePreview();
       });
+
+      // Fungsi Salin Kode (jika belum ada di script.js)
+      function salinKode(button) {
+        const preElement = button.closest(".relative").querySelector("pre");
+        if (preElement) {
+          const codeElement = preElement.querySelector("code");
+          const codeToCopy = codeElement.innerText;
+          navigator.clipboard
+            .writeText(codeToCopy)
+            .then(() => {
+              button.innerText = "Berhasil Disalin!";
+              setTimeout(() => {
+                button.innerText = "Salin Kode";
+              }, 2000);
+            })
+            .catch((err) => {
+              console.error("Gagal menyalin kode: ", err);
+              button.innerText = "Gagal Salin";
+              setTimeout(() => {
+                button.innerText = "Salin Kode";
+              }, 2000);
+            });
+        }
+      }
     </script>
   </body>
 </html>

@@ -338,10 +338,19 @@
           📐 Layout dengan Flexbox
         </h1>
         <p class="mb-8 text-sm lg:text-base text-justify">
-          Flexbox adalah metode modern di CSS untuk membuat layout yang
-          fleksibel dan responsif. Dengan Flexbox, kita bisa menyusun elemen
-          secara horizontal maupun vertikal dengan mudah, tanpa menggunakan
-          float atau positioning manual.
+          Flexbox itu keren banget buat ngatur tata letak di web. Bayangin kamu
+          punya beberapa kotak yang pengen disusun rapi, entah itu secara baris
+          (horizontal) atau kolom (vertikal), tanpa harus ribet ngatur posisi
+          satu per satu. Nah, Flexbox bikin semua itu jadi gampang dan cepat.
+          Kamu tinggal atur beberapa properti, dan elemen-elemen langsung bisa
+          menyesuaikan ukuran dan posisinya dengan otomatis, sesuai ruang yang
+          tersedia. <br />
+          Selain itu, Flexbox juga bikin halaman web jadi responsif, alias bisa
+          adaptasi dengan ukuran layar berbeda — mulai dari layar HP kecil
+          sampai layar desktop besar. Jadi, gak perlu lagi repot pakai banyak
+          kode untuk bikin layout yang fleksibel. Cukup pakai Flexbox,
+          elemen-elemen di halaman kamu bisa rapi, proporsional, dan mudah
+          diatur sesuai kebutuhan! Seru banget, kan?
         </p>
 
         <h2 class="text-xl lg:text-2xl font-semibold mb-4">
@@ -352,25 +361,30 @@
             <code class="bg-pink-100 px-1 text-pink-600 rounded"
               >display: flex</code
             >
-            – Mengaktifkan flex container
+            – Ini seperti nyalain mode fleksibel buat wadah elemen kamu. Begitu
+            diaktifin, anak-anak elemen di dalamnya langsung bisa diatur dengan
+            gampang pakai Flexbox.
           </li>
           <li>
             <code class="bg-pink-100 px-1 text-pink-600 rounded"
               >flex-direction</code
             >
-            – Menentukan arah (row, column)
+            – Menentukan arah susunan elemen, bisa secara horizontal (row) atau
+            vertikal (column).
           </li>
           <li>
             <code class="bg-pink-100 px-1 text-pink-600 rounded"
               >justify-content</code
             >
-            – Mengatur posisi horizontal
+            – Mengatur posisi elemen secara horizontal dalam flex container,
+            seperti rata kiri, tengah, kanan, atau dengan jarak tertentu.
           </li>
           <li>
             <code class="bg-pink-100 px-1 text-pink-600 rounded"
               >align-items</code
             >
-            – Mengatur posisi vertikal
+            – Mengatur posisi elemen secara vertikal agar sejajar di atas,
+            tengah, atau bawah dalam flex container.
           </li>
         </ul>
 
@@ -398,17 +412,10 @@
 &lt;/div&gt;
 </code></pre>
 
-        <div class="tips flex items-center gap-3 my-10">
-          <div class="w-2 h-9 bg-amber-300"></div>
-          <p class="text-left text-sm md:text-base">
-            <span class="text-xl md:text-2xl">💡</span> Tips: Gunakan Flexbox
-            saat kamu ingin membuat layout yang lebih adaptif dan mudah
-            dikontrol, terutama untuk baris atau kolom.
-          </p>
-        </div>
-
         <!-- Editor -->
-        <h2 class="text-xl lg:text-2xl font-bold mb-4">⚙️ Coba Sendiri:</h2>
+        <h2 class="text-xl lg:text-2xl font-bold mb-4 mt-8">
+          ⚙️ Demo Interaktif:
+        </h2>
         <div class="editor-container w-full mb-4">
           <div class="editor-panel">
             <textarea
@@ -455,6 +462,15 @@
             title="Pratinjau HTML"
           ></iframe>
         </div>
+
+        <div class="tips flex items-start gap-3 mb-4 lg:mb-10">
+          <div class="w-2 h-9 bg-amber-300"></div>
+          <p class="text-left text-sm md:text-base">
+            <span class="text-xl md:text-2xl">💡</span> Tips: Gunakan Flexbox
+            saat kamu ingin membuat layout yang lebih adaptif dan mudah
+            dikontrol, terutama untuk baris atau kolom.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -466,7 +482,7 @@
         <a
           class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full lg:w-96 h-10 rounded-md mx-auto"
           href="../../tantangan/tantangan-css.html"
-          >Coba Sekarang</a
+          >Ikuti Tantangan</a
         >
       </div>
     </section>

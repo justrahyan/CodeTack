@@ -338,10 +338,8 @@
           🔎 Selector Dasar (Class & ID)
         </h1>
         <p class="mb-8 text-sm lg:text-base text-justify">
-          Selector dalam CSS digunakan untuk memilih elemen HTML yang ingin
-          diberikan style. Dua selector dasar yang paling sering digunakan
-          adalah:
-          <strong>Class</strong> dan <strong>ID</strong>.
+          Selector dalam CSS itu ibarat cara kita “menunjuk” elemen mana yang
+          mau dikasih gaya. Nah, dua selector yang paling sering dipakai adalah:
         </p>
 
         <!-- Class Selector -->
@@ -349,9 +347,12 @@
           📘 Selector Class (.)
         </h2>
         <p class="text-sm lg:text-base mb-2">
-          Selector class menggunakan tanda titik (.) diikuti nama class. Ini
-          digunakan untuk menargetkan satu atau beberapa elemen yang memiliki
-          class tersebut.
+          Class selector dipakai kalau kita mau kasih style ke beberapa elemen
+          sekaligus. Kita tandai dengan titik (.) di depan nama class. Misalnya
+          <code class="bg-gray-200 p-1 rounded">.kotak</code> berarti semua
+          elemen yang punya
+          <code class="bg-gray-200 p-1 rounded">class="kotak"</code> akan kena
+          style itu. Cocok buat gaya yang dipakai berulang-ulang.
         </p>
         <pre><code class="language-css">.kotak {
   background-color: lightblue;
@@ -364,8 +365,12 @@
           🆔 Selector ID (#)
         </h2>
         <p class="text-sm lg:text-base mb-2">
-          Selector ID menggunakan tanda pagar (#) diikuti nama ID. ID bersifat
-          unik dan hanya boleh digunakan satu kali di dalam halaman HTML.
+          ID selector: dipakai kalau kita mau styling satu elemen yang unik aja.
+          Ditandai dengan tanda pagar (#). Misalnya
+          <code class="bg-gray-200 p-1 rounded">#judul</code> berarti cuma
+          elemen dengan
+          <code class="bg-gray-200 p-1 rounded">id="judul"</code> yang akan
+          dapat style itu. ID ini cuma boleh dipakai sekali di satu halaman.
         </p>
         <pre><code class="language-css">#judul {
   color: crimson;
@@ -373,17 +378,10 @@
 }</code></pre>
         <pre><code class="language-html">&lt;h1 id="judul"&gt;Ini Judul Utama&lt;/h1&gt;</code></pre>
 
-        <div class="tips flex items-center gap-3 my-10">
-          <div class="w-2 h-9 bg-amber-300"></div>
-          <p class="text-left text-sm md:text-base">
-            <span class="text-xl md:text-2xl">💡</span> Tips: Gunakan
-            <code>class</code> untuk style berulang dan <code>id</code> untuk
-            elemen yang unik.
-          </p>
-        </div>
-
         <!-- Editor -->
-        <h2 class="text-xl lg:text-2xl font-bold mb-4">⚙️ Coba Sendiri:</h2>
+        <h2 class="text-xl lg:text-2xl font-bold mb-4 mt-8">
+          ⚙️ Demo Interaktif:
+        </h2>
         <div class="editor-container w-full mb-4">
           <div class="editor-panel">
             <textarea
@@ -419,6 +417,15 @@
             title="Pratinjau HTML"
           ></iframe>
         </div>
+
+        <div class="tips flex items-start gap-3 mb-4 lg:mb-10">
+          <div class="w-2 h-9 bg-amber-300"></div>
+          <p class="text-left text-sm md:text-base">
+            <span class="text-xl md:text-2xl">💡</span> Tips: Gunakan
+            <code>class</code> untuk style berulang dan <code>id</code> untuk
+            elemen yang unik.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -430,7 +437,7 @@
         <a
           class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full lg:w-96 h-10 rounded-md mx-auto"
           href="../../tantangan/tantangan-css.html"
-          >Coba Sekarang</a
+          >Ikuti Tantangan</a
         >
       </div>
     </section>

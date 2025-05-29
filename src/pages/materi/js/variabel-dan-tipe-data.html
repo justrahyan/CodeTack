@@ -335,12 +335,16 @@
           📦 Variabel dan Tipe Data
         </h1>
         <p class="text-justify text-sm lg:text-base mb-8">
-          Selamat datang di dunia JavaScript! Konsep paling dasar yang harus
-          kita kuasai adalah <strong>variabel</strong> dan
-          <strong>tipe data</strong>. Bayangkan variabel sebagai sebuah kotak
-          atau wadah yang kita beri nama untuk menyimpan suatu nilai. Nilai yang
-          disimpan ini bisa bermacam-macam jenisnya, dan jenis inilah yang kita
-          sebut sebagai tipe data.
+          Selamat datang di dunia JavaScript! Nah, sebelum mulai ngoding lebih
+          jauh, penting banget buat ngerti konsep dasar yaitu variabel dan tipe
+          data. Bayangin variabel itu kayak kotak penyimpanan yang kita kasih
+          nama supaya gampang diakses. Di dalam kotak ini, kita bisa simpan
+          berbagai jenis data sesuai kebutuhan. <br />
+          Tipe data sendiri itu seperti label yang kasih tahu isi kotak
+          tersebut. Misalnya, angka, teks, atau nilai benar/salah. Dengan tahu
+          tipe data, JavaScript bisa mengelola dan memproses data dengan tepat.
+          Jadi, variabel dan tipe data ini adalah pondasi penting supaya program
+          kita bisa berjalan lancar dan sesuai harapan!
         </p>
 
         <h1 class="text-xl lg:text-2xl font-bold mb-4">
@@ -361,37 +365,49 @@ let dataKosong = null; // Null (sengaja dikosongkan)</code></pre>
         <p class="mt-8">Penjelasan dari konsep di atas sebagai berikut:</p>
         <ul class="list-disc pl-6 mb-8">
           <li>
-            <code class="text-code">let</code>, digunakan untuk mendeklarasikan
-            variabel yang nilainya dapat diubah atau di-update nanti di dalam
-            kode.
+            <code class="text-code">let</code>, Ini buat bikin variabel yang
+            bisa kamu ubah-ubah nilainya nanti di kode. Misalnya, kamu bisa
+            simpan angka awal, terus ganti kapan saja saat program jalan.
           </li>
           <li>
-            <code class="text-code">const</code>, digunakan untuk
-            mendeklarasikan variabel yang nilainya bersifat konstan atau tidak
-            akan berubah. Jika Anda mencoba mengubah nilainya, akan terjadi
-            error.
+            <code class="text-code">const</code>, Kalau pakai ini, berarti
+            variabel yang kamu buat nilainya nggak boleh berubah. Kalau kamu
+            coba ubah, JavaScript bakal kasih error. Cocok buat nilai yang
+            memang tetap, seperti angka pi atau nama aplikasi.
           </li>
           <li>
-            <code class="text-code">String</code>, adalah tipe data untuk teks.
-            Nilainya selalu diapit oleh tanda kutip tunggal ('...'), kutip ganda
-            ("...") atau backtick (&#96;...&#96;).
+            <code class="text-code">String</code>, Ini tipe data buat teks,
+            kayak kalimat atau kata-kata. Isinya harus selalu diapit tanda
+            kutip, bisa pakai
+            <code class="bg-gray-200 p-1 rounded">'...'</code>,
+            <code class="bg-gray-200 p-1 rounded">"..."</code>, atau
+            <code class="bg-gray-200 p-1 rounded">`...`</code> (backtick) yang
+            juga bisa buat template string.
           </li>
           <li>
-            <code class="text-code">Number</code>, adalah tipe data untuk angka,
-            baik itu bilangan bulat (integer) maupun desimal (float).
+            <code class="text-code">Number</code>, Tipe data ini buat angka,
+            baik itu bilangan bulat seperti 10, 20, atau angka desimal seperti
+            3.14. Jadi kalau kamu mau hitung-hitungan, pakai tipe data ini.
           </li>
           <li>
-            <code class="text-code">Boolean</code>, adalah tipe data yang hanya
-            memiliki dua nilai: <code>true</code> (benar) atau
-            <code>false</code> (salah). Sangat berguna untuk logika percabangan.
+            <code class="text-code">Boolean</code>, Punya cuma dua nilai:
+            <code class="bg-gray-200 p-1 rounded">true</code> (benar) atau
+            <code class="bg-gray-200 p-1 rounded">false</code> (salah). Sangat
+            penting buat kondisi dan pengambilan keputusan di program, misalnya
+            "apakah user sudah login?" jawabannya ya atau tidak.
           </li>
           <li>
             <code class="text-code">null</code> dan
-            <code class="text-code">undefined</code>, keduanya mewakili "tidak
-            ada nilai", namun dengan sedikit perbedaan.
-            <code>null</code> berarti nilai sengaja dibuat kosong, sedangkan
-            <code>undefined</code> berarti variabel sudah dideklarasikan tapi
-            belum diberi nilai.
+            <code class="text-code">undefined</code>, Keduanya artinya “tidak
+            ada nilai,” tapi beda tipis.
+            <code class="bg-gray-200 p-1 rounded">null</code> itu artinya kamu
+            sengaja kasih tanda kalau variabel itu kosong. Sedangkan
+            <code class="bg-gray-200 p-1 rounded">undefined</code> berarti
+            variabel sudah dibuat tapi belum diisi apa-apa. Jadi,
+            <code class="bg-gray-200 p-1 rounded">null</code> itu kayak kotak
+            yang kamu tahu kosong,
+            <code class="bg-gray-200 p-1 rounded">undefined</code> itu kotak
+            yang belum kamu isi sama sekali.
           </li>
         </ul>
 
@@ -493,7 +509,7 @@ let dataKosong = null; // Null (sengaja dikosongkan)</code></pre>
           ></iframe>
         </div>
 
-        <div class="tips flex items-center gap-3 mb-4 lg:mb-10">
+        <div class="tips flex items-start gap-3 mb-4 lg:mb-10">
           <div class="w-2 h-9 bg-amber-300"></div>
           <p class="text-left text-sm md:text-base">
             <span class="text-xl md:text-2xl">💡</span> Tips: Gunakan
@@ -512,7 +528,7 @@ let dataKosong = null; // Null (sengaja dikosongkan)</code></pre>
         <a
           class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full lg:w-96 h-10 rounded-md mx-auto"
           href="../../tantangan/tantangan-javascript.html"
-          >Coba Sekarang</a
+          >Ikuti Tantangan</a
         >
       </div>
     </section>

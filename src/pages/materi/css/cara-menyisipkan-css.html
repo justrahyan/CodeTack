@@ -339,19 +339,38 @@
         </h1>
 
         <!-- Penjelasan Apa itu CSS -->
-        <p class="text-sm lg:text-base text-justify mb-8">
-          <strong>CSS</strong> adalah singkatan dari
-          <em>Cascading Style Sheets</em>. CSS digunakan untuk mengatur tampilan
-          dan gaya elemen-elemen HTML di halaman web. Dengan CSS, kita bisa
-          menentukan warna teks, jenis huruf, ukuran elemen, tata letak,
-          animasi, dan banyak lagi.<br />
-          Tanpa CSS, halaman web hanya akan terlihat sebagai dokumen teks polos.
-          CSS memisahkan konten dari desain, sehingga memungkinkan kita untuk
-          mengatur tampilan secara konsisten dan efisien di seluruh halaman.<br />
-          CSS dapat disisipkan ke dalam dokumen HTML dengan tiga cara berbeda:
-          <strong>inline</strong>, <strong>internal</strong>, dan
-          <strong>external</strong>. Masing-masing memiliki fungsi tersendiri
-          tergantung konteks dan skala proyek.
+        <p class="text-sm lg:text-base text-justify mb-4">
+          CSS atau Cascading Style Sheets itu bisa dibilang "baju" buat HTML.
+          Kalau HTML-nya cuma ngatur struktur atau isi halaman, CSS yang bikin
+          tampilannya jadi menarik dan enak dilihat. Misalnya, mau kasih warna
+          ke teks, ubah ukuran font, bikin tombol punya bayangan, atau atur
+          elemen supaya rata di tengah—semua itu kerjaannya CSS. <br />
+          Tanpa CSS, halaman web bakal kelihatan polos banget, kayak dokumen
+          Word tanpa format. Nah, dengan CSS, kita bisa desain satu halaman atau
+          bahkan seluruh website dengan gaya yang konsisten. Enaknya lagi, kita
+          nggak perlu nulis gaya berulang-ulang. Tinggal atur satu kali, lalu
+          bisa dipakai ke banyak elemen sekaligus. <br />
+        </p>
+        <p>Ada tiga cara buat pakai CSS di HTML:</p>
+        <ul class="list-disc pl-6 mb-2 text-sm lg:text-base">
+          <li>
+            <strong>Inline</strong>: langsung ditulis di tag HTML-nya. Cocok
+            buat styling cepat atau satu elemen aja.
+          </li>
+          <li>
+            <strong>Internal</strong>: ditulis di bagian
+            <code class="text-code">&lt;style&gt;</code> dalam file HTML.
+            Biasanya dipakai kalau halaman itu butuh gaya khusus.
+          </li>
+          <li>
+            <strong>External</strong>: disimpan di file terpisah (.css), lalu
+            di-link ke HTML. Ini yang paling rapi dan efisien, apalagi buat
+            proyek yang besar atau punya banyak halaman.
+          </li>
+        </ul>
+        <p class="text-sm lg:text-base mb-8">
+          CSS itu penting banget kalau kamu mau bikin website yang tampilannya
+          profesional dan nggak ngebosenin.
         </p>
 
         <!-- Inline CSS -->
@@ -413,17 +432,10 @@
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
-        <div class="tips flex items-center gap-3 my-10">
-          <div class="w-2 h-9 bg-amber-300"></div>
-          <p class="text-left text-sm md:text-base">
-            <span class="text-xl md:text-2xl">💡</span> Tips: Untuk proyek
-            besar, gunakan external CSS agar lebih terorganisir dan mudah
-            dipelihara.
-          </p>
-        </div>
-
         <!-- Editor -->
-        <h2 class="text-xl lg:text-2xl font-bold mb-4">⚙️ Coba Sendiri:</h2>
+        <h2 class="text-xl lg:text-2xl font-bold mb-4 mt-8">
+          ⚙️ Demo Interaktif:
+        </h2>
         <div class="editor-container w-full mb-4">
           <div class="editor-panel">
             <textarea
@@ -453,6 +465,15 @@
             title="Pratinjau HTML"
           ></iframe>
         </div>
+
+        <div class="tips flex items-start gap-3 mb-4 lg:mb-10">
+          <div class="w-2 h-9 bg-amber-300"></div>
+          <p class="text-left text-sm md:text-base">
+            <span class="text-xl md:text-2xl">💡</span> Tips: Untuk proyek
+            besar, gunakan external CSS agar lebih terorganisir dan mudah
+            dipelihara.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -464,7 +485,7 @@
         <a
           class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full lg:w-96 h-10 rounded-md mx-auto"
           href="../../tantangan/tantangan-css.html"
-          >Coba Sekarang</a
+          >Ikuti Tantangan</a
         >
       </div>
     </section>

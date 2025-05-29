@@ -330,11 +330,23 @@
       >
         <h1 class="text-2xl lg:text-3xl font-bold mb-4">📝 Form Sederhana</h1>
         <p class="text-justify text-sm lg:text-base mb-8">
-          Formulir atau form adalah salah satu bagian terpenting dari sebuah
-          website interaktif. Form digunakan untuk mengumpulkan data dari
-          pengguna, seperti pada halaman pendaftaran, login, kontak, atau kolom
-          pencarian. HTML menyediakan serangkaian tag yang kuat untuk membuat
-          berbagai jenis input dalam sebuah formulir.
+          Formulir atau <i>form</i> itu penting banget di web, apalagi kalau
+          websitenya interaktif. Lewat form, pengguna bisa ngisi data, mulai
+          dari nama, email, sampai upload file atau kasih komentar. Kamu pasti
+          sering lihat form di halaman pendaftaran, login, kontak, atau kolom
+          pencarian kan? Nah, semua itu dibuat pakai tag HTML yang udah
+          disediakan khusus untuk bikin form. <br />
+          HTML punya banyak jenis input yang bisa kamu pakai, seperti
+          <code class="text-code">&lt;input&gt;</code> buat teks atau password,
+          <code class="text-code">&lt;textarea&gt;</code> buat kolom isi
+          panjang, dan <code class="text-code">&lt;select&gt;</code> buat
+          pilihan dropdown. Semuanya dibungkus dalam tag
+          <code class="text-code">&lt;form&gt;</code> supaya bisa dikirim ke
+          server atau diproses pakai JavaScript. <br />
+          Intinya, kalau kamu mau bikin halaman web yang bisa nerima data dari
+          pengguna, form adalah kuncinya. Di materi berikutnya, kamu akan
+          kenalan lebih dekat sama tag-tag penting dalam form HTML dan gimana
+          cara pakainya.
         </p>
 
         <h1 class="text-xl lg:text-2xl font-bold mb-4">
@@ -355,33 +367,33 @@
         </p>
         <ul class="list-disc pl-6 mb-8">
           <li>
-            <code class="text-code">&lt;form&gt;</code>, ini adalah tag
-            pembungkus utama yang menandai awal dan akhir dari sebuah formulir.
-            Semua elemen input harus berada di dalam tag ini.
+            <code class="text-code">&lt;form&gt;</code>, ini tag utama buat
+            bungkus semua bagian form. Semua input harus ada di dalam tag ini
+            supaya bisa dikirim bareng-bareng.
           </li>
           <li>
-            <code class="text-code">&lt;label&gt;</code>, digunakan untuk
-            memberikan label atau nama yang deskriptif untuk sebuah elemen
-            input. Atribut <code>for</code> pada label harus cocok dengan
-            <code>id</code> pada input untuk menghubungkan keduanya.
+            <code class="text-code">&lt;label&gt;</code>, dipakai buat kasih
+            nama atau keterangan ke input. Kalau
+            <code class="bg-gray-200 p-1 rounded">for</code> di label-nya sama
+            kayak <code class="bg-gray-200 p-1 rounded">id</code> di input, klik
+            label-nya juga bisa langsung fokus ke input-nya.
           </li>
           <li>
-            <code class="text-code">&lt;input&gt;</code>, ini adalah tag yang
-            paling sering digunakan. Atribut <code>type</code> menentukan jenis
-            input yang akan ditampilkan, contohnya <code>text</code>,
-            <code>email</code>, <code>password</code>, <code>checkbox</code>,
-            <code>radio</code>, dan banyak lagi.
+            <code class="text-code">&lt;input&gt;</code>, ini tag paling sering
+            dipakai buat form. Bisa disetel jadi teks, email, password,
+            checkbox, radio, dan lainnya lewat atribut
+            <code class="bg-gray-200 p-1 rounded">type</code>.
           </li>
           <li>
-            <code class="text-code">&lt;textarea&gt;</code>, digunakan untuk
-            input teks yang lebih panjang atau multi-baris, seperti kolom
-            komentar atau pesan.
+            <code class="text-code">&lt;textarea&gt;</code>, cocok buat input
+            yang panjang kayak komentar atau pesan. Bedanya, ini bisa nulis
+            lebih dari satu baris.
           </li>
           <li>
             <code class="text-code">&lt;button&gt;</code> atau
-            <code class="text-code">&lt;input type="submit"&gt;</code>,
-            digunakan untuk membuat tombol yang ketika diklik akan mengirimkan
-            data formulir ke server.
+            <code class="text-code">&lt;input type="submit"&gt;</code>, ini
+            tombol buat ngirim form. Setelah diklik, data yang udah diisi bakal
+            dikirim ke server.
           </li>
         </ul>
 
@@ -474,7 +486,7 @@
           ></iframe>
         </div>
 
-        <div class="tips flex items-center gap-3 mb-4 lg:mb-10">
+        <div class="tips flex items-start gap-3 mb-4 lg:mb-10">
           <div class="w-2 h-9 bg-amber-300"></div>
           <p class="text-left text-sm md:text-base">
             <span class="text-xl md:text-2xl">💡</span> Tips: Selalu gunakan tag
@@ -492,7 +504,7 @@
         <a
           class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full lg:w-96 h-10 rounded-md mx-auto"
           href="../../tantangan/tantangan-html.html"
-          >Coba Sekarang</a
+          >Ikuti Tantangan</a
         >
       </div>
     </section>

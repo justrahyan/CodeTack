@@ -330,14 +330,29 @@
       >
         <h1 class="text-2xl lg:text-3xl font-bold mb-4">📊 List dan Table</h1>
         <p class="text-justify text-sm lg:text-base mb-8">
-          Selain teks biasa, sering kali kita perlu menampilkan data dalam
-          format daftar (list) atau tabel (table). HTML menyediakan elemen
-          khusus untuk kedua kebutuhan ini. <strong>List</strong> digunakan
-          untuk mengelompokkan item yang saling berhubungan, seperti daftar
-          belanjaan atau langkah-langkah instruksi.
-          <strong>Table</strong> digunakan untuk menyajikan data dalam bentuk
-          baris dan kolom, cocok untuk data statistik, jadwal, atau perbandingan
-          fitur.
+          Selain teks biasa, sering kali kita butuh menampilkan informasi dalam
+          bentuk yang lebih terstruktur, seperti daftar dan tabel. Nah, HTML
+          udah nyediain tag khusus buat dua kebutuhan ini. <br />
+          Untuk daftar, kamu bisa pakai elemen
+          <code><span class="text-code">&lt;ul&gt;</span></code> (unordered
+          list) kalau item-nya nggak berurutan—misalnya daftar belanja atau
+          poin-poin penting. Kalau item-nya punya urutan, seperti
+          langkah-langkah membuat kue atau proses pendaftaran, pakainya
+          <code><span class="text-code">&lt;ol&gt;</span></code> (ordered list).
+          Di dalam kedua tag ini, setiap item ditulis pakai tag
+          <code><span class="text-code">&lt;li&gt;</span></code> (list item).
+          Jadi, list ini bikin konten lebih gampang dibaca dan dimengerti.
+          <br />
+          Sementara itu, tabel digunakan buat menampilkan data yang lebih
+          kompleks, apalagi kalau melibatkan angka atau perbandingan. HTML pakai
+          tag <code><span class="text-code">&lt;table&gt;</span></code> untuk
+          bikin tabel, lalu di dalamnya ada
+          <code><span class="text-code">&lt;tr&gt;</span></code> buat baris,
+          <code><span class="text-code">&lt;th&gt;</span></code> buat judul
+          kolom, dan <code><span class="text-code">&lt;td&gt;</span></code> buat
+          isi sel. Tabel ini cocok banget buat menampilkan jadwal, data nilai,
+          atau fitur produk yang mau dibandingkan. Jadi, dengan list dan table,
+          kamu bisa bikin konten yang lebih rapi dan informatif.
         </p>
 
         <h1 class="text-xl lg:text-2xl font-bold mb-4">
@@ -367,7 +382,8 @@
         <p class="mt-8">
           Penjelasan dari masing-masing tag di atas sebagai berikut:
         </p>
-        <ul class="list-disc pl-6 mb-8">
+        <h3 class="text-lg font-semibold mb-2">List</h3>
+        <ul class="list-disc pl-6 mb-2">
           <li>
             <code class="text-code">&lt;ul&gt;</code> (Unordered List),
             digunakan untuk membuat daftar yang tidak berurutan, biasanya
@@ -380,9 +396,15 @@
           </li>
           <li>
             <code class="text-code">&lt;li&gt;</code> (List Item), mewakili satu
-            item di dalam sebuah list (baik <code>&lt;ul&gt;</code> maupun
-            <code>&lt;ol&gt;</code>). Tag ini harus berada di dalam tag list.
+            item di dalam sebuah list (baik
+            <code class="text-code">&lt;ul&gt;</code> maupun
+            <code class="text-code">&lt;ol&gt;</code>). Tag ini harus berada di
+            dalam tag list.
           </li>
+        </ul>
+
+        <h3 class="text-lg font-semibold mb-2">Table</h3>
+        <ul class="list-disc pl-6 mb-8">
           <li>
             <code class="text-code">&lt;table&gt;</code>, adalah tag utama untuk
             membuat sebuah tabel.
@@ -504,7 +526,7 @@
           ></iframe>
         </div>
 
-        <div class="tips flex items-center gap-3 mb-4 lg:mb-10">
+        <div class="tips flex items-start gap-3 mb-4 lg:mb-10">
           <div class="w-2 h-9 bg-amber-300"></div>
           <p class="text-left text-sm md:text-base">
             <span class="text-xl md:text-2xl">💡</span> Tips: Gunakan tag
@@ -523,7 +545,7 @@
         <a
           class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full lg:w-96 h-10 rounded-md mx-auto"
           href="../../tantangan/tantangan-html.html"
-          >Coba Sekarang</a
+          >Ikuti Tantangan</a
         >
       </div>
     </section>

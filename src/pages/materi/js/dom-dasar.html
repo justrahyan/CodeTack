@@ -333,13 +333,27 @@
       >
         <h1 class="text-2xl lg:text-3xl font-bold mb-4">🌐 DOM Dasar</h1>
         <p class="text-justify text-sm lg:text-base mb-8">
-          DOM atau <strong>Document Object Model</strong> adalah jembatan yang
-          menghubungkan JavaScript dengan halaman HTML. Anggap HTML sebagai
-          kerangka sebuah rumah. DOM adalah representasi dari kerangka itu yang
-          bisa dipahami dan diubah oleh JavaScript. Dengan DOM, kita bisa
-          "menyuruh" JavaScript untuk memilih elemen HTML apa pun (seperti
-          judul, paragraf, atau gambar) dan mengubah konten, gaya (style), atau
-          atributnya secara dinamis.
+          DOM atau Document Object Model itu bisa kamu bayangkan seperti peta
+          atau blueprint dari seluruh halaman HTML. Jadi saat sebuah halaman
+          dimuat, browser akan mengubah kode HTML-nya menjadi struktur pohon
+          (tree) — setiap elemen HTML (seperti
+          <code class="bg-gray-200 p-1 rounded">&lt;h1&gt;</code>,
+          <code class="bg-gray-200 p-1 rounded">&lt;p&gt;</code>,
+          <code class="bg-gray-200 p-1 rounded">&lt;img&gt;</code>) jadi “node”
+          atau cabang dari pohon itu. Nah, JavaScript bisa mengakses, mencari,
+          bahkan memanipulasi node-node itu lewat DOM. Ini artinya, kita bisa
+          bikin halaman berubah secara langsung dari JavaScript, tanpa harus
+          reload. <br />
+          Misalnya kamu punya tombol, lalu ingin saat tombol diklik, warna
+          background halaman berubah — itu semua bisa dilakukan lewat DOM! Kita
+          tinggal “select” elemen yang ingin diubah menggunakan
+          <code class="bg-gray-200 rounded p-1">document.querySelector()</code>
+          atau <code class="bg-gray-200 rounded p-1">getElementById()</code>,
+          lalu gunakan JavaScript untuk mengganti teks, style, atau bahkan
+          menambahkan elemen baru. DOM ini penting banget karena jadi dasar dari
+          interaktivitas di halaman web, seperti efek animasi, respons saat
+          tombol ditekan, dan lainnya. Jadi kalau kamu ingin bikin web yang
+          hidup dan interaktif, DOM adalah teman dekatmu!
         </p>
 
         <h1 class="text-xl lg:text-2xl font-bold mb-4">
@@ -364,15 +378,20 @@ paragrafSalam.style.color = "blue";</code></pre>
             elemen mana yang ingin kita ubah. Ada beberapa cara populer:
             <ul class="list-disc pl-6 mt-2">
               <li>
-                <code>document.getElementById('id-elemen')</code>: Cara paling
-                umum dan cepat untuk memilih satu elemen unik berdasarkan
-                atribut <code>id</code>-nya.
+                <code class="bg-gray-200 rounded p-1"
+                  >document.getElementById('id-elemen')</code
+                >: Cara paling umum dan cepat untuk memilih satu elemen unik
+                berdasarkan atribut
+                <code class="bg-gray-200 rounded p-1">id</code>-nya.
               </li>
               <li>
-                <code>document.querySelector('css-selector')</code>: Cara
-                fleksibel untuk memilih elemen pertama yang cocok dengan
-                selector CSS (contoh: <code>'h1'</code>,
-                <code>'.nama-kelas'</code>, <code>'#id-elemen'</code>).
+                <code class="bg-gray-200 rounded p-1"
+                  >document.querySelector('css-selector')</code
+                >: Cara fleksibel untuk memilih elemen pertama yang cocok dengan
+                selector CSS (contoh:
+                <code class="bg-gray-200 rounded p-1">'h1'</code>,
+                <code class="bg-gray-200 rounded p-1">'.nama-kelas'</code>,
+                <code class="bg-gray-200 rounded p-1">'#id-elemen'</code>).
               </li>
             </ul>
           </li>
@@ -381,21 +400,26 @@ paragrafSalam.style.color = "blue";</code></pre>
             mengubah isinya.
             <ul class="list-disc pl-6 mt-2">
               <li>
-                <code>.innerText</code>: Mengubah konten teks dari sebuah
-                elemen.
+                <code class="bg-gray-200 rounded p-1">.innerText</code>:
+                Mengubah konten teks dari sebuah elemen.
               </li>
               <li>
-                <code>.innerHTML</code>: Mengubah seluruh konten HTML di dalam
-                sebuah elemen, termasuk tag-tag lain.
+                <code class="bg-gray-200 rounded p-1">.innerHTML</code>:
+                Mengubah seluruh konten HTML di dalam sebuah elemen, termasuk
+                tag-tag lain.
               </li>
             </ul>
           </li>
           <li>
             <strong>Mengubah Style</strong>: Kita bisa langsung mengubah
-            properti CSS dari sebuah elemen melalui <code>.style</code>.
-            Perhatikan bahwa properti CSS yang menggunakan tanda hubung (seperti
-            <code>background-color</code>) diubah menjadi format camelCase
-            (<code>backgroundColor</code>) di JavaScript.
+            properti CSS dari sebuah elemen melalui
+            <code class="bg-gray-200 rounded p-1">.style</code>. Perhatikan
+            bahwa properti CSS yang menggunakan tanda hubung (seperti
+            <code class="bg-gray-200 rounded p-1">background-color</code>)
+            diubah menjadi format camelCase (<code
+              class="bg-gray-200 rounded p-1"
+              >backgroundColor</code
+            >) di JavaScript.
           </li>
         </ul>
 
@@ -504,7 +528,7 @@ paragrafSalam.style.color = "blue";</code></pre>
           ></iframe>
         </div>
 
-        <div class="tips flex items-center gap-3 mb-4 lg:mb-10">
+        <div class="tips flex items-start gap-3 mb-4 lg:mb-10">
           <div class="w-2 h-9 bg-amber-300"></div>
           <p class="text-left text-sm md:text-base">
             <span class="text-xl md:text-2xl">💡</span> Tips: Gunakan
@@ -524,7 +548,7 @@ paragrafSalam.style.color = "blue";</code></pre>
         <a
           class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full lg:w-96 h-10 rounded-md mx-auto"
           href="../../tantangan/tantangan-javascript.html"
-          >Coba Sekarang</a
+          >Ikuti Tantangan</a
         >
       </div>
     </section>

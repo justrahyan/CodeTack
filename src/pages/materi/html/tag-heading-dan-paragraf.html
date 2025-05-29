@@ -332,15 +332,32 @@
           📖 Tag Heading dan Paragraf
         </h1>
         <p class="text-justify text-sm lg:text-base mb-8">
-          Dalam HTML, judul dan paragraf adalah fondasi untuk menyusun konten
-          tekstual. <strong>Heading</strong>, yang ditandai dengan tag
-          <code><span class="text-code">&lt;h1&gt;</span></code> hingga
+          Dalam HTML, judul dan paragraf adalah fondasi utama untuk menyusun
+          konten berbasis teks. Heading, yang ditandai dengan tag
+          <code><span class="text-code">&lt;h1&gt;</span></code> sampai
           <code><span class="text-code">&lt;h6&gt;</span></code
-          >, berfungsi untuk membuat hierarki atau tingkatan judul pada halaman.
-          Sementara itu, <strong>paragraf</strong>, yang ditandai dengan tag
+          >, digunakan untuk membuat hierarki judul. Tag
+          <code><span class="text-code">&lt;h1&gt;</span></code> biasanya
+          digunakan untuk judul utama halaman, sedangkan
+          <code><span class="text-code">&lt;h2&gt;</span></code> hingga
+          <code><span class="text-code">&lt;h6&gt;</span></code> digunakan untuk
+          subjudul atau bagian-bagian yang lebih spesifik. Semakin besar
+          angkanya, semakin kecil ukuran teks dan semakin rendah tingkat
+          pentingnya. Menggunakan heading dengan urutan yang tepat juga membantu
+          struktur halaman jadi lebih jelas, baik untuk pengguna maupun mesin
+          pencari. <br />
+
+          Sementara itu, tag
+          <code><span class="text-code">&lt;p&gt;</span></code> digunakan untuk
+          membuat paragraf. Setiap kali kamu ingin menulis satu blok teks yang
+          utuh dan mudah dibaca, bungkus teks tersebut dengan tag
           <code><span class="text-code">&lt;p&gt;</span></code
-          >, digunakan untuk mengelompokkan teks menjadi blok-blok yang mudah
-          dibaca.
+          >. HTML akan otomatis memberi jarak antar paragraf agar tampilan
+          teksnya lebih rapi. Jangan lupa, meskipun kamu bisa menulis teks
+          langsung tanpa tag paragraf, hasilnya bisa berantakan atau susah
+          dibaca. Jadi, biasakan selalu gunakan
+          <code><span class="text-code">&lt;p&gt;</span></code> untuk setiap
+          bagian teks yang berdiri sendiri.
         </p>
 
         <h1 class="text-xl lg:text-2xl font-bold mb-4">
@@ -360,23 +377,23 @@
         </p>
         <ul class="list-disc pl-6 mb-8">
           <li>
-            <code class="text-code">&lt;h1&gt;</code>, ini adalah tag heading
-            paling penting. Sebaiknya hanya ada satu tag
-            <code>&lt;h1&gt;</code> di setiap halaman, digunakan untuk judul
-            utama konten.
+            <code class="text-code">&lt;h1&gt;</code>,Tag heading paling
+            penting. Sebaiknya hanya digunakan satu kali dalam satu halaman, dan
+            berfungsi sebagai judul utama dari konten.
           </li>
           <li>
-            <code class="text-code">&lt;h2&gt; ... &lt;h6&gt;</code>, ini adalah
-            sub-heading dengan tingkatan yang lebih rendah. Gunakan tag ini
-            secara berurutan untuk menandai sub-topik. Misalnya,
-            <code>&lt;h3&gt;</code> harus berada di bawah
-            <code>&lt;h2&gt;</code>, bukan sebaliknya.
+            <code class="text-code">&lt;h2&gt; ... &lt;h6&gt;</code>, Digunakan
+            sebagai sub-heading dengan tingkatan yang lebih rendah. Gunakan
+            secara berurutan sesuai hierarki. Misalnya,
+            <code><span class="text-code">&lt;h3&gt;</span></code> digunakan
+            setelah <code><span class="text-code">&lt;h2&gt;</span></code
+            >, bukan langsung melompati urutan.
           </li>
           <li>
-            <code class="text-code">&lt;p&gt; ... &lt;/p&gt;</code>, tag ini
-            digunakan untuk membungkus satu blok paragraf. Browser secara
-            otomatis akan memberi jarak antara satu paragraf dengan paragraf
-            lainnya, membuatnya lebih rapi dan mudah dibaca.
+            <code class="text-code">&lt;p&gt; ... &lt;/p&gt;</code>, Digunakan
+            untuk membungkus satu blok paragraf. Browser secara otomatis memberi
+            jarak antar paragraf, sehingga teks terlihat lebih rapi dan mudah
+            dibaca.
           </li>
         </ul>
 
@@ -453,7 +470,7 @@
           ></iframe>
         </div>
 
-        <div class="tips flex items-center gap-3 mb-4 lg:mb-10">
+        <div class="tips flex items-start gap-3 mb-4 lg:mb-10">
           <div class="w-2 h-9 bg-amber-300"></div>
           <p class="text-left text-sm md:text-base">
             <span class="text-xl md:text-2xl">💡</span> Tips: Gunakan tag
@@ -471,7 +488,7 @@
         <a
           class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full lg:w-96 h-10 rounded-md mx-auto"
           href="../../tantangan/tantangan-html.html"
-          >Coba Sekarang</a
+          >Ikuti Tantangan</a
         >
       </div>
     </section>

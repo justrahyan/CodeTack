@@ -338,9 +338,16 @@
           🖋️ Typography & Warna
         </h1>
         <p class="mb-8 text-sm lg:text-base text-justify">
-          Typography mengatur tampilan teks, termasuk ukuran, jenis font, dan
-          gaya. Sedangkan warna digunakan untuk memberikan kesan visual yang
-          kuat dan menambah estetika pada halaman web.
+          Typography itu intinya ngatur gimana tampilan teks di halaman web,
+          mulai dari ukuran huruf, jenis font yang dipakai, sampai gaya seperti
+          tebal, miring, atau garis bawah. Dengan pengaturan typography yang
+          tepat, teks jadi lebih enak dibaca dan menarik. <br />
+
+          Selain itu, warna juga penting banget buat bikin tampilan web makin
+          hidup. Warna bisa kasih kesan tertentu, misalnya serius, ceria, atau
+          profesional, sekaligus bikin desain jadi lebih estetis dan
+          eye-catching. Jadi, kombinasi typography dan warna itu kunci supaya
+          tampilan teks nggak cuma informatif tapi juga menarik dilihat.
         </p>
 
         <!-- Typography -->
@@ -348,11 +355,18 @@
           📝 Mengatur Typography
         </h2>
         <ul class="list-disc pl-6 text-sm lg:text-base mb-6">
-          <li><code>font-family</code>: menentukan jenis huruf</li>
-          <li><code>font-size</code>: menentukan ukuran teks</li>
-          <li><code>font-weight</code>: menentukan ketebalan teks</li>
           <li>
-            <code>text-align</code>: menyelaraskan teks (left, center, right)
+            <code>font-family</code>: buat nentuin jenis huruf yang dipakai di
+            teks.
+          </li>
+          <li><code>font-size</code>: atur seberapa besar ukuran tulisan.</li>
+          <li>
+            <code>font-weight</code>: mengatur ketebalan huruf, misalnya normal,
+            bold, atau angka tertentu.
+          </li>
+          <li>
+            <code>text-align</code>: buat nyetel posisi teks, bisa rata kiri
+            (left), tengah (center), atau kanan (right).
           </li>
         </ul>
         <pre><code class="language-css">p {
@@ -367,11 +381,18 @@
           🎨 Memberikan Warna
         </h2>
         <ul class="list-disc pl-6 text-sm lg:text-base mb-6">
-          <li><code>color</code>: warna teks</li>
-          <li><code>background-color</code>: warna latar belakang elemen</li>
+          <li><code>color</code>: mengatur warna teks.</li>
           <li>
-            Warna dapat ditulis dalam format: nama warna (<code>red</code>), hex
-            (<code>#ff0000</code>), rgb(<code>rgb(255,0,0)</code>)
+            <code>background-color</code>: mengatur warna latar belakang suatu
+            elemen.
+          </li>
+          <li>
+            Warna dapat ditulis dengan:
+            <ul class="list-disc pl-4">
+              <li>nama warna (<code>red</code>)</li>
+              <li>hex (<code>#ff0000</code>)</li>
+              <li>rgb(<code>rgb(255,0,0)</code>)</li>
+            </ul>
           </li>
         </ul>
         <pre><code class="language-css">h1 {
@@ -379,16 +400,10 @@
   background-color: #f0f0f0;
 }</code></pre>
 
-        <div class="tips flex items-center gap-3 my-10">
-          <div class="w-2 h-9 bg-amber-300"></div>
-          <p class="text-left text-sm md:text-base">
-            <span class="text-xl md:text-2xl">💡</span> Tips: Gunakan warna dan
-            font yang serasi agar website kamu mudah dibaca dan enak dilihat!
-          </p>
-        </div>
-
         <!-- Editor -->
-        <h2 class="text-xl lg:text-2xl font-bold mb-4">⚙️ Coba Sendiri:</h2>
+        <h2 class="text-xl lg:text-2xl font-bold mb-4 mt-8">
+          ⚙️ Demo Interaktif:
+        </h2>
         <div class="editor-container w-full mb-4">
           <div class="editor-panel">
             <textarea
@@ -426,6 +441,14 @@
             title="Pratinjau HTML"
           ></iframe>
         </div>
+
+        <div class="tips flex items-start gap-3 mb-4 lg:mb-10">
+          <div class="w-2 h-9 bg-amber-300"></div>
+          <p class="text-left text-sm md:text-base">
+            <span class="text-xl md:text-2xl">💡</span> Tips: Gunakan warna dan
+            font yang serasi agar website kamu mudah dibaca dan enak dilihat!
+          </p>
+        </div>
       </div>
     </section>
 
@@ -437,7 +460,7 @@
         <a
           class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full lg:w-96 h-10 rounded-md mx-auto"
           href="../../tantangan/tantangan-css.html"
-          >Coba Sekarang</a
+          >Ikuti Tantangan</a
         >
       </div>
     </section>

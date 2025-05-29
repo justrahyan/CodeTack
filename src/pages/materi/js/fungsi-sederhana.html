@@ -333,13 +333,20 @@
       >
         <h1 class="text-2xl lg:text-3xl font-bold mb-4">🚀 Fungsi Sederhana</h1>
         <p class="text-justify text-sm lg:text-base mb-8">
-          Jika variabel adalah wadah, maka
-          <strong>fungsi (function)</strong> adalah mesin pengolahnya. Fungsi
-          adalah sebuah blok kode yang dirancang untuk melakukan tugas tertentu.
-          Keindahan fungsi adalah kita bisa mendefinisikannya sekali, lalu
-          memanggil atau menggunakannya berkali-kali di banyak tempat. Ini
-          membuat kode kita lebih terorganisir, efisien, dan mudah dikelola
-          (prinsip <i>Don't Repeat Yourself</i> atau DRY).
+          Kalau variabel itu ibarat wadah untuk menyimpan data, maka fungsi
+          (function) bisa kita anggap seperti mesin yang akan mengolah isi wadah
+          tersebut. Fungsi berisi kumpulan perintah yang bisa kita jalankan
+          kapan pun kita butuh, cukup dengan "memanggil" nama fungsinya. Jadi,
+          nggak perlu menulis ulang instruksi yang sama berulang kali—cukup
+          simpan dalam satu fungsi, dan tinggal panggil kalau dibutuhkan. Hemat
+          tenaga, rapi, dan efisien! <br />
+          Kita juga bisa memberikan "bahan" ke dalam fungsi lewat parameter,
+          lalu fungsi itu akan mengolahnya dan (jika perlu) memberikan hasil
+          kembali lewat <code class="bg-gray-200 p-1 rounded">return</code>. Ini
+          sangat membantu dalam membuat kode yang fleksibel dan mudah diatur.
+          Bayangkan seperti mesin blender: kamu bisa masukkan buah apa saja,
+          tekan tombolnya (panggil fungsi), dan dia akan mengembalikan jus yang
+          segar. Praktis, kan?
         </p>
 
         <h1 class="text-xl lg:text-2xl font-bold mb-4">
@@ -362,31 +369,40 @@ console.log(hasilSapaan); // Output: "Halo, Budi! Selamat datang di CodeTack."</
         <p class="mt-8">Penjelasan dari konsep di atas sebagai berikut:</p>
         <ul class="list-disc pl-6 mb-8">
           <li>
-            <strong>Deklarasi Fungsi</strong>: Dimulai dengan keyword
-            <code>function</code>, diikuti dengan nama fungsi
-            (<code>sapaPengguna</code>), lalu tanda kurung <code>()</code> yang
-            berisi daftar <strong>parameter</strong>.
+            <strong>Deklarasi Fungsi</strong>: Kita mulai dengan keyword
+            <code class="bg-gray-200 rounded p-1">function</code>, kasih nama
+            (misalnya
+            <code class="bg-gray-200 rounded p-1">sapaPengguna</code>), lalu
+            tambahkan <code class="bg-gray-200 rounded p-1">()</code> untuk
+            parameter. Ini seperti bikin resep: kasih judul dan bahan yang
+            dibutuhkan.
           </li>
           <li>
-            <strong>Parameter</strong>: Variabel lokal (seperti
-            <code>nama</code>) yang bertindak sebagai placeholder untuk nilai
-            yang akan diterima oleh fungsi saat dipanggil.
+            <strong>Parameter</strong>: Nah, isi dalam
+            <code class="bg-gray-200 p-1 rounded">()</code> itu disebut
+            parameter. Ibaratnya bahan baku yang bakal dipakai fungsi saat
+            dijalankan. Contohnya
+            <code class="bg-gray-200 p-1 rounded">nama</code> dalam function
+            <code class="bg-gray-200 p-1 rounded">sapaPengguna(nama)</code>.
           </li>
           <li>
-            <strong>Badan Fungsi</strong>: Kode yang berada di dalam kurung
-            kurawal <code>{...}</code>. Ini adalah instruksi yang akan
-            dieksekusi oleh fungsi.
+            <strong>Badan Fungsi</strong>: Semua instruksi atau langkah-langkah
+            yang harus dijalankan fungsi ditulis di dalam
+            <code class="bg-gray-200 p-1 rounded">{ ... }</code>. Ini tempat
+            kerjanya si fungsi.
           </li>
           <li>
-            <strong>`return`</strong>: Keyword ini digunakan untuk mengakhiri
-            eksekusi fungsi dan mengirim sebuah nilai kembali ke kode yang
-            memanggilnya. Fungsi tanpa `return` akan mengembalikan `undefined`.
+            <code class="bg-gray-200 p-1 rounded">return</code>: Kalau kamu
+            ingin fungsi memberikan hasil balik, pakai
+            <code class="bg-gray-200 p-1 rounded">return</code>. Tanpa ini,
+            fungsi nggak akan mengembalikan apa-apa alias
+            <code class="bg-gray-200 p-1 rounded">undefined</code>.
           </li>
           <li>
-            <strong>Memanggil Fungsi</strong>: Untuk menjalankan fungsi, kita
-            cukup menuliskan namanya diikuti tanda kurung <code>()</code>. Nilai
-            yang kita masukkan saat memanggil (seperti <code>namaSaya</code>)
-            disebut <strong>argumen</strong>.
+            <strong>Memanggil Fungsi</strong>: Untuk menjalankan fungsi, tinggal
+            ketik namanya dan beri nilai untuk parameternya. Misalnya
+            <code class="bg-gray-200 p-1 rounded">sapaPengguna("Ari")</code> —
+            “Ari” di sini disebut argumen.
           </li>
         </ul>
 
@@ -493,7 +509,7 @@ console.log(hasilSapaan); // Output: "Halo, Budi! Selamat datang di CodeTack."</
           ></iframe>
         </div>
 
-        <div class="tips flex items-center gap-3 mb-4 lg:mb-10">
+        <div class="tips flex items-start gap-3 mb-4 lg:mb-10">
           <div class="w-2 h-9 bg-amber-300"></div>
           <p class="text-left text-sm md:text-base">
             <span class="text-xl md:text-2xl">💡</span> Tips: Beri nama fungsi
@@ -513,7 +529,7 @@ console.log(hasilSapaan); // Output: "Halo, Budi! Selamat datang di CodeTack."</
         <a
           class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full lg:w-96 h-10 rounded-md mx-auto"
           href="../../tantangan/tantangan-javascript.html"
-          >Coba Sekarang</a
+          >Ikuti Tantangan</a
         >
       </div>
     </section>

@@ -332,14 +332,24 @@
           🔗 Membuat Tautan dan Gambar
         </h1>
         <p class="text-justify text-sm lg:text-base mb-8">
-          Tautan (atau hyperlink) adalah elemen kunci dalam web, berfungsi
-          sebagai penghubung antara satu halaman dengan halaman lainnya.
-          Sementara itu, gambar membuat konten menjadi lebih hidup dan
-          informatif. Dalam HTML, kita menggunakan tag
-          <code><span class="text-code">&lt;a&gt;</span></code> untuk membuat
-          tautan dan tag
-          <code><span class="text-code">&lt;img&gt;</span></code> untuk
-          menyisipkan gambar.
+          Tautan (atau hyperlink) dan gambar adalah dua elemen penting yang
+          bikin halaman web jadi lebih interaktif dan menarik. Tautan berfungsi
+          sebagai penghubung—baik itu antarhalaman di satu website, maupun ke
+          situs lain. Dengan kata lain, tag
+          <code><span class="text-code">&lt;a&gt;</span></code> dipakai untuk
+          mengarahkan pengunjung ke tempat lain hanya dengan satu klik. Kita
+          bisa menautkan teks, gambar, atau bahkan tombol menggunakan tag ini.
+          <br />
+
+          Sementara itu, tag
+          <code><span class="text-code">&lt;img&gt;</span></code> digunakan
+          untuk menampilkan gambar di halaman web. Gambar bisa digunakan untuk
+          memperjelas informasi, mempercantik tampilan, atau sekadar menarik
+          perhatian pengunjung. Supaya gambar muncul dengan benar, kita perlu
+          menentukan atribut src untuk alamat gambarnya, dan sebaiknya juga
+          menambahkan atribut alt sebagai deskripsi alternatif—ini penting untuk
+          aksesibilitas dan SEO juga. Jadi, dengan dua tag ini, kamu bisa mulai
+          membangun halaman yang lebih kaya konten dan user-friendly.
         </p>
 
         <h1 class="text-xl lg:text-2xl font-bold mb-4">
@@ -348,19 +358,22 @@
         <p class="text-justify text-sm lg:text-base mb-4">
           Tag <code><span class="text-code">&lt;a&gt;</span></code> (anchor)
           digunakan untuk membuat hyperlink. Atribut terpenting dari tag ini
-          adalah <code>href</code>, yang menentukan tujuan atau URL dari tautan
-          tersebut.
+          adalah <code class="text-code">href</code>, yang menentukan tujuan
+          atau URL dari tautan tersebut.
         </p>
         <ul class="list-disc pl-6 mb-8 text-sm lg:text-base">
           <li>
             <code class="text-code">href</code>: Menentukan URL tujuan. Ini bisa
-            berupa URL absolut (misalnya, <code>https://www.google.com</code>)
-            atau URL relatif (misalnya, <code>/halaman-lain.html</code>).
+            berupa URL absolut (misalnya,
+            <code class="bg-gray-200 px-1 rounded">https://www.google.com</code
+            >) atau URL relatif (misalnya,
+            <code class="bg-gray-200 px-1 rounded">/halaman-lain.html</code>).
           </li>
           <li>
             <code class="text-code">target</code>: Menentukan di mana tautan
             akan dibuka. Nilai yang umum digunakan adalah
-            <code>_blank</code> untuk membuka di tab baru.
+            <code class="bg-gray-200 px-1 rounded">_blank</code> untuk membuka
+            di tab baru.
           </li>
           <li>
             <code class="text-code">title</code>: Memberikan informasi tambahan
@@ -376,7 +389,7 @@
           Tag <code><span class="text-code">&lt;img&gt;</span></code> digunakan
           untuk menampilkan gambar di halaman web. Tag ini bersifat
           *self-closing*, artinya tidak memerlukan tag penutup seperti
-          <code>&lt;/img&gt;</code>.
+          <code class="text-code">&lt;/img&gt;</code>.
         </p>
         <ul class="list-disc pl-6 mb-8 text-sm lg:text-base">
           <li>
@@ -479,7 +492,7 @@
           ></iframe>
         </div>
 
-        <div class="tips flex items-center gap-3 mb-4 lg:mb-10">
+        <div class="tips flex items-start gap-3 mb-4 lg:mb-10">
           <div class="w-2 h-9 bg-amber-300"></div>
           <p class="text-left text-sm md:text-base">
             <span class="text-xl md:text-2xl">💡</span> Tips: Selalu gunakan
@@ -497,7 +510,7 @@
         <a
           class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full lg:w-96 h-10 rounded-md mx-auto"
           href="../../tantangan/tantangan-html.html"
-          >Coba Sekarang</a
+          >Ikuti Tantangan</a
         >
       </div>
     </section>

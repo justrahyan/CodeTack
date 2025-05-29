@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CodeTack - Operasi Dasar & Kondisi</title>
+    <title>CodeTack - Konsep OOP</title>
     <link rel="stylesheet" href="../../../assets/css/output.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,7 +52,7 @@
       }
 
       .editor-container {
-        height: 500px;
+        height: 500px; /* Adjusted height for potentially longer OOP demo code */
         display: flex;
         border: 1px solid #d1d5db;
         border-radius: 0.375rem;
@@ -314,7 +314,7 @@
 
       <div class="relative container mx-auto px-4 text-center">
         <h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-          Operasi Dasar & Kondisi
+          Konsep OOP
         </h1>
         <p class="text-white text-sm md:text-base">
           Materi Belajar /
@@ -322,7 +322,7 @@
             >JavaScript</a
           >
           /
-          <span class="font-semibold">Operasi Dasar & Kondisi</span>
+          <span class="font-semibold">Konsep OOP</span>
         </p>
       </div>
     </section>
@@ -332,93 +332,77 @@
         class="container mx-auto px-4 py-4 lg:py-10 lg:px-36 font-family-outfit"
       >
         <h1 class="text-2xl lg:text-3xl font-bold mb-4">
-          🧮 Operasi Dasar & Kondisi
+          🧩 Konsep Dasar Object-Oriented Programming (OOP) di JavaScript
         </h1>
         <p class="text-justify text-sm lg:text-base mb-8">
-          Setelah kita punya variabel untuk menyimpan data, hal seru berikutnya
-          adalah memanipulasi data itu menggunakan operator. Operator ini ibarat
-          alat yang memungkinkan kita melakukan berbagai operasi seperti
-          menghitung angka, membandingkan nilai, atau menggabungkan teks.
-          Misalnya, kita bisa menjumlahkan dua angka, cek apakah satu nilai
-          lebih besar dari yang lain, atau menggabungkan dua kata jadi satu
-          kalimat. <br />
-          Nah, hasil dari operasi ini biasanya kita pakai untuk mengambil
-          keputusan di program, contohnya dengan menggunakan struktur if...else.
-          Jadi, program kita bisa “berpikir” dan menjalankan perintah yang
-          berbeda berdasarkan kondisi tertentu. Misalnya, kalau nilai ujian
-          lebih besar dari 70, tampilkan “Lulus”, tapi kalau kurang, tampilkan
-          “Coba lagi”. Dengan begini, program jadi lebih pintar dan interaktif,
-          nggak cuma jalan terus tanpa memperhatikan apa yang terjadi. Seru,
-          kan?
+          Object-Oriented Programming atau yang dikenal dengan OOP adalah
+          paradigma pemrograman yang berpusat pada
+          <strong>'objek'</strong> daripada 'fungsi' dan 'logika'. Objek ini
+          adalah entitas yang memiliki data (<strong>properti</strong>) dan
+          perilaku (<strong>metode</strong>). Menggunakan OOP membantu kita
+          membuat kode yang lebih terstruktur, modular, mudah dipelihara, dan
+          dapat digunakan kembali (reusable). <br />Meskipun JavaScript pada
+          dasarnya adalah bahasa berbasis prototipe, ES6 memperkenalkan sintaks
+          <code class="bg-gray-200 p-1 rounded">class</code> yang membuatnya
+          lebih mirip dengan bahasa OOP klasik, memudahkan penerapan
+          konsep-konsep OOP yang akan kita pelajari di sini.
         </p>
 
-        <h1 class="text-xl lg:text-2xl font-bold mb-4">
-          ⚖️ Struktur Umum Operasi dan Kondisi
-        </h1>
-        <pre><code class="language-javascript">// Variabel untuk contoh
-let nilaiA = 10;
-let nilaiB = 5;
-
-// 1. Operasi Aritmatika
-let hasilTambah = nilaiA + nilaiB; // Hasil: 15
-
-// 2. Operasi Perbandingan
-let apakahLebihBesar = nilaiA > nilaiB; // Hasil: true
-
-// 3. Penggunaan dalam Kondisi if-else
-if (apakahLebihBesar) {
-  // Blok ini dijalankan jika kondisi true
-  console.log("Nilai A lebih besar dari Nilai B");
-} else {
-  // Blok ini dijalankan jika kondisi false
-  console.log("Nilai A tidak lebih besar dari Nilai B");
-}</code></pre>
-
-        <p class="mt-8">Penjelasan dari konsep di atas sebagai berikut:</p>
-        <ul class="list-disc pl-6 mb-8">
+        <h1 class="text-xl lg:text-2xl font-bold mb-4">🧱 Pilar Utama OOP</h1>
+        <p class="text-sm lg:text-base">
+          Berikut adalah konsep-konsep kunci dalam OOP yang akan kita bahas:
+        </p>
+        <ul class="list-disc pl-6 my-4 space-y-3 text-sm lg:text-base">
           <li>
-            <strong>Operasi Aritmatika</strong>: Dipakai buat hitung-hitungan,
-            seperti <code class="bg-gray-200 p-1 rounded">+</code> (tambah),
-            <code class="bg-gray-200 p-1 rounded">-</code> (kurang),
-            <code class="bg-gray-200 p-1 rounded">*</code> (kali),
-            <code class="bg-gray-200 p-1 rounded">/</code> (bagi), dan
-            <code class="bg-gray-200 p-1 rounded">%</code> (sisa bagi).
-            Misalnya:
-            <code class="bg-gray-200 p-1 rounded">10 % 3</code> hasilnya
-            <code class="bg-gray-200 p-1 rounded">1</code>.
+            <strong>Objek (Objects):</strong> Bayangkan objek sebagai benda di
+            dunia nyata. Misalnya, 'mobil' bisa menjadi objek. Objek memiliki
+            <strong>properti</strong> (seperti warna, merek, kecepatan_maksimal)
+            dan <strong>metode</strong> (fungsi yang bisa dilakukan objek,
+            seperti <code class="bg-gray-200 p-1 rounded">maju()</code>,
+            <code class="bg-gray-200 p-1 rounded">mundur()</code>,
+            <code class="bg-gray-200 p-1 rounded">klakson()</code>). Dalam
+            JavaScript, hampir semuanya bisa dianggap sebagai objek.
           </li>
           <li>
-            <strong>Operasi Perbandingan</strong>: Buat ngebandingin dua nilai.
-            Hasilnya <code class="bg-gray-200 p-1 rounded">true</code> atau
-            <code class="bg-gray-200 p-1 rounded">false</code>. Contoh:
-            <code class="bg-gray-200 p-1 rounded">5 > 3</code>,
-            <code class="bg-gray-200 p-1 rounded">a === b</code> (cek nilai dan
-            tipe).
+            <strong>Kelas (Classes - ES6):</strong> Kelas adalah cetak biru
+            (blueprint) untuk membuat objek. Kelas mendefinisikan properti dan
+            metode yang akan dimiliki oleh semua objek yang dibuat darinya.
+            Dengan sintaks ES6
+            <code class="bg-gray-200 p-1 rounded">class</code>, mendefinisikan
+            kelas menjadi lebih intuitif. Sebelum ES6, ini biasanya dilakukan
+            dengan constructor functions dan prototype.
           </li>
           <li>
-            <strong>Operasi Logika</strong>: Digunakan untuk menggabungkan
-            beberapa kondisi. Contoh:
-            <code class="bg-gray-200 p-1 rounded">&&</code> (dan) : kedua
-            kondisi harus <code class="bg-gray-200 p-1 rounded">true</code>,
-            <code>||</code> (atau) : salah satu kondisi cukup
-            <code class="bg-gray-200 p-1 rounded">true</code>.
+            <strong>Enkapsulasi (Encapsulation):</strong> Ini adalah konsep
+            membungkus data (properti) dan metode yang beroperasi pada data
+            tersebut menjadi satu unit tunggal (yaitu, kelas atau objek).
+            Tujuannya adalah untuk menyembunyikan detail implementasi internal
+            dari dunia luar dan hanya mengekspos antarmuka (interface) yang
+            diperlukan. Ini membantu melindungi data dari modifikasi yang tidak
+            sah.
           </li>
           <li>
-            <strong
-              >Kondisi
-              <code class="bg-gray-200 p-1 rounded">if-else</code></strong
-            >: Struktur kontrol paling dasar. Blok kode di dalam
-            <code class="bg-gray-200 p-1 rounded">if</code> (kondisi) akan
-            dieksekusi jika `kondisi` bernilai
-            <code class="bg-gray-200 p-1 rounded">true</code>. Jika tidak, blok
-            kode di dalam <code class="bg-gray-200 p-1 rounded">else</code> yang
-            akan dieksekusi. Anda juga bisa menambahkan
-            <code class="bg-gray-200 p-1 rounded">else if</code> untuk membuat
-            lebih banyak cabang kondisi.
+            <strong>Pewarisan (Inheritance):</strong> Pewarisan memungkinkan
+            sebuah kelas (anak/subclass) untuk mewarisi properti dan metode dari
+            kelas lain (induk/superclass). Ini mendorong penggunaan ulang kode
+            (code reusability) dan menciptakan hierarki kelas. Misalnya, kelas
+            'MobilSport' bisa mewarisi dari kelas 'Mobil' dan menambahkan
+            properti atau metode spesifik seperti
+            <code class="bg-gray-200 p-1 rounded">turboBoost()</code>.
+          </li>
+          <li>
+            <strong>Polimorfisme (Polymorphism):</strong> Secara harfiah berarti
+            "banyak bentuk". Dalam OOP, ini berarti objek dari kelas yang
+            berbeda dapat merespons metode dengan nama yang sama dengan cara
+            yang berbeda. Ini sering dicapai melalui method overriding (kelas
+            anak menyediakan implementasi spesifik dari metode yang sudah ada di
+            kelas induknya).
           </li>
         </ul>
 
-        <h1 class="text-xl lg:text-2xl font-bold mb-4">💻 Contoh Kode:</h1>
+        <h1 class="text-xl lg:text-2xl font-bold mb-4 mt-8">
+          💻 Contoh Kode OOP:
+        </h1>
         <div class="relative border rounded-md overflow-hidden mb-8">
           <div
             class="flex justify-between items-center bg-white px-4 py-2 border-b text-sm font-semibold"
@@ -434,44 +418,138 @@ if (apakahLebihBesar) {
           <pre
             style="margin: 0"
           ><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Program Diskon&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Cek Konsol Browser untuk Melihat Hasil&lt;/h1&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;title&gt;Contoh OOP JavaScript&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+    .output { border: 1px solid #ccc; padding: 10px; margin-top: 10px; background-color: #f9f9f9; border-radius: 5px;}
+    h2 { color: #333; margin-top: 15px;}
+    p { margin: 5px 0; }
+    .highlight { color: green; font-weight: bold; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Demo Konsep OOP di JavaScript&lt;/h1&gt;
+  &lt;div id="infoOutput" class="output"&gt;Hasil akan ditampilkan di sini dan di konsol browser...&lt;/div&gt;
 
-    &lt;script&gt;
-      const totalBelanja = 250000;
-      let diskon = 0; // nilai diskon awal
+  &lt;script&gt;
+    const outputDiv = document.getElementById('infoOutput');
+    let htmlContent = "";
 
-      console.log("Total Belanja Anda: Rp", totalBelanja);
+    // 1. Kelas (Class) dan Objek (Object)
+    htmlContent += "&lt;h2&gt;1. Kelas &amp; Objek&lt;/h2&gt;";
+    class Kendaraan {
+      constructor(nama, roda) {
+        this.nama = nama;     // Properti publik
+        this.roda = roda;     // Properti publik
+        let _bahanBakar = 70; // Properti "private" (disimulasikan dengan closure dalam constructor)
+                              // Hanya bisa diakses oleh metode dalam Kendaraan
 
-      if (totalBelanja >= 500000) {
-        diskon = 0.2; // diskon 20%
-        console.log("Selamat! Anda mendapatkan diskon 20%");
-      } else if (totalBelanja >= 200000) {
-        diskon = 0.1; // diskon 10%
-        console.log("Selamat! Anda mendapatkan diskon 10%");
-      } else {
-        console.log("Maaf, tidak ada diskon untuk belanja di bawah Rp 200.000");
+        // Metode untuk mendapatkan bahan bakar (getter)
+        this.getBahanBakar = function() {
+          return _bahanBakar;
+        }
+        
+        // Metode untuk mengurangi bahan bakar
+        this.pakaiBahanBakar = function(jumlah) {
+          if (jumlah &gt; 0 &amp;&amp; _bahanBakar &gt;= jumlah) {
+            _bahanBakar -= jumlah;
+            return true;
+          }
+          return false;
+        }
+         // Metode untuk menambah bahan bakar
+        this.isiBensin = function(jumlah) {
+            if(jumlah &gt; 0) {
+                 _bahanBakar += jumlah;
+                 if (_bahanBakar &gt; 100) _bahanBakar = 100; // Maksimum 100%
+                 return true;
+            }
+            return false;
+        }
       }
 
-      // Operasi aritmatika untuk menghitung harga akhir
-      const jumlahDiskon = totalBelanja * diskon;
-      const hargaAkhir = totalBelanja - jumlahDiskon;
+      // Metode (Method) publik
+      info() {
+        const infoText = `Kendaraan: ${this.nama}, Roda: ${this.roda}, Bahan Bakar: ${this.getBahanBakar()}%`;
+        console.log(infoText);
+        htmlContent += `&lt;p&gt;${infoText}&lt;/p&gt;`;
+      }
+    }
 
-      console.log("Jumlah Potongan Harga: Rp", jumlahDiskon);
-      console.log("Total yang Harus Dibayar: Rp", hargaAkhir);
-    &lt;/script&gt;
-  &lt;/body&gt;
+    let mobil = new Kendaraan("Mobil Sedan", 4);
+    let motor = new Kendaraan("Motor Sport", 2);
+
+    mobil.info(); 
+    motor.info();
+    
+    htmlContent += `&lt;p&gt;Mobil memakai bahan bakar: ${mobil.pakaiBahanBakar(10) ? 'Berhasil' : 'Gagal'}. Bahan bakar sekarang: ${mobil.getBahanBakar()}%&lt;/p&gt;`;
+    htmlContent += `&lt;p&gt;Motor mengisi bensin: ${motor.isiBensin(20) ? 'Berhasil' : 'Gagal'}. Bahan bakar sekarang: ${motor.getBahanBakar()}%&lt;/p&gt;`;
+    mobil.info(); // Cek bahan bakar mobil setelah dipakai
+    motor.info(); // Cek bahan bakar motor setelah diisi
+
+    // 2. Pewarisan (Inheritance)
+    htmlContent += "&lt;h2&gt;2. Pewarisan (Inheritance)&lt;/h2&gt;";
+    class MobilListrik extends Kendaraan {
+      constructor(nama, roda, bateraiKwh) {
+        super(nama, roda); // Memanggil constructor kelas induk (Kendaraan)
+        this.bateraiKwh = bateraiKwh; // Properti spesifik MobilListrik
+        // Karena _bahanBakar dienkapsulasi di Kendaraan, MobilListrik tidak bisa langsung akses.
+        // MobilListrik akan memiliki getBahanBakar() dan pakaiBahanBakar() dari Kendaraan.
+        // Jika MobilListrik tidak pakai bahan bakar konvensional, ini perlu penyesuaian desain.
+        // Untuk demo ini, kita anggap mobil listrik mungkin hybrid atau metode bahan bakar diabaikan.
+      }
+
+      // Override metode info
+      info() {
+        // super.info(); // Bisa panggil implementasi induk jika mau
+        const infoIndukText = `Kendaraan: ${this.nama}, Roda: ${this.roda}`; // Akses properti publik dari induk
+        const infoListrikText = `${infoIndukText}, Kapasitas Baterai: ${this.bateraiKwh} kWh. Bahan Bakar (dari induk): ${this.getBahanBakar()}%`;
+        console.log(infoListrikText);
+        htmlContent += `&lt;p class="highlight"&gt;${infoListrikText}&lt;/p&gt;`;
+      }
+
+      chargeBaterai() {
+        const chargeText = `${this.nama} sedang mengisi baterai...`;
+        console.log(chargeText);
+        htmlContent += `&lt;p&gt;${chargeText}&lt;/p&gt;`;
+      }
+    }
+
+    let tesla = new MobilListrik("Tesla Model Y", 4, 75);
+    tesla.info(); // Akan memanggil info() dari MobilListrik
+    tesla.chargeBaterai();
+    tesla.pakaiBahanBakar(5); // Metode dari parent tetap bisa dipanggil
+    tesla.info(); // Lihat efek bahan bakar (jika relevan untuk hybrid)
+
+
+    // 3. Enkapsulasi (Contoh dengan _bahanBakar dan metode get/set/pakai)
+    htmlContent += "&lt;h2&gt;3. Enkapsulasi&lt;/h2&gt;";
+    htmlContent += "&lt;p&gt;Properti <code>_bahanBakar</code> di kelas <code>Kendaraan</code> dienkapsulasi. Akses dan modifikasi dilakukan melalui metode seperti <code>getBahanBakar()</code>, <code>pakaiBahanBakar()</code>, dan <code>isiBensin()</code>.&lt;/p&gt;";
+    // console.log(mobil._bahanBakar); // Ini akan undefined karena _bahanBakar ada dalam scope constructor (closure)
+
+    // 4. Polimorfisme (Contoh dengan method overriding 'info')
+    htmlContent += "&lt;h2&gt;4. Polimorfisme&lt;/h2&gt;";
+    htmlContent += "&lt;p&gt;Metode <code>info()</code> pada <code>Kendaraan</code> dan <code>MobilListrik</code> adalah contoh polimorfisme. Objek <code>mobil</code> (instance Kendaraan) dan <code>tesla</code> (instance MobilListrik) keduanya memiliki metode <code>info()</code>, tapi perilakunya berbeda sesuai implementasi di kelasnya masing-masing.&lt;/p&gt;";
+    
+    outputDiv.innerHTML = htmlContent;
+  &lt;/script&gt;
+&lt;/body&gt;
 &lt;/html&gt;</code></pre>
         </div>
 
-        <h1 class="text-xl lg:text-2xl font-bold mb-4">⚙️ Demo Interaktif:</h1>
+        <h1 class="text-xl lg:text-2xl font-bold mb-4">
+          ⚙️ Demo Interaktif: Definisikan Kelas Sendiri
+        </h1>
+        <p class="text-sm lg:text-base mb-4">
+          Cobalah untuk membuat objek hewan peliharaan sendiri dengan mengubah
+          nilai di bawah ini dan lihat bagaimana objek dibuat berdasarkan kelas
+          <code>Peliharaan</code>.
+        </p>
         <div
           class="editor-container flex flex-col md:flex-row w-full mb-4"
-          style="height: 500px"
+          style="height: 550px"
         >
           <div
             id="editor-panel"
@@ -482,46 +560,102 @@ if (apakahLebihBesar) {
               id="htmlCode"
               class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
             >
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Cek Kelulusan</title>
-</head>
-<body>
-  <h2 id="judul-hasil"></h2>
-  <p id="keterangan-hasil"></p>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Demo OOP Interaktif - Hewan Peliharaan&lt;/title&gt;
+  &lt;style&gt;
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 15px; background-color: #f4f7f6; color: #333; }
+    .container { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input[type="text"], input[type="number"] { width: calc(100% - 22px); padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    button { padding: 10px 15px; background-color: #5cb85c; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 15px; }
+    button:hover { background-color: #4cae4c; }
+    #outputArea { margin-top: 20px; border: 1px dashed #aaa; padding: 15px; min-height: 100px; background-color: #e9ecef; border-radius: 4px; white-space: pre-wrap; font-size: 0.9em; }
+    h3 { color: #0056b3; text-align: center; margin-bottom: 20px;}
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;h3&gt;Buat Objek Hewan Peliharaan&lt;/h3&gt;
+    &lt;label for="namaHewan"&gt;Nama Hewan:&lt;/label&gt;
+    &lt;input type="text" id="namaHewan" value="Buddy"&gt;
 
-  <script>
-    window.onload = function () {
-      // --- Ubah nilai ini (antara 0 - 100) ---
-      let nilai = 85;
-      // ----------------------------------------
+    &lt;label for="jenisHewan"&gt;Jenis Hewan:&lt;/label&gt;
+    &lt;input type="text" id="jenisHewan" value="Anjing"&gt;
 
-      let grade = "";
-      let keterangan = "";
+    &lt;label for="suaraHewan"&gt;Suara Hewan:&lt;/label&gt;
+    &lt;input type="text" id="suaraHewan" value="Guk Guk!"&gt;
+    
+    &lt;label for="umurHewan"&gt;Umur (tahun):&lt;/label&gt;
+    &lt;input type="number" id="umurHewan" value="3"&gt;
 
-      // Logika Kondisi untuk menentukan grade
-      if (nilai >= 80) {
-        grade = "A";
-        keterangan = "Luar Biasa, pertahankan!";
-      } else if (nilai >= 70) {
-        grade = "B";
-        keterangan = "Bagus, tingkatkan lagi!";
-      } else if (nilai >= 60) {
-        grade = "C";
-        keterangan = "Cukup, Anda lulus.";
-      } else {
-        grade = "D";
-        keterangan = "Maaf, Anda perlu belajar lebih giat.";
+    &lt;button onclick="buatDanTampilkanHewan()"&gt;Buat Objek &amp; Tampilkan Info&lt;/button&gt;
+
+    &lt;div id="outputArea"&gt;Info hewan akan muncul di sini...&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    // Mendefinisikan Kelas Peliharaan
+    class Peliharaan {
+      constructor(nama, jenis, suara, umur) {
+        this.nama = nama;
+        this.jenis = jenis;
+        this.suara = suara;
+        this.umur = umur;
       }
 
-      // Menampilkan hasilnya ke elemen HTML
-      document.getElementById("judul-hasil").innerText = "Nilai Anda: " + nilai;
-      document.getElementById("keterangan-hasil").innerText = "Status: " + keterangan + " (Grade " + grade + ")";
-    };
-  </script>
-</body>
-</html>
+      // Metode untuk bersuara
+      bersuara() {
+        return `${this.nama} (${this.jenis}) bersuara: "${this.suara}"`;
+      }
+
+      // Metode untuk mendapatkan informasi lengkap
+      getInfo() {
+        return `Nama Peliharaan: ${this.nama}\nJenis: ${this.jenis}\nUmur: ${this.umur} tahun\nSuara Khas: ${this.suara}`;
+      }
+      
+      // Metode untuk merayakan ulang tahun
+      ulangTahun() {
+        this.umur++;
+        return `${this.nama} sekarang berumur ${this.umur} tahun! Selamat ulang tahun!`;
+      }
+    }
+
+    function buatDanTampilkanHewan() {
+      const nama = document.getElementById("namaHewan").value;
+      const jenis = document.getElementById("jenisHewan").value;
+      const suara = document.getElementById("suaraHewan").value;
+      const umur = parseInt(document.getElementById("umurHewan").value);
+      const outputDiv = document.getElementById("outputArea");
+
+      if (!nama || !jenis || !suara || isNaN(umur)) {
+        outputDiv.textContent = "Error: Mohon isi semua field dengan benar!";
+        return;
+      }
+
+      // Membuat instance (objek) dari kelas Peliharaan
+      const hewanBaru = new Peliharaan(nama, jenis, suara, umur);
+      
+      let infoText = "--- Info Hewan ---\n";
+      infoText += hewanBaru.getInfo();
+      infoText += "\n\n--- Aksi ---\n";
+      infoText += hewanBaru.bersuara();
+      // infoText += "\n" + hewanBaru.ulangTahun(); // Uncomment untuk mencoba metode ulang tahun
+
+      outputDiv.textContent = infoText;
+      
+      // Tambahan: log objek ke konsol untuk inspeksi lebih lanjut
+      console.log("Objek hewanBaru:", hewanBaru);
+    }
+
+    // Panggil sekali saat load untuk contoh awal jika diinginkan
+    // buatDanTampilkanHewan(); 
+    // Namun, lebih baik user yang klik tombol pertama kali untuk demo ini.
+    document.getElementById("outputArea").textContent = "Klik tombol 'Buat Objek & Tampilkan Info' untuk memulai.";
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </textarea
             >
           </div>
@@ -537,11 +671,12 @@ if (apakahLebihBesar) {
         <div class="tips flex items-start gap-3 mb-4 lg:mb-10">
           <div class="w-2 h-9 bg-amber-300"></div>
           <p class="text-left text-sm md:text-base">
-            <span class="text-xl md:text-2xl">💡</span> Tips: Selalu gunakan
-            operator perbandingan strict <code>===</code> daripada
-            <code>==</code>. Operator <code>===</code> memastikan nilai dan tipe
-            datanya sama, sehingga lebih aman dan terhindar dari bug yang tidak
-            terduga.
+            <span class="text-xl md:text-2xl">💡</span> Tips: Gunakan sintaks
+            <code>class</code> ES6 untuk OOP di JavaScript modern karena lebih
+            bersih dan mirip bahasa OOP lain. Namun, jangan lupakan bahwa di
+            baliknya, JavaScript tetap menggunakan pewarisan berbasis prototipe
+            (prototypal inheritance). Memahami prototipe akan memberi Anda
+            pemahaman yang lebih dalam tentang cara kerja objek di JavaScript.
           </p>
         </div>
       </div>
@@ -566,7 +701,7 @@ if (apakahLebihBesar) {
         <div class="grid grid-cols-3 items-center gap-4">
           <div class="flex justify-start">
             <a
-              href="./variabel-dan-tipe-data.html"
+              href="./looping.html"
               class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
             >
               <svg
@@ -585,7 +720,7 @@ if (apakahLebihBesar) {
                   <circle cx="12" cy="12" r="9" />
                 </g>
               </svg>
-              <span class="hidden sm:inline">Variabel dan Tipe Data</span>
+              <span class="hidden sm:inline">Looping (Perulangan)</span>
             </a>
           </div>
 
@@ -593,16 +728,16 @@ if (apakahLebihBesar) {
             <p
               class="text-center text-primary font-semibold lg:text-lg text-sm whitespace-nowrap"
             >
-              Operasi Dasar & Kondisi
+              Konsep OOP
             </p>
           </div>
 
           <div class="flex justify-end">
             <a
-              href="./fungsi-sederhana.html"
-              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
+              href="#"
+              class="invisible inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
             >
-              <span class="hidden sm:inline">Fungsi Sederhana</span>
+              <span class="hidden sm:inline">Materi Selanjutnya</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-6 md:w-5 h-6 md:h-5"
@@ -625,10 +760,8 @@ if (apakahLebihBesar) {
       </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-primary text-white font-family-outfit py-16 px-6">
       <div class="max-w-6xl mx-auto">
-        <!-- Footer Content Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div class="lg:col-span-1">
             <div class="mb-6">
@@ -735,7 +868,6 @@ if (apakahLebihBesar) {
           </div>
         </div>
 
-        <!-- Footer Bottom -->
         <div class="border-t border-blue-400 pt-8">
           <p class="text-center text-blue-100 text-sm">
             © 2025 CodeTack. All rights reserved.
@@ -759,46 +891,88 @@ if (apakahLebihBesar) {
     <script>
       // Inisialisasi CodeMirror
       document.addEventListener("DOMContentLoaded", function () {
+        // Highlight syntax dengan Prism
         Prism.highlightAll();
 
+        // Setup CodeMirror editor
         const textarea = document.getElementById("htmlCode");
         const preview = document.getElementById("preview");
 
-        const editor = CodeMirror.fromTextArea(textarea, {
-          lineNumbers: true,
-          mode: "htmlmixed",
-          theme: "material",
-          indentUnit: 2,
-          smartIndent: true,
-          tabSize: 2,
-          indentWithTabs: false,
-          lineWrapping: true,
-          foldGutter: true,
-          gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-          autoCloseBrackets: true,
-          autoCloseTags: true,
-          matchBrackets: true,
-          matchTags: true,
-        });
+        if (textarea && preview) {
+          const editor = CodeMirror.fromTextArea(textarea, {
+            lineNumbers: true,
+            mode: "htmlmixed",
+            theme: "material",
+            indentUnit: 2,
+            smartIndent: true,
+            tabSize: 2,
+            indentWithTabs: false,
+            lineWrapping: true,
+            foldGutter: true,
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+            autoCloseBrackets: true,
+            autoCloseTags: true,
+            matchBrackets: true,
+            matchTags: true,
+          });
 
-        // Update preview saat code berubah
-        function updatePreview() {
-          const code = editor.getValue();
-          const doc = preview.contentDocument || preview.contentWindow.document;
-          doc.open();
-          doc.write(code);
-          doc.close();
+          let updateTimeout;
+          function updatePreview() {
+            let code = editor.getValue();
+            // Wrapper sederhana untuk script agar dijalankan setelah DOM demo siap
+            if (
+              code.includes("<script>") &&
+              !code.includes("window.onload") &&
+              !code.includes('window.addEventListener("DOMContentLoaded"')
+            ) {
+              code = code.replace(
+                /<script>([\s\S]*?)<\/script>/,
+                // Amankan dari error yang mungkin menghentikan eksekusi preview
+                '<script>window.addEventListener("DOMContentLoaded", function() { try { $1 } catch(e) { console.error("Error in demo preview:", e); document.body.innerHTML = "<pre style=\\"color:red; padding:10px; border:1px solid red; background-color:#ffe0e0;\\">Error in Script: " + e.message + "\\nAt line: " + (e.lineNumber || "N/A") + "</pre>"; } });<\/script>'
+              );
+            }
+
+            const doc =
+              preview.contentDocument || preview.contentWindow.document;
+            doc.open();
+            doc.write(code);
+            doc.close();
+          }
+
+          editor.on("change", function () {
+            clearTimeout(updateTimeout);
+            updateTimeout = setTimeout(updatePreview, 300);
+          });
+          updatePreview();
+        } else {
+          console.warn(
+            "CodeMirror textarea atau preview iframe tidak ditemukan."
+          );
         }
-
-        // Event listener saat ada perubahan di editor
-        editor.on("change", function () {
-          clearTimeout(window.updateTimeout);
-          window.updateTimeout = setTimeout(updatePreview, 300);
-        });
-
-        // Update awal saat halaman dimuat
-        updatePreview();
       });
+
+      function salinKode(button) {
+        const preElement = button.closest(".relative").querySelector("pre");
+        if (preElement) {
+          const codeElement = preElement.querySelector("code");
+          const codeToCopy = codeElement.innerText;
+          navigator.clipboard
+            .writeText(codeToCopy)
+            .then(() => {
+              button.innerText = "Berhasil Disalin!";
+              setTimeout(() => {
+                button.innerText = "Salin Kode";
+              }, 2000);
+            })
+            .catch((err) => {
+              console.error("Gagal menyalin kode: ", err);
+              button.innerText = "Gagal Salin";
+              setTimeout(() => {
+                button.innerText = "Salin Kode";
+              }, 2000);
+            });
+        }
+      }
     </script>
   </body>
 </html>

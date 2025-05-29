@@ -333,13 +333,23 @@
       >
         <h1 class="text-2xl lg:text-3xl font-bold mb-4">🖱️ Event Handling</h1>
         <p class="text-justify text-sm lg:text-base mb-8">
-          Inilah inti dari interaktivitas web!
-          <strong>Event Handling</strong> adalah proses "mendengarkan" dan
-          "merespons" aksi yang dilakukan oleh pengguna di halaman web. Aksi
-          ini, atau yang disebut <strong>event</strong>, bisa berupa klik mouse,
-          menekan tombol keyboard, menggerakkan mouse, dan masih banyak lagi.
-          Dengan menangani event, kita bisa membuat fungsi JavaScript berjalan
-          tepat saat pengguna melakukan sesuatu.
+          Inilah inti dari interaktivitas web! Event handling adalah bagian
+          penting yang membuat halaman web terasa responsif terhadap tindakan
+          pengguna. Bayangkan halaman web seperti panggung teater—tanpa
+          interaksi, semuanya statis. Tapi begitu pengguna mengklik tombol,
+          menggeser mouse, atau mengetik sesuatu, itu seperti memberi isyarat
+          pada aktor (JavaScript) untuk mulai bertindak. Dan dengan event
+          handling, kita bisa mengatur skrip apa yang harus dijalankan saat
+          "pertunjukan" dimulai. <br />
+          Contohnya, saat pengguna menekan tombol "Kirim", kita bisa buat fungsi
+          JavaScript yang memvalidasi formulir atau menampilkan pesan sukses.
+          Ini dilakukan dengan metode seperti
+          <code class="bg-gray-200 rounded p-1">addEventListener()</code>, yang
+          memungkinkan kita mendengarkan aksi tertentu (misalnya
+          <code class="bg-gray-200 rounded p-1">click</code>) lalu meresponsnya
+          dengan kode tertentu. Dengan cara ini, kita bisa menciptakan
+          pengalaman pengguna yang lebih interaktif dan menyenangkan—tanpa harus
+          memuat ulang halaman!
         </p>
 
         <h1 class="text-xl lg:text-2xl font-bold mb-4">
@@ -366,28 +376,35 @@ tombol.addEventListener("click", function() {
             "dengarkan" aksinya.
           </li>
           <li>
-            <strong>`addEventListener(event, function)`</strong>: Ini adalah
-            metode utama untuk event handling. Metode ini menerima dua argumen
-            utama:
+            <code class="bg-gray-200 rounded p-1"
+              >addEventListener(event, function)</code
+            >: Ini adalah metode utama untuk event handling. Metode ini menerima
+            dua argumen utama:
             <ul class="list-disc pl-6 mt-2">
               <li>
-                <strong>`event`</strong>: Nama event yang ingin didengarkan,
-                ditulis sebagai string (contoh: <code>"click"</code>,
-                <code>"mouseover"</code>, <code>"keydown"</code>).
+                <code class="bg-gray-200 rounded p-1">event</code>: Nama event
+                yang ingin didengarkan, ditulis sebagai string (contoh:
+                <code class="bg-gray-200 rounded p-1">"click"</code>,
+                <code class="bg-gray-200 rounded p-1">"mouseover"</code>,
+                <code class="bg-gray-200 rounded p-1">"keydown"</code>).
               </li>
               <li>
-                <strong>`function`</strong>: Fungsi yang akan dijalankan
-                (disebut *event handler* atau *callback function*) ketika event
-                tersebut terjadi.
+                <code class="bg-gray-200 rounded p-1">function</code>: Fungsi
+                yang akan dijalankan (disebut *event handler* atau *callback
+                function*) ketika event tersebut terjadi.
               </li>
             </ul>
           </li>
           <li>
             <strong>Event Populer</strong>: Ada banyak sekali jenis event,
-            beberapa yang paling umum adalah <code>click</code> (saat diklik),
-            <code>mouseover</code> (saat kursor mouse masuk ke area elemen),
-            <code>mouseout</code> (saat kursor keluar), dan
-            <code>keydown</code> (saat tombol keyboard ditekan).
+            beberapa yang paling umum adalah
+            <code class="bg-gray-200 rounded p-1">click</code> (saat diklik),
+            <code class="bg-gray-200 rounded p-1">mouseover</code> (saat kursor
+            mouse masuk ke area elemen),
+            <code class="bg-gray-200 rounded p-1">mouseout</code> (saat kursor
+            keluar), dan
+            <code class="bg-gray-200 rounded p-1">keydown</code> (saat tombol
+            keyboard ditekan).
           </li>
         </ul>
 
@@ -501,7 +518,7 @@ tombol.addEventListener("click", function() {
             style="height: 100%"
           ></iframe>
         </div>
-        <div class="tips flex items-center gap-3 mb-4 lg:mb-10">
+        <div class="tips flex items-start gap-3 mb-4 lg:mb-10">
           <div class="w-2 h-9 bg-amber-300"></div>
           <p class="text-left text-sm md:text-base">
             <span class="text-xl md:text-2xl">💡</span> Tips: Anda bisa
@@ -520,7 +537,7 @@ tombol.addEventListener("click", function() {
         <a
           class="bg-primary flex items-center justify-center text-sm md:text-base text-white w-full lg:w-96 h-10 rounded-md mx-auto"
           href="../../tantangan/tantangan-javascript.html"
-          >Coba Sekarang</a
+          >Ikuti Tantangan</a
         >
       </div>
     </section>
@@ -565,10 +582,10 @@ tombol.addEventListener("click", function() {
 
           <div class="flex justify-end">
             <a
-              href="#"
-              class="invisible inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
+              href="./looping.html"
+              class="inline-flex items-center gap-2 text-gray-400 hover:underline hover:text-paragraph text-sm lg:text-base"
             >
-              <span class="hidden sm:inline"></span>
+              <span class="hidden sm:inline">Looping (Perulangan)</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="w-6 md:w-5 h-6 md:h-5"
