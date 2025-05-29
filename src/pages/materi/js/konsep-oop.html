@@ -923,7 +923,8 @@
             if (
               code.includes("<script>") &&
               !code.includes("window.onload") &&
-              !code.includes('window.addEventListener("DOMContentLoaded"')
+              !code.includes('window.addEventListener("DOMContentLoaded"') &&
+              !code.includes("onclick=")
             ) {
               code = code.replace(
                 /<script>([\s\S]*?)<\/script>/,
