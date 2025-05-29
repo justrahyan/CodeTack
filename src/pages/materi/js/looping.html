@@ -558,25 +558,23 @@ do {
   <div id="loopOutput">Hasil loop akan muncul di sini.</div>
 
   <script>
-    window.onload = function() {
-      function jalankanLoop() {
-        const jumlah = parseInt(document.getElementById("jumlahItem").value);
-        const teksDasar = document.getElementById("teksItem").value || "Item";
-        const outputDiv = document.getElementById("loopOutput");
-        outputDiv.innerHTML = ""; // Bersihkan output sebelumnya
+    function jalankanLoop() {
+      const jumlah = parseInt(document.getElementById("jumlahItem").value);
+      const teksDasar = document.getElementById("teksItem").value || "Item";
+      const outputDiv = document.getElementById("loopOutput");
+      outputDiv.innerHTML = ""; // Bersihkan output sebelumnya
 
-        if (isNaN(jumlah) || jumlah < 1 || jumlah > 10) {
-          outputDiv.innerHTML = "<p style='color:red;'>Masukkan jumlah item antara 1 dan 10.</p>";
-          return;
-        }
+      if (isNaN(jumlah) || jumlah < 1 || jumlah > 10) {
+        outputDiv.innerHTML = "<p style='color:red;'>Masukkan jumlah item antara 1 dan 10.</p>";
+        return;
+      }
 
-        outputDiv.innerHTML += "<p>Daftar item yang dibuat:</p>";
-        for (let i = 1; i <= jumlah; i++) {
-          let newItem = document.createElement("div");
-          newItem.classList.add("item");
-          newItem.textContent = teksDasar + " ke-" + i;
-          outputDiv.appendChild(newItem);
-        }
+      outputDiv.innerHTML += "<p>Daftar item yang dibuat:</p>";
+      for (let i = 1; i <= jumlah; i++) {
+        let newItem = document.createElement("div");
+        newItem.classList.add("item");
+        newItem.textContent = teksDasar + " ke-" + i;
+        outputDiv.appendChild(newItem);
       }
     }
   </script>
