@@ -849,7 +849,11 @@ do {
 
             // Wrapper sederhana untuk script agar dijalankan setelah DOM demo siap
             // dan untuk menghindari masalah dengan document.write setelah halaman utama dimuat.
-            if (code.includes("<script>") && !code.includes("window.onload")) {
+            if (
+              code.includes("<script>") &&
+              !code.includes("window.onload") &&
+              !code.includes("onclick=")
+            ) {
               code = code.replace(
                 /<script>([\s\S]*?)<\/script>/,
                 '<script>window.addEventListener("DOMContentLoaded", function() { try { $1 } catch(e) { console.error(e); document.body.innerHTML = "<pre style=\\"color:red;\\">Error: " + e.message + "</pre>"; } });<\/script>'
