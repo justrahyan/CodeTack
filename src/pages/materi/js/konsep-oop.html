@@ -560,11 +560,11 @@
               id="htmlCode"
               class="w-full h-full p-3 text-sm font-mono resize-none border-none focus:outline-none"
             >
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;title&gt;Demo OOP Interaktif - Hewan Peliharaan&lt;/title&gt;
-  &lt;style&gt;
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Demo OOP Interaktif - Hewan Peliharaan</title>
+  <style>
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 15px; background-color: #f4f7f6; color: #333; }
     .container { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
     label { display: block; margin-top: 10px; font-weight: bold; }
@@ -573,29 +573,29 @@
     button:hover { background-color: #4cae4c; }
     #outputArea { margin-top: 20px; border: 1px dashed #aaa; padding: 15px; min-height: 100px; background-color: #e9ecef; border-radius: 4px; white-space: pre-wrap; font-size: 0.9em; }
     h3 { color: #0056b3; text-align: center; margin-bottom: 20px;}
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;div class="container"&gt;
-    &lt;h3&gt;Buat Objek Hewan Peliharaan&lt;/h3&gt;
-    &lt;label for="namaHewan"&gt;Nama Hewan:&lt;/label&gt;
-    &lt;input type="text" id="namaHewan" value="Buddy"&gt;
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>Buat Objek Hewan Peliharaan</h3>
+    <label for="namaHewan">Nama Hewan:</label>
+    <input type="text" id="namaHewan" value="Buddy">
 
-    &lt;label for="jenisHewan"&gt;Jenis Hewan:&lt;/label&gt;
-    &lt;input type="text" id="jenisHewan" value="Anjing"&gt;
+    <label for="jenisHewan">Jenis Hewan:</label>
+    <input type="text" id="jenisHewan" value="Anjing">
 
-    &lt;label for="suaraHewan"&gt;Suara Hewan:&lt;/label&gt;
-    &lt;input type="text" id="suaraHewan" value="Guk Guk!"&gt;
+    <label for="suaraHewan">Suara Hewan:</label>
+    <input type="text" id="suaraHewan" value="Guk Guk!">
     
-    &lt;label for="umurHewan"&gt;Umur (tahun):&lt;/label&gt;
-    &lt;input type="number" id="umurHewan" value="3"&gt;
+    <label for="umurHewan">Umur (tahun):</label>
+    <input type="number" id="umurHewan" value="3">
 
-    &lt;button onclick="buatDanTampilkanHewan()"&gt;Buat Objek &amp; Tampilkan Info&lt;/button&gt;
+    <button onclick="buatDanTampilkanHewan()">Buat Objek &amp; Tampilkan Info</button>
 
-    &lt;div id="outputArea"&gt;Info hewan akan muncul di sini...&lt;/div&gt;
-  &lt;/div&gt;
+    <div id="outputArea">Info hewan akan muncul di sini...</div>
+  </div>
 
-  &lt;script&gt;
+  <script>
     // Mendefinisikan Kelas Peliharaan
     class Peliharaan {
       constructor(nama, jenis, suara, umur) {
@@ -653,9 +653,9 @@
     // buatDanTampilkanHewan(); 
     // Namun, lebih baik user yang klik tombol pertama kali untuk demo ini.
     document.getElementById("outputArea").textContent = "Klik tombol 'Buat Objek & Tampilkan Info' untuk memulai.";
-  &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+  </script>
+</body>
+</html>
 </textarea
             >
           </div>
@@ -950,29 +950,6 @@
           );
         }
       });
-
-      function salinKode(button) {
-        const preElement = button.closest(".relative").querySelector("pre");
-        if (preElement) {
-          const codeElement = preElement.querySelector("code");
-          const codeToCopy = codeElement.innerText;
-          navigator.clipboard
-            .writeText(codeToCopy)
-            .then(() => {
-              button.innerText = "Berhasil Disalin!";
-              setTimeout(() => {
-                button.innerText = "Salin Kode";
-              }, 2000);
-            })
-            .catch((err) => {
-              console.error("Gagal menyalin kode: ", err);
-              button.innerText = "Gagal Salin";
-              setTimeout(() => {
-                button.innerText = "Salin Kode";
-              }, 2000);
-            });
-        }
-      }
     </script>
   </body>
 </html>
