@@ -795,6 +795,11 @@ ${bodyContent}
             message = "Tag <img> tidak ditemukan di dalam tag <a>.";
           } else if (!aTag.hasAttribute("href")) {
             message = "Tag <a> tidak memiliki atribut 'href'.";
+          } else if (
+            !aTag.hasAttribute("target") ||
+            aTag.getAttribute("target") !== "_blank"
+          ) {
+            message = "Tag <a> harus memiliki atribut 'target=\"_blank\"'.";
           } else if (!imgTag.hasAttribute("src")) {
             message = "Tag <img> tidak memiliki atribut 'src'.";
           } else if (!imgTag.hasAttribute("alt")) {
