@@ -270,19 +270,20 @@
               <!-- Modal Overlay -->
               <div
                 id="image-modal"
-                class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden mb-0"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden"
               >
-                <video
-                  id="zoomed-image"
-                  src="../../../assets/video/preview-logo-dengan-tautan.mp4"
-                  autoplay
-                  loop
-                  muted
-                  playsinline
-                  class="w-full rounded"
-                ></video>
+                <div class="max-w-2xl w-full px-4">
+                  <video
+                    id="zoomed-image"
+                    src="../../../assets/video/preview-logo-dengan-tautan.mp4"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="w-full rounded"
+                  ></video>
+                </div>
               </div>
-
               <p class="text-xs md:text-sm text-gray-600">
                 Sebuah gambar (logo) tampil di halaman. Saat diklik, akan
                 membuka tab baru menuju halaman yang kamu tuju.
