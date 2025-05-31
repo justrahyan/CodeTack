@@ -218,6 +218,13 @@
                     <code class="bg-green-100 px-1 rounded">alt</code> pada
                     gambar
                   </li>
+                  <li>
+                    • Tambahkan
+                    <code class="bg-green-100 px-1 rounded"
+                      >target="_blank"</code
+                    >
+                    pada link
+                  </li>
                 </ul>
               </div>
 
@@ -226,14 +233,57 @@
                   🖥️ Preview yang Diharapkan:
                 </p>
                 <div
-                  class="bg-white rounded border text-xs md:text-sm relative p-4"
+                  class="bg-white rounded border text-xs md:text-sm relative"
                 >
-                  <p>
-                    Sebuah gambar (logo) tampil di halaman. Saat diklik, akan
-                    membuka tab baru menuju halaman yang kamu tuju.
-                  </p>
+                  <video
+                    id="preview-video"
+                    src="../../../assets/video/preview-logo-dengan-tautan.mp4"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="w-full rounded"
+                  ></video>
+                  <!-- Tombol Zoom -->
+                  <button
+                    id="zoom-button"
+                    class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
+                      />
+                    </svg>
+                  </button>
                 </div>
               </div>
+              <!-- Modal Overlay -->
+              <div
+                id="image-modal"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden mb-0"
+              >
+                <img
+                  id="zoomed-image"
+                  src="../../../assets/img/preview-profil-diri.png"
+                  alt="Zoomed"
+                  class="max-w-full max-h-full rounded shadow-lg"
+                />
+              </div>
+
+              <p class="text-xs md:text-sm text-gray-600">
+                Sebuah gambar (logo) tampil di halaman. Saat diklik, akan
+                membuka tab baru menuju halaman yang kamu tuju.
+              </p>
             </div>
           </div>
 
@@ -333,6 +383,13 @@
                     <code class="bg-green-100 px-1 rounded">alt</code> pada
                     gambar
                   </li>
+                  <li>
+                    • Tambahkan
+                    <code class="bg-green-100 px-1 rounded"
+                      >target="_blank"</code
+                    >
+                    pada link
+                  </li>
                 </ul>
               </div>
 
@@ -341,14 +398,57 @@
                   🖥️ Preview yang Diharapkan:
                 </p>
                 <div
-                  class="bg-white rounded border text-xs md:text-sm relative p-4"
+                  class="bg-white rounded border text-xs md:text-sm relative"
                 >
-                  <p>
-                    Sebuah gambar (logo) tampil di halaman. Saat diklik, akan
-                    membuka tab baru menuju halaman yang kamu tuju.
-                  </p>
+                  <video
+                    id="preview-video"
+                    src="../../../assets/video/preview-logo-dengan-tautan.mp4"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    class="w-full rounded"
+                  ></video>
+                  <!-- Tombol Zoom -->
+                  <button
+                    id="zoom-button-responsive"
+                    class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
+                      />
+                    </svg>
+                  </button>
                 </div>
               </div>
+              <!-- Modal Overlay -->
+              <div
+                id="image-modal-responsive"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center hidden mb-0"
+                style="z-index: 75"
+              >
+                <img
+                  id="zoomed-image-responsive"
+                  src="../../../assets/img/preview-profil-diri.png"
+                  alt="Zoomed"
+                  class="max-w-full max-h-full rounded shadow-lg"
+                />
+              </div>
+              <p class="text-xs md:text-sm text-gray-600">
+                Sebuah gambar (logo) tampil di halaman. Saat diklik, akan
+                membuka tab baru menuju halaman yang kamu tuju.
+              </p>
             </div>
           </div>
 
@@ -831,6 +931,42 @@ ${bodyContent}
             btnGambarMobile.classList.add("text-blue-500");
           }, 2000);
         });
+      });
+    </script>
+
+    <!-- Hasil yang diharapkan -->
+    <script>
+      const zoomBtn = document.getElementById("zoom-button");
+      const modal = document.getElementById("image-modal");
+      const zoomedImage = document.getElementById("zoomed-image");
+
+      zoomBtn.addEventListener("click", () => {
+        modal.classList.remove("hidden");
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal || e.target === zoomedImage) {
+          modal.classList.add("hidden");
+        }
+      });
+    </script>
+
+    <!-- Hasil yang diharapkan responsive -->
+    <script>
+      const zoomResponsive = document.getElementById("zoom-button-responsive");
+      const modalResponsive = document.getElementById("image-modal-responsive");
+      const zoomImageResponsive = document.getElementById(
+        "zoomed-image-responsive"
+      );
+
+      zoomResponsive.addEventListener("click", () => {
+        modalResponsive.classList.remove("hidden");
+      });
+
+      modalResponsive.addEventListener("click", (e) => {
+        if (e.target === modalResponsive && e.target !== zoomImageResponsive) {
+          modalResponsive.classList.add("hidden");
+        }
       });
     </script>
 
