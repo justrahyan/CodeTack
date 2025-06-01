@@ -215,8 +215,12 @@
                 </p>
                 <ul class="space-y-1 text-green-700 text-xs md:text-sm">
                   <li>• Link berada dalam satu div/nav</li>
-                  <li>• Gunakan display: flex;</li>
+                  <li>
+                    • Gunakan
+                    <code class="bg-green-100 p-1 rounded">display: flex;</code>
+                  </li>
                   <li>• Tautan tampil sejajar (horizontal)</li>
+                  <li>• Hilangkan bullet pada list</li>
                 </ul>
               </div>
 
@@ -238,33 +242,17 @@
                         border-radius: 5px;
                       "
                     >
-                      <a
-                        href="#"
-                        style="
-                          color: #2563eb;
-                          text-decoration: none;
-                          padding: 8px 16px;
-                        "
-                        >Beranda</a
-                      >
-                      <a
-                        href="#"
-                        style="
-                          color: #2563eb;
-                          text-decoration: none;
-                          padding: 8px 16px;
-                        "
-                        >Tentang</a
-                      >
-                      <a
-                        href="#"
-                        style="
-                          color: #2563eb;
-                          text-decoration: none;
-                          padding: 8px 16px;
-                        "
-                        >Kontak</a
-                      >
+                      <ul style="display: flex; gap: 20px">
+                        <li>
+                          <a>Beranda</a>
+                        </li>
+                        <li>
+                          <a>Tentang</a>
+                        </li>
+                        <li>
+                          <a>Kontak</a>
+                        </li>
+                      </ul>
                     </nav>
                   </div>
                   <!-- Tombol Zoom -->
@@ -315,33 +303,17 @@
                       font-size: 1.2rem;
                     "
                   >
-                    <a
-                      href="#"
-                      style="
-                        color: #2563eb;
-                        text-decoration: none;
-                        padding: 12px 20px;
-                      "
-                      >Beranda</a
-                    >
-                    <a
-                      href="#"
-                      style="
-                        color: #2563eb;
-                        text-decoration: none;
-                        padding: 12px 20px;
-                      "
-                      >Tentang</a
-                    >
-                    <a
-                      href="#"
-                      style="
-                        color: #2563eb;
-                        text-decoration: none;
-                        padding: 12px 20px;
-                      "
-                      >Kontak</a
-                    >
+                    <ul style="display: flex; gap: 20px">
+                      <li>
+                        <a>Beranda</a>
+                      </li>
+                      <li>
+                        <a>Tentang</a>
+                      </li>
+                      <li>
+                        <a>Kontak</a>
+                      </li>
+                    </ul>
                   </nav>
                 </div>
               </div>
@@ -412,8 +384,12 @@
                 </p>
                 <ul class="space-y-1 text-green-700 text-xs md:text-sm">
                   <li>• Link berada dalam satu div/nav</li>
-                  <li>• Gunakan display: flex;</li>
+                  <li>
+                    • Gunakan
+                    <code class="bg-green-100 p-1 rounded">display: flex;</code>
+                  </li>
                   <li>• Tautan tampil sejajar (horizontal)</li>
+                  <li>• Hilangkan bullet pada list</li>
                 </ul>
               </div>
 
@@ -431,42 +407,26 @@
                         justify-content: space-around;
                         align-items: center;
                         background-color: #f3f4f6;
-                        padding: 8px;
+                        padding: 15px;
                         border-radius: 5px;
                       "
                     >
-                      <a
-                        href="#"
-                        style="
-                          color: #2563eb;
-                          text-decoration: none;
-                          padding: 8px 8px;
-                        "
-                        >Beranda</a
-                      >
-                      <a
-                        href="#"
-                        style="
-                          color: #2563eb;
-                          text-decoration: none;
-                          padding: 8px 8px;
-                        "
-                        >Tentang</a
-                      >
-                      <a
-                        href="#"
-                        style="
-                          color: #2563eb;
-                          text-decoration: none;
-                          padding: 8px 8px;
-                        "
-                        >Kontak</a
-                      >
+                      <ul style="display: flex; gap: 20px">
+                        <li>
+                          <a>Beranda</a>
+                        </li>
+                        <li>
+                          <a>Tentang</a>
+                        </li>
+                        <li>
+                          <a>Kontak</a>
+                        </li>
+                      </ul>
                     </nav>
                   </div>
                   <!-- Tombol Zoom -->
                   <button
-                    id="zoom-button-responsive"
+                    id="zoom-button"
                     class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
                   >
                     <svg
@@ -490,9 +450,8 @@
 
               <!-- Modal Overlay -->
               <div
-                id="image-modal-responsive"
-                class="fixed inset-0 bg-black/70 flex items-center justify-center hidden mb-0"
-                style="z-index: 75"
+                id="image-modal"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden mb-0"
               >
                 <div
                   style="
@@ -508,38 +467,22 @@
                       justify-content: space-around;
                       align-items: center;
                       background-color: #f3f4f6;
-                      padding: 8px;
+                      padding: 20px;
                       border-radius: 8px;
                       font-size: 1.2rem;
                     "
                   >
-                    <a
-                      href="#"
-                      style="
-                        color: #2563eb;
-                        text-decoration: none;
-                        padding: 8px 12px;
-                      "
-                      >Beranda</a
-                    >
-                    <a
-                      href="#"
-                      style="
-                        color: #2563eb;
-                        text-decoration: none;
-                        padding: 8px 12px;
-                      "
-                      >Tentang</a
-                    >
-                    <a
-                      href="#"
-                      style="
-                        color: #2563eb;
-                        text-decoration: none;
-                        padding: 8px 12px;
-                      "
-                      >Kontak</a
-                    >
+                    <ul style="display: flex; gap: 20px">
+                      <li>
+                        <a>Beranda</a>
+                      </li>
+                      <li>
+                        <a>Tentang</a>
+                      </li>
+                      <li>
+                        <a>Kontak</a>
+                      </li>
+                    </ul>
                   </nav>
                 </div>
               </div>
@@ -909,9 +852,17 @@
 </head>
 <body>
   <nav>
-    <a href="#">Beranda</a>
-    <a href="#">Tentang</a>
-    <a href="#">Kontak</a>
+    <ul>
+      <li>
+        <a>Beranda</a>
+      </li>
+      <li>
+        <a>Tentang</a>
+      </li>
+      <li>
+        <a>Kontak</a>
+      </li>
+    </ul>
   </nav>
 </body>
 </html>`;
@@ -954,9 +905,17 @@
 </head>
 <body>
   <nav>
-    <a href="#">Beranda</a>
-    <a href="#">Tentang</a>
-    <a href="#">Kontak</a>
+    <ul>
+      <li>
+        <a>Beranda</a>
+      </li>
+      <li>
+        <a>Tentang</a>
+      </li>
+      <li>
+        <a>Kontak</a>
+      </li>
+    </ul>
   </nav>
 </body>
 </html>`;
@@ -1010,47 +969,59 @@
           const parser = new DOMParser();
           const doc = parser.parseFromString(fullHtml, "text/html");
 
-          // Get the nav element and its children
           const navElement = doc.querySelector("nav");
-          const links = navElement ? navElement.querySelectorAll("a") : [];
+          const linkElements = navElement
+            ? navElement.querySelectorAll("a")
+            : [];
 
           const overlayIcon = document.getElementById("overlayIcon");
           const overlayTitle = document.getElementById("overlayTitle");
           const overlayMessage = document.getElementById("overlayMessage");
 
           let isValid = true;
-          let errorMessages = [];
+          const errorMessages = [];
 
-          // Validation checks
+          // Validasi struktur HTML
           if (!navElement) {
             isValid = false;
             errorMessages.push("ada elemen <nav> dalam HTML");
           }
 
-          if (navElement && links.length < 3) {
+          if (navElement && linkElements.length < 3) {
             isValid = false;
             errorMessages.push("ada minimal 3 tautan (<a>) dalam <nav>");
           }
 
-          // Check if nav specifically has display: flex in CSS
-          const navFlexPattern = /nav\s*\{[^}]*display\s*:\s*flex[^}]*\}/i;
-          const hasNavFlex = navFlexPattern.test(fullHtml.replace(/\s+/g, " "));
+          // Validasi CSS
+          const cssText = fullHtml.replace(/\s+/g, " "); // simplify whitespace
 
-          if (!hasNavFlex) {
+          // Cek apakah ul memiliki display: flex
+          const ulFlexPattern = /ul\s*\{[^}]*display\s*:\s*flex[^}]*\}/i;
+          const hasUlFlex = ulFlexPattern.test(cssText);
+          if (!hasUlFlex) {
             isValid = false;
-            errorMessages.push("'display: flex' diterapkan pada selector nav");
+            errorMessages.push("'display: flex' diterapkan pada selector ul");
           }
 
+          // Cek apakah li memiliki list-style: none
+          const liListNonePattern = /li\s*\{[^}]*list-style\s*:\s*none[^}]*\}/i;
+          const hasLiListNone = liListNonePattern.test(cssText);
+          if (!hasLiListNone) {
+            isValid = false;
+            errorMessages.push(
+              "'list-style: none' diterapkan pada selector li"
+            );
+          }
+
+          // Tampilkan hasil
           if (isValid) {
-            // Success
             overlayIcon.textContent = "✓";
             overlayIcon.className = "text-green-600 text-6xl mb-4";
             overlayTitle.textContent = "Jawaban Benar!";
             overlayTitle.className = "text-xl font-bold text-green-600 mb-2";
             overlayMessage.textContent =
-              "Navbar Flexbox kamu sudah dibuat dengan benar! Semua elemen sudah sejajar horizontal menggunakan flexbox.";
+              "Navbar Flexbox kamu sudah dibuat dengan benar! Elemen sudah tersusun horizontal dengan flexbox dan tidak memiliki bullet.";
           } else {
-            // Needs improvement
             overlayIcon.textContent = "!";
             overlayIcon.className = "text-yellow-500 text-6xl mb-4";
             overlayTitle.textContent = "Perlu Perbaikan";
@@ -1087,9 +1058,17 @@
 </head>
 <body>
   <nav>
-    <a href="#">Beranda</a>
-    <a href="#">Tentang</a>
-    <a href="#">Kontak</a>
+    <ul>
+      <li>
+        <a>Beranda</a>
+      </li>
+      <li>
+        <a>Tentang</a>
+      </li>
+      <li>
+        <a>Kontak</a>
+      </li>
+    </ul>
   </nav>
 </body>
 </html>`;
