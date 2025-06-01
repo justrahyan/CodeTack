@@ -182,16 +182,59 @@
                   <li>• Tampilkan hasil ke pengguna</li>
                 </ul>
               </div>
-
-              <div
-                class="bg-white rounded border text-xs md:text-sm relative p-4"
-              >
-                <p>
-                  <span class="font-semibold">Contoh:</span> Masukkan angka 1
-                  dan angka 2, lalu pilih operator. Hasil akan ditampilkan di
-                  layar.
+              <div class="bg-gray-100 p-3 rounded relative">
+                <p class="font-medium text-gray-800 mb-2">
+                  🖥️ Preview yang Diharapkan:
                 </p>
+                <div
+                  class="bg-white rounded border text-xs md:text-sm relative"
+                >
+                  <img
+                    id="preview-image"
+                    src="../../../assets/img/preview-kalkulator-sederhana.gif"
+                    alt="Preview Kalkulator Sederhana"
+                    class="w-full rounded"
+                  />
+                  <!-- Tombol Zoom -->
+                  <button
+                    id="zoom-button-responsive"
+                    class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </div>
+              <!-- Modal Overlay -->
+              <div
+                id="image-modal-responsive"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center hidden mb-0"
+                style="z-index: 75"
+              >
+                <img
+                  id="zoomed-image-responsive"
+                  src="../../../assets/img/preview-ubah-warna-latar.gif"
+                  alt="Zoomed"
+                  class="max-w-full max-h-full rounded shadow-lg"
+                />
+              </div>
+              <p class="text-xs md:text-sm text-gray-600">
+                Masukkan angka 1 dan angka 2, lalu pilih operator. Hasil akan
+                ditampilkan di layar.
+              </p>
             </div>
           </div>
 
@@ -265,16 +308,59 @@
                   <li>• Tampilkan hasil ke pengguna</li>
                 </ul>
               </div>
-
-              <div
-                class="bg-white rounded border text-xs md:text-sm relative p-4"
-              >
-                <p>
-                  <span class="font-semibold">Contoh:</span> Masukkan angka 1
-                  dan angka 2, lalu pilih operator. Hasil akan ditampilkan di
-                  layar.
+              <div class="bg-gray-100 p-3 rounded relative">
+                <p class="font-medium text-gray-800 mb-2">
+                  🖥️ Preview yang Diharapkan:
                 </p>
+                <div
+                  class="bg-white rounded border text-xs md:text-sm relative"
+                >
+                  <img
+                    id="preview-image"
+                    src="../../../assets/img/preview-kalkulator-sederhana.gif"
+                    alt="Preview Kalkulator Sederhana"
+                    class="w-full rounded"
+                  />
+                  <!-- Tombol Zoom -->
+                  <button
+                    id="zoom-button-responsive"
+                    class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded hover:bg-opacity-70"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m4 0h6m-3-3v6m11 8l-6-6"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </div>
+              <!-- Modal Overlay -->
+              <div
+                id="image-modal-responsive"
+                class="fixed inset-0 bg-black/70 flex items-center justify-center hidden mb-0"
+                style="z-index: 75"
+              >
+                <img
+                  id="zoomed-image-responsive"
+                  src="../../../assets/img/preview-ubah-warna-latar.gif"
+                  alt="Zoomed"
+                  class="max-w-full max-h-full rounded shadow-lg"
+                />
+              </div>
+              <p class="text-xs md:text-sm text-gray-600">
+                Masukkan angka 1 dan angka 2, lalu pilih operator. Hasil akan
+                ditampilkan di layar.
+              </p>
             </div>
           </div>
 
