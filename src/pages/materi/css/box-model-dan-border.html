@@ -418,8 +418,19 @@
             >: Buat atur ketebalan garisnya, bisa tipis banget sampai tebal.
           </li>
         </ul>
-
-        <pre><code class="language-css">.box {
+        <div class="relative border rounded-md overflow-hidden mb-4">
+          <div
+            class="flex justify-between items-center bg-white px-4 py-2 border-b text-sm font-semibold"
+          >
+            <span class="text-gray-700">style.css</span>
+            <button
+              onclick="salinKode(this)"
+              class="text-sm md:text-base text-blue-600 hover:underline focus:outline-none"
+            >
+              Salin Kode
+            </button>
+          </div>
+          <pre style="margin: 0"><code class="language-css">.box {
   width: 200px;
   padding: 20px;
   margin: 20px;
@@ -427,6 +438,7 @@
   border-radius: 10px;
   background-color: #f0fdf4;
 }</code></pre>
+        </div>
 
         <!-- Editor -->
         <h2 class="text-xl lg:text-2xl font-bold mb-4 mt-8">
